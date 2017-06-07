@@ -1,0 +1,42 @@
+#' Import tab-separated-values (tsv) files
+#'
+#' Execute readr::read_tsv with assumptions about values of some arguments.
+#'
+#' First rows are column names.
+#' Only blank cells represent missing data.
+#' Missing data inside quotes constitute missing data.
+#' There are no characters for quoting strings.
+#' There are no strings for identifying comments.
+#' There are no rows to skip.
+#'
+#' @param path A path.
+#' @param guess_max Maximum number of rows to use for guessing column types.
+#'
+#' @return
+#'
+#' @keywords
+#'
+#' @export
+#'
+#' @examples
+
+import_tsv <- function(path,
+                       guess_max) {
+
+    x <- read_tsv(file = path,
+                  col_names = TRUE,
+                  col_types = NULL,
+                  locale = default_locale(),
+                  na = "",
+                  quoted_na = TRUE,
+                  quote = "",
+                  comment = "",
+                  trim_ws = TRUE,
+                  skip = 0,
+                  n_max = Inf,
+                  guess_max = guess_max,
+                  progress = TRUE)
+
+    return(value = x)
+
+}

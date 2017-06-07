@@ -1,0 +1,16 @@
+Package: zhaoy
+Type: Package
+Title: miscellaneous functions 
+Version: 0.1
+Date: 2017-6-7
+Authors@R: person("zhaoy",
+                  "zhaoy",
+                  role = c("aut",
+                           "cre",
+                           "ths"),
+                  email = "zhaoy@users.noreply.github.com")
+Depends: R (>= 3.4.0), readr (>= 1.1.1), readxl (>= 1.0.0)
+Description: Functions for importing, transforming, and summarizing data.
+License: GPL-3
+RoxygenNote: 6.0.1
+LazyData: true
