@@ -3,6 +3,7 @@
 export(ddt_d)
 export(ddt_s)
 export(ddt_tbl)
+export(export_tsv)
 export(import_excel)
 export(import_tsv)
 export(mrn)
