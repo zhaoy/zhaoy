@@ -10,7 +10,7 @@ Authors@R: person("zhaoy",
                            "ths"),
                   email = "zhaoy@users.noreply.github.com")
 Depends: R (>= 3.4.0), readr (>= 1.1.1), readxl (>= 1.0.0)
-Description: Functions for importing, transforming, and summarizing data.
+Description: Functions for importing, transforming, summarizing, and exporting data.
 License: GPL-3
 RoxygenNote: 6.0.1
 LazyData: true

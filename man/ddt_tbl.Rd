@@ -2,23 +2,33 @@
 % Please edit documentation in R/ddt_tbl.R
 \name{ddt_tbl}
 \alias{ddt_tbl}
-\title{Sub-set tables according to dates}
+\title{Sub-set tables according to date range}
 \usage{
 ddt_tbl(tbl, col, from, to)
 }
 \arguments{
-\item{tbl}{A table.}
+\item{tbl}{A multi-column table.}
 
-\item{col}{A column.}
+\item{col}{A column of non-factor dates in year-month-day format.}
 
-\item{from}{Start date in year-month-day format. Leading zeros in single-digit months or days, are optional.}
+\item{from}{A string storing the start date in year-month-day format.}
 
-\item{to}{End date in year-month-day format. Leading zeros in single-digit months or days, are optional.}
+\item{to}{A string storing the end date in year-month-day format.}
 }
 \value{
 
 }
 \description{
-Sub-set tables so that dates in one column are in a date range, inclusive.
+Sub-set multi-column tables so that a column of dates complies with a date range, inclusive.
+}
+\details{
+In tbl, leading zeros in single-digit months or days, are optional.
+}
+\examples{
+x <- data.frame(date_1 = c("1960-1-1", "1960-1-2", "1960-3-31"),
+                date_2 = c("1960-1-1", "1960-1-2", "1960-3-31"),
+                stringsAsFactors = FALSE)
+z <- ddt_tbl(tbl = x, col = date_1, from = "1960-1-1", to = "1960-3-30")
+z
 }
 \keyword{}

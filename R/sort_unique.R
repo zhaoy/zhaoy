@@ -1,4 +1,4 @@
-#' Sort unique values of vectors.
+#' Sort unique values of vectors
 #'
 #' Sort unique values of vectors, in ascending order beginning with any NAs.
 #'

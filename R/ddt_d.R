@@ -1,9 +1,13 @@
 #' Convert dates or date-times to Date-class dates
 #'
-#' Convert dates or date-times to Date-class dates.
+#' Execute as.Date with assumptions about the values of some arguments.
 #'
-#' @param x An object in which values are in year-month-day format.
-#' Leading zeros in single-digit months or days, are optional.
+#' In x, leading zeros in single-digit months or days, are optional.
+#' format is "%Y-%m-%d".
+#' origin is blank.
+#' tz is the current time zone.
+#'
+#' @param x An object in year-month-day format.
 #'
 #' @return
 #'
@@ -12,8 +16,9 @@
 #' @export
 #'
 #' @examples
-#' ddt_d(x = Sys.Date())
-#' ddt_d(x = Sys.time())
+#' x <- c("1960-1-1", "1960-1-2", "1960-3-31", "1960-7-30")
+#' z <- ddt_d(x = x)
+#' z
 
 ddt_d <- function(x) {
 
@@ -21,6 +26,7 @@ ddt_d <- function(x) {
 
     x <- as.Date(x = x,
                  format = "%Y-%m-%d",
+                 origin = "",
                  tz = "")
 
     return(value = x)

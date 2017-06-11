@@ -1,4 +1,4 @@
-#' Add or subtract leading zeros from medical record numbers (MRNs).
+#' Add or subtract leading zeros from medical record numbers (MRNs)
 #'
 #' Add or subtract leading zeros from medical record numbers (MRNs).
 #'

@@ -2,7 +2,7 @@
 % Please edit documentation in R/mrn.R
 \name{mrn}
 \alias{mrn}
-\title{Add or subtract leading zeros from medical record numbers (MRNs).}
+\title{Add or subtract leading zeros from medical record numbers (MRNs)}
 \usage{
 mrn(x, lz)
 }

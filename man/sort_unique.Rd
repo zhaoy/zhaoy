@@ -2,7 +2,7 @@
 % Please edit documentation in R/sort_unique.R
 \name{sort_unique}
 \alias{sort_unique}
-\title{Sort unique values of vectors.}
+\title{Sort unique values of vectors}
 \usage{
 sort_unique(x)
 }
