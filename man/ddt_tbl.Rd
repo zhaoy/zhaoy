@@ -28,7 +28,7 @@ In tbl, leading zeros in single-digit months or days, are optional.
 x <- data.frame(date_1 = c("1960-1-1", "1960-1-2", "1960-3-31"),
                 date_2 = c("1960-1-1", "1960-1-2", "1960-3-31"),
                 stringsAsFactors = FALSE)
-z <- ddt_tbl(tbl = x, col = date_1, from = "1960-1-1", to = "1960-3-30")
+z <- ddt_tbl(tbl = x, col = "date_1", from = "1960-1-1", to = "1960-3-30")
 z
 }
 \keyword{}

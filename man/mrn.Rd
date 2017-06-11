@@ -2,14 +2,14 @@
 % Please edit documentation in R/mrn.R
 \name{mrn}
 \alias{mrn}
-\title{Add or subtract leading zeros from medical record numbers (MRNs)}
+\title{Leading zeros in medical record numbers (MRNs)}
 \usage{
 mrn(x, lz)
 }
 \arguments{
 \item{x}{An object containing MRNs.}
 
-\item{lz}{logical: should leading zeros be added? FALSE subtracts leading zeros.}
+\item{lz}{Logical: should leading zeros be added? FALSE subtracts leading zeros.}
 }
 \value{
 

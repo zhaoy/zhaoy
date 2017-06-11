@@ -19,7 +19,7 @@
 #' x <- data.frame(date_1 = c("1960-1-1", "1960-1-2", "1960-3-31"),
 #'                 date_2 = c("1960-1-1", "1960-1-2", "1960-3-31"),
 #'                 stringsAsFactors = FALSE)
-#' z <- ddt_tbl(tbl = x, col = date_1, from = "1960-1-1", to = "1960-3-30")
+#' z <- ddt_tbl(tbl = x, col = "date_1", from = "1960-1-1", to = "1960-3-30")
 #' z
 
 ddt_tbl <- function(tbl,
@@ -27,15 +27,12 @@ ddt_tbl <- function(tbl,
                     from,
                     to) {
 
-    args <- as.list(x = match.call())
+    col_index <- which(x = names(x = tbl) == col)
 
-    col <- eval(expr = args$col,
-                envir = tbl)
+    tbl[, col_index] <- ddt_d(x = tbl[, col_index])
 
-    col <- ddt_d(x = col)
-
-    tbl <- tbl[col >= from &
-               col <= to, ]
+    tbl <- tbl[tbl[, col_index] >= from &
+               tbl[, col_index] <= to, ]
 
     return(value = tbl)
 
