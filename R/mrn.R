@@ -1,4 +1,4 @@
-#' Add or subtract leading zeros from medical record numbers (MRNs)
+#' Leading zeros in medical record numbers (MRNs)
 #'
 #' Add or subtract leading zeros from medical record numbers (MRNs).
 #'
@@ -6,7 +6,7 @@
 #' When searching for patients by MRN, Provide Enterprise requires 9-digit MRNs.
 #'
 #' @param x An object containing MRNs.
-#' @param lz logical: should leading zeros be added? FALSE subtracts leading zeros.
+#' @param lz Logical: should leading zeros be added? FALSE subtracts leading zeros.
 #'
 #' @return
 #'

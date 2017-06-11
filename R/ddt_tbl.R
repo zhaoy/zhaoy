@@ -27,7 +27,7 @@ ddt_tbl <- function(tbl,
                     from,
                     to) {
 
-    args <- as.list(match.call())
+    args <- as.list(x = match.call())
 
     col <- eval(expr = args$col,
                 envir = tbl)
