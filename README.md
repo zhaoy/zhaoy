@@ -1,4 +1,4 @@
-miscellaneous functions functions for importing, transforming, summarizing, and exporting data
+miscellaneous functions for importing, transforming, summarizing, and exporting data
 
 ## import
 
