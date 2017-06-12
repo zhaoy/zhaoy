@@ -3,11 +3,15 @@
 #' Execute readr::read_tsv with assumptions about values of some arguments.
 #'
 #' First rows are column names.
+#' Guess column types.
 #' Only blank cells represent missing data.
 #' Missing data inside quotes constitute missing data.
 #' There are no characters for quoting strings.
 #' There are no strings for identifying comments.
+#' Trim white-space.
 #' There are no rows to skip.
+#' There is no upper bound on the number of rows to read.
+#' Show progress bar.
 #'
 #' @param path A path.
 #' @param guess_max Maximum number of rows to use for guessing column types.
