@@ -1,26 +1,23 @@
-#' Convert dates or date-times to date strings
+#' Date-time Conversion to Character
 #'
-#' Execute strftime with assumptions about the values of some arguments.
+#' Function to convert non-character representations of dates and date-times to objects of class "character" representing dates.
+#' Executes strftime with assumptions about the values of some arguments.
 #'
 #' In x, leading zeros in single-digit months or days, are optional.
 #' format is "%Y-%m-%d".
 #' tz is the current time zone.
 #' usetz excludes time zone abbreviations from outputs.
 #'
-#' @param x An object in year-month-day format.
-#'
-#' @return
-#'
-#' @keywords
+#' @param x An object in year-month-day format, to be converted.
 #'
 #' @export
 #'
 #' @examples
 #' x <- c("1960-1-1", "1960-1-2", "1960-3-31", "1960-7-30")
-#' z <- ddt_ds(x = x)
+#' z <- dc(x = x)
 #' z
 
-ddt_ds <- function(x) {
+dc <- function(x) {
 
     x <- strftime(x = x,
                   format = "%Y-%m-%d",

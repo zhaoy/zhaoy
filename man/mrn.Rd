@@ -2,17 +2,14 @@
 % Please edit documentation in R/mrn.R
 \name{mrn}
 \alias{mrn}
-\title{Leading zeros in medical record numbers (MRNs)}
+\title{Format Medical Record Numbers (MRNs)}
 \usage{
 mrn(x, lz)
 }
 \arguments{
-\item{x}{An object containing MRNs.}
+\item{x}{a logical, integer, real, or character vector.}
 
-\item{lz}{Logical: should leading zeros be added? FALSE subtracts leading zeros.}
-}
-\value{
-
+\item{lz}{logical: should leading zeros be added? FALSE subtracts leading zeros.}
 }
 \description{
 Add or subtract leading zeros from medical record numbers (MRNs).
@@ -25,4 +22,3 @@ When searching for patients by MRN, Provide Enterprise requires 9-digit MRNs.
 mrn(x = 1, lz = TRUE)
 mrn(x = 000000001, lz = FALSE)
 }
-\keyword{}

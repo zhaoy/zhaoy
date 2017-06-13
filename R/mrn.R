@@ -1,16 +1,12 @@
-#' Leading zeros in medical record numbers (MRNs)
+#' Format Medical Record Numbers (MRNs)
 #'
 #' Add or subtract leading zeros from medical record numbers (MRNs).
 #'
 #' With leading zeros, MRNs are 9 digits.
 #' When searching for patients by MRN, Provide Enterprise requires 9-digit MRNs.
 #'
-#' @param x An object containing MRNs.
-#' @param lz Logical: should leading zeros be added? FALSE subtracts leading zeros.
-#'
-#' @return
-#'
-#' @keywords
+#' @param x a logical, integer, real, or character vector.
+#' @param lz logical: should leading zeros be added? FALSE subtracts leading zeros.
 #'
 #' @export
 #'
