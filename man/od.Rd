@@ -9,7 +9,7 @@ od(x, origin)
 \arguments{
 \item{x}{An object representing days-since-origin, to be converted.}
 
-\item{origin}{A Date object, or something which can be coerced by as.Date to such an object.}
+\item{origin}{A Date object, or something which can be coerced by as.Date(origin, ...) to such an object.}
 }
 \description{
 Function to convert days-since-origin to objects of class "Date" representing dates.

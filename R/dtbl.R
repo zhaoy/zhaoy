@@ -1,13 +1,13 @@
-#' Sub-set Tables According to a Date Range
+#' Sub-set Tables According to Date Range
 #'
-#' Sub-set multi-column tables so that a column of dates or date-times complies with a start date and an end date, inclusive.
+#' Sub-set multi-column tables so that a column of dates or date-times in the table complies with a start date and an end date, inclusive.
 #'
 #' In tbl, leading zeros in single-digit months or days, are optional.
 #'
 #' @param tbl A multi-column table.
-#' @param col A column of dates in year-month-day format.
-#' @param from A string representing the start date in year-month-day format.
-#' @param to A string representing the end date in year-month-day format.
+#' @param col A column of dates that are in year-month-day format.
+#' @param from A start date in year-month-day format.
+#' @param to An end date in year-month-day format.
 #'
 #' @export
 #'

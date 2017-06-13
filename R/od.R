@@ -7,7 +7,7 @@
 #' tz is blank.
 #'
 #' @param x An object representing days-since-origin, to be converted.
-#' @param origin A Date object, or something which can be coerced by as.Date to such an object.
+#' @param origin A Date object, or something which can be coerced by as.Date(origin, ...) to such an object.
 #'
 #' @export
 #'
