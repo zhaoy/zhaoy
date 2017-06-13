@@ -19,6 +19,8 @@
 #'
 #' @keywords
 #'
+#' @import readxl
+#'
 #' @export
 #'
 #' @examples

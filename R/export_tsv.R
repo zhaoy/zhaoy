@@ -13,6 +13,8 @@
 #'
 #' @keywords
 #'
+#' @import readr
+#'
 #' @export
 #'
 #' @examples
