@@ -8,19 +8,19 @@ miscellaneous functions for importing, transforming, summarizing, and exporting 
 
 ## transform
 
-**ddt_d**
+**dc**
 
-**ddt_ds**
+**dd**
 
-**ddt_tbl**
+**dtbl**
 
-**dso_d**
+**od**
 
 **mrn**
 
 ## summarize
 
-**sort_unique**
+**order_unique**
 
 ## export
 
