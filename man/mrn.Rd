@@ -7,12 +7,12 @@
 mrn(x, lz)
 }
 \arguments{
-\item{x}{a logical, integer, real, or character vector.}
+\item{x}{an integer, real, or character vector.}
 
 \item{lz}{logical: should leading zeros be added? FALSE subtracts leading zeros.}
 }
 \description{
-Returns a character vector containing medical record numbers (MRNs) with or without leading zeros.
+Returns a character vector containing medical record numbers (MRNs) that are with or without leading zeros.
 }
 \details{
 With leading zeros, MRNs are 9 digits.
