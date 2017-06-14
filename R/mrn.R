@@ -1,4 +1,4 @@
-#' Format Medical Record Numbers (MRNs)
+#' Format medical record numbers (MRNs)
 #'
 #' Returns a character vector containing medical record numbers (MRNs) that are with or without leading zeros.
 #'

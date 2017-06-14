@@ -2,7 +2,7 @@
 % Please edit documentation in R/dd.R
 \name{dd}
 \alias{dd}
-\title{Date Conversion to "Date" Class}
+\title{Date conversion to Date class}
 \usage{
 dd(x)
 }
@@ -15,8 +15,11 @@ Executes as.Date with assumptions about the values of some arguments.
 }
 \details{
 In x, leading zeros in single-digit months or days, are optional.
+
 format is "%Y-%m-%d".
+
 origin is blank.
+
 tz is the current time zone.
 }
 \examples{

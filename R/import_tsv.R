@@ -12,6 +12,7 @@
 #' There are no rows to skip.
 #' There is no upper bound on the number of rows to read.
 #' Show progress bar.
+#' locale = default_locale()
 #'
 #' @param path A path.
 #' @param guess_max Maximum number of rows to use for guessing column types.

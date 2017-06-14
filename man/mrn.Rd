@@ -2,7 +2,7 @@
 % Please edit documentation in R/mrn.R
 \name{mrn}
 \alias{mrn}
-\title{Format Medical Record Numbers (MRNs)}
+\title{Format medical record numbers (MRNs)}
 \usage{
 mrn(x, lz)
 }

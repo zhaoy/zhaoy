@@ -2,12 +2,12 @@
 % Please edit documentation in R/dtbl.R
 \name{dtbl}
 \alias{dtbl}
-\title{Sub-set Tables According to Date Range}
+\title{Sub-set tables according to date range}
 \usage{
-dtbl(tbl, col, from, to)
+dtbl(x, col, from, to)
 }
 \arguments{
-\item{tbl}{A multi-column table.}
+\item{x}{A multi-column table.}
 
 \item{col}{A column of dates that are in year-month-day format.}
 
@@ -16,14 +16,14 @@ dtbl(tbl, col, from, to)
 \item{to}{An end date in year-month-day format.}
 }
 \description{
-Sub-set multi-column tables so that a column of dates or date-times in the table complies with a start date and an end date, inclusive.
+Sub-set multi-column tables so that a column of dates or date-times complies with a start date and an end date, inclusive.
 }
 \details{
-In tbl, leading zeros in single-digit months or days, are optional.
+In x, leading zeros in single-digit months or days, are optional.
 }
 \examples{
 x <- data.frame(date_1 = c("1960-1-1", "1960-1-2", "1960-3-31"),
                 date_2 = c("1960-1-1", "1960-1-2", "1960-3-31"))
-z <- dtbl(tbl = x, col = "date_1", from = "1960-1-1", to = "1960-3-30")
+z <- dtbl(x = x, col = "date_1", from = "1960-1-1", to = "1960-3-30")
 z
 }

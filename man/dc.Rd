@@ -2,7 +2,7 @@
 % Please edit documentation in R/dc.R
 \name{dc}
 \alias{dc}
-\title{Date-time Conversion to Character}
+\title{Date-time conversion to character}
 \usage{
 dc(x)
 }
@@ -15,9 +15,12 @@ Executes strftime with assumptions about the values of some arguments.
 }
 \details{
 In x, leading zeros in single-digit months or days, are optional.
-format is "%Y-%m-%d".
-tz is the current time zone.
-usetz excludes time zone abbreviations from outputs.
+
+The current time zone is used for the conversion.
+
+The format method is "%Y-%m-%d".
+
+Does not append the time zone abbreviation to the output.
 }
 \examples{
 x <- c("1960-1-1", "1960-1-2", "1960-3-31", "1960-7-30")

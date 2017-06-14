@@ -4,10 +4,10 @@
 \alias{import_excel}
 \title{Import Microsoft Excel files}
 \usage{
-import_excel(path, sheet, range, guess_max)
+import_excel(file, sheet, range, guess_max)
 }
 \arguments{
-\item{path}{A path.}
+\item{file}{A file.}
 
 \item{sheet}{A sheet.}
 

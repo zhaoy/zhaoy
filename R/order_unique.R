@@ -1,4 +1,4 @@
-#' Extract and Order Unique Elements of Vectors
+#' Extract and order unique elements of vectors
 #'
 #' Order unique elements of vectors or factors into ascending order, beginning with any NAs.
 #'

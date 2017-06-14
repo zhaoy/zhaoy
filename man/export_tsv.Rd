@@ -2,24 +2,26 @@
 % Please edit documentation in R/export_tsv.R
 \name{export_tsv}
 \alias{export_tsv}
-\title{Export tab-separated-values (tsv) files}
+\title{Write a data frame to a tab-separated-values (tsv) file}
 \usage{
-export_tsv(tbl, path)
+export_tsv(x, folder)
 }
 \arguments{
-\item{tbl}{A table.}
+\item{x}{A data frame to write to disk.}
 
-\item{path}{A path.}
-}
-\value{
-
+\item{folder}{Path or connection to folder.}
 }
 \description{
-Execute readr::write_tsv with assumptions about values of some arguments.
+Never writes row names. Executes readr::write_tsv with assumptions about the values of some arguments.
 }
 \details{
-Only blank cells represent missing data.
-Over-write existing file if one exists.
-Write column names at top of file.
+NA is used for missing values.
+
+Over-write existing file.
+
+Write column names at the top of the file.
 }
-\keyword{}
+\examples{
+dir <- getwd()
+export_tsv(x = mtcars, folder = dir)
+}

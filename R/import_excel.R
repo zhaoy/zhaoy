@@ -10,7 +10,7 @@
 #' There are no rows to skip.
 #' There is no upper bound on the number of rows to read.
 #'
-#' @param path A path.
+#' @param file A file.
 #' @param sheet A sheet.
 #' @param range A cell range to read from.
 #' @param guess_max Maximum number of rows to use for guessing column types.
@@ -19,18 +19,25 @@
 #'
 #' @keywords
 #'
-#' @import readxl
+#' @import readxl rprojroot
 #'
 #' @export
 #'
 #' @examples
 
-import_excel <- function(path,
+import_excel <- function(file,
                          sheet,
                          range,
                          guess_max) {
 
-    x <- read_excel(path = path,
+    root_path <- find_root(criterion = file,
+                           path = ".")
+
+    import_path <- file.path(root_path,
+                             file,
+                             fsep = "/")
+
+    x <- read_excel(path = import_path,
                     sheet = sheet,
                     range = range,
                     col_names = TRUE,

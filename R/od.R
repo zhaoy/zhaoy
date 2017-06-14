@@ -1,10 +1,11 @@
-#' Days-since-origin Conversion to "Date" Class
+#' Days-since-origin conversion to Date class
 #'
-#' Function to convert days-since-origin to objects of class "Date" representing dates.
+#' Function to convert representations of days-since-origin to objects of class "Date" representing dates.
 #' Executes as.Date with assumptions about the values of some arguments.
 #'
 #' format is un-necessary.
-#' tz is blank.
+#'
+#' tz is the current time zone.
 #'
 #' @param x An object representing days-since-origin, to be converted.
 #' @param origin A Date object, or something which can be coerced by as.Date(origin, ...) to such an object.

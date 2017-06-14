@@ -1,12 +1,15 @@
-#' Date-time Conversion to Character
+#' Date-time conversion to character
 #'
 #' Function to convert non-character representations of dates and date-times to objects of class "character" representing dates.
 #' Executes strftime with assumptions about the values of some arguments.
 #'
 #' In x, leading zeros in single-digit months or days, are optional.
-#' format is "%Y-%m-%d".
-#' tz is the current time zone.
-#' usetz excludes time zone abbreviations from outputs.
+#'
+#' The current time zone is used for the conversion.
+#'
+#' The format method is "%Y-%m-%d".
+#'
+#' Does not append the time zone abbreviation to the output.
 #'
 #' @param x An object in year-month-day format, to be converted.
 #'

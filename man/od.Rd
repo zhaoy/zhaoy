@@ -2,7 +2,7 @@
 % Please edit documentation in R/od.R
 \name{od}
 \alias{od}
-\title{Days-since-origin Conversion to "Date" Class}
+\title{Days-since-origin conversion to Date class}
 \usage{
 od(x, origin)
 }
@@ -12,12 +12,13 @@ od(x, origin)
 \item{origin}{A Date object, or something which can be coerced by as.Date(origin, ...) to such an object.}
 }
 \description{
-Function to convert days-since-origin to objects of class "Date" representing dates.
+Function to convert representations of days-since-origin to objects of class "Date" representing dates.
 Executes as.Date with assumptions about the values of some arguments.
 }
 \details{
 format is un-necessary.
-tz is blank.
+
+tz is the current time zone.
 }
 \examples{
 od(x = 32768, origin = "1900-1-1")

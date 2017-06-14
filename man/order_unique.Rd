@@ -2,7 +2,7 @@
 % Please edit documentation in R/order_unique.R
 \name{order_unique}
 \alias{order_unique}
-\title{Extract and Order Unique Elements of Vectors}
+\title{Extract and order unique elements of vectors}
 \usage{
 order_unique(x)
 }

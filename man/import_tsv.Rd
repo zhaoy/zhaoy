@@ -28,5 +28,6 @@ Trim white-space.
 There are no rows to skip.
 There is no upper bound on the number of rows to read.
 Show progress bar.
+locale = default_locale()
 }
 \keyword{}
