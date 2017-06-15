@@ -1,36 +1,43 @@
-#' Import Microsoft Excel files
+#' Import xls and xlsx files
 #'
-#' Execute readxl::read_excel with assumptions about the values of some arguments.
+#' Executes readxl::read_excel with assumptions about the values of some arguments.
 #'
-#' Range takes precedence over skip, n_max, and sheet. If Range is un-necessary, set it to NULL.
-#' First rows are column names.
-#' Guess column types from the spread-sheet.
-#' Only blank cells represent missing data.
+#' Use the first row as column names.
+#'
+#' Guess all column types from the spread-sheet.
+#'
+#' Treat only blank cells as missing data.
+#'
 #' Trim leading and trailing white-space.
-#' There are no rows to skip.
-#' There is no upper bound on the number of rows to read.
 #'
-#' @param file A file.
-#' @param sheet A sheet.
+#' The minimum number of rows to skip before reading anything, is zero.
+#'
+#' The maximum number of data rows to read is infinite.
+#'
+#' @param criterion Root path criterion.
+#' @param file xls / xlsx file.
+#' @param sheet Sheet to read.
 #' @param range A cell range to read from.
 #' @param guess_max Maximum number of rows to use for guessing column types.
-#'
-#' @return
-#'
-#' @keywords
 #'
 #' @import readxl rprojroot
 #'
 #' @export
 #'
 #' @examples
+#' iris <- "datasets.xlsx"
+#' datasets <- readxl_example("datasets.xlsx")
+#' datasets <- substring(text = datasets, first = 1, last = 49)
+#' setwd(dir = datasets)
+#' import_excel(criterion = iris, file = iris, sheet = "iris", range = NULL, guess_max = 10)
 
-import_excel <- function(file,
+import_excel <- function(criterion,
+                         file,
                          sheet,
                          range,
                          guess_max) {
 
-    root_path <- find_root(criterion = file,
+    root_path <- find_root(criterion = criterion,
                            path = ".")
 
     import_path <- file.path(root_path,
