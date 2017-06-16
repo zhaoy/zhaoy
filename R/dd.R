@@ -1,21 +1,22 @@
-#' Date conversion to Date class
+#' Date conversion from character
 #'
-#' Function to convert non-"Date" representations of dates and date-times to objects of class "Date" representing dates.
+#' Function to convert character representations to objects of class "Date" representing dates.
 #' Executes as.Date with assumptions about the values of some arguments.
 #'
 #' In x, leading zeros in single-digit months or days, are optional.
 #'
 #' format is "%Y-%m-%d".
 #'
-#' origin is blank.
+#' origin is "".
 #'
-#' tz is the current time zone.
+#' tz is "".
 #'
 #' @param x An object in year-month-day format, to be converted.
 #'
 #' @export
 #'
 #' @examples
+#' # read in date info in format "yyyy-mm-dd"
 #' x <- c("1960-1-1", "1960-1-2", "1960-3-31", "1960-7-30")
 #' z <- dd(x = x)
 #' z

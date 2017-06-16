@@ -16,7 +16,7 @@ dtbl(x, col, from, to)
 \item{to}{An end date in year-month-day format.}
 }
 \description{
-Sub-set multi-column tables so that a column of dates or date-times complies with a start date and an end date, inclusive.
+Sub-set multi-column tables so that one column of dates or date-times complies with a start date and an end date, inclusive.
 }
 \details{
 In x, leading zeros in single-digit months or days, are optional.

@@ -11,9 +11,6 @@ import_tsv(path, guess_max)
 
 \item{guess_max}{Maximum number of rows to use for guessing column types.}
 }
-\value{
-
-}
 \description{
 Execute readr::read_tsv with assumptions about values of some arguments.
 }
@@ -30,4 +27,3 @@ There is no upper bound on the number of rows to read.
 Show progress bar.
 locale = default_locale()
 }
-\keyword{}

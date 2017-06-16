@@ -17,10 +17,6 @@
 #' @param path A path.
 #' @param guess_max Maximum number of rows to use for guessing column types.
 #'
-#' @return
-#'
-#' @keywords
-#'
 #' @import readr
 #'
 #' @export

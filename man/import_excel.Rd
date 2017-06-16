@@ -2,20 +2,20 @@
 % Please edit documentation in R/import_excel.R
 \name{import_excel}
 \alias{import_excel}
-\title{Import xls and xlsx files}
+\title{Read xls and xlsx files}
 \usage{
 import_excel(criterion, file, sheet, range, guess_max)
 }
 \arguments{
-\item{criterion}{Root path criterion.}
+\item{criterion}{A criterion}
 
-\item{file}{xls / xlsx file.}
+\item{file}{xls / xlsx file}
 
 \item{sheet}{Sheet to read.}
 
 \item{range}{A cell range to read from.}
 
-\item{guess_max}{Maximum number of rows to use for guessing column types.}
+\item{guess_max}{Maximum number of data rows to use for guessing column types.}
 }
 \description{
 Executes readxl::read_excel with assumptions about the values of some arguments.
@@ -25,7 +25,7 @@ Use the first row as column names.
 
 Guess all column types from the spread-sheet.
 
-Treat only blank cells as missing data.
+Treats blank cells as missing data.
 
 Trim leading and trailing white-space.
 
@@ -34,9 +34,9 @@ The minimum number of rows to skip before reading anything, is zero.
 The maximum number of data rows to read is infinite.
 }
 \examples{
-iris <- "datasets.xlsx"
-datasets <- readxl_example("datasets.xlsx")
-datasets <- substring(text = datasets, first = 1, last = 49)
-setwd(dir = datasets)
-import_excel(criterion = iris, file = iris, sheet = "iris", range = NULL, guess_max = 10)
+ds <- "datasets.xlsx"
+ds_dir <- readxl_example(path = "datasets.xlsx")
+ds_dir <- substring(text = ds_dir, first = 1, last = 49)
+setwd(dir = ds_dir)
+import_excel(criterion = ds, file = ds, sheet = "iris", range = NULL, guess_max = 10)
 }

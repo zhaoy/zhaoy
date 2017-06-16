@@ -2,7 +2,7 @@
 % Please edit documentation in R/export_tsv.R
 \name{export_tsv}
 \alias{export_tsv}
-\title{Write a data frame to a tab-separated-values (tsv) file}
+\title{Write a data frame to a tsv file}
 \usage{
 export_tsv(x, folder)
 }

@@ -1,6 +1,6 @@
 #' Sub-set tables according to date range
 #'
-#' Sub-set multi-column tables so that a column of dates or date-times complies with a start date and an end date, inclusive.
+#' Sub-set multi-column tables so that one column of dates or date-times complies with a start date and an end date, inclusive.
 #'
 #' In x, leading zeros in single-digit months or days, are optional.
 #'
@@ -23,7 +23,8 @@ dtbl <- function(x,
                  to) {
 
     col_index <- which(x = names(x = x) == col,
-                       arr.ind = FALSE)
+                       arr.ind = FALSE,
+                       useNames = FALSE)
 
     x[, col_index] <- dd(x = x[, col_index])
 

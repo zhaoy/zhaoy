@@ -1,4 +1,4 @@
-#' Write a data frame to a tab-separated-values (tsv) file
+#' Write a data frame to a tsv file
 #'
 #' Never writes row names. Executes readr::write_tsv with assumptions about the values of some arguments.
 #'

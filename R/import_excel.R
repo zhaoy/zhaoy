@@ -1,4 +1,4 @@
-#' Import xls and xlsx files
+#' Read xls and xlsx files
 #'
 #' Executes readxl::read_excel with assumptions about the values of some arguments.
 #'
@@ -6,7 +6,7 @@
 #'
 #' Guess all column types from the spread-sheet.
 #'
-#' Treat only blank cells as missing data.
+#' Treats blank cells as missing data.
 #'
 #' Trim leading and trailing white-space.
 #'
@@ -14,22 +14,22 @@
 #'
 #' The maximum number of data rows to read is infinite.
 #'
-#' @param criterion Root path criterion.
-#' @param file xls / xlsx file.
+#' @param criterion A criterion
+#' @param file xls / xlsx file
 #' @param sheet Sheet to read.
 #' @param range A cell range to read from.
-#' @param guess_max Maximum number of rows to use for guessing column types.
+#' @param guess_max Maximum number of data rows to use for guessing column types.
 #'
 #' @import readxl rprojroot
 #'
 #' @export
 #'
 #' @examples
-#' iris <- "datasets.xlsx"
-#' datasets <- readxl_example("datasets.xlsx")
-#' datasets <- substring(text = datasets, first = 1, last = 49)
-#' setwd(dir = datasets)
-#' import_excel(criterion = iris, file = iris, sheet = "iris", range = NULL, guess_max = 10)
+#' ds <- "datasets.xlsx"
+#' ds_dir <- readxl_example(path = "datasets.xlsx")
+#' ds_dir <- substring(text = ds_dir, first = 1, last = 49)
+#' setwd(dir = ds_dir)
+#' import_excel(criterion = ds, file = ds, sheet = "iris", range = NULL, guess_max = 10)
 
 import_excel <- function(criterion,
                          file,
