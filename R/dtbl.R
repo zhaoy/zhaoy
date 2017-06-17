@@ -28,8 +28,8 @@ dtbl <- function(x,
 
     x[, col_index] <- dd(x = x[, col_index])
 
-    x <- x[x[, col_index] >= from &
-           x[, col_index] <= to, ]
+    x <- x[x[, col_index] >= dd(x = from) &
+           x[, col_index] <= dd(x = to), ]
 
     return(value = x)
 
