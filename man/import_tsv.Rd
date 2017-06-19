@@ -2,28 +2,41 @@
 % Please edit documentation in R/import_tsv.R
 \name{import_tsv}
 \alias{import_tsv}
-\title{Import tab-separated-values (tsv) files}
+\title{Read a tsv file into a tibble}
 \usage{
-import_tsv(path, guess_max)
+import_tsv(criterion, file, guess_max)
 }
 \arguments{
-\item{path}{A path.}
+\item{criterion}{A criterion.}
 
-\item{guess_max}{Maximum number of rows to use for guessing column types.}
+\item{file}{Name and extension of a file.}
+
+\item{guess_max}{Maximum number of records to use for guessing column types.}
 }
 \description{
-Execute readr::read_tsv with assumptions about values of some arguments.
+Read tab separated values, which is among the most common types of flat file data.
+Execute readr::read_tsv with assumptions about the values of some arguments.
 }
 \details{
-First rows are column names.
-Guess column types.
-Only blank cells represent missing data.
-Missing data inside quotes constitute missing data.
-There are no characters for quoting strings.
-There are no strings for identifying comments.
-Trim white-space.
-There are no rows to skip.
-There is no upper bound on the number of rows to read.
-Show progress bar.
-locale = default_locale()
+Use no characters to quote strings.
+
+Use the first row of the input as the column names.
+
+Impute all column types from the rows on the input.
+
+Use the default locale as the locale.
+
+Use no strings for missing values.
+
+Treat missing values inside quotes as strings.
+
+Use no strings to identify comments.
+
+Trim leading and trailing whitespace from each field before parsing it.
+
+Skip no lines before reading data.
+
+Set the maximum number of records to read, to infinite.
+
+Display a progress bar.
 }

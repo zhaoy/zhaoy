@@ -2,17 +2,17 @@
 % Please edit documentation in R/pe_lab.R
 \name{pe_lab}
 \alias{pe_lab}
-\title{Provide Enterprise lab}
+\title{Read Provide Enterprise lab data}
 \usage{
 pe_lab(criterion, file, sheet)
 }
 \arguments{
-\item{criterion}{criterion}
+\item{criterion}{A criterion.}
 
-\item{file}{file}
+\item{file}{Name and extension of a file.}
 
-\item{sheet}{sheet}
+\item{sheet}{Sheet to read.}
 }
 \description{
-Provide Enterprise lab
+Read lab data that is in a .xlsx file downloaded from Provide Enterprise.
 }

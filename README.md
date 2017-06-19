@@ -4,7 +4,7 @@ miscellaneous functions for importing, transforming, summarizing, and exporting 
 
 **import_excel**: read xls and xlsx files
 
-**import_tsv**: import tab-separated-values (tsv) files
+**import_tsv**: read a tsv file into a tibble
 
 ## transform
 

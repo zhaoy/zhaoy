@@ -1,12 +1,12 @@
-#' Provide Enterprise lab
+#' Read Provide Enterprise lab data
 #'
-#' Provide Enterprise lab
+#' Read lab data that is in a .xlsx file downloaded from Provide Enterprise.
 #'
-#' @param criterion criterion
-#' @param file file
-#' @param sheet sheet
+#' @param criterion A criterion.
+#' @param file Name and extension of a file.
+#' @param sheet Sheet to read.
 #'
-#' @import readxl rprojroot stats stringr
+#' @import readxl rprojroot stringr
 #'
 #' @export
 #'
@@ -16,13 +16,11 @@ pe_lab <- function(criterion,
                    file,
                    sheet) {
 
-    pe_lab <- file
-
     root_path <- find_root(criterion = criterion,
                            path = ".")
 
     import_path <- file.path(root_path,
-                             pe_lab,
+                             file,
                              fsep = "/")
 
     pe_lab <- read_excel(path = import_path,
@@ -39,17 +37,18 @@ pe_lab <- function(criterion,
                          n_max = Inf,
                          guess_max = 10)
 
-#    blank_mrn <- pe_lab[pe_lab$mrn == "Client ID:",
-#                        c("test_name",
-#                          "mrn")]
+    missing_mrn <- pe_lab[is.na(x = pe_lab$mrn) == FALSE & pe_lab$mrn == "Client ID:",
+                          c("test_name",
+                            "mrn")]
 
-#    if (nrow(x = blank_mrn) != 0) {
+    if (nrow(x = missing_mrn) != 0) {
 
-#      return(value = blank_mrn)
+      warning("Find these missing MRNs.",
+              noBreaks. = TRUE)
 
-#      stop("Fill in the blank MRNs.")
+      missing_mrn
 
-#    }
+    }
 
     pe_lab <- pe_lab[pe_lab$test_name != "1" &
                      (is.na(x = pe_lab$result == TRUE) |
@@ -95,12 +94,12 @@ pe_lab <- function(criterion,
     names(x = pe_lab)[names(x = pe_lab) == "test_name_2"] <- "test_name"
 
     pe_lab$test_count <- unlist(x = lapply(X = pe_lab$test_count,
-                                           FUN = function(x) x[2]),
+                                           FUN = function(x) x[, 2]),
                                 recursive = TRUE,
                                 use.names = FALSE)
 
     pe_lab$mrn <- unlist(x = lapply(X = pe_lab$mrn,
-                                    FUN = function(x) x[2]),
+                                    FUN = function(x) x[, 2]),
                          recursive = TRUE,
                          use.names = FALSE)
 
