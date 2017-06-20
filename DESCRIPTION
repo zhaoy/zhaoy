@@ -2,7 +2,7 @@ Package: zhaoy
 Type: Package
 Title: miscellaneous functions 
 Version: 0.1
-Date: 2017-6-12
+Date: 2017-6-20
 Authors@R: person("zhaoy",
                   "zhaoy",
                   role = c("aut",

@@ -2,17 +2,17 @@
 % Please edit documentation in R/pe_lab.R
 \name{pe_lab}
 \alias{pe_lab}
-\title{Read Provide Enterprise lab data}
+\title{Convert PE lab data into tidy data frames}
 \usage{
 pe_lab(criterion, file, sheet)
 }
 \arguments{
 \item{criterion}{A criterion.}
 
-\item{file}{Name and extension of a file.}
+\item{file}{Name and extension of the xlsx file.}
 
 \item{sheet}{Sheet to read.}
 }
 \description{
-Read lab data that is in a .xlsx file downloaded from Provide Enterprise.
+Tidy PE lab data that was exported in a xlsx file.
 }

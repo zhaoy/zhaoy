@@ -1,9 +1,9 @@
-#' Read Provide Enterprise lab data
+#' Convert PE lab data into tidy data frames
 #'
-#' Read lab data that is in a .xlsx file downloaded from Provide Enterprise.
+#' Tidy PE lab data that was exported in a xlsx file.
 #'
 #' @param criterion A criterion.
-#' @param file Name and extension of a file.
+#' @param file Name and extension of the xlsx file.
 #' @param sheet Sheet to read.
 #'
 #' @import readxl rprojroot stringr
@@ -37,6 +37,10 @@ pe_lab <- function(criterion,
                          n_max = Inf,
                          guess_max = 10)
 
+    pe_lab <- pe_lab[pe_lab$test_name != "1" &
+                     (is.na(x = pe_lab$result == TRUE) |
+                      pe_lab$result != "Result"), ]
+
     missing_mrn <- pe_lab[is.na(x = pe_lab$mrn) == FALSE &
                           pe_lab$mrn == "Client ID:",
                           c("test_name",
@@ -51,9 +55,7 @@ pe_lab <- function(criterion,
 
     }
 
-    pe_lab <- pe_lab[pe_lab$test_name != "1" &
-                     (is.na(x = pe_lab$result == TRUE) |
-                      pe_lab$result != "Result"), ]
+    else {
 
     pe_lab$test_count <- ifelse(test = str_detect(string = pe_lab$test_name,
                                                   pattern = "Total Tests for this Client:") == TRUE,
@@ -94,49 +96,51 @@ pe_lab <- function(criterion,
 
     names(x = pe_lab)[names(x = pe_lab) == "test_name_2"] <- "test_name"
 
-    pe_lab$test_count <- unlist(x = lapply(X = pe_lab$test_count,
-                                           FUN = function(x) x[, 2]),
-                                recursive = TRUE,
-                                use.names = FALSE)
+    pe_lab[, c("test_count",
+               "mrn")] <- apply(X = pe_lab[, c("test_count",
+                                               "mrn")],
+                                MARGIN = 2,
+                                FUN = function(x) unlist(x = lapply(X = x,
+                                                                    FUN = function(x) x[2])))
 
-    pe_lab$mrn <- unlist(x = lapply(X = pe_lab$mrn,
-                                    FUN = function(x) x[, 2]),
-                         recursive = TRUE,
-                         use.names = FALSE)
+    pe_lab <- pe_lab[, c("mrn",
+                         "test_count",
+                         "test_name",
+                         "test_date",
+                         "result_modifier",
+                         "result")]
 
-    pe_lab <- pe_lab[c("mrn",
-                       "test_count",
-                       "test_name",
-                       "test_date",
-                       "result_modifier",
-                       "result")]
+    pel_no_rep <- pe_lab[(is.na(x = pe_lab$test_name) == FALSE) &
+                         (is.na(x = pe_lab$test_date) == FALSE),
+                         c("test_name",
+                           "test_date",
+                           "result_modifier",
+                           "result")]
 
-    pe_no_replicate <- pe_lab[(is.na(x = pe_lab$test_name) == FALSE) &
-                              (is.na(x = pe_lab$test_date) == FALSE),
-                              c("test_name",
-                                "test_date",
-                                "result_modifier",
-                                "result")]
+    pel_mrn <- pe_lab$mrn[is.na(x = pe_lab$mrn) == FALSE]
 
-    pe_mrn_replicate <- as.character(x = rep(x = na.exclude(object = pe_lab$mrn),
-                                             times = na.exclude(object = pe_lab$test_count)))
+    pel_test_count <- pe_lab$test_count[is.na(x = pe_lab$test_count) == FALSE]
 
-    pe_test_count_replicate <- as.integer(x = rep(x = na.exclude(object = pe_lab$test_count),
-                                                  times = na.exclude(object = pe_lab$test_count)))
+    pel_mrn_rep <- as.character(x = rep(x = pel_mrn,
+                                        times = pel_test_count))
 
-    pe_lab <- data.frame(mrn = pe_mrn_replicate,
-                         test_count = pe_test_count_replicate,
-                         test_name = pe_no_replicate$test_name,
-                         test_date = pe_no_replicate$test_date,
-                         result_modifier = pe_no_replicate$result_modifier,
-                         result = pe_no_replicate$result,
+    pel_test_count_rep <- as.integer(x = rep(x = pel_test_count,
+                                             times = pel_test_count))
+
+    pe_lab <- data.frame(mrn = pel_mrn_rep,
+                         test_count = pel_test_count_rep,
+                         test_name = pel_no_rep$test_name,
+                         test_date = pel_no_rep$test_date,
+                         result_modifier = pel_no_rep$result_modifier,
+                         result = pel_no_rep$result,
                          row.names = NULL,
                          check.rows = TRUE,
                          check.names = TRUE,
                          fix.empty.names = TRUE,
                          stringsAsFactors = FALSE)
 
-    export_tsv(x = pe_lab,
-               folder = root_path)
+    return(value = pe_lab)
+
+    }
 
 }

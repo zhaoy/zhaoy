@@ -18,7 +18,7 @@ miscellaneous functions for importing, transforming, summarizing, and exporting 
 
 **mrn**: format medical record numbers (MRNs)
 
-**pe_lab**: Provide Enterprise laboratory
+**pe_lab**: convert PE lab data into tidy data frames
 
 ## summarize
 
