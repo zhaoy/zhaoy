@@ -37,7 +37,8 @@ pe_lab <- function(criterion,
                          n_max = Inf,
                          guess_max = 10)
 
-    missing_mrn <- pe_lab[is.na(x = pe_lab$mrn) == FALSE & pe_lab$mrn == "Client ID:",
+    missing_mrn <- pe_lab[is.na(x = pe_lab$mrn) == FALSE &
+                          pe_lab$mrn == "Client ID:",
                           c("test_name",
                             "mrn")]
 
