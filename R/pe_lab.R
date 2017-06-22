@@ -1,6 +1,6 @@
 #' Convert PE lab data into tidy data frames
 #'
-#' Tidy PE lab data that was exported in a xlsx file.
+#' Tidy PE lab data that was exported in xlsx files.
 #'
 #' @param criterion A criterion.
 #' @param file Name and extension of the xlsx file.
