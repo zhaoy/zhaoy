@@ -1,6 +1,6 @@
 #' Convert PE lab data into tidy data frames
 #'
-#' Tidy PE lab data that was exported in xlsx files.
+#' Tidy PE lab data that were exported in xlsx files.
 #'
 #' @param criterion A criterion.
 #' @param file Name and extension of the xlsx file.
@@ -49,9 +49,11 @@ pe_lab <- function(criterion,
     if (nrow(x = missing_mrn) != 0) {
 
       warning("Find these missing MRNs.",
+              call. = FALSE,
+              immediate. = FALSE,
               noBreaks. = TRUE)
 
-      missing_mrn
+      print(x = missing_mrn)
 
     }
 
@@ -121,11 +123,16 @@ pe_lab <- function(criterion,
 
     pel_test_count <- pe_lab$test_count[is.na(x = pe_lab$test_count) == FALSE]
 
+    pel_test_count <- as.integer(x = gsub(pattern = ",",
+                                          replacement = "",
+                                          x = pel_test_count,
+                                          ignore.case = TRUE))
+
     pel_mrn_rep <- as.character(x = rep(x = pel_mrn,
                                         times = pel_test_count))
 
-    pel_test_count_rep <- as.integer(x = rep(x = pel_test_count,
-                                             times = pel_test_count))
+    pel_test_count_rep <- rep(x = pel_test_count,
+                              times = pel_test_count)
 
     pe_lab <- data.frame(mrn = pel_mrn_rep,
                          test_count = pel_test_count_rep,

@@ -14,5 +14,5 @@ pe_lab(criterion, file, sheet)
 \item{sheet}{Sheet to read.}
 }
 \description{
-Tidy PE lab data that was exported in xlsx files.
+Tidy PE lab data that were exported in xlsx files.
 }
