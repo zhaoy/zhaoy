@@ -1,12 +1,13 @@
 #' Convert PE lab data into tidy data frames
 #'
-#' Tidy PE lab data that were exported in xlsx files.
+#' Tidies PE lab data that were exported in xlsx files.
 #'
 #' @param criterion A criterion.
 #' @param file Name and extension of the xlsx file.
 #' @param sheet Sheet to read.
+#' Either a string (the name of a sheet), or an integer (the position of the sheet).
 #'
-#' @import readxl rprojroot stringr
+#' @import readxl rprojroot stringr utils
 #'
 #' @export
 #'
@@ -48,23 +49,21 @@ pe_lab <- function(criterion,
 
     if (nrow(x = missing_mrn) != 0) {
 
-      warning("Find these missing MRNs.",
-              call. = FALSE,
-              immediate. = FALSE,
-              noBreaks. = TRUE)
-
-      print(x = missing_mrn)
+      stop("Please find the missing MRN(s):\n",
+           call. = FALSE,
+           paste0(capture.output(missing_mrn),
+                  collapse = "\n"))
 
     }
 
     else {
 
-    pe_lab$test_count <- ifelse(test = str_detect(string = pe_lab$test_name,
-                                                  pattern = "Total Tests for this Client:") == TRUE,
-                                yes = str_split(string = pe_lab$test_name,
-                                                pattern = ":   ",
-                                                n = 2,
-                                                simplify = FALSE),
+    pe_lab$test_count <- ifelse(test = grepl(x = pe_lab$test_name,
+                                             pattern = "Total Tests for this Client:",
+                                             fixed = TRUE) == TRUE,
+                                yes = strsplit(x = pe_lab$test_name,
+                                               split = ":   ",
+                                               fixed = TRUE),
                                 no = NA)
 
     pe_lab$test_date <- ifelse(test = str_detect(string = pe_lab$mrn,

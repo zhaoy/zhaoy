@@ -7,7 +7,7 @@
 #'
 #' The current time zone is used for the conversion.
 #'
-#' The \code{format} method is "\code{%Y-%m-%d}".
+#' The \code{format} method is %Y-%m-%d.
 #'
 #' The time zone abbreviation is not appended to the output.
 #'

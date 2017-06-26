@@ -11,8 +11,9 @@ pe_lab(criterion, file, sheet)
 
 \item{file}{Name and extension of the xlsx file.}
 
-\item{sheet}{Sheet to read.}
+\item{sheet}{Sheet to read.
+Either a string (the name of a sheet), or an integer (the position of the sheet).}
 }
 \description{
-Tidy PE lab data that were exported in xlsx files.
+Tidies PE lab data that were exported in xlsx files.
 }

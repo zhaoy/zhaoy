@@ -11,7 +11,7 @@
 #' @param x A data frame to write to disk.
 #' @param folder Path or connection to folder.
 #'
-#' @importFrom readr write_tsv
+#' @import readr
 #'
 #' @export
 #'

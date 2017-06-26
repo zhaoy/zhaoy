@@ -9,7 +9,7 @@ Authors@R: person("zhaoy",
                            "cre",
                            "ths"),
                   email = "zhaoy@users.noreply.github.com")
-Depends: readr, readxl, rprojroot, stringr
+Depends: readr, readxl, rprojroot, stringr, utils
 Description: Functions for importing, transforming, summarizing, and exporting data.
 License: GPL-3
 RoxygenNote: 6.0.1
