@@ -7,7 +7,7 @@
 #' @param sheet Sheet to read.
 #' Either a string (the name of a sheet), or an integer (the position of the sheet).
 #'
-#' @import readxl rprojroot stringr utils
+#' @import readxl rprojroot utils
 #'
 #' @export
 #'
@@ -39,7 +39,7 @@ pe_lab <- function(criterion,
                          guess_max = 10)
 
     pe_lab <- pe_lab[pe_lab$test_name != "1" &
-                     (is.na(x = pe_lab$result == TRUE) |
+                     (is.na(x = pe_lab$result) == TRUE |
                       pe_lab$result != "Result"), ]
 
     missing_mrn <- pe_lab[is.na(x = pe_lab$mrn) == FALSE &
@@ -58,51 +58,69 @@ pe_lab <- function(criterion,
 
     else {
 
-    pe_lab$test_count <- ifelse(test = grepl(x = pe_lab$test_name,
-                                             pattern = "Total Tests for this Client:",
-                                             fixed = TRUE) == TRUE,
-                                yes = strsplit(x = pe_lab$test_name,
-                                               split = ":   ",
-                                               fixed = TRUE),
-                                no = NA)
+    # test_count
 
-    pe_lab$test_date <- ifelse(test = str_detect(string = pe_lab$mrn,
-                                                 pattern = "Client ID:") == TRUE,
-                               yes = NA,
-                               no = pe_lab$mrn)
+    pe_lab$tcl <- grep_l(x = pe_lab$test_name,
+                         pattern = "Total Tests for this Client:",
+                         ignore.case = TRUE)
+
+    pe_lab$test_count <- NA
+
+    pe_lab$test_count[pe_lab$tcl == TRUE] <- g_sub(x = pe_lab$test_name[pe_lab$tcl == TRUE],
+                                                   pattern = "Total Tests for this Client:   ",
+                                                   replacement = "",
+                                                   ignore.case = TRUE)
+
+    # test_date
+
+    pe_lab$tdl <- grep_l(x = pe_lab$mrn,
+                         pattern = "Client ID:",
+                         ignore.case = TRUE)
+
+    pe_lab$test_date <- pe_lab$mrn
+
+    pe_lab$test_date[pe_lab$tdl == TRUE] <- NA
 
     pe_lab$test_date <- od(x = pe_lab$test_date,
                            origin = "1899-12-30")
 
-    pe_lab$mrn_2 <- ifelse(test = str_detect(string = pe_lab$mrn,
-                                             pattern = "Client ID:") == TRUE,
-                           yes = str_split(string = pe_lab$mrn,
-                                           pattern = ":  ",
-                                           n = 2,
-                                           simplify = FALSE),
-                           no = NA)
+    # mrn: value of 1 MRN is "confidential"
+
+    pe_lab$mrnl <- grep_l(x = pe_lab$mrn,
+                          pattern = "Client ID:",
+                          ignore.case = TRUE)
+
+    pe_lab$mrn_2 <- NA
+
+    pe_lab$mrn_2[pe_lab$mrnl == TRUE] <- g_sub(x = pe_lab$mrn[pe_lab$mrnl == TRUE],
+                                               pattern = "Client ID:  ",
+                                               replacement = "",
+                                               ignore.case = TRUE)
 
     pe_lab$mrn <- NULL
 
     names(x = pe_lab)[names(x = pe_lab) == "mrn_2"] <- "mrn"
 
-    pe_lab$test_name_2 <- ifelse(test = (str_detect(string = pe_lab$test_name,
-                                                    pattern = " , ") |
-                                         str_detect(string = pe_lab$test_name,
-                                                    pattern = "Total Tests for this Client:")) == TRUE,
-                                 yes = NA,
-                                 no = pe_lab$test_name)
+    # test_name
+
+    pe_lab$tnl_1 <- grep_l(x = pe_lab$test_name,
+                           pattern = " , ",
+                           ignore.case = TRUE)
+
+    pe_lab$tnl_2 <- grep_l(x = pe_lab$test_name,
+                           pattern = "Total Tests for this Client:",
+                           ignore.case = TRUE)
+
+    pe_lab$test_name_2 <- pe_lab$test_name
+
+    pe_lab$test_name_2[pe_lab$tnl_1 == TRUE |
+                       pe_lab$tnl_2 == TRUE] <- NA
 
     pe_lab$test_name <- NULL
 
     names(x = pe_lab)[names(x = pe_lab) == "test_name_2"] <- "test_name"
 
-    pe_lab[, c("test_count",
-               "mrn")] <- apply(X = pe_lab[, c("test_count",
-                                               "mrn")],
-                                MARGIN = 2,
-                                FUN = function(x) unlist(x = lapply(X = x,
-                                                                    FUN = function(x) x[2])))
+    # pe_lab: some records are missing result modifiers
 
     pe_lab <- pe_lab[, c("mrn",
                          "test_count",
@@ -122,10 +140,10 @@ pe_lab <- function(criterion,
 
     pel_test_count <- pe_lab$test_count[is.na(x = pe_lab$test_count) == FALSE]
 
-    pel_test_count <- as.integer(x = gsub(pattern = ",",
-                                          replacement = "",
-                                          x = pel_test_count,
-                                          ignore.case = TRUE))
+    pel_test_count <- as.integer(x = g_sub(x = pel_test_count,
+                                           pattern = ",",
+                                           replacement = "",
+                                           ignore.case = TRUE))
 
     pel_mrn_rep <- as.character(x = rep(x = pel_mrn,
                                         times = pel_test_count))

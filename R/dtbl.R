@@ -22,14 +22,25 @@ dtbl <- function(x,
                  from,
                  to) {
 
+    x <- data.frame(x,
+                    row.names = NULL,
+                    check.rows = TRUE,
+                    check.names = TRUE,
+                    fix.empty.names = TRUE,
+                    stringsAsFactors = FALSE)
+
     col_index <- which(x = names(x = x) == col,
                        arr.ind = FALSE,
                        useNames = FALSE)
 
     x[, col_index] <- dd(x = x[, col_index])
 
-    x <- x[x[, col_index] >= dd(x = from) &
-           x[, col_index] <= dd(x = to), ]
+    from <- dd(x = from)
+
+    to <- dd(x = to)
+
+    x <- x[x[, col_index] >= from &
+           x[, col_index] <= to, ]
 
     return(value = x)
 

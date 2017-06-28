@@ -22,7 +22,15 @@ miscellaneous functions for importing, transforming, summarizing, and exporting 
 
 ## summarize
 
+**grep_l**
+
+**g_sub**
+
 **order_unique**: order unique elements of vectors
+
+**reg_expr**
+
+**reg_matches**
 
 ## export
 
