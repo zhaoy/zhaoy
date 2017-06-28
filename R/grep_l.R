@@ -20,13 +20,11 @@ grep_l <- function(x,
                    pattern,
                    ignore.case) {
 
-    x <- grepl(pattern = pattern,
-               x = x,
-               ignore.case = ignore.case,
-               perl = TRUE,
-               fixed = FALSE,
-               useBytes = FALSE)
-
-    return(value = x)
+    grepl(pattern = pattern,
+          x = x,
+          ignore.case = ignore.case,
+          perl = TRUE,
+          fixed = FALSE,
+          useBytes = FALSE)
 
 }
