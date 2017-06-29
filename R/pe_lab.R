@@ -140,13 +140,17 @@ pe_lab <- function(criterion,
 
     pel_test_count <- pe_lab$test_count[is.na(x = pe_lab$test_count) == FALSE]
 
-    pel_test_count <- as.integer(x = g_sub(x = pel_test_count,
-                                           pattern = ",",
-                                           replacement = "",
-                                           ignore.case = TRUE))
+    pel_test_count <- g_sub(x = pel_test_count,
+                            pattern = ",",
+                            replacement = "",
+                            ignore.case = TRUE)
 
-    pel_mrn_rep <- as.character(x = rep(x = pel_mrn,
-                                        times = pel_test_count))
+    pel_test_count <- as.integer(x = pel_test_count)
+
+    pel_mrn <- as.character(x = pel_mrn)
+
+    pel_mrn_rep <- rep(x = pel_mrn,
+                       times = pel_test_count)
 
     pel_test_count_rep <- rep(x = pel_test_count,
                               times = pel_test_count)

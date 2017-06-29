@@ -16,21 +16,23 @@ miscellaneous functions for importing, transforming, summarizing, and exporting 
 
 **od**: days-since-origin conversion to Date class
 
-**mrn**: format medical record numbers (MRNs)
+**fmrn**: format medical record numbers (MRNs)
 
-**pe_lab**: convert PE lab data into tidy data frames
+**tidy_pel**: convert PE lab data into tidy data frames
 
-## summarize
+## regular expressions
 
 **grep_l**
 
 **g_sub**
 
-**order_unique**: order unique elements of vectors
-
 **reg_expr**
 
 **reg_matches**
+
+## summarize
+
+**order_unique**: order unique elements of vectors
 
 ## export
 
