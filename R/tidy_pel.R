@@ -17,26 +17,26 @@ tidy_pel <- function(criterion,
                      file,
                      sheet) {
 
-    root_path <- find_root(criterion = criterion,
-                           path = ".")
+    root_path <- rprojroot::find_root(criterion = criterion,
+                                      path = ".")
 
     import_path <- file.path(root_path,
                              file,
                              fsep = "/")
 
-    pe_lab <- read_excel(path = import_path,
-                         sheet = sheet,
-                         range = NULL,
-                         col_names = c("test_name",
-                                       "mrn",
-                                       "result_modifier",
-                                       "result"),
-                         col_types = NULL,
-                         na = "",
-                         trim_ws = TRUE,
-                         skip = 0,
-                         n_max = Inf,
-                         guess_max = 10)
+    pe_lab <- readxl::read_excel(path = import_path,
+                                 sheet = sheet,
+                                 range = NULL,
+                                 col_names = c("test_name",
+                                               "mrn",
+                                               "result_modifier",
+                                               "result"),
+                                 col_types = NULL,
+                                 na = "",
+                                 trim_ws = TRUE,
+                                 skip = 0,
+                                 n_max = Inf,
+                                 guess_max = 10)
 
     pe_lab <- pe_lab[pe_lab$test_name != "1" &
                      (is.na(x = pe_lab$result) == TRUE |
@@ -51,7 +51,7 @@ tidy_pel <- function(criterion,
 
       stop("Please find the missing MRN(s):\n",
            call. = FALSE,
-           paste0(capture.output(missing_mrn),
+           paste0(utils::capture.output(missing_mrn),
                   collapse = "\n"))
 
     } else {

@@ -33,11 +33,11 @@ dtbl <- function(x,
                        arr.ind = FALSE,
                        useNames = FALSE)
 
-    x[, col_index] <- dd(x = x[, col_index])
+    x[, col_index] <- zhaoy::dd(x = x[, col_index])
 
-    from <- dd(x = from)
+    from <- zhaoy::dd(x = from)
 
-    to <- dd(x = to)
+    to <- zhaoy::dd(x = to)
 
     x <- x[x[, col_index] >= from &
            x[, col_index] <= to, ]

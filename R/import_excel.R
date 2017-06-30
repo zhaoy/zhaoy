@@ -37,23 +37,23 @@ import_excel <- function(criterion,
                          range,
                          guess_max) {
 
-    root_path <- find_root(criterion = criterion,
-                           path = ".")
+    root_path <- rprojroot::find_root(criterion = criterion,
+                                      path = ".")
 
     import_path <- file.path(root_path,
                              file,
                              fsep = "/")
 
-    x <- read_excel(path = import_path,
-                    sheet = sheet,
-                    range = range,
-                    col_names = TRUE,
-                    col_types = NULL,
-                    na = "",
-                    trim_ws = TRUE,
-                    skip = 0,
-                    n_max = Inf,
-                    guess_max = guess_max)
+    x <- readxl::read_excel(path = import_path,
+                            sheet = sheet,
+                            range = range,
+                            col_names = TRUE,
+                            col_types = NULL,
+                            na = "",
+                            trim_ws = TRUE,
+                            skip = 0,
+                            n_max = Inf,
+                            guess_max = guess_max)
 
     return(value = x)
 

@@ -34,10 +34,10 @@ export_tsv <- function(x,
                       x_name,
                       fsep = "/")
 
-    write_tsv(x = x,
-              path = path,
-              na = "",
-              append = FALSE,
-              col_names = TRUE)
+    readr::write_tsv(x = x,
+                     path = path,
+                     na = "",
+                     append = FALSE,
+                     col_names = TRUE)
 
 }

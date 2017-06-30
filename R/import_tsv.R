@@ -29,7 +29,7 @@
 #' @param file Name and extension of a file.
 #' @param guess_max Maximum number of records to use for guessing column types.
 #'
-#' @import readr
+#' @import readr rprojroot
 #'
 #' @export
 #'
@@ -39,26 +39,26 @@ import_tsv <- function(criterion,
                        file,
                        guess_max) {
 
-    root_path <- find_root(criterion = criterion,
-                           path = ".")
+    root_path <- rprojroot::find_root(criterion = criterion,
+                                      path = ".")
 
     import_path <- file.path(root_path,
                              file,
                              fsep = "/")
 
-    x <- read_tsv(file = import_path,
-                  quote = "",
-                  col_names = TRUE,
-                  col_types = NULL,
-                  locale = default_locale(),
-                  na = "",
-                  quoted_na = FALSE,
-                  comment = "",
-                  trim_ws = TRUE,
-                  skip = 0,
-                  n_max = Inf,
-                  guess_max = guess_max,
-                  progress = TRUE)
+    x <- readr::read_tsv(file = import_path,
+                         quote = "",
+                         col_names = TRUE,
+                         col_types = NULL,
+                         locale = default_locale(),
+                         na = "",
+                         quoted_na = FALSE,
+                         comment = "",
+                         trim_ws = TRUE,
+                         skip = 0,
+                         n_max = Inf,
+                         guess_max = guess_max,
+                         progress = TRUE)
 
     return(value = x)
 
