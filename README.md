@@ -20,7 +20,7 @@ miscellaneous functions for importing, transforming, summarizing, and exporting 
 
 **tidy_pel**: convert PE lab data into tidy data frames
 
-## regular expressions
+*regular expressions*
 
 **grep_l**
 
