@@ -16,14 +16,25 @@
 
 n_missing <- function(x) {
 
-    sum_missing <- apply(X = x,
-                         MARGIN = 2,
-                         FUN = function(x) (sum(is.na(x = x),
-                                                na.rm = FALSE)))
+    n_missing <- apply(X = x,
+                       MARGIN = 2,
+                       FUN = function(x) (sum(is.na(x = x),
+                                              na.rm = FALSE)))
 
-    condition <- lapply(X = sum_missing,
+    condition <- lapply(X = n_missing,
                         FUN = function(x) x != 0)
 
-    sum_missing[unlist(x = condition) == TRUE]
+    n_missing <- n_missing[unlist(x = condition) == TRUE]
+
+    n_missing <- data.frame(n_missing)
+
+    n_missing$variable <- rownames(x = n_missing)
+
+    rownames(x = n_missing) <- NULL
+
+    n_missing <- n_missing[, c("variable",
+                               "n_missing")]
+
+    return(value = n_missing)
 
 }

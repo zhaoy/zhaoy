@@ -18,9 +18,9 @@
 #' z
 
 table_date <- function(x,
-                 col,
-                 from,
-                 to) {
+                       col,
+                       from,
+                       to) {
 
     x <- data.frame(x,
                     row.names = NULL,

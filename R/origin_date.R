@@ -16,7 +16,7 @@
 #' origin_date(x = 32768, origin = "1900-1-1")
 
 origin_date <- function(x,
-               origin) {
+                        origin) {
 
     x <- as.numeric(x = x)
 
