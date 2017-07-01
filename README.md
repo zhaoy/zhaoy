@@ -1,10 +1,16 @@
-miscellaneous functions for importing, transforming, summarizing, and exporting data
+miscellaneous functions for importing, summarizing, transforming, and exporting data
 
 ## import
 
 **import_excel**
 
 **import_tsv**
+
+## summarize
+
+**n_missing**
+
+**order_unique**
 
 ## transform
 
@@ -31,12 +37,6 @@ miscellaneous functions for importing, transforming, summarizing, and exporting 
 **reg_expr**
 
 **reg_matches**
-
-## summarize
-
-**n_missing**
-
-**order_unique**
 
 ## export
 
