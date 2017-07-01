@@ -14,10 +14,10 @@
 #' @examples
 #' x <- data.frame(date_1 = c("1960-1-1", "1960-1-2", "1960-3-31"),
 #'                 date_2 = c("1960-1-1", "1960-1-2", "1960-3-31"))
-#' z <- dtbl(x = x, col = "date_1", from = "1960-1-1", to = "1960-3-30")
+#' z <- table_date(x = x, col = "date_1", from = "1960-1-1", to = "1960-3-30")
 #' z
 
-dtbl <- function(x,
+table_date <- function(x,
                  col,
                  from,
                  to) {
@@ -33,11 +33,11 @@ dtbl <- function(x,
                        arr.ind = FALSE,
                        useNames = FALSE)
 
-    x[, col_index] <- zhaoy::dd(x = x[, col_index])
+    x[, col_index] <- zhaoy::date_date(x = x[, col_index])
 
-    from <- zhaoy::dd(x = from)
+    from <- zhaoy::date_date(x = from)
 
-    to <- zhaoy::dd(x = to)
+    to <- zhaoy::date_date(x = to)
 
     x <- x[x[, col_index] >= from &
            x[, col_index] <= to, ]

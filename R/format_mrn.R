@@ -11,10 +11,10 @@
 #' @export
 #'
 #' @examples
-#' fmrn(x = 1, lz = TRUE)
-#' fmrn(x = 000000001, lz = FALSE)
+#' format_mrn(x = 1, lz = TRUE)
+#' format_mrn(x = 000000001, lz = FALSE)
 
-fmrn <- function(x,
+format_mrn <- function(x,
                 lz) {
 
     x <- as.numeric(x = x)

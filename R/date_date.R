@@ -18,10 +18,10 @@
 #' @examples
 #' # read in date info in format "yyyy-mm-dd"
 #' x <- c("1960-1-1", "1960-1-2", "1960-3-31", "1960-7-30")
-#' z <- dd(x = x)
+#' z <- date_date(x = x)
 #' z
 
-dd <- function(x) {
+date_date <- function(x) {
 
     x <- as.character(x = x)
 

@@ -55,6 +55,8 @@ import_excel <- function(criterion,
                             n_max = Inf,
                             guess_max = guess_max)
 
+    names(x = x) <- tolower(x = names(x = x))
+
     return(value = x)
 
 }

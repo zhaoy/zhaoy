@@ -79,7 +79,7 @@ tidy_pel <- function(criterion,
 
       pe_lab$test_date[pe_lab$tdl == TRUE] <- NA
 
-      pe_lab$test_date <- od(x = pe_lab$test_date,
+      pe_lab$test_date <- origin_date(x = pe_lab$test_date,
                              origin = "1899-12-30")
 
     # mrn: value of 1 MRN is "confidential"

@@ -60,6 +60,8 @@ import_tsv <- function(criterion,
                          guess_max = guess_max,
                          progress = TRUE)
 
+    names(x = x) <- tolower(x = names(x = x))
+
     return(value = x)
 
 }

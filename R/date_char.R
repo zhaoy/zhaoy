@@ -15,17 +15,17 @@
 #'
 #' @return Dates of class "\code{character}", in year-month-day format.
 #'
-#' @seealso \code{\link{dd}}
+#' @seealso \code{\link{date_date}}
 #'
 #' @examples
 #' # read in date info in format "yyyy-mm-dd"
 #' x <- c("1960-1-1", "1960-1-2", "1960-3-31", "1960-7-30")
-#' z <- dc(x = x)
+#' z <- date_char(x = x)
 #' z
 #'
 #' @export
 
-dc <- function(x) {
+date_char <- function(x) {
 
     x <- strftime(x = x,
                   tz = "",

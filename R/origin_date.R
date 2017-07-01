@@ -13,9 +13,9 @@
 #' @export
 #'
 #' @examples
-#' od(x = 32768, origin = "1900-1-1")
+#' origin_date(x = 32768, origin = "1900-1-1")
 
-od <- function(x,
+origin_date <- function(x,
                origin) {
 
     x <- as.numeric(x = x)

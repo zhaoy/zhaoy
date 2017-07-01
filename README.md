@@ -2,23 +2,25 @@ miscellaneous functions for importing, transforming, summarizing, and exporting 
 
 ## import
 
-**import_excel**: read xls and xlsx files
+**import_excel**
 
-**import_tsv**: read a tsv file into a tibble
+**import_tsv**
 
 ## transform
 
-**dc**: date-time conversion to character
+**format_mrn**
 
-**dd**: date conversion from character
+**tidy_pel**
 
-**dtbl**: sub-set tables according to date range
+*dates*
 
-**od**: days-since-origin conversion to Date class
+**date_char**
 
-**fmrn**: format medical record numbers (MRNs)
+**date_date**
 
-**tidy_pel**: convert PE lab data into tidy data frames
+**origin_date**
+
+**table_date**
 
 *regular expressions*
 
@@ -32,8 +34,10 @@ miscellaneous functions for importing, transforming, summarizing, and exporting 
 
 ## summarize
 
-**order_unique**: order unique elements of vectors
+**n_missing**
+
+**order_unique**
 
 ## export
 
-**export_tsv**: write a data frame to a tsv file
+**export_tsv**
