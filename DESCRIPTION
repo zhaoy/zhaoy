@@ -1,8 +1,9 @@
+Type: package
 Package: zhaoy
-Type: Package
-Title: miscellaneous functions 
+Title: miscellaneous functions
+Description: Functions for importing, transforming, summarizing, and exporting data. 
+Date: 2017-7-3
 Version: 0.1
-Date: 2017-6-20
 Authors@R: person("zhaoy",
                   "zhaoy",
                   role = c("aut",
@@ -10,7 +11,7 @@ Authors@R: person("zhaoy",
                            "ths"),
                   email = "zhaoy@users.noreply.github.com")
 Depends: readr, readxl, rprojroot, utils
-Description: Functions for importing, transforming, summarizing, and exporting data.
+LazyData: true
 License: GPL-3
 RoxygenNote: 6.0.1
-LazyData: true
+
