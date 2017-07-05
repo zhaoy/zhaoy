@@ -1,35 +1,44 @@
-#' Read xls and xlsx files
+#' Read xls and xlsx files.
 #'
-#' Executes readxl::read_excel with assumptions about the values of some arguments.
+#' @description
+#' Execute readxl::read_excel with assumptions about the values of some arguments.
 #'
-#' Use the first row as column names.
+#' @details
+#' \code{col_names}: Use the first row as column names.
 #'
-#' Guess all column types from the spread-sheet.
+#' \code{col_types}: Guess all column types from the spread-sheet.
 #'
-#' Treats blank cells as missing data.
+#' \code{na}: Treat blank cells as missing data.
 #'
-#' Trim leading and trailing white-space.
+#' \code{trim_ws}: Trim leading and trailing whitespace.
 #'
-#' The minimum number of rows to skip before reading anything, is zero.
+#' \code{skip}: The minimum number of rows to skip before reading anything, is 0.
 #'
-#' The maximum number of data rows to read is infinite.
+#' \code{n_max}: The maximum number of data rows to read is infinite.
 #'
-#' @param criterion A criterion
-#' @param file xls / xlsx file
+#' Convert column names to lower-case.
+#'
+#' @param criterion \code{criterion} for \code{\link{find_root}}.
+#' @param file Name and extension of the xls / xlsx file.
 #' @param sheet Sheet to read.
 #' @param range A cell range to read from.
 #' @param guess_max Maximum number of data rows to use for guessing column types.
 #'
 #' @import readxl rprojroot
 #'
+#' @return
+#' A tibble.
+#'
+#' @seealso \code{\link{import_tsv}}
+#'
 #' @export
 #'
 #' @examples
-#' ds <- "datasets.xlsx"
-#' ds_dir <- readxl_example(path = "datasets.xlsx")
-#' ds_dir <- substring(text = ds_dir, first = 1, last = 49)
-#' setwd(dir = ds_dir)
-#' import_excel(criterion = ds, file = ds, sheet = "iris", range = NULL, guess_max = 10)
+#' ds <- readxl_example(path = "datasets.xlsx")
+#' dir <- g_sub(x = ds, pattern = "/datasets.xlsx", replacement = "", ignore.case = TRUE)
+#' file <- g_sub(x = ds, pattern = dir, replacement = "", ignore.case = TRUE)
+#' setwd(dir = dir)
+#' import_excel(criterion = file, file = file, sheet = "iris", range = NULL, guess_max = 10)
 
 import_excel <- function(criterion,
                          file,

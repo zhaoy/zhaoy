@@ -2,14 +2,14 @@
 % Please edit documentation in R/import_excel.R
 \name{import_excel}
 \alias{import_excel}
-\title{Read xls and xlsx files}
+\title{Read xls and xlsx files.}
 \usage{
 import_excel(criterion, file, sheet, range, guess_max)
 }
 \arguments{
-\item{criterion}{A criterion}
+\item{criterion}{\code{criterion} for \code{\link{find_root}}.}
 
-\item{file}{xls / xlsx file}
+\item{file}{Name and extension of the xls / xlsx file.}
 
 \item{sheet}{Sheet to read.}
 
@@ -17,26 +17,34 @@ import_excel(criterion, file, sheet, range, guess_max)
 
 \item{guess_max}{Maximum number of data rows to use for guessing column types.}
 }
+\value{
+A tibble.
+}
 \description{
-Executes readxl::read_excel with assumptions about the values of some arguments.
+Execute readxl::read_excel with assumptions about the values of some arguments.
 }
 \details{
-Use the first row as column names.
+\code{col_names}: Use the first row as column names.
 
-Guess all column types from the spread-sheet.
+\code{col_types}: Guess all column types from the spread-sheet.
 
-Treats blank cells as missing data.
+\code{na}: Treat blank cells as missing data.
 
-Trim leading and trailing white-space.
+\code{trim_ws}: Trim leading and trailing whitespace.
 
-The minimum number of rows to skip before reading anything, is zero.
+\code{skip}: The minimum number of rows to skip before reading anything, is 0.
 
-The maximum number of data rows to read is infinite.
+\code{n_max}: The maximum number of data rows to read is infinite.
+
+Convert column names to lower-case.
 }
 \examples{
-ds <- "datasets.xlsx"
-ds_dir <- readxl_example(path = "datasets.xlsx")
-ds_dir <- substring(text = ds_dir, first = 1, last = 49)
-setwd(dir = ds_dir)
-import_excel(criterion = ds, file = ds, sheet = "iris", range = NULL, guess_max = 10)
+ds <- readxl_example(path = "datasets.xlsx")
+dir <- g_sub(x = ds, pattern = "/datasets.xlsx", replacement = "", ignore.case = TRUE)
+file <- g_sub(x = ds, pattern = dir, replacement = "", ignore.case = TRUE)
+setwd(dir = dir)
+import_excel(criterion = file, file = file, sheet = "iris", range = NULL, guess_max = 10)
+}
+\seealso{
+\code{\link{import_tsv}}
 }
