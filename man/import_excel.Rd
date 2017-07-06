@@ -4,12 +4,12 @@
 \alias{import_excel}
 \title{Read xls and xlsx files.}
 \usage{
-import_excel(criterion, file, sheet, range, guess_max)
+import_excel(criterion, path, sheet, range, guess_max)
 }
 \arguments{
 \item{criterion}{\code{criterion} for \code{\link{find_root}}.}
 
-\item{file}{Name and extension of the xls / xlsx file.}
+\item{path}{Path to the xls / xlsx file, excluding the root directory and first path separator.}
 
 \item{sheet}{Sheet to read.}
 
@@ -40,10 +40,10 @@ Convert column names to lower-case.
 }
 \examples{
 ds <- readxl_example(path = "datasets.xlsx")
-dir <- g_sub(x = ds, pattern = "/datasets.xlsx", replacement = "", ignore.case = TRUE)
-file <- g_sub(x = ds, pattern = dir, replacement = "", ignore.case = TRUE)
+dir <- dirname(path = ds)
+path <- basename(path = ds)
 setwd(dir = dir)
-import_excel(criterion = file, file = file, sheet = "iris", range = NULL, guess_max = 10)
+import_excel(criterion = path, path = path, sheet = "iris", range = NULL, guess_max = 10)
 }
 \seealso{
 \code{\link{import_tsv}}

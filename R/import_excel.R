@@ -19,7 +19,7 @@
 #' Convert column names to lower-case.
 #'
 #' @param criterion \code{criterion} for \code{\link{find_root}}.
-#' @param file Name and extension of the xls / xlsx file.
+#' @param path Path to the xls / xlsx file, excluding the root directory and first path separator.
 #' @param sheet Sheet to read.
 #' @param range A cell range to read from.
 #' @param guess_max Maximum number of data rows to use for guessing column types.
@@ -35,13 +35,13 @@
 #'
 #' @examples
 #' ds <- readxl_example(path = "datasets.xlsx")
-#' dir <- g_sub(x = ds, pattern = "/datasets.xlsx", replacement = "", ignore.case = TRUE)
-#' file <- g_sub(x = ds, pattern = dir, replacement = "", ignore.case = TRUE)
+#' dir <- dirname(path = ds)
+#' path <- basename(path = ds)
 #' setwd(dir = dir)
-#' import_excel(criterion = file, file = file, sheet = "iris", range = NULL, guess_max = 10)
+#' import_excel(criterion = path, path = path, sheet = "iris", range = NULL, guess_max = 10)
 
 import_excel <- function(criterion,
-                         file,
+                         path,
                          sheet,
                          range,
                          guess_max) {
@@ -50,7 +50,7 @@ import_excel <- function(criterion,
                                       path = ".")
 
     import_path <- file.path(root_path,
-                             file,
+                             path,
                              fsep = "/")
 
     x <- readxl::read_excel(path = import_path,
