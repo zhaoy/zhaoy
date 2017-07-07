@@ -2,6 +2,7 @@
 #'
 #' @description
 #' Execute readxl::read_excel with assumptions about the values of some arguments.
+#' Convert column names to lower-case.
 #'
 #' @details
 #' \code{col_names}: Use the first row as column names.
@@ -16,10 +17,8 @@
 #'
 #' \code{n_max}: The maximum number of data rows to read is infinite.
 #'
-#' Convert column names to lower-case.
-#'
 #' @param criterion \code{criterion} for \code{\link{find_root}}.
-#' @param path Path to the xls / xlsx file, excluding the root directory and first path separator.
+#' @param path Path to the xls / xlsx file, excluding the root directory.
 #' @param sheet Sheet to read.
 #' @param range A cell range to read from.
 #' @param guess_max Maximum number of data rows to use for guessing column types.

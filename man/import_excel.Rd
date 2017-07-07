@@ -9,7 +9,7 @@ import_excel(criterion, path, sheet, range, guess_max)
 \arguments{
 \item{criterion}{\code{criterion} for \code{\link{find_root}}.}
 
-\item{path}{Path to the xls / xlsx file, excluding the root directory and first path separator.}
+\item{path}{Path to the xls / xlsx file, excluding the root directory.}
 
 \item{sheet}{Sheet to read.}
 
@@ -22,6 +22,7 @@ A tibble.
 }
 \description{
 Execute readxl::read_excel with assumptions about the values of some arguments.
+Convert column names to lower-case.
 }
 \details{
 \code{col_names}: Use the first row as column names.
@@ -35,8 +36,6 @@ Execute readxl::read_excel with assumptions about the values of some arguments.
 \code{skip}: The minimum number of rows to skip before reading anything, is 0.
 
 \code{n_max}: The maximum number of data rows to read is infinite.
-
-Convert column names to lower-case.
 }
 \examples{
 ds <- readxl_example(path = "datasets.xlsx")
