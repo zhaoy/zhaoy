@@ -4,10 +4,10 @@
 \alias{import_excel}
 \title{Read xls and xlsx files.}
 \usage{
-import_excel(criterion, path, sheet, range, guess_max)
+\code{read_excel(criterion, path, sheet = NULL, range = NULL, guess_max = 10)}
 }
 \arguments{
-\item{criterion}{\code{criterion} for \code{\link{find_root}}.}
+\item{criterion}{\code{criterion} in rprojroot::\code{\link{find_root}}.}
 
 \item{path}{Path to the xls / xlsx file, excluding the root directory.}
 
@@ -21,23 +21,26 @@ import_excel(criterion, path, sheet, range, guess_max)
 A tibble.
 }
 \description{
-Execute readxl::read_excel with assumptions about the values of some arguments.
+Execute readxl::\code{\link{read_excel}} with pre-set values in some arguments.
 Convert column names to lower-case.
 }
 \details{
-\code{col_names}: Use the first row as column names.
+The readxl::\code{\link{read_excel}} pre-set argument values are
 
-\code{col_types}: Guess all column types from the spread-sheet.
+\code{col_names = TRUE}: Use the first row as column names.
 
-\code{na}: Treat blank cells as missing data.
+\code{col_types = NULL}: Guess all column types from the spread-sheet.
 
-\code{trim_ws}: Trim leading and trailing whitespace.
+\code{na = ""}: Treat blank cells as missing data.
 
-\code{skip}: The minimum number of rows to skip before reading anything, is 0.
+\code{trim_ws = TRUE}: Trim leading and trailing whitespace.
 
-\code{n_max}: The maximum number of data rows to read is infinite.
+\code{skip = 0}: The minimum number of rows to skip before reading anything, is 0.
+
+\code{n_max = Inf}: The maximum number of data rows to read is \code{\link{Inf}}.
 }
 \examples{
+library(package = readxl)
 ds <- readxl_example(path = "datasets.xlsx")
 dir <- dirname(path = ds)
 path <- basename(path = ds)

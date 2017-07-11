@@ -2,41 +2,50 @@
 % Please edit documentation in R/import_tsv.R
 \name{import_tsv}
 \alias{import_tsv}
-\title{Read a tsv file into a tibble}
+\title{Read a tsv into a tibble.}
 \usage{
-import_tsv(criterion, file, guess_max)
+\code{read_tsv(criterion, file, guess_max = 10)}
 }
 \arguments{
-\item{criterion}{A criterion.}
+\item{criterion}{\code{criterion} in rprojroot::\code{\link{find_root}}.}
 
-\item{file}{Name and extension of a file.}
+\item{file}{Path to a file, excluding the root directory.}
 
 \item{guess_max}{Maximum number of records to use for guessing column types.}
 }
+\value{
+A data frame.
+}
 \description{
-Read tab separated values, which is among the most common types of flat file data.
-Execute readr::read_tsv with assumptions about the values of some arguments.
+Read tab-separated values.
+Execute readr::\code{\link{read_tsv}} with with pre-set values in some arguments.
+Convert column names to lower-case.
 }
 \details{
-Use no characters to quote strings.
+The readr::\code{\link{read_tsv}} pre-set argument values are
 
-Use the first row of the input as the column names.
+\code{quote = ""}: Use blanks to quote strings.
 
-Impute all column types from the rows on the input.
+\code{colnames = TRUE}: Use the first row of the input as the column names.
 
-Use the default locale as the locale.
+\code{col_types = NULL}: Impute all column types from the first 1000 rows on the input.
 
-Use no strings for missing values.
+\code{locale = default_locale()}: Use readr::\code{\link{default_locale}} as the locale.
 
-Treat missing values inside quotes as strings.
+\code{na = ""}: Use blanks for missing values.
 
-Use no strings to identify comments.
+\code{quoted_na = FALSE}: Treat missing values inside quotes as strings.
 
-Trim leading and trailing whitespace from each field before parsing it.
+\code{comment = ""}: Use blanks to identify comments.
 
-Skip no lines before reading data.
+\code{trim_ws = TRUE}: Trim leading and trailing whitespace from each field before parsing it.
 
-Set the maximum number of records to read, to infinite.
+\code{skip = 0}: Skip no lines before reading data.
 
-Display a progress bar.
+\code{n_max = Inf}: Set the maximum number of records to read, to \code{\link{Inf}}.
+
+\code{progress = TRUE}: Display a progress bar.
+}
+\seealso{
+\code{\link{import_excel}}
 }

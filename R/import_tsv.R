@@ -1,33 +1,46 @@
-#' Read a tsv file into a tibble
+#' Read a tsv into a tibble.
 #'
-#' Read tab separated values, which is among the most common types of flat file data.
-#' Execute readr::read_tsv with assumptions about the values of some arguments.
+#' @description
+#' Read tab-separated values.
+#' Execute readr::\code{\link{read_tsv}} with with pre-set values in some arguments.
+#' Convert column names to lower-case.
 #'
-#' Use no characters to quote strings.
+#' @usage
+#' \code{read_tsv(criterion, file, guess_max = 10)}
 #'
-#' Use the first row of the input as the column names.
-#'
-#' Impute all column types from the rows on the input.
-#'
-#' Use the default locale as the locale.
-#'
-#' Use no strings for missing values.
-#'
-#' Treat missing values inside quotes as strings.
-#'
-#' Use no strings to identify comments.
-#'
-#' Trim leading and trailing whitespace from each field before parsing it.
-#'
-#' Skip no lines before reading data.
-#'
-#' Set the maximum number of records to read, to infinite.
-#'
-#' Display a progress bar.
-#'
-#' @param criterion A criterion.
-#' @param file Name and extension of a file.
+#' @param criterion \code{criterion} in rprojroot::\code{\link{find_root}}.
+#' @param file Path to a file, excluding the root directory.
 #' @param guess_max Maximum number of records to use for guessing column types.
+#'
+#' @details
+#' The readr::\code{\link{read_tsv}} pre-set argument values are
+#'
+#' \code{quote = ""}: Use blanks to quote strings.
+#'
+#' \code{colnames = TRUE}: Use the first row of the input as the column names.
+#'
+#' \code{col_types = NULL}: Impute all column types from the first 1000 rows on the input.
+#'
+#' \code{locale = default_locale()}: Use readr::\code{\link{default_locale}} as the locale.
+#'
+#' \code{na = ""}: Use blanks for missing values.
+#'
+#' \code{quoted_na = FALSE}: Treat missing values inside quotes as strings.
+#'
+#' \code{comment = ""}: Use blanks to identify comments.
+#'
+#' \code{trim_ws = TRUE}: Trim leading and trailing whitespace from each field before parsing it.
+#'
+#' \code{skip = 0}: Skip no lines before reading data.
+#'
+#' \code{n_max = Inf}: Set the maximum number of records to read, to \code{\link{Inf}}.
+#'
+#' \code{progress = TRUE}: Display a progress bar.
+#'
+#' @return
+#' A data frame.
+#'
+#' @seealso \code{\link{import_excel}}
 #'
 #' @import readr rprojroot
 #'
