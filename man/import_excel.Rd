@@ -4,7 +4,7 @@
 \alias{import_excel}
 \title{Read xls and xlsx files.}
 \usage{
-\code{read_excel(criterion, path, sheet = NULL, range = NULL, guess_max = 10)}
+\code{import_excel(criterion, path, sheet = NULL, range = NULL, guess_max = 10)}
 }
 \arguments{
 \item{criterion}{\code{criterion} in rprojroot::\code{\link{find_root}}.}
@@ -33,19 +33,21 @@ The readxl::\code{\link{read_excel}} pre-set argument values are
 
 \code{na = ""}: Treat blank cells as missing data.
 
-\code{trim_ws = TRUE}: Trim leading and trailing whitespace.
+\code{trim_ws = TRUE}: Trim leading and trailing white-space.
 
-\code{skip = 0}: The minimum number of rows to skip before reading anything, is 0.
+\code{skip = 0}: The minimum number of rows to skip before reading anything is 0.
 
 \code{n_max = Inf}: The maximum number of data rows to read is \code{\link{Inf}}.
 }
 \examples{
 library(package = readxl)
+library(package = rprojroot)
 ds <- readxl_example(path = "datasets.xlsx")
 dir <- dirname(path = ds)
 path <- basename(path = ds)
 setwd(dir = dir)
-import_excel(criterion = path, path = path, sheet = "iris", range = NULL, guess_max = 10)
+criterion <- has_dirname(dirname = basename(path = dir), subdir = NULL)
+import_excel(criterion = criterion, path = path, sheet = "iris", range = NULL, guess_max = 10)
 }
 \seealso{
 \code{\link{import_tsv}}

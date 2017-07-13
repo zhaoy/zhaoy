@@ -5,7 +5,7 @@
 #' Convert column names to lower-case.
 #'
 #' @usage
-#' \code{read_excel(criterion, path, sheet = NULL, range = NULL, guess_max = 10)}
+#' \code{import_excel(criterion, path, sheet = NULL, range = NULL, guess_max = 10)}
 #'
 #' @param criterion \code{criterion} in rprojroot::\code{\link{find_root}}.
 #' @param path Path to the xls / xlsx file, excluding the root directory.
@@ -22,9 +22,9 @@
 #'
 #' \code{na = ""}: Treat blank cells as missing data.
 #'
-#' \code{trim_ws = TRUE}: Trim leading and trailing whitespace.
+#' \code{trim_ws = TRUE}: Trim leading and trailing white-space.
 #'
-#' \code{skip = 0}: The minimum number of rows to skip before reading anything, is 0.
+#' \code{skip = 0}: The minimum number of rows to skip before reading anything is 0.
 #'
 #' \code{n_max = Inf}: The maximum number of data rows to read is \code{\link{Inf}}.
 #'
@@ -39,11 +39,13 @@
 #'
 #' @examples
 #' library(package = readxl)
+#' library(package = rprojroot)
 #' ds <- readxl_example(path = "datasets.xlsx")
 #' dir <- dirname(path = ds)
 #' path <- basename(path = ds)
 #' setwd(dir = dir)
-#' import_excel(criterion = path, path = path, sheet = "iris", range = NULL, guess_max = 10)
+#' criterion <- has_dirname(dirname = basename(path = dir), subdir = NULL)
+#' import_excel(criterion = criterion, path = path, sheet = "iris", range = NULL, guess_max = 10)
 
 import_excel <- function(criterion,
                          path,

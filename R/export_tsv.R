@@ -1,15 +1,25 @@
-#' Write a data frame to a tsv file
+#' Write a data-frame to a tsv file.
 #'
-#' Never writes row names. Executes readr::write_tsv with assumptions about the values of some arguments.
+#' @description
+#' Executes readr::\code{\link{write_tsv}} with pre-set values in some arguments.
 #'
-#' NA is used for missing values.
+#' @usage
+#' \code{export_tsv(file, folder)}
 #'
-#' Over-write existing file.
-#'
-#' Write column names at the top of the file.
-#'
-#' @param x A data frame to write to disk.
+#' @param x A data-frame to write to disk.
 #' @param folder Path or connection to folder.
+#'
+#' @details
+#' The readr::\code{\link{write_tsv}} pre-set argument values are
+#'
+#' \code{na = ""}: Use blanks for missing values.
+#'
+#' \code{append = FALSE}: Over-write existing file.
+#'
+#' \code{col_names = TRUE}: Write column names at the top of the file.
+#'
+#' @return
+#' A data-frame.
 #'
 #' @import readr
 #'

@@ -1,12 +1,11 @@
 #' Read a tsv into a tibble.
 #'
 #' @description
-#' Read tab-separated values.
-#' Execute readr::\code{\link{read_tsv}} with with pre-set values in some arguments.
+#' Execute readr::\code{\link{read_tsv}} with pre-set values in some arguments.
 #' Convert column names to lower-case.
 #'
 #' @usage
-#' \code{read_tsv(criterion, file, guess_max = 10)}
+#' \code{import_tsv(criterion, file, guess_max = 10)}
 #'
 #' @param criterion \code{criterion} in rprojroot::\code{\link{find_root}}.
 #' @param file Path to a file, excluding the root directory.
@@ -29,16 +28,16 @@
 #'
 #' \code{comment = ""}: Use blanks to identify comments.
 #'
-#' \code{trim_ws = TRUE}: Trim leading and trailing whitespace from each field before parsing it.
+#' \code{trim_ws = TRUE}: Trim leading and trailing white-space from each field before parsing it.
 #'
-#' \code{skip = 0}: Skip no lines before reading data.
+#' \code{skip = 0}: Skip 0 lines before reading data.
 #'
-#' \code{n_max = Inf}: Set the maximum number of records to read, to \code{\link{Inf}}.
+#' \code{n_max = Inf}: Set the maximum number of records to read to \code{\link{Inf}}.
 #'
 #' \code{progress = TRUE}: Display a progress bar.
 #'
 #' @return
-#' A data frame.
+#' A data-frame.
 #'
 #' @seealso \code{\link{import_excel}}
 #'

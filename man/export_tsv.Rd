@@ -2,24 +2,29 @@
 % Please edit documentation in R/export_tsv.R
 \name{export_tsv}
 \alias{export_tsv}
-\title{Write a data frame to a tsv file}
+\title{Write a data-frame to a tsv file.}
 \usage{
-export_tsv(x, folder)
+\code{export_tsv(file, folder)}
 }
 \arguments{
-\item{x}{A data frame to write to disk.}
+\item{x}{A data-frame to write to disk.}
 
 \item{folder}{Path or connection to folder.}
 }
+\value{
+A data-frame.
+}
 \description{
-Never writes row names. Executes readr::write_tsv with assumptions about the values of some arguments.
+Executes readr::\code{\link{write_tsv}} with pre-set values in some arguments.
 }
 \details{
-NA is used for missing values.
+The readr::\code{\link{write_tsv}} pre-set argument values are
 
-Over-write existing file.
+\code{na = ""}: Use blanks for missing values.
 
-Write column names at the top of the file.
+\code{append = FALSE}: Over-write existing file.
+
+\code{col_names = TRUE}: Write column names at the top of the file.
 }
 \examples{
 dir <- getwd()
