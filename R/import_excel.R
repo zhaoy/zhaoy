@@ -2,7 +2,7 @@
 #'
 #' @description
 #' Execute readxl::\code{\link{read_excel}} with pre-set values in some arguments.
-#' Convert column names to lower-case.
+#' Convert column-names and categorical data to lower-case.
 #'
 #' @usage
 #' \code{import_excel(criterion, path, sheet = NULL, range = NULL, guess_max = 10)}
@@ -72,6 +72,11 @@ import_excel <- function(criterion,
                             guess_max = guess_max)
 
     names(x = x) <- tolower(x = names(x = x))
+
+    x <- lapply(X = x,
+                FUN = to_lower)
+
+    x <- data_frame(x = x)
 
     return(value = x)
 

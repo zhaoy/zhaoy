@@ -22,7 +22,7 @@ A tibble.
 }
 \description{
 Execute readxl::\code{\link{read_excel}} with pre-set values in some arguments.
-Convert column names to lower-case.
+Convert column-names and categorical data to lower-case.
 }
 \details{
 The readxl::\code{\link{read_excel}} pre-set argument values are
