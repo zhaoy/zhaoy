@@ -2,12 +2,12 @@
 % Please edit documentation in R/import_tsv.R
 \name{import_tsv}
 \alias{import_tsv}
-\title{Read a tsv into a tibble.}
+\title{Read a tsv into a data-frame.}
 \usage{
 \code{import_tsv(criterion, file, guess_max = 10)}
 }
 \arguments{
-\item{criterion}{\code{criterion} in rprojroot::\code{\link{find_root}}.}
+\item{criterion}{\code{criterion} argument of rprojroot::\code{\link{find_root}}.}
 
 \item{file}{Path to a file, excluding the root directory.}
 
@@ -18,12 +18,12 @@ A data-frame.
 }
 \description{
 Execute readr::\code{\link{read_tsv}} with pre-set values in some arguments.
-Convert column names to lower-case.
+Convert column names and categorical data to lower-case.
 }
 \details{
 The readr::\code{\link{read_tsv}} pre-set argument values are
 
-\code{quote = ""}: Use blanks to quote strings.
+\code{quote = ""}: Use nothing to quote strings.
 
 \code{colnames = TRUE}: Use the first row of the input as the column names.
 
@@ -31,17 +31,17 @@ The readr::\code{\link{read_tsv}} pre-set argument values are
 
 \code{locale = default_locale()}: Use readr::\code{\link{default_locale}} as the locale.
 
-\code{na = ""}: Use blanks for missing values.
+\code{na = ""}: Treat blank cells as missing values.
 
-\code{quoted_na = FALSE}: Treat missing values inside quotes as strings.
+\code{quoted_na = TRUE}: Treat missing values inside quotes as missing values.
 
-\code{comment = ""}: Use blanks to identify comments.
+\code{comment = ""}: Use nothing to identify comments.
 
 \code{trim_ws = TRUE}: Trim leading and trailing white-space from each field before parsing it.
 
-\code{skip = 0}: Skip 0 lines before reading data.
+\code{skip = 0}: The number of lines to skip before reading data is 0.
 
-\code{n_max = Inf}: Set the maximum number of records to read to \code{\link{Inf}}.
+\code{n_max = Inf}: The maximum number of records to read is \code{\link{Inf}}.
 
 \code{progress = TRUE}: Display a progress bar.
 }

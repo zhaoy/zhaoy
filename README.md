@@ -14,7 +14,7 @@ miscellaneous functions for importing, summarizing, transforming, and exporting 
 
 # transform
 
-**format_mrn**
+**lz_mrn**
 
 **tidy_pel**
 
@@ -27,16 +27,6 @@ miscellaneous functions for importing, summarizing, transforming, and exporting 
 **origin_date**
 
 **table_date**
-
-*regular expressions*
-
-**grep_l**
-
-**g_sub**
-
-**reg_expr**
-
-**reg_matches**
 
 # export
 

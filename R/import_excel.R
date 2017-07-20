@@ -2,12 +2,12 @@
 #'
 #' @description
 #' Execute readxl::\code{\link{read_excel}} with pre-set values in some arguments.
-#' Convert column-names and categorical data to lower-case.
+#' Convert column names and categorical data to lower-case.
 #'
 #' @usage
 #' \code{import_excel(criterion, path, sheet = NULL, range = NULL, guess_max = 10)}
 #'
-#' @param criterion \code{criterion} in rprojroot::\code{\link{find_root}}.
+#' @param criterion \code{criterion} argument of rprojroot::\code{\link{find_root}}.
 #' @param path Path to the xls / xlsx file, excluding the root directory.
 #' @param sheet Sheet to read.
 #' @param range A cell range to read from.
@@ -29,7 +29,7 @@
 #' \code{n_max = Inf}: The maximum number of data rows to read is \code{\link{Inf}}.
 #'
 #' @return
-#' A tibble.
+#' A data-frame.
 #'
 #' @seealso \code{\link{import_tsv}}
 #'
@@ -39,45 +39,48 @@
 #'
 #' @examples
 #' library(package = readxl)
-#' library(package = rprojroot)
-#' ds <- readxl_example(path = "datasets.xlsx")
-#' dir <- dirname(path = ds)
-#' path <- basename(path = ds)
+#' datasets <- readxl_example(path = "datasets.xlsx")
+#' dir <- dirname(path = datasets)
+#' base <- basename(path = datasets)
 #' setwd(dir = dir)
-#' criterion <- has_dirname(dirname = basename(path = dir), subdir = NULL)
-#' import_excel(criterion = criterion, path = path, sheet = "iris", range = NULL, guess_max = 10)
+#' import_excel(criterion = base, path = base, guess_max = 10)
 
 import_excel <- function(criterion,
                          path,
-                         sheet,
-                         range,
+                         sheet = NULL,
+                         range = NULL,
                          guess_max) {
 
-    root_path <- rprojroot::find_root(criterion = criterion,
-                                      path = ".")
+  root_path <- rprojroot::find_root(criterion = criterion,
+                                    path = ".")
 
-    import_path <- file.path(root_path,
-                             path,
-                             fsep = "/")
+  import_path <- file.path(root_path,
+                           path,
+                           fsep = "/")
 
-    x <- readxl::read_excel(path = import_path,
-                            sheet = sheet,
-                            range = range,
-                            col_names = TRUE,
-                            col_types = NULL,
-                            na = "",
-                            trim_ws = TRUE,
-                            skip = 0,
-                            n_max = Inf,
-                            guess_max = guess_max)
+  x <- readxl::read_excel(path = import_path,
+                          sheet = sheet,
+                          range = range,
+                          col_names = TRUE,
+                          col_types = NULL,
+                          na = "",
+                          trim_ws = TRUE,
+                          skip = 0,
+                          n_max = Inf,
+                          guess_max = guess_max)
 
-    names(x = x) <- tolower(x = names(x = x))
+  names(x = x) <- tolower(x = names(x = x))
 
-    x <- lapply(X = x,
-                FUN = to_lower)
+  x <- lapply(X = x,
+              FUN = to_lower)
 
-    x <- data_frame(x = x)
+  x <- data.frame(x = x,
+                  row.names = NULL,
+                  check.rows = TRUE,
+                  check.names = TRUE,
+                  fix.empty.names = TRUE,
+                  stringsAsFactors = FALSE)
 
-    return(value = x)
+  return(value = x)
 
 }

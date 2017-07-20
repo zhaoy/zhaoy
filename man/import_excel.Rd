@@ -7,7 +7,7 @@
 \code{import_excel(criterion, path, sheet = NULL, range = NULL, guess_max = 10)}
 }
 \arguments{
-\item{criterion}{\code{criterion} in rprojroot::\code{\link{find_root}}.}
+\item{criterion}{\code{criterion} argument of rprojroot::\code{\link{find_root}}.}
 
 \item{path}{Path to the xls / xlsx file, excluding the root directory.}
 
@@ -18,11 +18,11 @@
 \item{guess_max}{Maximum number of data rows to use for guessing column types.}
 }
 \value{
-A tibble.
+A data-frame.
 }
 \description{
 Execute readxl::\code{\link{read_excel}} with pre-set values in some arguments.
-Convert column-names and categorical data to lower-case.
+Convert column names and categorical data to lower-case.
 }
 \details{
 The readxl::\code{\link{read_excel}} pre-set argument values are
@@ -41,13 +41,11 @@ The readxl::\code{\link{read_excel}} pre-set argument values are
 }
 \examples{
 library(package = readxl)
-library(package = rprojroot)
-ds <- readxl_example(path = "datasets.xlsx")
-dir <- dirname(path = ds)
-path <- basename(path = ds)
+datasets <- readxl_example(path = "datasets.xlsx")
+dir <- dirname(path = datasets)
+base <- basename(path = datasets)
 setwd(dir = dir)
-criterion <- has_dirname(dirname = basename(path = dir), subdir = NULL)
-import_excel(criterion = criterion, path = path, sheet = "iris", range = NULL, guess_max = 10)
+import_excel(criterion = base, path = base, guess_max = 10)
 }
 \seealso{
 \code{\link{import_tsv}}
