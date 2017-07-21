@@ -1,13 +1,13 @@
 #' Write a data-frame to a tsv file.
 #'
 #' @description
-#' Executes readr::\code{\link{write_tsv}} with pre-set values in some arguments.
+#' Execute readr::\code{\link{write_tsv}} with pre-set values in some arguments.
 #'
 #' @usage
-#' \code{export_tsv(file, folder)}
+#' \code{export_tsv(x, folder)}
 #'
 #' @param x A data-frame to write to disk.
-#' @param folder Path or connection to folder.
+#' @param folder Path or connection to the folder that will store the data-frame.
 #'
 #' @details
 #' The readr::\code{\link{write_tsv}} pre-set argument values are
@@ -32,22 +32,22 @@
 export_tsv <- function(x,
                        folder) {
 
-    x_name <- substitute(expr = x)
+  x_name <- quote(expr = x)
 
-    x_name <- as.character(x = x_name)
+  x_name <- as.character(x = x_name)
 
-    x_name <- paste0(x_name,
-                     ".tsv",
-                     collapse = NULL)
+  x_path <- file.path(x_name,
+                      ".tsv",
+                      fsep = "")
 
-    path <- file.path(folder,
-                      x_name,
-                      fsep = "/")
+  export_path <- file.path(folder,
+                           x_path,
+                           fsep = "/")
 
-    readr::write_tsv(x = x,
-                     path = path,
-                     na = "",
-                     append = FALSE,
-                     col_names = TRUE)
+  readr::write_tsv(x = x,
+                   path = export_path,
+                   na = "",
+                   append = FALSE,
+                   col_names = TRUE)
 
 }

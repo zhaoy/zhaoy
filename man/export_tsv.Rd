@@ -4,18 +4,18 @@
 \alias{export_tsv}
 \title{Write a data-frame to a tsv file.}
 \usage{
-\code{export_tsv(file, folder)}
+\code{export_tsv(x, folder)}
 }
 \arguments{
 \item{x}{A data-frame to write to disk.}
 
-\item{folder}{Path or connection to folder.}
+\item{folder}{Path or connection to the folder that will store the data-frame.}
 }
 \value{
 A data-frame.
 }
 \description{
-Executes readr::\code{\link{write_tsv}} with pre-set values in some arguments.
+Execute readr::\code{\link{write_tsv}} with pre-set values in some arguments.
 }
 \details{
 The readr::\code{\link{write_tsv}} pre-set argument values are

@@ -77,13 +77,11 @@ import_tsv <- function(criterion,
   x <- lapply(X = x,
               FUN = to_lower)
 
-  x <- data.frame(x = x,
-                  row.names = NULL,
-                  check.rows = TRUE,
-                  check.names = TRUE,
-                  fix.empty.names = TRUE,
-                  stringsAsFactors = FALSE)
-
-  return(value = x)
+  data.frame(x = x,
+             row.names = NULL,
+             check.rows = TRUE,
+             check.names = TRUE,
+             fix.empty.names = TRUE,
+             stringsAsFactors = FALSE)
 
 }
