@@ -1,7 +1,11 @@
 #' Summarize values of vectors
 #'
+#' @description
 #' Display 1) values of vectors in ascending order, beginning with any NAs,
 #' 2) counts, and 3) percentages.
+#'
+#' @usage
+#' \code{summarize_vector(x)}
 #'
 #' @param x a numeric, complex, character, or logical vector.
 #'

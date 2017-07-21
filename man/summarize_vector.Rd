@@ -4,7 +4,7 @@
 \alias{summarize_vector}
 \title{Summarize values of vectors}
 \usage{
-summarize_vector(x)
+\code{summarize_vector(x)}
 }
 \arguments{
 \item{x}{a numeric, complex, character, or logical vector.}
