@@ -12,7 +12,7 @@
 \item{folder}{Path or connection to the folder that will store the data-frame.}
 }
 \value{
-A data-frame.
+\code{export_*()} returns the input x invisibly.
 }
 \description{
 Execute readr::\code{\link{write_tsv}} with pre-set values in some arguments.

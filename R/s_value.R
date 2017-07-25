@@ -1,21 +1,24 @@
 #' Summarize values of vectors
 #'
 #' @description
-#' Display 1) values of vectors in ascending order, beginning with any NAs,
+#' Tabulate 1) values of vectors in ascending order, beginning with any NAs,
 #' 2) counts, and 3) percentages.
 #'
 #' @usage
-#' \code{summarize_vector(x)}
+#' \code{s_value(x)}
 #'
 #' @param x a numeric, complex, character, or logical vector.
+#'
+#' @return A data-frame.
+#'
+#' @seealso \code{\link{s_col}}
 #'
 #' @export
 #'
 #' @examples
-#' summarize_vector(x = iris$Sepal.Length)
-#' summarize_vector(x = mtcars$mpg)
+#' s_value(x = warpbreaks$breaks)
 
-summarize_vector <- function(x) {
+s_value <- function(x) {
 
   df <- data.frame(value = x,
                    row.names = NULL,

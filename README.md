@@ -8,9 +8,9 @@ miscellaneous functions for importing, summarizing, transforming, and exporting 
 
 # summarize
 
-**summarize_missing**
+**s_value**
 
-**summarize_vector**
+**s_vec**
 
 # transform
 

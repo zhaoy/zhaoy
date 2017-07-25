@@ -18,8 +18,7 @@
 #'
 #' \code{col_names = TRUE}: Write column names at the top of the file.
 #'
-#' @return
-#' A data-frame.
+#' @return \code{export_*()} returns the input x invisibly.
 #'
 #' @import readr
 #'

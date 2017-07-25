@@ -45,6 +45,14 @@ The readr::\code{\link{read_tsv}} pre-set argument values are
 
 \code{progress = TRUE}: Display a progress bar.
 }
+\examples{
+path_package <- path.package(package = "zhaoy", quiet = FALSE)
+mtcarz <- file.path(path_package, "data/mtcars.tsv", fsep = "/")
+dir <- dirname(path = mtcarz)
+base <- basename(path = mtcarz)
+setwd(dir = dir)
+import_tsv(criterion = base, file = base, guess_max = 10)
+}
 \seealso{
 \code{\link{import_excel}}
 }

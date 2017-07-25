@@ -1,11 +1,12 @@
 Type: package
 Package: zhaoy
 Title: miscellaneous functions
-Description: Functions for importing, transforming, and exporting data. 
-Date: 2017-7-20
+Description: Functions for importing, summarizing, transforming, and exporting data. 
+Date: 2017-7-24
 Version: 0.0.1
+Imports: readr, readxl, rprojroot, utils
+LazyData: true
+License: GPL-3
 Author: zhaoy zhaoy <zhaoy@users.noreply.github.com>
 Maintainer: zhaoy zhaoy <zhaoy@users.noreply.github.com>
-Imports: readr, readxl, rprojroot, utils
-License: GPL-3
 RoxygenNote: 6.0.1

@@ -28,8 +28,7 @@
 #'
 #' \code{n_max = Inf}: The maximum number of data rows to read is \code{\link{Inf}}.
 #'
-#' @return
-#' A data-frame.
+#' @return A data-frame.
 #'
 #' @seealso \code{\link{import_tsv}}
 #'
@@ -74,11 +73,10 @@ import_excel <- function(criterion,
   x <- lapply(X = x,
               FUN = to_lower)
 
-  data.frame(x = x,
-             row.names = NULL,
-             check.rows = TRUE,
-             check.names = TRUE,
-             fix.empty.names = TRUE,
-             stringsAsFactors = FALSE)
+  as.data.frame(x = x,
+                row.names = NULL,
+                stringsAsFactors = FALSE,
+                cut.names = TRUE,
+                fix.empty.names = TRUE)
 
 }

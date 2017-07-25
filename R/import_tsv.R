@@ -36,8 +36,7 @@
 #'
 #' \code{progress = TRUE}: Display a progress bar.
 #'
-#' @return
-#' A data-frame.
+#' @return A data-frame.
 #'
 #' @seealso \code{\link{import_excel}}
 #'
@@ -46,6 +45,12 @@
 #' @export
 #'
 #' @examples
+#' path_package <- path.package(package = "zhaoy", quiet = FALSE)
+#' mtcarz <- file.path(path_package, "data/mtcars.tsv", fsep = "/")
+#' dir <- dirname(path = mtcarz)
+#' base <- basename(path = mtcarz)
+#' setwd(dir = dir)
+#' import_tsv(criterion = base, file = base, guess_max = 10)
 
 import_tsv <- function(criterion,
                        file,
@@ -77,11 +82,10 @@ import_tsv <- function(criterion,
   x <- lapply(X = x,
               FUN = to_lower)
 
-  data.frame(x = x,
-             row.names = NULL,
-             check.rows = TRUE,
-             check.names = TRUE,
-             fix.empty.names = TRUE,
-             stringsAsFactors = FALSE)
+  as.data.frame(x = x,
+                row.names = NULL,
+                stringsAsFactors = FALSE,
+                cut.names = TRUE,
+                fix.empty.names = TRUE)
 
 }
