@@ -20,5 +20,5 @@ Tabulate 1) values of vectors in ascending order, beginning with any NAs,
 s_value(x = warpbreaks$breaks)
 }
 \seealso{
-\code{\link{s_col}}
+\code{\link{s_vec}}
 }

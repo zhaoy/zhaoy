@@ -4,10 +4,6 @@ to_lower <- function(x) {
 
     x <- tolower(x = x)
 
-  } else {
-
-    x <- x
-
   }
 
   return(value = x)

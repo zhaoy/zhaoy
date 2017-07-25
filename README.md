@@ -16,17 +16,9 @@ miscellaneous functions for importing, summarizing, transforming, and exporting 
 
 **lz_mrn**
 
-**tidy_pel**
-
-*dates*
-
-**date_char**
-
-**date_date**
-
-**origin_date**
-
 **table_date**
+
+**tidy_pel**
 
 # export
 

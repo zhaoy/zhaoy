@@ -2,12 +2,12 @@
 % Please edit documentation in R/s_vec.R
 \name{s_vec}
 \alias{s_vec}
-\title{Summarize vectors or data-frames.}
+\title{Summarize vectors or data-frames}
 \usage{
 \code{s_vec(x)}
 }
 \arguments{
-\item{x}{a data-frame.}
+\item{x}{a vector or data-frame.}
 }
 \value{
 A data-frame.
@@ -18,20 +18,21 @@ Tabulate summary statistics of vectors or data-frames, which are made up of vect
 \details{
 The contents of the output are:
 
-col: column name
+col: column name, displayed only if the input is a data-frame
 
 n_miss: number of missing values
 
-pct_miss: missing values as percent of column
+pct_miss: percent of column that are missing values
 
 n_unique: number of unique values
 
-pct_unique: unique values as percent of column
+pct_unique: percent of column that are unique values
 
 min, max, median, mean
 }
 \examples{
 s_vec(x = airquality)
+s_vec(x = airquality$Ozone)
 }
 \seealso{
 \code{\link{s_value}}

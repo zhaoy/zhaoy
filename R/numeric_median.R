@@ -2,15 +2,17 @@ numeric_median <- function(x) {
 
   if (is.numeric(x = x) == TRUE) {
 
-    median <- median(x = x,
-                     na.rm = TRUE)
-
-  } else {
-
-    median <- NA
+    x <- median(x = x,
+                na.rm = TRUE)
 
   }
 
-  return(value = median)
+  if (is.numeric(x = x) == FALSE) {
+
+    x <- NA
+
+  }
+
+  return(value = x)
 
 }

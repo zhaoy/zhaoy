@@ -2,15 +2,17 @@ numeric_max <- function(x) {
 
   if (is.numeric(x = x) == TRUE) {
 
-    max <- max(x = x,
-               na.rm = TRUE)
-
-  } else {
-
-    max <- NA
+    x <- max(x = x,
+             na.rm = TRUE)
 
   }
 
-  return(value = max)
+  if (is.numeric(x = x) == FALSE) {
+
+    x <- NA
+
+  }
+
+  return(value = x)
 
 }

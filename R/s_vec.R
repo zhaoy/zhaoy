@@ -1,4 +1,4 @@
-#' Summarize vectors or data-frames.
+#' Summarize vectors or data-frames
 #'
 #' @description
 #' Tabulate summary statistics of vectors or data-frames, which are made up of vectors.
@@ -6,20 +6,20 @@
 #' @usage
 #' \code{s_vec(x)}
 #'
-#' @param x a data-frame.
+#' @param x a vector or data-frame.
 #'
 #' @details
 #' The contents of the output are:
 #'
-#' col: column name
+#' col: column name, displayed only if the input is a data-frame
 #'
 #' n_miss: number of missing values
 #'
-#' pct_miss: missing values as percent of column
+#' pct_miss: percent of column that are missing values
 #'
 #' n_unique: number of unique values
 #'
-#' pct_unique: unique values as percent of column
+#' pct_unique: percent of column that are unique values
 #'
 #' min, max, median, mean
 #'
@@ -31,56 +31,41 @@
 #'
 #' @examples
 #' s_vec(x = airquality)
+#' s_vec(x = airquality$Ozone)
 
 s_vec <- function(x) {
 
-  if (is.vector(x = x) == TRUE) {
-
-    x <- as.data.frame(x = x,
-                       row.names = NULL,
-                       stringsAsFactors = FALSE,
-                       cut.names = TRUE,
-                       fix.empty.names = TRUE)
-
-  }
+  x <- as.data.frame(x = x,
+                     row.names = NULL,
+                     stringsAsFactors = FALSE,
+                     cut.names = TRUE,
+                     fix.empty.names = TRUE)
 
   col <- names(x = x)
 
-  n_miss <- apply(X = x,
-                  MARGIN = 2,
-                  FUN = function(x) sum(is.na(x = x) == TRUE,
-                                        na.rm = FALSE))
+  n_miss <- lapply(X = x,
+                   FUN = function(x) sum(is.na(x = x) == TRUE,
+                                         na.rm = FALSE))
 
-  pct_miss <- n_miss / nrow(x = x) * 100
+  n_unique <- lapply(X = x,
+                     FUN = function(x) length(x = unique(x = x,
+                                                         incomparables = FALSE)))
 
-  n_unique <- apply(X = x,
-                    MARGIN = 2,
-                    FUN = function(x) length(x = unique(x = x,
-                                                        incomparables = FALSE)))
+  min <- lapply(X = x,
+                FUN = numeric_min)
 
-  pct_unique <- n_unique / nrow(x = x) * 100
+  max <- lapply(X = x,
+                FUN = numeric_max)
 
-  min <- apply(X = x,
-               MARGIN = 2,
-               FUN = numeric_min)
+  median <- lapply(X = x,
+                   FUN = numeric_median)
 
-  max <- apply(X = x,
-               MARGIN = 2,
-               FUN = numeric_max)
-
-  median <- apply(X = x,
-                  MARGIN = 2,
-                  FUN = numeric_median)
-
-  mean <- apply(X = x,
-                MARGIN = 2,
-                FUN = numeric_mean)
+  mean <- lapply(X = x,
+                 FUN = numeric_mean)
 
   x <- data.frame(col,
                   n_miss,
-                  pct_miss,
                   n_unique,
-                  pct_unique,
                   min,
                   max,
                   median,
@@ -93,13 +78,11 @@ s_vec <- function(x) {
 
   if (nrow(x = x) == 1) {
 
-    subset(x = x,
-           select = -col)
-
-  } else {
-
-    x
+    x <- subset(x = x,
+                select = -col)
 
   }
+
+  return(value = x)
 
 }

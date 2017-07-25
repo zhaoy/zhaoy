@@ -2,15 +2,17 @@ numeric_mean <- function(x) {
 
   if (is.numeric(x = x) == TRUE) {
 
-    mean <- mean(x = x,
-                 na.rm = TRUE)
-
-  } else {
-
-    mean <- NA
+    x <- mean(x = x,
+              na.rm = TRUE)
 
   }
 
-  return(value = mean)
+  if (is.numeric(x = x) == FALSE) {
+
+    x <- NA
+
+  }
+
+  return(value = x)
 
 }
