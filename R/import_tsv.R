@@ -46,7 +46,7 @@
 #'
 #' @examples
 #' path_package <- path.package(package = "zhaoy", quiet = FALSE)
-#' mtcarz <- file.path(path_package, "data/mtcars.tsv", fsep = "/")
+#' mtcarz <- file.path(path_package, "data/mtcarz.tsv", fsep = "/")
 #' dir <- dirname(path = mtcarz)
 #' base <- basename(path = mtcarz)
 #' setwd(dir = dir)

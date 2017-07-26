@@ -6,6 +6,10 @@ miscellaneous functions for importing, summarizing, transforming, and exporting 
 
 **import_tsv**
 
+**new_r()**
+
+**new_rmd()**
+
 # summarize
 
 **s_value**

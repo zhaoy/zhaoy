@@ -47,29 +47,67 @@ s_vec <- function(x) {
                    FUN = function(x) sum(is.na(x = x) == TRUE,
                                          na.rm = FALSE))
 
+  n_miss <- unlist(x = n_miss,
+                   recursive = TRUE,
+                   use.names = FALSE)
+
+  pct_miss <- n_miss / nrow(x = x) * 100
+
   n_unique <- lapply(X = x,
                      FUN = function(x) length(x = unique(x = x,
                                                          incomparables = FALSE)))
 
+  n_unique <- unlist(x = n_unique,
+                     recursive = TRUE,
+                     use.names = FALSE)
+
+  pct_unique <- n_unique / nrow(x = x) * 100
+
   min <- lapply(X = x,
                 FUN = numeric_min)
+
+  min <- unlist(x = min,
+                recursive = TRUE,
+                use.names = FALSE)
 
   max <- lapply(X = x,
                 FUN = numeric_max)
 
+  max <- unlist(x = max,
+                recursive = TRUE,
+                use.names = FALSE)
+
   median <- lapply(X = x,
                    FUN = numeric_median)
+
+  median <- unlist(x = median,
+                   recursive = TRUE,
+                   use.names = FALSE)
 
   mean <- lapply(X = x,
                  FUN = numeric_mean)
 
+  mean <- unlist(x = mean,
+                 recursive = TRUE,
+                 use.names = FALSE)
+
+  mode <- lapply(X = x,
+                 FUN = mode)
+
+  mode <- unlist(x = mode,
+                 recursive = TRUE,
+                 use.names = FALSE)
+
   x <- data.frame(col,
                   n_miss,
+                  pct_miss,
                   n_unique,
+                  pct_unique,
                   min,
                   max,
                   median,
                   mean,
+                  mode,
                   row.names = NULL,
                   check.rows = TRUE,
                   check.names = TRUE,

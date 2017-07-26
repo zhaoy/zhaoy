@@ -1,7 +1,9 @@
 #' Sub-set tables according to date range
 #'
+#' @description
 #' Sub-set multi-column tables so that one column of dates or date-times complies with a start date and an end date, inclusive.
 #'
+#' @details
 #' In x, leading zeros in single-digit months or days, are optional.
 #'
 #' @param x A multi-column table.

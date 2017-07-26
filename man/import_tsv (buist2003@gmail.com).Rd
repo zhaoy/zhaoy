@@ -47,7 +47,7 @@ The readr::\code{\link{read_tsv}} pre-set argument values are
 }
 \examples{
 path_package <- path.package(package = "zhaoy", quiet = FALSE)
-mtcarz <- file.path(path_package, "data/mtcarz.tsv", fsep = "/")
+mtcarz <- file.path(path_package, "data/mtcars.tsv", fsep = "/")
 dir <- dirname(path = mtcarz)
 base <- basename(path = mtcarz)
 setwd(dir = dir)
