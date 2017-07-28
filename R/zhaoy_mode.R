@@ -1,4 +1,4 @@
-mode <- function(x) {
+zhaoy_mode <- function(x) {
 
   x_table <- table(x,
                    useNA = "ifany")

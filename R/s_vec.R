@@ -92,7 +92,7 @@ s_vec <- function(x) {
                  use.names = FALSE)
 
   mode <- lapply(X = x,
-                 FUN = mode)
+                 FUN = zhaoy_mode)
 
   mode <- unlist(x = mode,
                  recursive = TRUE,
@@ -113,6 +113,27 @@ s_vec <- function(x) {
                   check.names = TRUE,
                   fix.empty.names = TRUE,
                   stringsAsFactors = FALSE)
+
+  x[, c("pct_miss",
+        "pct_unique",
+        "median",
+        "mean")] <- lapply(X = x[, c("pct_miss",
+                                     "pct_unique",
+                                     "median",
+                                     "mean")],
+                           FUN = zhaoy_round)
+
+  x[, c("pct_miss",
+        "pct_unique",
+        "median",
+        "mean")] <- as.data.frame(x = x[, c("pct_miss",
+                                            "pct_unique",
+                                            "median",
+                                            "mean")],
+                                  row.names = NULL,
+                                  stringsAsFactors = FALSE,
+                                  cut.names = TRUE,
+                                  fix.empty.names = TRUE)
 
   if (nrow(x = x) == 1) {
 
