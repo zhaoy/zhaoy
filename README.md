@@ -1,4 +1,4 @@
-miscellaneous functions for importing, summarizing, transforming, and exporting data
+miscellaneous functions for importing, transforming, and exporting data
 
 # import
 
@@ -10,17 +10,15 @@ miscellaneous functions for importing, summarizing, transforming, and exporting 
 
 **new_rmd()**
 
-# summarize
-
-**s_value**
-
-**s_vec**
-
 # transform
 
 **lz_mrn**
 
-**table_date**
+**s_col**
+
+**s_tbl**
+
+**date_tbl**
 
 **tidy_pel**
 

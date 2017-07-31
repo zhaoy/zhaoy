@@ -4,7 +4,7 @@
 #' Tabulate summary statistics of vectors or data-frames, which are made up of vectors.
 #'
 #' @usage
-#' \code{s_vec(x)}
+#' \code{s_tbl(x)}
 #'
 #' @param x a vector or data-frame.
 #'
@@ -25,15 +25,15 @@
 #'
 #' @return A data-frame.
 #'
-#' @seealso \code{\link{s_value}}
+#' @seealso \code{\link{s_col}}
 #'
 #' @export
 #'
 #' @examples
-#' s_vec(x = airquality)
-#' s_vec(x = airquality$Ozone)
+#' s_tbl(x = airquality)
+#' s_tbl(x = airquality$Ozone)
 
-s_vec <- function(x) {
+s_tbl <- function(x) {
 
   x <- as.data.frame(x = x,
                      row.names = NULL,
@@ -64,28 +64,28 @@ s_vec <- function(x) {
   pct_unique <- n_unique / nrow(x = x) * 100
 
   min <- lapply(X = x,
-                FUN = numeric_min)
+                FUN = zhaoy_min)
 
   min <- unlist(x = min,
                 recursive = TRUE,
                 use.names = FALSE)
 
   max <- lapply(X = x,
-                FUN = numeric_max)
+                FUN = zhaoy_max)
 
   max <- unlist(x = max,
                 recursive = TRUE,
                 use.names = FALSE)
 
   median <- lapply(X = x,
-                   FUN = numeric_median)
+                   FUN = zhaoy_median)
 
   median <- unlist(x = median,
                    recursive = TRUE,
                    use.names = FALSE)
 
   mean <- lapply(X = x,
-                 FUN = numeric_mean)
+                 FUN = zhaoy_mean)
 
   mean <- unlist(x = mean,
                  recursive = TRUE,

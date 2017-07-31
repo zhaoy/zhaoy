@@ -1,0 +1,18 @@
+zhaoy_max <- function(x) {
+
+  if (is.numeric(x = x) == TRUE) {
+
+    x <- max(x = x,
+             na.rm = TRUE)
+
+  }
+
+  if (is.numeric(x = x) == FALSE) {
+
+    x <- NA
+
+  }
+
+  return(value = x)
+
+}

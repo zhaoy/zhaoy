@@ -5,20 +5,20 @@
 #' 2) counts, and 3) percentages.
 #'
 #' @usage
-#' \code{s_value(x)}
+#' \code{s_col(x)}
 #'
 #' @param x a numeric, complex, character, or logical vector.
 #'
 #' @return A data-frame.
 #'
-#' @seealso \code{\link{s_vec}}
+#' @seealso \code{\link{s_tbl}}
 #'
 #' @export
 #'
 #' @examples
-#' s_value(x = warpbreaks$breaks)
+#' s_col(x = warpbreaks$breaks)
 
-s_value <- function(x) {
+s_col <- function(x) {
 
   x <- data.frame(value = x,
                   row.names = NULL,
