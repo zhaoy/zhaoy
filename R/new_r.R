@@ -21,6 +21,10 @@ new_r <- function() {
                             lib.loc = NULL,
                             mustWork = TRUE)
 
-  file.edit(template_r)
+  file.edit(template_r,
+            title = "template",
+            editor = getOption(x = "editor",
+                               default = "internal"),
+            fileEconding = "")
 
 }

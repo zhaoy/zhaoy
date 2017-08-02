@@ -21,6 +21,10 @@ new_rmd <- function() {
                               lib.loc = NULL,
                               mustWork = TRUE)
 
-  file.edit(template_rmd)
+  file.edit(template_rmd,
+            title = "template",
+            editor = getOption(x = "editor",
+                               default = "internal"),
+            fileEconding = "")
 
 }

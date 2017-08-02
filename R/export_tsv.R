@@ -35,16 +35,16 @@ export_tsv <- function(x,
 
   x_name <- as.character(x = x_name)
 
-  x_path <- file.path(x_name,
-                      ".tsv",
-                      fsep = "")
+  path <- file.path(x_name,
+                    ".tsv",
+                    fsep = "")
 
-  export_path <- file.path(folder,
-                           x_path,
-                           fsep = "/")
+  path <- file.path(folder,
+                    path,
+                    fsep = "/")
 
   readr::write_tsv(x = x,
-                   path = export_path,
+                   path = path,
                    na = "",
                    append = FALSE,
                    col_names = TRUE)
