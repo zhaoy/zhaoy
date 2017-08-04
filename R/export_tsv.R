@@ -31,7 +31,7 @@
 export_tsv <- function(x,
                        folder) {
 
-  x_name <- quote(expr = x)
+  x_name <- substitute(expr = x)
 
   x_name <- as.character(x = x_name)
 

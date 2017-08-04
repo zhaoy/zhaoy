@@ -16,34 +16,40 @@
 #' @examples
 #' x <- data.frame(date_1 = c("1960-1-1", "1960-1-2", "1960-3-31"),
 #'                 date_2 = c("1960-1-1", "1960-1-2", "1960-3-31"))
-#' z <- table_date(x = x, col = "date_1", from = "1960-1-1", to = "1960-3-30")
+#' z <- date_tbl(x = x, col = "date_1", from = "1960-1-1", to = "1960-3-30")
 #' z
 
-table_date <- function(x,
-                       col,
-                       from,
-                       to) {
+date_tbl <- function(x,
+                     col,
+                     from,
+                     to) {
 
-    x <- data.frame(x,
-                    row.names = NULL,
-                    check.rows = TRUE,
-                    check.names = TRUE,
-                    fix.empty.names = TRUE,
-                    stringsAsFactors = FALSE)
+  x <- as.data.frame(x,
+                     row.names = NULL,
+                     stringsAsFactors = FALSE,
+                     cut.names = TRUE,
+                     fix.empty.names = TRUE)
 
-    col_index <- which(x = names(x = x) == col,
-                       arr.ind = FALSE,
-                       useNames = FALSE)
+  col <- which(x = names(x = x) == col)
 
-    x[, col_index] <- zhaoy::date_date(x = x[, col_index])
+  x[, col] <- as.Date(x = x[, col],
+                      format = "%Y-%m-%d",
+                      origin = "",
+                      tz = "")
 
-    from <- zhaoy::date_date(x = from)
+  from <- as.Date(x = from,
+                  format = "%Y-%m-%d",
+                  origin = "",
+                  tz = "")
 
-    to <- zhaoy::date_date(x = to)
+  to <- as.Date(x = to,
+                format = "%Y-%m-%d",
+                origin = "",
+                tz = "")
 
-    x <- x[x[, col_index] >= from &
-           x[, col_index] <= to, ]
+  x <- x[x[, col] >= from &
+         x[, col] <= to, ]
 
-    return(value = x)
+  return(value = x)
 
 }
