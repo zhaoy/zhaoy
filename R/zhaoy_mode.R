@@ -1,21 +1,23 @@
 zhaoy_mode <- function(x) {
 
   x_table <- table(x,
-                   useNA = "ifany")
+                   useNA = "always")
 
   x_max <- max(x_table,
                na.rm = TRUE)
 
   if (all(x_table == x_max,
-          na.rm = FALSE) == TRUE) {
+          na.rm = TRUE) == TRUE) {
 
     x <- NA
 
   } else {
 
-    if(is.numeric(x = x) == TRUE) {
+    if (is.numeric(x = x) == TRUE) {
 
-      x <- as.numeric(x = names(x = x_table)[x_table == x_max])
+      x <- names(x = x_table)[x_table == x_max]
+
+      x <- as.numeric(x = x)
 
     }
 
@@ -29,7 +31,7 @@ zhaoy_mode <- function(x) {
 
   if (length(x = x) > 1) {
 
-    x <- "multiple"
+    x <- "multi"
 
   }
 
