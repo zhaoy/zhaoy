@@ -48,7 +48,6 @@ s_tbl <- function(x) {
                                          na.rm = FALSE))
 
   n_miss <- unlist(x = n_miss,
-                   recursive = TRUE,
                    use.names = FALSE)
 
   pct_miss <- n_miss / nrow(x = x) * 100
@@ -58,7 +57,6 @@ s_tbl <- function(x) {
                                                          incomparables = FALSE)))
 
   n_unique <- unlist(x = n_unique,
-                     recursive = TRUE,
                      use.names = FALSE)
 
   pct_unique <- n_unique / nrow(x = x) * 100
@@ -67,35 +65,30 @@ s_tbl <- function(x) {
                 FUN = zhaoy_min)
 
   min <- unlist(x = min,
-                recursive = TRUE,
                 use.names = FALSE)
 
   max <- lapply(X = x,
                 FUN = zhaoy_max)
 
   max <- unlist(x = max,
-                recursive = TRUE,
                 use.names = FALSE)
 
   median <- lapply(X = x,
                    FUN = zhaoy_median)
 
   median <- unlist(x = median,
-                   recursive = TRUE,
                    use.names = FALSE)
 
   mean <- lapply(X = x,
                  FUN = zhaoy_mean)
 
   mean <- unlist(x = mean,
-                 recursive = TRUE,
                  use.names = FALSE)
 
   mode <- lapply(X = x,
                  FUN = zhaoy_mode)
 
   mode <- unlist(x = mode,
-                 recursive = TRUE,
                  use.names = FALSE)
 
   x <- data.frame(col,
@@ -106,8 +99,8 @@ s_tbl <- function(x) {
                   min,
                   max,
                   median,
-                  mean,
                   mode,
+                  mean,
                   row.names = NULL,
                   check.rows = TRUE,
                   check.names = TRUE,

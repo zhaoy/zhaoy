@@ -4,7 +4,7 @@ zhaoy_round <- function(x) {
       is.integer(x = x) == FALSE) {
 
     x <- round(x = x,
-               digits = 2)
+               digits = 1)
 
   }
 
