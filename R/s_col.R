@@ -20,21 +20,22 @@
 
 s_col <- function(x) {
 
-  x <- data.frame(value = x,
-                  row.names = NULL,
-                  check.rows = TRUE,
-                  check.names = TRUE,
-                  fix.empty.names = TRUE,
-                  stringsAsFactors = FALSE)
+  x <- as.data.frame(x = x,
+                     row.names = NULL,
+                     stringsAsFactors = FALSE,
+                     cut.names = TRUE,
+                     fix.empty.names = TRUE)
 
-  count <- table(x$value,
-                 useNA = "ifany")
+  n <- table(x[, 1],
+             useNA = "ifany")
 
-  percent <- prop.table(x = count,
-                        margin = NULL) * 100
+  pct <- prop.table(x = n) * 100
 
-  x <- data.frame(count,
-                  percent,
+  pct <- round(x = pct,
+               digits = 1)
+
+  x <- data.frame(n,
+                  pct,
                   row.names = NULL,
                   check.rows = TRUE,
                   check.names = TRUE,
@@ -47,9 +48,9 @@ s_col <- function(x) {
 
   names(x = x)[names(x = x) == "Var1"] <- "value"
 
-  names(x = x)[names(x = x) == "Freq"] <- "count"
+  names(x = x)[names(x = x) == "Freq"] <- "n"
 
-  names(x = x)[names(x = x) == "Freq.1"] <- "percent"
+  names(x = x)[names(x = x) == "Freq.1"] <- "pct"
 
   x[order(x$value,
           decreasing = FALSE,

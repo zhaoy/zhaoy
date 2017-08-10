@@ -1,7 +1,7 @@
 zhaoy_mode <- function(x) {
 
   x_table <- table(x,
-                   useNA = "always")
+                   useNA = "ifany")
 
   x_max <- max(x_table,
                na.rm = TRUE)

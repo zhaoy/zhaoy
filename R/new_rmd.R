@@ -18,13 +18,11 @@ new_rmd <- function() {
 
   template_rmd <- system.file("template.Rmd",
                               package = "zhaoy",
-                              lib.loc = NULL,
                               mustWork = TRUE)
 
   file.edit(template_rmd,
-            title = "template",
+            title = "template.Rmd",
             editor = getOption(x = "editor",
-                               default = "internal"),
-            fileEconding = "")
+                               default = "internal"))
 
 }
