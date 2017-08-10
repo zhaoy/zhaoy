@@ -1,0 +1,40 @@
+---
+title: template
+fontsize: 12pt
+output:
+  html_document:
+    smart: no
+    toc: yes
+    toc_depth: 6
+---
+
+Load global chunk options.
+
+```{r}
+knitr::opts_chunk$set(comment = "",
+                      message = FALSE)
+```
+
+Load packages in order of use.
+
+```{r}
+library(package = zhaoy)
+library(package = dplyr)
+```
+
+Check package conflicts.
+
+```{r}
+conflicts(where = search(),
+          detail = TRUE)
+```
+
+Import raw data.
+
+View raw data.
+
+```{r}
+# str()
+# s_tbl()
+# s_col()
+```
