@@ -18,13 +18,11 @@ new_r <- function() {
 
   template_r <- system.file("template.R",
                             package = "zhaoy",
-                            lib.loc = NULL,
                             mustWork = TRUE)
 
   file.edit(template_r,
-            title = "template",
+            title = "template.R",
             editor = getOption(x = "editor",
-                               default = "internal"),
-            fileEconding = "")
+                               default = "internal"))
 
 }
