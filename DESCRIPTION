@@ -2,7 +2,7 @@ Type: package
 Package: zhaoy
 Title: miscellaneous functions
 Description: Functions for importing, transforming, and exporting data. 
-Date: 2017-8-7
+Date: 2017-8-14
 Version: 0.0.1
 Imports: readr, readxl, rprojroot, utils
 LazyData: true

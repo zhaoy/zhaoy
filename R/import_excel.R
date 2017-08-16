@@ -50,7 +50,7 @@ import_excel <- function(criterion,
                          range = NULL,
                          guess_max) {
 
-  root_path <- rprojroot::find_root(criterion = criterion,
+  root_path <- rprojroot::find_root(criterion = has_dirname(dirname = criterion),
                                     path = ".")
 
   import_path <- file.path(root_path,

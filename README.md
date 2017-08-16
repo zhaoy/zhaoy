@@ -1,4 +1,4 @@
-miscellaneous functions for importing, transforming, and exporting data
+functions for importing, transforming, and exporting data
 
 # import
 
