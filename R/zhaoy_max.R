@@ -5,9 +5,7 @@ zhaoy_max <- function(x) {
     x <- max(x = x,
              na.rm = TRUE)
 
-  }
-
-  if (is.numeric(x = x) == FALSE) {
+  } else {
 
     x <- NA
 

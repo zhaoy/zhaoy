@@ -6,9 +6,7 @@ zhaoy_mean <- function(x) {
               trim = 0,
               na.rm = TRUE)
 
-  }
-
-  if (is.numeric(x = x) == FALSE) {
+  } else {
 
     x <- NA
 

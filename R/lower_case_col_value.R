@@ -1,4 +1,4 @@
-to_lower <- function(x) {
+lower_case_col_value <- function(x) {
 
   if (is.character(x = x) == TRUE) {
 

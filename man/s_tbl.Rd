@@ -2,37 +2,37 @@
 % Please edit documentation in R/s_tbl.R
 \name{s_tbl}
 \alias{s_tbl}
-\title{Summarize vectors or data-frames}
+\title{Column or table summaries}
 \usage{
 \code{s_tbl(x)}
 }
 \arguments{
-\item{x}{a vector or data-frame.}
+\item{x}{a column or table for which a summary is desired.}
 }
 \value{
-A data-frame.
+A table.
 }
 \description{
-Tabulate summary statistics of vectors or data-frames, which are made up of vectors.
+Tabulate summary statistics of columns or tables.
 }
 \details{
-The contents of the output are:
+The output are:
 
-col: column name, displayed only if the input is a data-frame
+col: column name, displayed only if the input is a table
 
-n_miss: number of missing values
+n_miss: number of missing data
 
-pct_miss: percent of column that are missing values
+pct_miss: percent of column that are missing data
 
 n_unique: number of unique values
 
 pct_unique: percent of column that are unique values
 
-min, max, median, mean
+min, max, median, mode, mean
 }
 \examples{
-s_tbl(x = airquality)
-s_tbl(x = airquality$Ozone)
+s_tbl(x = attenu)
+s_tbl(x = attenu$station)
 }
 \seealso{
 \code{\link{s_col}}

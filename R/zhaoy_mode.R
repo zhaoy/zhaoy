@@ -19,9 +19,7 @@ zhaoy_mode <- function(x) {
 
       x <- as.numeric(x = x)
 
-    }
-
-    if (is.numeric(x = x) == FALSE) {
+    } else {
 
       x <- names(x = x_table)[x_table == x_max]
 

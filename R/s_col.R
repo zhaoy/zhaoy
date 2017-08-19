@@ -1,32 +1,28 @@
-#' Summarize values of vectors
+#' Column-value summaries
 #'
 #' @description
-#' Tabulate 1) values of vectors in ascending order, beginning with any NAs,
-#' 2) counts, and 3) percentages.
+#' Tabulate counts and percentages of column values.
+#' Displays column values in ascending order, beginning with any NAs.
 #'
 #' @usage
 #' \code{s_col(x)}
 #'
-#' @param x a numeric, complex, character, or logical vector.
+#' @param x a column for which a summary of values is desired.
 #'
-#' @return A data-frame.
+#' @return A table.
 #'
 #' @seealso \code{\link{s_tbl}}
 #'
 #' @export
 #'
 #' @examples
-#' s_col(x = warpbreaks$breaks)
+#' s_col(x = attenu$station)
 
 s_col <- function(x) {
 
-  x <- as.data.frame(x = x,
-                     row.names = NULL,
-                     stringsAsFactors = FALSE,
-                     cut.names = TRUE,
-                     fix.empty.names = TRUE)
+  stopifnot(is.factor(x = x) | is.vector(x = x))
 
-  n <- table(x[, 1],
+  n <- table(x,
              useNA = "ifany")
 
   pct <- prop.table(x = n) * 100
@@ -42,11 +38,11 @@ s_col <- function(x) {
                   fix.empty.names = TRUE,
                   stringsAsFactors = FALSE)
 
-  x <- x[, c("Var1",
+  x <- x[, c("x",
              "Freq",
              "Freq.1")]
 
-  names(x = x)[names(x = x) == "Var1"] <- "value"
+  names(x = x)[names(x = x) == "x"] <- "value"
 
   names(x = x)[names(x = x) == "Freq"] <- "n"
 

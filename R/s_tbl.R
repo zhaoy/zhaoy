@@ -1,45 +1,53 @@
-#' Summarize vectors or data-frames
+#' Column or table summaries
 #'
 #' @description
-#' Tabulate summary statistics of vectors or data-frames, which are made up of vectors.
+#' Tabulate summary statistics of columns or tables.
 #'
 #' @usage
 #' \code{s_tbl(x)}
 #'
-#' @param x a vector or data-frame.
+#' @param x a column or table for which a summary is desired.
+#'
+#' @return A table.
 #'
 #' @details
-#' The contents of the output are:
+#' The output are:
 #'
-#' col: column name, displayed only if the input is a data-frame
+#' col: column name, displayed only if the input is a table
 #'
-#' n_miss: number of missing values
+#' n_miss: number of missing data
 #'
-#' pct_miss: percent of column that are missing values
+#' pct_miss: percent of column that are missing data
 #'
 #' n_unique: number of unique values
 #'
 #' pct_unique: percent of column that are unique values
 #'
-#' min, max, median, mean
-#'
-#' @return A data-frame.
+#' min, max, median, mode, mean
 #'
 #' @seealso \code{\link{s_col}}
 #'
 #' @export
 #'
 #' @examples
-#' s_tbl(x = airquality)
-#' s_tbl(x = airquality$Ozone)
+#' s_tbl(x = attenu)
+#' s_tbl(x = attenu$station)
 
 s_tbl <- function(x) {
 
-  x <- as.data.frame(x = x,
-                     row.names = NULL,
-                     stringsAsFactors = FALSE,
-                     cut.names = TRUE,
-                     fix.empty.names = TRUE)
+  stopifnot(is.data.frame(x = x) |
+            is.factor(x = x) |
+            is.vector(x = x))
+
+  if (is.vector(x = x) == TRUE) {
+
+    x <- as.data.frame(x = x,
+                       row.names = NULL,
+                       stringsAsFactors = FALSE,
+                       cut.names = TRUE,
+                       fix.empty.names = TRUE)
+
+  }
 
   col <- names(x = x)
 
@@ -61,46 +69,46 @@ s_tbl <- function(x) {
 
   pct_unique <- n_unique / nrow(x = x) * 100
 
-  min <- lapply(X = x,
-                FUN = zhaoy_min)
+  x_min <- lapply(X = x,
+                  FUN = zhaoy_min)
 
-  min <- unlist(x = min,
-                use.names = FALSE)
+  x_min <- unlist(x = x_min,
+                  use.names = FALSE)
 
-  max <- lapply(X = x,
-                FUN = zhaoy_max)
+  x_max <- lapply(X = x,
+                  FUN = zhaoy_max)
 
-  max <- unlist(x = max,
-                use.names = FALSE)
+  x_max <- unlist(x = x_max,
+                  use.names = FALSE)
 
-  median <- lapply(X = x,
-                   FUN = zhaoy_median)
+  x_median <- lapply(X = x,
+                     FUN = zhaoy_median)
 
-  median <- unlist(x = median,
+  x_median <- unlist(x = x_median,
+                     use.names = FALSE)
+
+  x_mean <- lapply(X = x,
+                   FUN = zhaoy_mean)
+
+  x_mean <- unlist(x = x_mean,
                    use.names = FALSE)
 
-  mean <- lapply(X = x,
-                 FUN = zhaoy_mean)
+  x_mode <- lapply(X = x,
+                   FUN = zhaoy_mode)
 
-  mean <- unlist(x = mean,
-                 use.names = FALSE)
-
-  mode <- lapply(X = x,
-                 FUN = zhaoy_mode)
-
-  mode <- unlist(x = mode,
-                 use.names = FALSE)
+  x_mode <- unlist(x = x_mode,
+                   use.names = FALSE)
 
   x <- data.frame(col,
                   n_miss,
                   pct_miss,
                   n_unique,
                   pct_unique,
-                  min,
-                  max,
-                  median,
-                  mode,
-                  mean,
+                  min = x_min,
+                  max = x_max,
+                  median = x_median,
+                  mode = x_mode,
+                  mean = x_mean,
                   row.names = NULL,
                   check.rows = TRUE,
                   check.names = TRUE,
@@ -114,7 +122,8 @@ s_tbl <- function(x) {
                                      "pct_unique",
                                      "median",
                                      "mean")],
-                           FUN = zhaoy_round)
+                           FUN = round,
+                           digits = 1)
 
   x[, c("pct_miss",
         "pct_unique",

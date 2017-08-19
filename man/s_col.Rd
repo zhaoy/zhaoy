@@ -2,22 +2,22 @@
 % Please edit documentation in R/s_col.R
 \name{s_col}
 \alias{s_col}
-\title{Summarize values of vectors}
+\title{Column-value summaries}
 \usage{
 \code{s_col(x)}
 }
 \arguments{
-\item{x}{a numeric, complex, character, or logical vector.}
+\item{x}{a column for which a summary of values is desired.}
 }
 \value{
-A data-frame.
+A table.
 }
 \description{
-Tabulate 1) values of vectors in ascending order, beginning with any NAs,
-2) counts, and 3) percentages.
+Tabulate counts and percentages of column values.
+Displays column values in ascending order, beginning with any NAs.
 }
 \examples{
-s_col(x = warpbreaks$breaks)
+s_col(x = attenu$station)
 }
 \seealso{
 \code{\link{s_tbl}}

@@ -5,9 +5,7 @@ zhaoy_median <- function(x) {
     x <- median(x = x,
                 na.rm = TRUE)
 
-  }
-
-  if (is.numeric(x = x) == FALSE) {
+  } else {
 
     x <- NA
 
