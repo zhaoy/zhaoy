@@ -39,7 +39,8 @@ s_tbl <- function(x) {
             is.factor(x = x) |
             is.vector(x = x))
 
-  if (is.vector(x = x) == TRUE) {
+  if (is.factor(x = x) == TRUE |
+      is.vector(x = x) == TRUE) {
 
     x <- as.data.frame(x = x,
                        row.names = NULL,
