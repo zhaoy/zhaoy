@@ -4,7 +4,7 @@
 \alias{s_tbl}
 \title{Column or table summaries}
 \usage{
-\code{s_tbl(x)}
+s_tbl(x)
 }
 \arguments{
 \item{x}{a column or table for which a summary is desired.}

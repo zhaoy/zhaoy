@@ -4,7 +4,7 @@
 \alias{import_tsv}
 \title{Read a tsv into a data-frame.}
 \usage{
-\code{import_tsv(criterion, file, guess_max = 10)}
+import_tsv(criterion, file, guess_max)
 }
 \arguments{
 \item{criterion}{\code{criterion} argument of rprojroot::\code{\link{find_root}}.}
@@ -44,14 +44,6 @@ The readr::\code{\link{read_tsv}} pre-set argument values are
 \code{n_max = Inf}: The maximum number of records to read is \code{\link{Inf}}.
 
 \code{progress = TRUE}: Display a progress bar.
-}
-\examples{
-path_package <- path.package(package = "zhaoy", quiet = FALSE)
-mtcarz <- file.path(path_package, "data/mtcarz.tsv", fsep = "/")
-dir <- dirname(path = mtcarz)
-base <- basename(path = mtcarz)
-setwd(dir = dir)
-import_tsv(criterion = base, file = base, guess_max = 10)
 }
 \seealso{
 \code{\link{import_excel}}

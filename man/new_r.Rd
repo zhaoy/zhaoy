@@ -4,7 +4,7 @@
 \alias{new_r}
 \title{new_r}
 \usage{
-\code{new_r()}
+new_r()
 }
 \value{
 A data-frame.

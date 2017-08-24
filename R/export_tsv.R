@@ -4,7 +4,7 @@
 #' Execute readr::\code{\link{write_tsv}} with pre-set values in some arguments.
 #'
 #' @usage
-#' \code{export_tsv(x, folder)}
+#' export_tsv(x, folder)
 #'
 #' @param x A data-frame to write to disk.
 #' @param folder Path or connection to the folder that will store the data-frame.

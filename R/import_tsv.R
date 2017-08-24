@@ -5,7 +5,7 @@
 #' Convert column names and categorical data to lower-case.
 #'
 #' @usage
-#' \code{import_tsv(criterion, file, guess_max = 10)}
+#' import_tsv(criterion, file, guess_max)
 #'
 #' @param criterion \code{criterion} argument of rprojroot::\code{\link{find_root}}.
 #' @param file Path to a file, excluding the root directory.
@@ -43,14 +43,6 @@
 #' @import readr rprojroot
 #'
 #' @export
-#'
-#' @examples
-#' path_package <- path.package(package = "zhaoy", quiet = FALSE)
-#' mtcarz <- file.path(path_package, "data/mtcarz.tsv", fsep = "/")
-#' dir <- dirname(path = mtcarz)
-#' base <- basename(path = mtcarz)
-#' setwd(dir = dir)
-#' import_tsv(criterion = base, file = base, guess_max = 10)
 
 import_tsv <- function(criterion,
                        file,
@@ -80,7 +72,7 @@ import_tsv <- function(criterion,
   names(x = x) <- tolower(x = names(x = x))
 
   x <- lapply(X = x,
-              FUN = to_lower)
+              FUN = tolower)
 
   as.data.frame(x = x,
                 row.names = NULL,

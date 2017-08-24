@@ -4,7 +4,7 @@
 #' new_r
 #'
 #' @usage
-#' \code{new_r()}
+#' new_r()
 #'
 #' @return A data-frame.
 #'

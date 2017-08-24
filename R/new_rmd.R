@@ -4,7 +4,7 @@
 #' new_rmd
 #'
 #' @usage
-#' \code{new_rmd()}
+#' new_rmd()
 #'
 #' @return A data-frame.
 #'

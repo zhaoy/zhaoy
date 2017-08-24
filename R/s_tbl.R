@@ -4,7 +4,7 @@
 #' Tabulate summary statistics of columns or tables.
 #'
 #' @usage
-#' \code{s_tbl(x)}
+#' s_tbl(x)
 #'
 #' @param x a column or table for which a summary is desired.
 #'

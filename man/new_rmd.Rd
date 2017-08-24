@@ -4,7 +4,7 @@
 \alias{new_rmd}
 \title{new_rmd}
 \usage{
-\code{new_rmd()}
+new_rmd()
 }
 \value{
 A data-frame.

@@ -4,7 +4,7 @@
 \alias{import_excel}
 \title{Read xls and xlsx files.}
 \usage{
-\code{import_excel(criterion, path, sheet = NULL, range = NULL, guess_max = 10)}
+import_excel(criterion, path, sheet = NULL, range = NULL, guess_max)
 }
 \arguments{
 \item{criterion}{\code{criterion} argument of rprojroot::\code{\link{find_root}}.}
@@ -38,14 +38,6 @@ The readxl::\code{\link{read_excel}} pre-set argument values are
 \code{skip = 0}: The minimum number of rows to skip before reading anything is 0.
 
 \code{n_max = Inf}: The maximum number of data rows to read is \code{\link{Inf}}.
-}
-\examples{
-library(package = readxl)
-datasets <- readxl_example(path = "datasets.xlsx")
-dir <- dirname(path = datasets)
-base <- basename(path = datasets)
-setwd(dir = dir)
-import_excel(criterion = base, path = base, guess_max = 10)
 }
 \seealso{
 \code{\link{import_tsv}}

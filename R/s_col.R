@@ -5,7 +5,7 @@
 #' Displays column values in ascending order, beginning with any NAs.
 #'
 #' @usage
-#' \code{s_col(x)}
+#' s_col(x)
 #'
 #' @param x a column for which a summary of values is desired.
 #'

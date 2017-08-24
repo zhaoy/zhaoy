@@ -4,7 +4,7 @@
 \alias{s_col}
 \title{Column-value summaries}
 \usage{
-\code{s_col(x)}
+s_col(x)
 }
 \arguments{
 \item{x}{a column for which a summary of values is desired.}

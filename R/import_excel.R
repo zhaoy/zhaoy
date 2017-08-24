@@ -5,7 +5,7 @@
 #' Convert column names and categorical data to lower-case.
 #'
 #' @usage
-#' \code{import_excel(criterion, path, sheet = NULL, range = NULL, guess_max = 10)}
+#' import_excel(criterion, path, sheet = NULL, range = NULL, guess_max)
 #'
 #' @param criterion \code{criterion} argument of rprojroot::\code{\link{find_root}}.
 #' @param path Path to the xls / xlsx file, excluding the root directory.
@@ -35,14 +35,6 @@
 #' @import readxl rprojroot
 #'
 #' @export
-#'
-#' @examples
-#' library(package = readxl)
-#' datasets <- readxl_example(path = "datasets.xlsx")
-#' dir <- dirname(path = datasets)
-#' base <- basename(path = datasets)
-#' setwd(dir = dir)
-#' import_excel(criterion = base, path = base, guess_max = 10)
 
 import_excel <- function(criterion,
                          path,
@@ -71,7 +63,7 @@ import_excel <- function(criterion,
   names(x = x) <- tolower(x = names(x = x))
 
   x <- lapply(X = x,
-              FUN = to_lower)
+              FUN = tolower)
 
   as.data.frame(x = x,
                 row.names = NULL,

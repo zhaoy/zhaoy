@@ -4,7 +4,7 @@
 \alias{export_tsv}
 \title{Write a data-frame to a tsv file.}
 \usage{
-\code{export_tsv(x, folder)}
+export_tsv(x, folder)
 }
 \arguments{
 \item{x}{A data-frame to write to disk.}
