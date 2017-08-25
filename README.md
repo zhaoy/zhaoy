@@ -1,4 +1,4 @@
-functions for importing, transforming, and exporting data
+functions for importing, transforming, visualizing, and exporting data
 
 # import
 
@@ -21,6 +21,10 @@ functions for importing, transforming, and exporting data
 **date_tbl**
 
 **tidy_pel**
+
+# visualize
+
+**s_hiv**
 
 # export
 

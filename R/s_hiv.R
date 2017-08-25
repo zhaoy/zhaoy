@@ -20,6 +20,18 @@
 
 s_hiv <- function(df, date, cd4, vl, med) {
 
+  y_max_cd4 <- max(cd4,
+                   na.rm = TRUE)
+
+  y_max_vl <- max(vl / 0.003,
+                  na.rm = TRUE)
+
+  y_max <- max(y_max_cd4,
+               y_max_vl,
+               na.rm = TRUE)
+
+  y_max <- y_max + 500
+
   ggplot2::ggplot(data = df,
                   mapping = aes(x = date,
                                 y = cd4)) +
@@ -43,13 +55,15 @@ s_hiv <- function(df, date, cd4, vl, med) {
                color = "#D55E00",
                linetype = "dashed") +
     coord_cartesian(ylim = c(0,
-                             1000)) +
+                             y_max)) +
+    scale_x_date(date_breaks = "month",
+                 labels = date_format("%b %Y")) +
     scale_y_continuous(breaks = seq(from = 0,
-                                    to = 1000,
+                                    to = y_max,
                                     by = 100),
                        sec.axis = sec_axis(trans = ~. * 0.003,
                                            breaks = seq(from = 0,
-                                                        to = 3,
+                                                        to = y_max * 0.003,
                                                         by = 0.5),
                                            name = "viral load (millions)")) +
     labs(x = "year",
@@ -69,14 +83,6 @@ s_hiv <- function(df, date, cd4, vl, med) {
                                      face = "bold"),
           legend.title = element_blank()) +
     scale_color_manual(values = c("#56B4E9",
-                                  "#009E73")) +
-    ggrepel::geom_label_repel(mapping = aes(y = cd4,
-                                            label = med),
-                              color = "black",
-                              size = 4) +
-    ggrepel::geom_label_repel(mapping = aes(y = vl / 0.003,
-                                            label = med),
-                              color = "black",
-                              size = 4)
+                                  "#009E73"))
 
 }
