@@ -9,7 +9,7 @@ zhaoy_mode <- function(x) {
   if (all(x_table == x_max,
           na.rm = TRUE) == TRUE) {
 
-    x <- NA
+    x <- "none"
 
   } else {
 

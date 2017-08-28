@@ -6,19 +6,19 @@ functions for importing, transforming, visualizing, and exporting data
 
 **import_tsv**
 
-**new_r()**
+**new_r**
 
-**new_rmd()**
+**new_rmd**
 
 # transform
+
+**date_tbl**
 
 **lz_mrn**
 
 **s_col**
 
 **s_tbl**
-
-**date_tbl**
 
 **tidy_pel**
 

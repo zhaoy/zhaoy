@@ -9,17 +9,17 @@ s_hiv(df, date, cd4, vl, med)
 \arguments{
 \item{df}{a table for which a summary is desired.}
 
-\item{date}{a column of dates}
+\item{date}{a column of dates.}
 
-\item{cd4}{a column of cd4 counts}
+\item{cd4}{a column of cd4 counts.}
 
-\item{vl}{a column of viral loads}
+\item{vl}{a column of viral loads.}
 
-\item{med}{a column of drug names}
+\item{med}{a column of drug names.}
 }
 \value{
 A graph.
 }
 \description{
-Graphs cd4 counts, viral loads in millions, and drug names, over time.
+Graphs cd4 counts, viral loads in millions, and medication names, over time.
 }
