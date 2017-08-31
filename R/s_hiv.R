@@ -4,13 +4,14 @@
 #' Graphs cd4 counts, viral loads in millions, and medication names, over time.
 #'
 #' @usage
-#' s_hiv(df, date, cd4, vl, med)
+#' s_hiv(lab_df, lab_date, cd4, vl, med_df, med_date)
 #'
-#' @param df a table for which a summary is desired.
-#' @param date a column of dates.
+#' @param lab_df a table of lab data.
+#' @param lab_date a column of dates.
 #' @param cd4 a column of cd4 counts.
 #' @param vl a column of viral loads.
-#' @param med a column of drug names.
+#' @param med_df a column of drug names.
+#' @param med_date a column of dates.
 #'
 #' @return A graph.
 #'
@@ -18,15 +19,20 @@
 #'
 #' @export
 
-s_hiv <- function(df, date, cd4, vl, med) {
+s_hiv <- function(lab_df,
+                  lab_date,
+                  cd4,
+                  vl,
+                  med_df,
+                  med_date) {
 
-  date <- df[, date]
+  lab_date <- lab_df[, lab_date]
 
-  cd4 <- df[, cd4]
+  cd4 <- lab_df[, cd4]
 
-  vl <- df[, vl]
+  vl <- lab_df[, vl]
 
-  med <- df[, med]
+  med_date <- med_df[, med_date]
 
   y_max_cd4 <- max(cd4,
                    na.rm = TRUE)
@@ -40,39 +46,51 @@ s_hiv <- function(df, date, cd4, vl, med) {
 
   y_max <- y_max + 350
 
-  df$txt <- rep(x = y_max - 100,
-                times = nrow(x = df))
+  med_df$txt <- rep(x = y_max - 100,
+                    times = nrow(x = med_df))
 
-  ggplot2::ggplot(data = df,
-                  mapping = aes(x = date,
-                                y = cd4)) +
-    geom_line(mapping = aes(y = cd4,
+  ggplot2::ggplot() +
+    geom_line(data = lab_df,
+              mapping = aes(x = lab_date,
+                            y = cd4,
                             color = "cd4 count"),
               na.rm = FALSE,
               size = 1) +
-    geom_point(mapping = aes(y = cd4),
+    geom_point(data = lab_df,
+               mapping = aes(x = lab_date,
+                             y = cd4),
                size = 2,
                shape = 21,
                fill = "white") +
-    geom_line(mapping = aes(y = vl / 0.003,
+    geom_line(data = lab_df,
+              mapping = aes(x = lab_date,
+                            y = vl / 0.003,
                             color = "viral load"),
               na.rm = FALSE,
               size = 1) +
-    geom_point(mapping = aes(y = vl / 0.003),
+    geom_point(data = lab_df,
+               mapping = aes(x = lab_date,
+                             y = vl / 0.003),
                size = 2,
                shape = 21,
                fill = "white") +
-    geom_line(mapping = aes(y = txt),
+    geom_line(data = med_df,
+              mapping = aes(x = med_date,
+                            y = txt),
               na.rm = FALSE,
               size = 1) +
-    geom_point(mapping = aes(y = txt),
+    geom_point(data = med_df,
+               mapping = aes(x = med_date,
+                             y = txt),
                size = 2,
                shape = 21,
                fill = "white") +
-    geom_hline(mapping = aes(yintercept = 200),
+    geom_hline(data = lab_df,
+               mapping = aes(yintercept = 200),
                color = "#D55E00",
                linetype = "dashed") +
-    scale_y_continuous(breaks = seq(from = 0,
+    scale_y_continuous(data = lab_df,
+                       breaks = seq(from = 0,
                                     to = y_max,
                                     by = 100),
                        sec.axis = sec_axis(trans = ~. * 0.003,
@@ -99,8 +117,6 @@ s_hiv <- function(df, date, cd4, vl, med) {
                                      face = "bold"),
           legend.title = element_blank()) +
     scale_color_manual(values = c("#56B4E9",
-                                  "#009E73")) +
-    ggrepel::geom_text_repel(mapping = aes(y = txt,
-                                           label = med))
+                                  "#009E73"))
 
 }

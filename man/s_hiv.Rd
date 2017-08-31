@@ -4,18 +4,20 @@
 \alias{s_hiv}
 \title{HIV status summaries}
 \usage{
-s_hiv(df, date, cd4, vl, med)
+s_hiv(lab_df, lab_date, cd4, vl, med_df, med_date)
 }
 \arguments{
-\item{df}{a table for which a summary is desired.}
+\item{lab_df}{a table of lab data.}
 
-\item{date}{a column of dates.}
+\item{lab_date}{a column of dates.}
 
 \item{cd4}{a column of cd4 counts.}
 
 \item{vl}{a column of viral loads.}
 
-\item{med}{a column of drug names.}
+\item{med_df}{a column of drug names.}
+
+\item{med_date}{a column of dates.}
 }
 \value{
 A graph.
