@@ -1,8 +1,8 @@
 #' Column-value summaries
 #'
 #' @description
-#' Tabulate counts and percentages of column values.
-#' Displays column values in ascending order, beginning with any NAs.
+#' Tabulate counts and percentages of values from a column.
+#' Displays values in ascending order, beginning with any NAs.
 #'
 #' @usage
 #' s_col(x)
@@ -20,7 +20,8 @@
 
 s_col <- function(x) {
 
-  stopifnot(is.factor(x = x) | is.vector(x = x))
+  stopifnot(is.factor(x = x) == TRUE |
+            is.vector(x = x) == TRUE)
 
   n <- table(x,
              useNA = "ifany")
@@ -48,8 +49,10 @@ s_col <- function(x) {
 
   names(x = x)[names(x = x) == "Freq.1"] <- "pct"
 
-  x[order(x$value,
-          decreasing = FALSE,
-          na.last = FALSE), ]
+  x_order <- order(x$value,
+                   decreasing = FALSE,
+                   na.last = FALSE)
+
+  x[x_order, ]
 
 }

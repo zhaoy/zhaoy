@@ -13,8 +13,8 @@ s_col(x)
 A table.
 }
 \description{
-Tabulate counts and percentages of column values.
-Displays column values in ascending order, beginning with any NAs.
+Tabulate counts and percentages of values from a column.
+Displays values in ascending order, beginning with any NAs.
 }
 \examples{
 s_col(x = attenu$station)
