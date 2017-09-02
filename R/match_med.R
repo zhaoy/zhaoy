@@ -1,19 +1,24 @@
-#' @import magrittr purrr
+#' @import purrr
 
-med_match <- function(ref,
+match_med <- function(ref,
                       brand,
                       generic,
-                      data,
                       med) {
 
   brand <- ref[, brand]
 
   generic <- ref[, generic]
 
-  med <- data[, med]
+  ref <- data.frame(brand,
+                    generic,
+                    row.names = NULL,
+                    check.rows = TRUE,
+                    check.names = TRUE,
+                    fix.empty.names = TRUE,
+                    stringsAsFactors = FALSE)
 
-  generic <- generic %>%
-    gsub(pattern = "[+-]",
+  ref$generic <- ref$generic %>%
+    gsub(pattern = "[+-/()]",
          replace = " ") %>%
     strsplit(split = "\\s") %>%
     map(.f = grep,
@@ -23,59 +28,70 @@ med_match <- function(ref,
         decreasing = FALSE,
         na.last = FALSE)
 
-  generic_length <- generic %>%
+  ref$generic_length <- ref$generic %>%
     map(.f = length) %>%
     unlist
 
-  ref <- data.frame(brand,
-                    generic,
-                    generic_length,
-                    row.names = NULL,
-                    check.rows = TRUE,
-                    check.names = TRUE,
-                    fix.empty.names = TRUE,
-                    stringsAsFactors = FALSE)
-
-  pattern <- "\\D[^capsule{7, 7}gram{4, 4}mg{2, 2}tab{3, 3}tablet{6, 6}]"
-
   med <- med %>%
-  gsub(pattern = "[+-]",
-       replacement = " ") %>%
-  strsplit(split = "\\s") %>%
-  map(.f = grep,
-      pattern = pattern,
-      value = TRUE) %>%
-  map(.f = sort,
-      decreasing = FALSE,
-      na.last = FALSE)
+    gsub(pattern = "[+-/()]",
+         replacement = " ") %>%
+    strsplit(split = "\\s") %>%
+    map(.f = grep,
+        pattern = "\\D",
+        value = TRUE) %>%
+    map(.f = function(x) x[x %in% c(ref$brand,
+                                    unlist(x = ref$generic)) == TRUE]) %>%
+    map(.f = sort,
+        decreasing = FALSE,
+        na.last = FALSE) %>%
+    unlist
 
-  match_med <- map_lgl(.x = ref$generic,
+  match_med <- map_lgl(.x = ref$brand,
                        .f = function(x) all(med %in% x == TRUE,
-                                            na.rm = FALSE) == TRUE)
+                                            na.rm = FALSE))
 
-  match_med <- which(x = match_med == TRUE)
+  if (any(match_med == TRUE,
+          na.rm = FALSE) == TRUE) {
 
-  if (length(x = match_med) == 1) {
+    match_med <- which(x = match_med == TRUE)
 
-    match_med <- brand[match_med]
+    match_med <- ref$brand[match_med]
+
   }
 
-  if (length(x = match_med) > 1) {
+  if (any(match_med == TRUE,
+          na.rm = FALSE) == FALSE) {
 
-    match_med_1 <- brand[match_med]
+    match_med <- map_lgl(.x = ref$generic,
+                         .f = function(x) all(med %in% x == TRUE,
+                                              na.rm = FALSE))
 
-    match_med_2 <- generic_length[brand %in% match_med_1]
+    match_med <- which(x = match_med == TRUE)
 
-    if (1 %in% match_med_2 == TRUE) {
+    if (length(x = match_med) == 1) {
 
-      match_med <- match_med_1[match_med_2 == 1]
+      match_med <- ref$brand[match_med]
 
     }
 
-    if (1 %in% match_med_2 == FALSE) {
+    if (length(x = match_med) > 1) {
 
-      match_med <- match_med_1[match_med_2 == min(match_med_2,
-                                                  na.rm = FALSE)]
+      match_med_1 <- ref$brand[match_med]
+
+      match_med_2 <- ref$generic_length[ref$brand %in% match_med_1]
+
+      if (1 %in% match_med_2 == TRUE) {
+
+        match_med <- match_med_1[match_med_2 == 1]
+
+      }
+
+      if (1 %in% match_med_2 == FALSE) {
+
+        match_med <- match_med_1[match_med_2 == min(match_med_2,
+                                                    na.rm = FALSE)]
+
+      }
 
     }
 
@@ -84,13 +100,3 @@ med_match <- function(ref,
   return(value = match_med)
 
 }
-
-match_med_list <- list(med = med$med_name,
-                       med_length = med$med_name_length)
-
-med$match_med <- pmap(.l = match_med_list,
-                      .f = match_med,
-                      brand = map$drug,
-                      generic = map$generic.name,
-                      generic_length = map$generic.name_length) %>%
-  unlist

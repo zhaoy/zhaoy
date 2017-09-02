@@ -4,7 +4,7 @@ Title: miscellaneous functions
 Description: Functions for importing, transforming, visualizing, and exporting data. 
 Date: 2017-8-28
 Version: 0.0.1
-Imports: ggplot2, ggrepel, magrittr, purrr, readr, readxl, rprojroot, stats, utils
+Imports: ggplot2, ggrepel, purrr, readr, readxl, rprojroot, stats, utils
 LazyData: true
 Author: zhaoy zhaoy <zhaoy@users.noreply.github.com>
 Maintainer: zhaoy zhaoy <zhaoy@users.noreply.github.com>
