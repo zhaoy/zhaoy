@@ -16,7 +16,7 @@ A table.
 Tabulate summary statistics of columns or tables.
 }
 \details{
-The output are:
+The outputs are:
 
 col: column name, displayed only if the input is a table
 
@@ -31,8 +31,8 @@ pct_unique: percent of column that are unique values
 min, max, median, mode, mean
 }
 \examples{
-s_tbl(x = attenu)
 s_tbl(x = attenu$station)
+s_tbl(x = attenu)
 }
 \seealso{
 \code{\link{s_col}}

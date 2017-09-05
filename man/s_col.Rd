@@ -7,7 +7,7 @@
 s_col(x)
 }
 \arguments{
-\item{x}{a column for which a summary of values is desired.}
+\item{x}{a column for which a summary is desired.}
 }
 \value{
 A table.

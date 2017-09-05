@@ -7,7 +7,7 @@
 #' @usage
 #' s_col(x)
 #'
-#' @param x a column for which a summary of values is desired.
+#' @param x a column for which a summary is desired.
 #'
 #' @return A table.
 #'

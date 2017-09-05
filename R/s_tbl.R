@@ -11,7 +11,7 @@
 #' @return A table.
 #'
 #' @details
-#' The output are:
+#' The outputs are:
 #'
 #' col: column name, displayed only if the input is a table
 #'
@@ -30,8 +30,8 @@
 #' @export
 #'
 #' @examples
-#' s_tbl(x = attenu)
 #' s_tbl(x = attenu$station)
+#' s_tbl(x = attenu)
 
 s_tbl <- function(x) {
 
@@ -56,8 +56,7 @@ s_tbl <- function(x) {
                    FUN = function(x) sum(is.na(x = x) == TRUE,
                                          na.rm = FALSE))
 
-  n_miss <- unlist(x = n_miss,
-                   use.names = FALSE)
+  n_miss <- unlist(x = n_miss)
 
   pct_miss <- n_miss / nrow(x = x) * 100
 
@@ -65,40 +64,34 @@ s_tbl <- function(x) {
                      FUN = function(x) length(x = unique(x = x,
                                                          incomparables = FALSE)))
 
-  n_unique <- unlist(x = n_unique,
-                     use.names = FALSE)
+  n_unique <- unlist(x = n_unique)
 
   pct_unique <- n_unique / nrow(x = x) * 100
 
   x_min <- lapply(X = x,
                   FUN = zhaoy_min)
 
-  x_min <- unlist(x = x_min,
-                  use.names = FALSE)
+  x_min <- unlist(x = x_min)
 
   x_max <- lapply(X = x,
                   FUN = zhaoy_max)
 
-  x_max <- unlist(x = x_max,
-                  use.names = FALSE)
+  x_max <- unlist(x = x_max)
 
   x_median <- lapply(X = x,
                      FUN = zhaoy_median)
 
-  x_median <- unlist(x = x_median,
-                     use.names = FALSE)
+  x_median <- unlist(x = x_median)
 
   x_mean <- lapply(X = x,
                    FUN = zhaoy_mean)
 
-  x_mean <- unlist(x = x_mean,
-                   use.names = FALSE)
+  x_mean <- unlist(x = x_mean)
 
   x_mode <- lapply(X = x,
                    FUN = zhaoy_mode)
 
-  x_mode <- unlist(x = x_mode,
-                   use.names = FALSE)
+  x_mode <- unlist(x = x_mode)
 
   x <- data.frame(col,
                   n_miss,

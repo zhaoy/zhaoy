@@ -14,7 +14,9 @@ functions for importing, transforming, visualizing, and exporting data
 
 **date_tbl**
 
-**lz_mrn**
+**lz_id**
+
+**match_med**
 
 **s_col**
 
