@@ -11,7 +11,8 @@ conflicts(where = search(),
 # Import raw data.
 
 # View raw data.
-# str()
-# s_tbl()
-# s_col()
+
+# str
+# s_tbl
+# s_col
 

@@ -1,18 +1,18 @@
 ---
-title: template
-fontsize: 12pt
 output:
   html_document:
+    fig_caption: yes
     smart: no
     toc: yes
     toc_depth: 6
+fontsize: 12pt
+title: "template"
 ---
 
 Load global chunk options.
 
 ```{r}
-knitr::opts_chunk$set(comment = "",
-                      message = FALSE)
+knitr::opts_chunk$set(comment = "")
 ```
 
 Load packages in order of use.
@@ -34,7 +34,7 @@ Import raw data.
 View raw data.
 
 ```{r}
-# str()
-# s_tbl()
-# s_col()
+# str
+# s_tbl
+# s_col
 ```
