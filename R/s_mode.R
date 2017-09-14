@@ -1,4 +1,23 @@
-zhaoy_mode <- function(x) {
+#' Mathematical mode
+#'
+#' @description
+#' Calculate mode.
+#'
+#' @usage
+#' s_mode(x)
+#'
+#' @param x a column.
+#'
+#' @return A number.
+#'
+#' @seealso \code{\link{s_col}} \code{\link{s_tbl}}
+#'
+#' @export
+#'
+#' @examples
+#' s_mode(x = attenu$dist)
+
+s_mode <- function(x) {
 
   x_table <- table(x,
                    useNA = "ifany")
@@ -20,12 +39,6 @@ zhaoy_mode <- function(x) {
       x_mode <- as.numeric(x = x_mode)
 
     }
-
-  }
-
-  if (length(x = x_mode) > 1) {
-
-    x_mode <- "multi"
 
   }
 

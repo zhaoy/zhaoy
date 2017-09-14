@@ -20,6 +20,8 @@ functions for importing, transforming, visualizing, and exporting data
 
 **s_col**
 
+**s_mode**
+
 **s_tbl**
 
 **tidy_pel**
