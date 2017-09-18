@@ -28,7 +28,7 @@ functions for importing, transforming, visualizing, and exporting data
 
 # visualize
 
-**s_hiv**
+**v_hiv**
 
 # export
 
