@@ -1,8 +1,8 @@
-#' Column-value summaries
+#' Column summaries
 #'
 #' @description
-#' Tabulate counts and percentages of values from a column.
-#' Displays values in ascending order, beginning with any NAs.
+#' Tabulates counts and percentages of values that are in columns.
+#' Displays the values in ascending order, beginning with any \code{\link{NA}}s.
 #'
 #' @usage
 #' s_col(x)
@@ -11,7 +11,7 @@
 #'
 #' @return A table.
 #'
-#' @seealso \code{\link{s_tbl}}
+#' @seealso \code{\link{s_mode} \link{s_tbl}}
 #'
 #' @export
 #'

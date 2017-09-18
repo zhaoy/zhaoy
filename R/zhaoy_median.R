@@ -9,7 +9,7 @@ zhaoy_median <- function(x) {
 
   } else {
 
-    return(value = NA)
+    return(value = "NOT num")
 
   }
 

@@ -13,7 +13,7 @@
 #' @details
 #' The outputs are:
 #'
-#' col: column name, displayed only if the input is a table
+#' col: column name, displayed only if input is a table
 #'
 #' n_miss: number of missing data
 #'
@@ -25,7 +25,9 @@
 #'
 #' min, max, median, mode, mean
 #'
-#' @seealso \code{\link{s_col}}
+#' @seealso \code{\link{s_col} \link{s_mode}}
+#'
+#' @import purrr
 #'
 #' @export
 #'
@@ -46,52 +48,39 @@ s_tbl <- function(x) {
                        row.names = NULL,
                        stringsAsFactors = FALSE,
                        cut.names = TRUE,
+                       col.names = names(x = x),
                        fix.empty.names = TRUE)
 
   }
 
   col <- names(x = x)
 
-  n_miss <- lapply(X = x,
-                   FUN = function(x) sum(is.na(x = x) == TRUE,
+  n_miss <- map_int(.x = x,
+                    .f = function(x) sum(is.na(x = x) == TRUE,
                                          na.rm = FALSE))
 
-  n_miss <- unlist(x = n_miss)
-
   pct_miss <- n_miss / nrow(x = x) * 100
-
-  n_unique <- lapply(X = x,
-                     FUN = function(x) length(x = unique(x = x,
+  
+  n_unique <- map_int(.x = x,
+                      .f = function(x) length(x = unique(x = x,
                                                          incomparables = FALSE)))
-
-  n_unique <- unlist(x = n_unique)
 
   pct_unique <- n_unique / nrow(x = x) * 100
 
-  x_min <- lapply(X = x,
-                  FUN = zhaoy_min)
-
-  x_min <- unlist(x = x_min)
-
-  x_max <- lapply(X = x,
-                  FUN = zhaoy_max)
-
-  x_max <- unlist(x = x_max)
-
-  x_median <- lapply(X = x,
-                     FUN = zhaoy_median)
-
-  x_median <- unlist(x = x_median)
-
-  x_mean <- lapply(X = x,
-                   FUN = zhaoy_mean)
-
-  x_mean <- unlist(x = x_mean)
-
-  x_mode <- lapply(X = x,
-                   FUN = zhaoy_mode)
-
-  x_mode <- unlist(x = x_mode)
+  x_min <- map(.x = x,
+               .f = zhaoy_min)
+  
+  x_max <- map(.x = x,
+               .f = zhaoy_max)
+  
+  x_median <- map(.x = x,
+                  .f = zhaoy_median)
+  
+  x_mode <- map(.x = x,
+                .f = zhaoy_mode)
+  
+  x_mean <- map(.x = x,
+                .f = zhaoy_mean)
 
   x <- data.frame(col,
                   n_miss,
@@ -107,29 +96,18 @@ s_tbl <- function(x) {
                   check.rows = TRUE,
                   check.names = TRUE,
                   fix.empty.names = TRUE,
-                  stringsAsFactors = FALSE)
+                  stringsAsFactors = FALSE) %>%
+    map(.f = unlist)
 
   x[, c("pct_miss",
         "pct_unique",
         "median",
-        "mean")] <- lapply(X = x[, c("pct_miss",
-                                     "pct_unique",
-                                     "median",
-                                     "mean")],
-                           FUN = round,
-                           digits = 1)
-
-  x[, c("pct_miss",
-        "pct_unique",
-        "median",
-        "mean")] <- as.data.frame(x = x[, c("pct_miss",
-                                            "pct_unique",
-                                            "median",
-                                            "mean")],
-                                  row.names = NULL,
-                                  stringsAsFactors = FALSE,
-                                  cut.names = TRUE,
-                                  fix.empty.names = TRUE)
+        "mean")] <- map_dfc(.x = x[, c("pct_miss",
+                                      "pct_unique",
+                                      "median",
+                                      "mean")],
+                            .f = round,
+                            digits = 1)
 
   if (nrow(x = x) == 1) {
 

@@ -1,21 +1,21 @@
-#' Mathematical mode
+#' Statistical mode
 #'
 #' @description
-#' Calculate mode.
+#' Calculates mathematical mode.
 #'
 #' @usage
 #' s_mode(x)
 #'
-#' @param x a column.
+#' @param x a column for which a summary is desired.
 #'
-#' @return A number.
+#' @return An object of type \code{\link{numeric}}.
 #'
-#' @seealso \code{\link{s_col}} \code{\link{s_tbl}}
-#'
-#' @export
+#' @seealso \code{\link{s_col} \link{s_tbl}}
 #'
 #' @examples
 #' s_mode(x = attenu$dist)
+#' 
+#' @export
 
 s_mode <- function(x) {
 

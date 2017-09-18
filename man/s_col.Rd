@@ -2,7 +2,7 @@
 % Please edit documentation in R/s_col.R
 \name{s_col}
 \alias{s_col}
-\title{Column-value summaries}
+\title{Column summaries}
 \usage{
 s_col(x)
 }
@@ -13,12 +13,12 @@ s_col(x)
 A table.
 }
 \description{
-Tabulate counts and percentages of values from a column.
-Displays values in ascending order, beginning with any NAs.
+Tabulates counts and percentages of values that are in columns.
+Displays the values in ascending order, beginning with any \code{\link{NA}}s.
 }
 \examples{
 s_col(x = attenu$station)
 }
 \seealso{
-\code{\link{s_tbl}}
+\code{\link{s_mode} \link{s_tbl}}
 }

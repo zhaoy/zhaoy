@@ -2,22 +2,23 @@
 % Please edit documentation in R/s_mode.R
 \name{s_mode}
 \alias{s_mode}
-\title{Mathematical mode}
+\title{Statistical mode}
 \usage{
 s_mode(x)
 }
 \arguments{
-\item{x}{a column.}
+\item{x}{a column for which a summary is desired.}
 }
 \value{
-A number.
+An object of type \code{\link{numeric}}.
 }
 \description{
-Calculate mode.
+Calculates mathematical mode.
 }
 \examples{
 s_mode(x = attenu$dist)
+
 }
 \seealso{
-\code{\link{s_col}} \code{\link{s_tbl}}
+\code{\link{s_col} \link{s_tbl}}
 }

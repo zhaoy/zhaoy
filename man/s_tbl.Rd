@@ -18,7 +18,7 @@ Tabulate summary statistics of columns or tables.
 \details{
 The outputs are:
 
-col: column name, displayed only if the input is a table
+col: column name, displayed only if input is a table
 
 n_miss: number of missing data
 
@@ -35,5 +35,5 @@ s_tbl(x = attenu$station)
 s_tbl(x = attenu)
 }
 \seealso{
-\code{\link{s_col}}
+\code{\link{s_col} \link{s_mode}}
 }
