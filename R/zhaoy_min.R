@@ -7,7 +7,7 @@ zhaoy_min <- function(x) {
 
   } else {
 
-    return(value = "NOT num")
+    return(value = NA)
 
   }
 

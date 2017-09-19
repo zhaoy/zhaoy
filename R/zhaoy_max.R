@@ -7,7 +7,7 @@ zhaoy_max <- function(x) {
 
   } else {
 
-    return(value = "NOT num")
+    return(value = NA)
 
   }
 

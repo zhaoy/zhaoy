@@ -28,7 +28,9 @@ n_unique: number of unique values
 
 pct_unique: percent of column that are unique values
 
-min, max, median, mode, mean
+min, max, median, mean: if data is non-numeric, these statistics are NA in the sense that they're missing
+
+mode: mode can be NA only in the sense that NA is the most frequent value in the data
 }
 \examples{
 s_tbl(x = attenu$station)

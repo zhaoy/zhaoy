@@ -1,4 +1,4 @@
-#' @import stats
+#' @importFrom stats median
 
 zhaoy_median <- function(x) {
 
@@ -9,7 +9,7 @@ zhaoy_median <- function(x) {
 
   } else {
 
-    return(value = "NOT num")
+    return(value = NA)
 
   }
 

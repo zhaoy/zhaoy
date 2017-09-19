@@ -8,7 +8,7 @@ zhaoy_mean <- function(x) {
 
   } else {
 
-    return(value = "NOT num")
+    return(value = NA)
 
   }
 

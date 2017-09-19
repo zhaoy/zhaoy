@@ -2,7 +2,7 @@ library(package = DBI)
 
 con <- DBI::dbConnect(drv = odbc::odbc(),
                       Driver = "[your driver's name]",
-                      Host = "[your server's path]",
+                      Host = "bmic-odb.mdc.musc.edu",
                       SVC = "[your schema's name]",
                       UID = rstudioapi::askForPassword("Database user"),
                       PWD = rstudioapi::askForPassword("Database password"),

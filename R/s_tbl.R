@@ -23,11 +23,14 @@
 #'
 #' pct_unique: percent of column that are unique values
 #'
-#' min, max, median, mode, mean
+#' min, max, median, mean: if data is non-numeric, these statistics are NA in the sense that they're missing
+#' 
+#' mode: mode can be NA only in the sense that NA is the most frequent value in the data
 #'
 #' @seealso \code{\link{s_col} \link{s_mode}}
 #'
 #' @import purrr
+#' @importFrom dplyr case_when
 #'
 #' @export
 #'
@@ -40,7 +43,7 @@ s_tbl <- function(x) {
   stopifnot(is.data.frame(x = x) |
             is.factor(x = x) |
             is.vector(x = x))
-
+  
   if (is.factor(x = x) == TRUE |
       is.vector(x = x) == TRUE) {
 
@@ -48,11 +51,10 @@ s_tbl <- function(x) {
                        row.names = NULL,
                        stringsAsFactors = FALSE,
                        cut.names = TRUE,
-                       col.names = names(x = x),
                        fix.empty.names = TRUE)
 
   }
-
+  
   col <- names(x = x)
 
   n_miss <- map_int(.x = x,
@@ -67,20 +69,25 @@ s_tbl <- function(x) {
 
   pct_unique <- n_unique / nrow(x = x) * 100
 
-  x_min <- map(.x = x,
-               .f = zhaoy_min)
+  x_min <- x %>%
+    map(.f = zhaoy_min) %>%
+    unlist
   
-  x_max <- map(.x = x,
-               .f = zhaoy_max)
+  x_max <- x %>%
+    map(.f = zhaoy_max) %>%
+    unlist
   
-  x_median <- map(.x = x,
-                  .f = zhaoy_median)
+  x_median <- x %>%
+    map(.f = zhaoy_median) %>%
+    unlist
   
-  x_mode <- map(.x = x,
-                .f = zhaoy_mode)
+  x_mode <- x %>%
+    map(.f = zhaoy_mode) %>%
+    unlist
   
-  x_mean <- map(.x = x,
-                .f = zhaoy_mean)
+  x_mean <- x %>%
+    map(.f = zhaoy_mean) %>%
+    unlist
 
   x <- data.frame(col,
                   n_miss,
@@ -96,24 +103,38 @@ s_tbl <- function(x) {
                   check.rows = TRUE,
                   check.names = TRUE,
                   fix.empty.names = TRUE,
-                  stringsAsFactors = FALSE) %>%
-    map(.f = unlist)
-
+                  stringsAsFactors = FALSE)
+  
   x[, c("pct_miss",
-        "pct_unique",
-        "median",
-        "mean")] <- map_dfc(.x = x[, c("pct_miss",
-                                      "pct_unique",
-                                      "median",
-                                      "mean")],
-                            .f = round,
-                            digits = 1)
-
+        "pct_unique")] <- x[, c("pct_miss",
+                                "pct_unique")] %>%
+    map(.f = round,
+        digits = 1) %>%
+    as.data.frame(row.names = NULL,
+                  stringsAsFactors = FALSE,
+                  cut.names = TRUE,
+                  col.names = c("pct_miss",
+                                "pct_unique"),
+                  fix.empty.names = TRUE)
+  
+  x[, c("median",
+        "mean")] <- x[, c("median",
+                          "mean")] %>%
+    map(.f = function(x) dplyr::case_when(is.numeric(x = x) == TRUE ~ 
+                                          round(x = x,
+                                                digits = 1))) %>%
+    as.data.frame(row.names = NULL,
+                  stringsAsFactors = FALSE,
+                  cut.names = TRUE,
+                  col.names = c("median",
+                                "mean"),
+                  fix.empty.names = TRUE)
+  
   if (nrow(x = x) == 1) {
-
-    x <- subset(x = x,
+    
+    x <- subset(x  = x,
                 select = -col)
-
+    
   }
 
   return(value = x)
