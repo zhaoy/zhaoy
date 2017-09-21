@@ -7,13 +7,13 @@
 s_mode(x)
 }
 \arguments{
-\item{x}{a column for which a summary is desired.}
+\item{x}{an object for which the mode is desired.}
 }
 \value{
-An object of type \code{\link{numeric}}.
+An object of type \code{\link{character}} or \code{\link{numeric}}.
 }
 \description{
-Calculates mathematical mode.
+Calculates statistical mode.
 }
 \examples{
 s_mode(x = attenu$dist)

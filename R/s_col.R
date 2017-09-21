@@ -13,10 +13,10 @@
 #'
 #' @seealso \code{\link{s_mode} \link{s_tbl}}
 #'
-#' @export
-#'
 #' @examples
 #' s_col(x = attenu$station)
+#' 
+#' @export
 
 s_col <- function(x) {
 

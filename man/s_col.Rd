@@ -18,6 +18,7 @@ Displays the values in ascending order, beginning with any \code{\link{NA}}s.
 }
 \examples{
 s_col(x = attenu$station)
+
 }
 \seealso{
 \code{\link{s_mode} \link{s_tbl}}

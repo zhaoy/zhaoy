@@ -4,8 +4,6 @@ functions for importing, transforming, visualizing, and exporting data
 
 **import_excel**
 
-**import_tsv**
-
 **new_r**
 
 **new_rmd**
@@ -29,7 +27,3 @@ functions for importing, transforming, visualizing, and exporting data
 # visualize
 
 **v_hiv**
-
-# export
-
-**export_tsv**

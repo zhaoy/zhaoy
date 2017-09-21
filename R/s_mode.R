@@ -1,14 +1,14 @@
 #' Statistical mode
 #'
 #' @description
-#' Calculates mathematical mode.
+#' Calculates statistical mode.
 #'
 #' @usage
 #' s_mode(x)
 #'
-#' @param x a column for which a summary is desired.
+#' @param x an object for which the mode is desired.
 #'
-#' @return An object of type \code{\link{numeric}}.
+#' @return An object of type \code{\link{character}} or \code{\link{numeric}}.
 #'
 #' @seealso \code{\link{s_col} \link{s_tbl}}
 #'
