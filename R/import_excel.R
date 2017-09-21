@@ -5,10 +5,10 @@
 #' Convert column names and categorical data to lower-case.
 #'
 #' @usage
-#' import_excel(criterion, path, sheet = NULL, range = NULL, guess_max)
+#' import_excel(folder, file, sheet = NULL, range = NULL, guess_max)
 #'
-#' @param criterion \code{criterion} argument of rprojroot::\code{\link{find_root}}.
-#' @param path Path to the xls / xlsx file, excluding the root directory.
+#' @param folder Folder immediately above the xls / xlsx file.
+#' @param file File name.
 #' @param sheet Sheet to read.
 #' @param range A cell range to read from.
 #' @param guess_max Maximum number of data rows to use for guessing column types.
@@ -28,25 +28,23 @@
 #'
 #' \code{n_max = Inf}: The maximum number of data rows to read is \code{\link{Inf}}.
 #'
-#' @return A data-frame.
+#' @return A table.
 #'
-#' @seealso \code{\link{import_tsv}}
-#'
-#' @import readxl rprojroot
+#' @import purrr readxl rprojroot
 #'
 #' @export
 
-import_excel <- function(criterion,
-                         path,
+import_excel <- function(folder,
+                         file,
                          sheet = NULL,
                          range = NULL,
                          guess_max) {
 
-  root_path <- rprojroot::find_root(criterion = has_dirname(dirname = criterion),
+  root_path <- rprojroot::find_root(criterion = has_dirname(dirname = folder),
                                     path = ".")
 
   import_path <- file.path(root_path,
-                           path,
+                           file,
                            fsep = "/")
 
   x <- readxl::read_excel(path = import_path,
@@ -62,13 +60,11 @@ import_excel <- function(criterion,
 
   names(x = x) <- tolower(x = names(x = x))
 
-  x <- lapply(X = x,
-              FUN = tolower)
-
-  as.data.frame(x = x,
-                row.names = NULL,
-                stringsAsFactors = FALSE,
-                cut.names = TRUE,
-                fix.empty.names = TRUE)
+  x %>%
+    map(.f = zhaoy_tolower) %>%
+    as.data.frame(row.names = NULL,
+                  stringsAsFactors = FALSE,
+                  cut.names = TRUE,
+                  fix.empty.names = TRUE)
 
 }

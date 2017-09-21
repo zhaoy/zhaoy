@@ -17,15 +17,15 @@
 #'
 #' n_miss: number of missing data
 #'
-#' pct_miss: percent of column that are missing data
+#' pct_miss: missing data as percent of column
 #'
 #' n_unique: number of unique values
 #'
-#' pct_unique: percent of column that are unique values
+#' pct_unique: unique values as percent of column
 #'
-#' min, max, median, mean: if data is non-numeric, these statistics are NA in the sense that they're missing
+#' min, max, median, mean: if column is non-numeric, these statistics are \code{\link{NA}} in the sense that they're missing
 #' 
-#' mode: mode can be NA only in the sense that NA is the most frequent value in the data
+#' mode: can be NA only in the sense that NA is most frequent value in column
 #'
 #' @seealso \code{\link{s_col} \link{s_mode}}
 #'
@@ -60,45 +60,21 @@ s_tbl <- function(x) {
   n_miss <- map_int(.x = x,
                     .f = function(x) sum(is.na(x = x) == TRUE,
                                          na.rm = FALSE))
-
-  pct_miss <- n_miss / nrow(x = x) * 100
   
   n_unique <- map_int(.x = x,
                       .f = function(x) length(x = unique(x = x,
                                                          incomparables = FALSE)))
 
-  pct_unique <- n_unique / nrow(x = x) * 100
-
-  x_min <- x %>%
-    map(.f = zhaoy_min) %>%
-    unlist
-  
-  x_max <- x %>%
-    map(.f = zhaoy_max) %>%
-    unlist
-  
-  x_median <- x %>%
-    map(.f = zhaoy_median) %>%
-    unlist
-  
-  x_mode <- x %>%
-    map(.f = zhaoy_mode) %>%
-    unlist
-  
-  x_mean <- x %>%
-    map(.f = zhaoy_mean) %>%
-    unlist
-
   x <- data.frame(col,
                   n_miss,
-                  pct_miss,
+                  pct_miss = n_miss / nrow(x = x) * 100,
                   n_unique,
-                  pct_unique,
-                  min = x_min,
-                  max = x_max,
-                  median = x_median,
-                  mode = x_mode,
-                  mean = x_mean,
+                  pct_unique = n_unique / nrow(x = x) * 100,
+                  min = x %>% map(.f = zhaoy_min) %>% unlist,
+                  max = x %>% map(.f = zhaoy_max) %>% unlist,
+                  median = x %>% map(.f = zhaoy_median) %>% unlist,
+                  mode = x %>% map(.f = zhaoy_mode) %>% unlist,
+                  mean = x %>% map(.f = zhaoy_mean) %>% unlist,
                   row.names = NULL,
                   check.rows = TRUE,
                   check.names = TRUE,

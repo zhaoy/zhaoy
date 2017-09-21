@@ -1,9 +1,9 @@
 library(package = DBI)
 
 con <- DBI::dbConnect(drv = odbc::odbc(),
-                      Driver = "[your driver's name]",
+                      Driver = "Microsoft ODBC for Oracle",
                       Host = "bmic-odb.mdc.musc.edu",
-                      SVC = "[your schema's name]",
+                      SVC = "HIV Data Mart",
                       UID = rstudioapi::askForPassword("Database user"),
                       PWD = rstudioapi::askForPassword("Database password"),
                       Port = 1521)

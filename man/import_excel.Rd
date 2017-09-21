@@ -4,12 +4,12 @@
 \alias{import_excel}
 \title{Read xls and xlsx files.}
 \usage{
-import_excel(criterion, path, sheet = NULL, range = NULL, guess_max)
+import_excel(folder, file, sheet = NULL, range = NULL, guess_max)
 }
 \arguments{
-\item{criterion}{\code{criterion} argument of rprojroot::\code{\link{find_root}}.}
+\item{folder}{Folder immediately above the xls / xlsx file.}
 
-\item{path}{Path to the xls / xlsx file, excluding the root directory.}
+\item{file}{File name.}
 
 \item{sheet}{Sheet to read.}
 
@@ -18,7 +18,7 @@ import_excel(criterion, path, sheet = NULL, range = NULL, guess_max)
 \item{guess_max}{Maximum number of data rows to use for guessing column types.}
 }
 \value{
-A data-frame.
+A table.
 }
 \description{
 Execute readxl::\code{\link{read_excel}} with pre-set values in some arguments.
@@ -38,7 +38,4 @@ The readxl::\code{\link{read_excel}} pre-set argument values are
 \code{skip = 0}: The minimum number of rows to skip before reading anything is 0.
 
 \code{n_max = Inf}: The maximum number of data rows to read is \code{\link{Inf}}.
-}
-\seealso{
-\code{\link{import_tsv}}
 }
