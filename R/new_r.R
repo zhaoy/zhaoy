@@ -1,14 +1,14 @@
-#' new_r
+#' Open a customized .R file
 #'
 #' @description
-#' new_r
+#' Opens a customized .R file in the environment's text editor.
 #'
 #' @usage
 #' new_r()
 #'
-#' @return A data-frame.
-#'
 #' @seealso \code{\link{new_rmd}}
+#'
+#' @importFrom utils file.edit
 #'
 #' @export
 
@@ -16,13 +16,13 @@ new_r <- function() {
 
   options(editor = "internal")
 
-  template_r <- system.file("template.R",
-                            package = "zhaoy",
-                            mustWork = TRUE)
+  customized_r <- system.file("customized.R",
+                              package = "zhaoy",
+                              mustWork = TRUE)
 
-  file.edit(template_r,
-            title = "template.R",
-            editor = getOption(x = "editor",
-                               default = "internal"))
+  utils::file.edit(customized_r,
+                   title = "customized.R",
+                   editor = getOption(x = "editor",
+                                      default = "internal"))
 
 }

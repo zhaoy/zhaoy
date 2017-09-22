@@ -1,7 +1,7 @@
 #' Column or table summaries
 #'
 #' @description
-#' Tabulate summary statistics of columns or tables.
+#' Tabulates summary statistics of columns or tables.
 #'
 #' @usage
 #' s_tbl(x)
@@ -13,7 +13,7 @@
 #' @details
 #' The outputs are:
 #'
-#' col: column name, displayed only if input is a table
+#' col: column name, displayed only when input is a table
 #'
 #' n_miss: number of missing data
 #'
@@ -23,9 +23,9 @@
 #'
 #' pct_unique: unique values as percent of column
 #'
-#' min, max, median, mean: if column is non-numeric, these statistics are \code{\link{NA}} in the sense that they're missing
+#' min, max, median, mean: \code{\link{NA}} when column is non-numeric
 #' 
-#' mode: can be NA only in the sense that NA is most frequent value in column
+#' mode: NA only when NA is the most frequent value in column
 #'
 #' @seealso \code{\link{s_col} \link{s_mode}}
 #'
@@ -108,11 +108,13 @@ s_tbl <- function(x) {
   
   if (nrow(x = x) == 1) {
     
-    x <- subset(x  = x,
-                select = -col)
+    subset(x  = x,
+           select = -col)
+    
+  } else {
+    
+    return(value = x)
     
   }
-
-  return(value = x)
 
 }

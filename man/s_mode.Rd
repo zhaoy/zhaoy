@@ -10,7 +10,7 @@ s_mode(x)
 \item{x}{an object for which the mode is desired.}
 }
 \value{
-An object of type \code{\link{character}} or \code{\link{numeric}}.
+An object of the same type as input.
 }
 \description{
 Calculates statistical mode.

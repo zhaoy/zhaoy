@@ -1,14 +1,14 @@
-#' new_rmd
+#' Open a customized .Rmd file
 #'
 #' @description
-#' new_rmd
+#' Opens a customized .Rmd file in the environment's text editor.
 #'
 #' @usage
 #' new_rmd()
 #'
-#' @return A data-frame.
-#'
 #' @seealso \code{\link{new_r}}
+#' 
+#' @importFrom utils file.edit
 #'
 #' @export
 
@@ -16,13 +16,13 @@ new_rmd <- function() {
 
   options(editor = "internal")
 
-  template_rmd <- system.file("template.Rmd",
-                              package = "zhaoy",
-                              mustWork = TRUE)
+  customized_rmd <- system.file("customized.Rmd",
+                                package = "zhaoy",
+                                mustWork = TRUE)
 
-  file.edit(template_rmd,
-            title = "template.Rmd",
-            editor = getOption(x = "editor",
-                               default = "internal"))
+  utils::file.edit(customized_rmd,
+                   title = "customized.Rmd",
+                   editor = getOption(x = "editor",
+                                      default = "internal"))
 
 }

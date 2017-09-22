@@ -8,7 +8,7 @@
 #'
 #' @param x an object for which the mode is desired.
 #'
-#' @return An object of type \code{\link{character}} or \code{\link{numeric}}.
+#' @return An object of the same type as input.
 #'
 #' @seealso \code{\link{s_col} \link{s_tbl}}
 #'
@@ -38,6 +38,12 @@ s_mode <- function(x) {
 
       x_mode <- as.numeric(x = x_mode)
 
+    }
+    
+    if (is.logical(x = x) == TRUE) {
+      
+      x_mode <- as.logical(x = x_mode)
+      
     }
 
   }

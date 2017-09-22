@@ -1,12 +1,13 @@
 ---
 output:
   html_document:
+    df_print: default
     fig_caption: yes
     smart: no
     toc: yes
     toc_depth: 6
 fontsize: 12pt
-title: "template"
+title: "customized"
 ---
 
 Load global chunk options.
@@ -31,7 +32,7 @@ conflicts(where = search(),
 
 Import raw data.
 
-View raw data.
+Check raw data.
 
 ```{r}
 # str

@@ -1,15 +1,16 @@
-#' Format MRNs with leading zeros
+#' Leading zeros in medical record numbers (MRNs)
 #'
-#' Return a vector of medical record numbers (MRNs) that include or exclude leading zeros.
+#' Includes or excludes leading zeros in MRNs.
 #'
-#' @param x a vector of MRNs.
-#' @param lz logical: should leading zeros be added? FALSE excludes leading zeros.
+#' @param x one or more MRNs.
+#' @param lz logical: should leading zeros be included? FALSE excludes leading zeros.
 #'
 #' @details
 #' With leading zeros, MRNs are 9 digits.
+#' 
 #' Provide Enterprise requires 9-digit MRNs.
 #'
-#' @return An integer or character vector.
+#' @return When \code{lz = TRUE}, an object of type \code{\link{character}}. \code{When lz = FALSE}, an object of type \code{\link{integer}}.
 #'
 #' @export
 #'
@@ -18,17 +19,17 @@
 #' lz_id(x = 000000001, lz = FALSE)
 
 lz_id <- function(x,
-                   lz) {
-
-  x <- as.integer(x = x)
+                  lz) {
 
   if (lz == TRUE) {
+    
+    sprintf(fmt = "%09d",
+            x)
 
-    x <- sprintf(fmt = "%09d",
-                 x)
-
+  } else {
+    
+    as.integer(x = x)
+    
   }
-
-  return(value = x)
 
 }

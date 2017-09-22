@@ -10,7 +10,7 @@ conflicts(where = search(),
 
 # Import raw data.
 
-# View raw data.
+# Check raw data.
 
 # str
 # s_tbl

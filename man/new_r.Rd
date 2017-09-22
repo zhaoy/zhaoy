@@ -2,15 +2,12 @@
 % Please edit documentation in R/new_r.R
 \name{new_r}
 \alias{new_r}
-\title{new_r}
+\title{Open a customized .R file}
 \usage{
 new_r()
 }
-\value{
-A data-frame.
-}
 \description{
-new_r
+Opens a customized .R file in the environment's text editor.
 }
 \seealso{
 \code{\link{new_rmd}}
