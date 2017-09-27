@@ -2,15 +2,18 @@
 #'
 #' Includes or excludes leading zeros in MRNs.
 #'
-#' @param x one or more MRNs.
-#' @param lz logical: should leading zeros be included? FALSE excludes leading zeros.
+#' @param x a vector of MRNS, each up to 9 digits.
+#' @param lz logical: should leading zeros be included?.
 #'
 #' @details
-#' With leading zeros, MRNs are 9 digits.
-#' 
 #' Provide Enterprise requires 9-digit MRNs.
+#' 
+#' MRNs that include leading zeros, are 9 digits.
 #'
-#' @return When \code{lz = TRUE}, an object of type \code{\link{character}}. \code{When lz = FALSE}, an object of type \code{\link{integer}}.
+#' @return
+#' When \code{lz = TRUE}, a vector of type \code{\link{character}}.
+#' 
+#' When \code{lz = FALSE}, a vector of type \code{\link{integer}}.
 #'
 #' @export
 #'
@@ -20,18 +23,22 @@
 
 lz_id <- function(x,
                   lz) {
+    
+  if (is.integer(x = x) == FALSE) {
+    
+    x <- as.integer(x = x)
+    
+  }
   
-  x <- as.integer (x = x)
-
   if (lz == TRUE) {
     
     sprintf(fmt = "%09d",
             x)
-
-  } else {
+    
+  } else if (lz == FALSE) {
     
     return(value = x)
     
   }
-
+  
 }

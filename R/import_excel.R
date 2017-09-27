@@ -30,7 +30,7 @@
 #'
 #' @return A \code{\link{data.frame}}.
 #'
-#' @import purrr
+#' @importFrom purrr map
 #' @importFrom readxl read_excel
 #' @importFrom rprojroot find_root
 #'
@@ -63,7 +63,7 @@ import_excel <- function(folder,
   names(x = x) <- tolower(x = names(x = x))
 
   x %>%
-    map(.f = zhaoy_tolower) %>%
+    purrr::map(.f = zhaoy_tolower) %>%
     as.data.frame(row.names = NULL,
                   stringsAsFactors = FALSE,
                   cut.names = TRUE,

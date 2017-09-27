@@ -9,7 +9,7 @@ zhaoy_mode <- function(x) {
   if (all(x_table == x_max,
           na.rm = TRUE) == TRUE) {
 
-    x_mode <- "none"
+    x_mode <- "no mode"
 
   } else {
 
@@ -25,7 +25,7 @@ zhaoy_mode <- function(x) {
 
   if (length(x = x_mode) > 1) {
 
-    x_mode <- "multi"
+    x_mode <- ">1 mode"
 
   }
 

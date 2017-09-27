@@ -1,4 +1,4 @@
-functions for importing, transforming, visualizing, and exporting data
+functions for importing, transforming, and visualizing data
 
 # import
 

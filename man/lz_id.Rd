@@ -7,20 +7,22 @@
 lz_id(x, lz)
 }
 \arguments{
-\item{x}{one or more MRNs.}
+\item{x}{a vector of MRNS, each up to 9 digits.}
 
-\item{lz}{logical: should leading zeros be included? FALSE excludes leading zeros.}
+\item{lz}{logical: should leading zeros be included?.}
 }
 \value{
-When \code{lz = TRUE}, an object of type \code{\link{character}}. \code{When lz = FALSE}, an object of type \code{\link{integer}}.
+When \code{lz = TRUE}, a vector of type \code{\link{character}}.
+
+When \code{lz = FALSE}, a vector of type \code{\link{integer}}.
 }
 \description{
 Includes or excludes leading zeros in MRNs.
 }
 \details{
-With leading zeros, MRNs are 9 digits.
-
 Provide Enterprise requires 9-digit MRNs.
+
+MRNs that include leading zeros, are 9 digits.
 }
 \examples{
 lz_id(x = 1, lz = TRUE)
