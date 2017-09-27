@@ -4,16 +4,18 @@
 \alias{tidy_pel}
 \title{Convert PE lab data into tidy data frames}
 \usage{
-tidy_pel(criterion, file, sheet)
+tidy_pel(folder, path, sheet = NULL)
 }
 \arguments{
-\item{criterion}{A criterion.}
+\item{folder}{Folder above the xls / xlsx file.}
 
-\item{file}{Name and extension of the xlsx file.}
+\item{path}{Path to the file, excluding the folder.}
 
-\item{sheet}{Sheet to read.
-Either a string (the name of a sheet), or an integer (the position of the sheet).}
+\item{sheet}{Sheet to read.}
+}
+\value{
+A table.
 }
 \description{
-Tidies PE lab data that were exported in xlsx files.
+Tidies PE lab data that are in Microsoft Excel files.
 }

@@ -20,6 +20,8 @@
 
 lz_id <- function(x,
                   lz) {
+  
+  x <- as.integer (x = x)
 
   if (lz == TRUE) {
     
@@ -28,7 +30,7 @@ lz_id <- function(x,
 
   } else {
     
-    as.integer(x = x)
+    return(value = x)
     
   }
 

@@ -1,20 +1,20 @@
 #' Read xls and xlsx files.
 #'
 #' @description
-#' Execute readxl::\code{\link{read_excel}} with pre-set values in some arguments.
-#' Convert column names and categorical data to lower-case.
+#' Executes readxl::\code{\link{read_excel}} with pre-set values in some arguments.
+#' Converts column names and categorical data to lower-case.
 #'
 #' @usage
-#' import_excel(folder, file, sheet = NULL, range = NULL, guess_max)
+#' import_excel(folder, path, sheet = NULL, range = NULL, guess_max)
 #'
-#' @param folder Folder immediately above the xls / xlsx file.
-#' @param file File name.
+#' @param folder Folder above the xls / xlsx file.
+#' @param path Path to the file, excluding \code{folder}.
 #' @param sheet Sheet to read.
 #' @param range A cell range to read from.
 #' @param guess_max Maximum number of data rows to use for guessing column types.
 #'
 #' @details
-#' The readxl::\code{\link{read_excel}} pre-set argument values are
+#' The pre-set values in some arguments of readxl::\code{\link{read_excel}}, are:
 #'
 #' \code{col_names = TRUE}: Use the first row as column names.
 #'
@@ -24,18 +24,20 @@
 #'
 #' \code{trim_ws = TRUE}: Trim leading and trailing white-space.
 #'
-#' \code{skip = 0}: The minimum number of rows to skip before reading anything is 0.
+#' \code{skip = 0}: Skip a minimum of 0 rows before reading anything. 
 #'
-#' \code{n_max = Inf}: The maximum number of data rows to read is \code{\link{Inf}}.
+#' \code{n_max = Inf}: Read a maximum of \code{\link{Inf}} rows.
 #'
-#' @return A table.
+#' @return A \code{\link{data.frame}}.
 #'
-#' @import purrr readxl rprojroot
+#' @import purrr
+#' @importFrom readxl read_excel
+#' @importFrom rprojroot find_root
 #'
 #' @export
 
 import_excel <- function(folder,
-                         file,
+                         path,
                          sheet = NULL,
                          range = NULL,
                          guess_max) {
@@ -44,7 +46,7 @@ import_excel <- function(folder,
                                     path = ".")
 
   import_path <- file.path(root_path,
-                           file,
+                           path,
                            fsep = "/")
 
   x <- readxl::read_excel(path = import_path,

@@ -1,8 +1,8 @@
 Type: package
 Package: zhaoy
 Title: miscellaneous functions
-Description: Functions for importing, transforming, visualizing, and exporting data. 
-Date: 2017-9-21
+Description: Functions for importing, transforming, and visualizing data. 
+Date: 2017-9-26
 Version: 0.0.1
 Imports: dplyr, ggplot2, ggrepel, purrr, readr, readxl, rprojroot, stats, utils
 LazyData: true

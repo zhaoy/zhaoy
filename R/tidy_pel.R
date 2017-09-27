@@ -1,79 +1,86 @@
 #' Convert PE lab data into tidy data frames
 #'
-#' Tidies PE lab data that were exported in xlsx files.
+#' @description 
+#' Tidies PE lab data that are in Microsoft Excel files.
 #'
-#' @param criterion A criterion.
-#' @param file Name and extension of the xlsx file.
+#' @usage
+#' tidy_pel(folder, path, sheet = NULL)
+#'
+#' @param folder Folder above the xls / xlsx file.
+#' @param path Path to the file, excluding the folder.
 #' @param sheet Sheet to read.
-#' Either a string (the name of a sheet), or an integer (the position of the sheet).
 #'
-#' @import readxl rprojroot utils
+#' @return A table.
+#'
+#' @import purrr rprojroot
+#' @importFrom readxl read_excel
+#' @importFrom utils capture.output
 #'
 #' @export
 #'
 #' @examples
 
-tidy_pel <- function(criterion,
-                     file,
-                     sheet) {
+tidy_pel <- function(folder,
+                     path,
+                     sheet = NULL) {
 
-    root_path <- rprojroot::find_root(criterion = criterion,
-                                      path = ".")
+  root_path <- rprojroot::find_root(criterion = has_dirname(dirname = folder),
+                                    path = ".")
 
-    import_path <- file.path(root_path,
-                             file,
-                             fsep = "/")
+  import_path <- file.path(root_path,
+                           path,
+                           fsep = "/")
 
-    pe_lab <- readxl::read_excel(path = import_path,
-                                 sheet = sheet,
-                                 range = NULL,
-                                 col_names = c("test_name",
-                                               "mrn",
-                                               "result_modifier",
-                                               "result"),
-                                 col_types = NULL,
-                                 na = "",
-                                 trim_ws = TRUE,
-                                 skip = 0,
-                                 n_max = Inf,
-                                 guess_max = 10)
+  pe_lab <- readxl::read_excel(path = import_path,
+                               sheet = sheet,
+                               range = NULL,
+                               col_names = c("test_name",
+                                             "mrn",
+                                             "result_modifier",
+                                             "result"),
+                               col_types = NULL,
+                               na = "",
+                               trim_ws = TRUE,
+                               skip = 0,
+                               n_max = Inf,
+                               guess_max = 10)
 
-    pe_lab <- pe_lab[pe_lab$test_name != "1" &
-                     (is.na(x = pe_lab$result) == TRUE |
-                      pe_lab$result != "Result"), ]
+  pe_lab <- pe_lab[pe_lab$test_name != "1" &
+                   (is.na(x = pe_lab$result) == TRUE |
+                   pe_lab$result != "Result"), ]
 
-    missing_mrn <- pe_lab[is.na(x = pe_lab$mrn) == FALSE &
-                          pe_lab$mrn == "Client ID:",
-                          c("test_name",
-                            "mrn")]
+  missing_mrn <- pe_lab[is.na(x = pe_lab$mrn) == FALSE &
+                        pe_lab$mrn == "Client ID:",
+                        c("test_name",
+                          "mrn")]
 
-    if (nrow(x = missing_mrn) != 0) {
-
-      stop("Please find the missing MRN(s):\n",
-           call. = FALSE,
-           paste0(utils::capture.output(missing_mrn),
-                  collapse = "\n"))
+  if (nrow(x = missing_mrn) != 0) {
+    
+    stop("Please find the missing MRN(s):\n",
+         call. = FALSE,
+         paste0(utils::capture.output(missing_mrn),
+                collapse = "\n"))
 
     } else {
 
     # test_count
-
-      pe_lab$tcl <- grep_l(x = pe_lab$test_name,
-                           pattern = "Total Tests for this Client:",
-                           ignore.case = TRUE)
+      
+      pe_lab$tcl <- grepl(x = pe_lab$test_name,
+                          pattern = "Total Tests for this Client:",
+                          ignore.case = TRUE)
 
       pe_lab$test_count <- NA
 
-      pe_lab$test_count[pe_lab$tcl == TRUE] <- g_sub(x = pe_lab$test_name[pe_lab$tcl == TRUE],
-                                                     pattern = "Total Tests for this Client:   ",
-                                                     replacement = "",
-                                                     ignore.case = TRUE)
+      pe_lab$test_count[pe_lab$tcl == TRUE] <- gsub(x = pe_lab$test_name[pe_lab$tcl == TRUE],
+                                                    pattern = "Total Tests for this Client:   ",
+                                                    replacement = "",
+                                                    ignore.case = TRUE)
 
     # test_date
 
-      pe_lab$tdl <- grep_l(x = pe_lab$mrn,
-                           pattern = "Client ID:",
-                           ignore.case = TRUE)
+      pe_lab$tdl <- grepl(x = pe_lab$mrn,
+                          pattern = "Client ID:",
+                          ignore.case = TRUE)
 
       pe_lab$test_date <- pe_lab$mrn
 
@@ -81,21 +88,22 @@ tidy_pel <- function(criterion,
 
       pe_lab$test_date <- as.numeric(x = pe_lab$test_date)
 
-      pe_lab$test_date <- origin_date(x = pe_lab$test_date,
-                                      origin = "1899-12-30")
+      pe_lab$test_date <- as.Date(x = as.numeric(x = pe_lab$test_date),
+                                  origin = "1899-12-30",
+                                  tz = "")
 
     # mrn: value of 1 MRN is "confidential"
 
-      pe_lab$mrnl <- grep_l(x = pe_lab$mrn,
-                            pattern = "Client ID:",
-                            ignore.case = TRUE)
+      pe_lab$mrnl <- grepl(x = pe_lab$mrn,
+                           pattern = "Client ID:",
+                           ignore.case = TRUE)
 
       pe_lab$mrn_2 <- NA
 
-      pe_lab$mrn_2[pe_lab$mrnl == TRUE] <- g_sub(x = pe_lab$mrn[pe_lab$mrnl == TRUE],
-                                                 pattern = "Client ID:  ",
-                                                 replacement = "",
-                                                 ignore.case = TRUE)
+      pe_lab$mrn_2[pe_lab$mrnl == TRUE] <- gsub(x = pe_lab$mrn[pe_lab$mrnl == TRUE],
+                                                pattern = "Client ID:  ",
+                                                replacement = "",
+                                                ignore.case = TRUE)
 
       pe_lab$mrn <- NULL
 
@@ -103,13 +111,13 @@ tidy_pel <- function(criterion,
 
     # test_name
 
-      pe_lab$tnl_1 <- grep_l(x = pe_lab$test_name,
-                             pattern = " , ",
-                             ignore.case = TRUE)
+      pe_lab$tnl_1 <- grepl(x = pe_lab$test_name,
+                            pattern = " , ",
+                            ignore.case = TRUE)
 
-      pe_lab$tnl_2 <- grep_l(x = pe_lab$test_name,
-                             pattern = "Total Tests for this Client:",
-                             ignore.case = TRUE)
+      pe_lab$tnl_2 <- grepl(x = pe_lab$test_name,
+                            pattern = "Total Tests for this Client:",
+                            ignore.case = TRUE)
 
       pe_lab$test_name_2 <- pe_lab$test_name
 
@@ -140,10 +148,10 @@ tidy_pel <- function(criterion,
 
       pel_test_count <- pe_lab$test_count[is.na(x = pe_lab$test_count) == FALSE]
 
-      pel_test_count <- g_sub(x = pel_test_count,
-                              pattern = ",",
-                              replacement = "",
-                              ignore.case = TRUE)
+      pel_test_count <- gsub(x = pel_test_count,
+                             pattern = ",",
+                             replacement = "",
+                             ignore.case = TRUE)
 
       pel_test_count <- as.integer(x = pel_test_count)
 

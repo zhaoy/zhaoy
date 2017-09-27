@@ -10,8 +10,6 @@ functions for importing, transforming, visualizing, and exporting data
 
 # transform
 
-**date_tbl**
-
 **lz_id**
 
 **match_med**

@@ -4,12 +4,12 @@
 \alias{import_excel}
 \title{Read xls and xlsx files.}
 \usage{
-import_excel(folder, file, sheet = NULL, range = NULL, guess_max)
+import_excel(folder, path, sheet = NULL, range = NULL, guess_max)
 }
 \arguments{
-\item{folder}{Folder immediately above the xls / xlsx file.}
+\item{folder}{Folder above the xls / xlsx file.}
 
-\item{file}{File name.}
+\item{path}{Path to the file, excluding \code{folder}.}
 
 \item{sheet}{Sheet to read.}
 
@@ -18,14 +18,14 @@ import_excel(folder, file, sheet = NULL, range = NULL, guess_max)
 \item{guess_max}{Maximum number of data rows to use for guessing column types.}
 }
 \value{
-A table.
+A \code{\link{data.frame}}.
 }
 \description{
-Execute readxl::\code{\link{read_excel}} with pre-set values in some arguments.
-Convert column names and categorical data to lower-case.
+Executes readxl::\code{\link{read_excel}} with pre-set values in some arguments.
+Converts column names and categorical data to lower-case.
 }
 \details{
-The readxl::\code{\link{read_excel}} pre-set argument values are
+The pre-set values in some arguments of readxl::\code{\link{read_excel}}, are:
 
 \code{col_names = TRUE}: Use the first row as column names.
 
@@ -35,7 +35,7 @@ The readxl::\code{\link{read_excel}} pre-set argument values are
 
 \code{trim_ws = TRUE}: Trim leading and trailing white-space.
 
-\code{skip = 0}: The minimum number of rows to skip before reading anything is 0.
+\code{skip = 0}: Skip a minimum of 0 rows before reading anything. 
 
-\code{n_max = Inf}: The maximum number of data rows to read is \code{\link{Inf}}.
+\code{n_max = Inf}: Read a maximum of \code{\link{Inf}} rows.
 }
