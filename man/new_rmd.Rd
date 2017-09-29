@@ -7,7 +7,7 @@
 new_rmd()
 }
 \description{
-Opens a customized .Rmd file in the environment's text editor.
+Open a customized .Rmd file in a text editor.
 }
 \seealso{
 \code{\link{new_r}}

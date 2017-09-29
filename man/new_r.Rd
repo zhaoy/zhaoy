@@ -7,7 +7,7 @@
 new_r()
 }
 \description{
-Opens a customized .R file in the environment's text editor.
+Open a customized .R file in a text editor.
 }
 \seealso{
 \code{\link{new_rmd}}
