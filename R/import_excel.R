@@ -32,7 +32,7 @@
 #'
 #' @importFrom purrr map
 #' @importFrom readxl read_excel
-#' @importFrom rprojroot find_root
+#' @importFrom rprojroot find_root has_dirname
 #'
 #' @export
 
@@ -42,7 +42,7 @@ import_excel <- function(folder,
                          range = NULL,
                          guess_max) {
 
-  root_path <- rprojroot::find_root(criterion = has_dirname(dirname = folder),
+  root_path <- rprojroot::find_root(criterion = rprojroot::has_dirname(dirname = folder),
                                     path = ".")
 
   import_path <- file.path(root_path,

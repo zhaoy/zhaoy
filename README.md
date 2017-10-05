@@ -12,16 +12,8 @@ functions for importing, transforming, and visualizing data
 
 **lz_id**
 
-**match_med**
-
 **s_col**
 
 **s_mode**
 
 **s_tbl**
-
-**tidy_pel**
-
-# visualize
-
-**v_hiv**

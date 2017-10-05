@@ -2,6 +2,7 @@
 
 library(package = zhaoy)
 library(package = dplyr)
+library(package = purrr)
 
 # Check package conflicts.
 
@@ -15,4 +16,3 @@ conflicts(where = search(),
 # str
 # s_tbl
 # s_col
-
