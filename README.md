@@ -1,19 +1,19 @@
-functions for importing, transforming, and visualizing data
+functions for importing and transforming data
 
 # import
 
-**import_excel**
+`import_excel`
 
-**new_r**
+`new_r`
 
-**new_rmd**
+`new_rmd`
 
 # transform
 
-**lz_id**
+`lz_id`
 
-**s_col**
+`s_col`
 
-**s_mode**
+`s_mode`
 
-**s_tbl**
+`s_tbl`
