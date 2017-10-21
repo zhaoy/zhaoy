@@ -5,7 +5,7 @@ zhaoy_min <- function(x) {
     min(x = x,
         na.rm = TRUE)
 
-  } else {
+  } else if (is.numeric(x = x) == FALSE) {
 
     return(value = NA)
 
