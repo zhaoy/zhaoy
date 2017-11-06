@@ -1,4 +1,4 @@
-#' @import dplyr
+#' @importFrom tidyr spread
 #' @importFrom purrr map
 #'
 #' @export
@@ -12,7 +12,12 @@ agg_enc_status_by_p <- function(x) {
          value = n,
          fill = 0,
          drop = TRUE,
-         sep = NULL)
+         sep = NULL) %>%
+  select(mrn,
+         `no show`,
+         canceled,
+         completed,
+         scheduled)
 
   x[, c(names(x = subset(x = x,
                          select = -mrn)))] <- x[, c(names(x = subset(x = x,

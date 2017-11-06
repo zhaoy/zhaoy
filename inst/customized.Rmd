@@ -2,7 +2,7 @@
 output:
   html_document:
     df_print: default
-    fig_caption: yes
+    fig_caption: no
     smart: no
     toc: yes
     toc_depth: 6
