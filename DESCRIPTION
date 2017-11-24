@@ -2,10 +2,11 @@ Type: package
 Package: zhaoy
 Title: miscellaneous functions
 Description: Functions for importing and transforming data
-Date: 2017-11-6
+Date: 2017-11-20
 Version: 0.0.1
 Imports: dplyr, purrr, readxl, rprojroot, stats, tidyr, utils
 LazyData: true
+Encoding: UTF-8
 Author: zhaoy zhaoy <zhaoy@users.noreply.github.com>
 Maintainer: zhaoy zhaoy <zhaoy@users.noreply.github.com>
 License: GPL-3

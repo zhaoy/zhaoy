@@ -2,16 +2,16 @@
 % Please edit documentation in R/zhaoy_tolower.R
 \name{zhaoy_tolower}
 \alias{zhaoy_tolower}
-\title{Convert only character or factor data to lower-case.}
+\title{Convert characters and factors to lower-case.}
 \usage{
 zhaoy_tolower(x)
 }
 \arguments{
-\item{x}{a character or factor vector.}
+\item{x}{a vector.}
 }
 \value{
-A character or factor vector.
+a vector.
 }
 \description{
-Execute \code{\link{tolower}} if data is \code{\link{character}} or \code{\link{factor}}.
+If data are characters or factors, execute \code{\link{tolower}}.
 }

@@ -1,7 +1,19 @@
+#' Calculate summary statistics of numeric data.
+#'
+#' @description
+#' If data are numeric, calculate the minimum, maximum, median, and mean.
+#'
+#' @usage
+#' zhaoy_numeric(x, fun)
+#'
+#' @param x a vector.
+#'
+#' @return a vector of length one.
+#'
 #' @importFrom stats median
 
 zhaoy_numeric <- function(x,
-                      fun) {
+                          fun) {
 
   if (is.numeric(x = x) == TRUE) {
 
