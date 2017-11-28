@@ -1,3 +1,15 @@
+#' Calculate the mode.
+#'
+#' @description
+#' Calculate the mode.
+#'
+#' @usage
+#' zhaoy_numeric(x)
+#'
+#' @param x a vector.
+#'
+#' @return a vector of length one.
+
 zhaoy_mode <- function(x) {
 
   x_table <- table(x,
@@ -18,7 +30,7 @@ zhaoy_mode <- function(x) {
 
     if (length(x = x_mode) > 1) {
 
-      x_mode <- ">1 mode"
+      x_mode <- "> 1 mode"
 
     }
 
