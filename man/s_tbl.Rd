@@ -7,7 +7,7 @@
 s_tbl(x)
 }
 \arguments{
-\item{x}{a column or table for which a summary is desired.}
+\item{x}{a column or table.}
 }
 \value{
 A table.
@@ -22,15 +22,15 @@ col: column name, displayed only when input is a table
 
 n_miss: number of missing data
 
-pct_miss: missing data as percent of column
+pct_miss: percent of a column that are missing data
 
-n_unique: number of unique values
+n_unique: number of unique values in a column
 
-pct_unique: unique values as percent of column
+pct_unique: percent of a column that are unique values
 
-min, max, median, mean: \code{\link{NA}} when column is non-numeric
+min, max, median, mean: \code{\link{NA}} when a column is non-numeric
 
-mode: NA only when NA is the most frequent value in column
+mode: NA only when NA is the most frequent value in a column
 }
 \examples{
 s_tbl(x = attenu$station)

@@ -6,7 +6,7 @@
 #' @usage
 #' s_tbl(x)
 #'
-#' @param x a column or table for which a summary is desired.
+#' @param x a column or table.
 #'
 #' @return A table.
 #'
@@ -17,20 +17,20 @@
 #'
 #' n_miss: number of missing data
 #'
-#' pct_miss: missing data as percent of column
+#' pct_miss: percent of a column that are missing data
 #'
-#' n_unique: number of unique values
+#' n_unique: number of unique values in a column
 #'
-#' pct_unique: unique values as percent of column
+#' pct_unique: percent of a column that are unique values
 #'
-#' min, max, median, mean: \code{\link{NA}} when column is non-numeric
+#' min, max, median, mean: \code{\link{NA}} when a column is non-numeric
 #'
-#' mode: NA only when NA is the most frequent value in column
+#' mode: NA only when NA is the most frequent value in a column
 #'
 #' @seealso \code{\link{s_col} \link{s_mode}}
 #'
 #' @import purrr
-#' @importFrom dplyr case_when
+#' @import dplyr
 #'
 #' @export
 #'
@@ -58,58 +58,64 @@ s_tbl <- function(x) {
   col <- names(x = x)
 
   n_miss <- map_int(.x = x,
-                    .f = function(x) sum(is.na(x = x) == TRUE,
+                    .f = function(x) sum(is.na(x = x),
                                          na.rm = FALSE))
+
+  pct_miss <- n_miss / nrow(x = x) * 100
 
   n_unique <- map_int(.x = x,
                       .f = function(x) length(x = unique(x = x,
                                                          incomparables = FALSE)))
 
+  pct_unique <- n_unique / nrow(x = x) * 100
+
+  zhaoy_min <- unlist(x = map(.x = x,
+                              .f = zhaoy_numeric,
+                              fun = "min"))
+
+  zhaoy_max <- unlist(x = map(.x = x,
+                              .f = zhaoy_numeric,
+                              fun = "max"))
+
+  zhaoy_median <- unlist(x = map(.x = x,
+                                 .f = zhaoy_numeric,
+                                 fun = "median"))
+
+  zhaoy_mode <- unlist(x = map(.x = x,
+                               .f = zhaoy_mode))
+
+  zhaoy_mean <- unlist(x = map(.x = x,
+                               .f = zhaoy_numeric,
+                               fun = "mean"))
+
   x <- data.frame(col,
                   n_miss,
-                  pct_miss = n_miss / nrow(x = x) * 100,
+                  pct_miss,
                   n_unique,
-                  pct_unique = n_unique / nrow(x = x) * 100,
-                  min = x %>% map(.f = zhaoy_numeric, fun = "min") %>% unlist,
-                  max = x %>% map(.f = zhaoy_numeric, fun = "max") %>% unlist,
-                  median = x %>% map(.f = zhaoy_numeric, fun = "median") %>% unlist,
-                  mode = x %>% map(.f = zhaoy_mode) %>% unlist,
-                  mean = x %>% map(.f = zhaoy_numeric, fun = "mean") %>% unlist,
+                  pct_unique,
+                  min = zhaoy_min,
+                  max = zhaoy_max,
+                  median = zhaoy_median,
+                  mode = zhaoy_mode,
+                  mean = zhaoy_mean,
                   row.names = NULL,
                   check.rows = TRUE,
                   check.names = TRUE,
                   fix.empty.names = TRUE,
                   stringsAsFactors = FALSE)
 
-  x[, c("pct_miss",
-        "pct_unique")] <- x[, c("pct_miss",
-                                "pct_unique")] %>%
-    map(.f = round,
-        digits = 1) %>%
-    as.data.frame(row.names = NULL,
-                  stringsAsFactors = FALSE,
-                  cut.names = TRUE,
-                  col.names = c("pct_miss",
-                                "pct_unique"),
-                  fix.empty.names = TRUE)
-
-  x[, c("median",
-        "mean")] <- x[, c("median",
-                          "mean")] %>%
-    map(.f = function(x) dplyr::case_when(is.numeric(x = x) == TRUE ~
-                                          round(x = x,
-                                                digits = 1))) %>%
-    as.data.frame(row.names = NULL,
-                  stringsAsFactors = FALSE,
-                  cut.names = TRUE,
-                  col.names = c("median",
-                                "mean"),
-                  fix.empty.names = TRUE)
+  x <- x %>%
+    modify_at(.at = c("pct_miss",
+                      "pct_unique",
+                      "median",
+                      "mean"),
+              .f = function(x) case_when(is.numeric(x = x) == TRUE ~
+                                         round(x = x,
+                                               digits = 1)))
 
   if (nrow(x = x) == 1) {
 
-    subset(x  = x,
-           select = -col)
+    x %>% select(-col)
 
   } else {
 
