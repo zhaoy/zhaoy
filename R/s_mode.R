@@ -1,20 +1,20 @@
-#' Statistical mode
+#' Calculate the mode
 #'
 #' @description
-#' Calculates statistical mode.
+#' Calculate the mode.
 #'
 #' @usage
 #' s_mode(x)
 #'
-#' @param x an object for which the mode is desired.
+#' @param x a vector.
 #'
-#' @return An object of the same type as input.
+#' @return a vector of length one.
 #'
 #' @seealso \code{\link{s_col} \link{s_tbl}}
 #'
 #' @examples
 #' s_mode(x = attenu$dist)
-#' 
+#'
 #' @export
 
 s_mode <- function(x) {
@@ -28,9 +28,10 @@ s_mode <- function(x) {
   if (all(x_table == x_max,
           na.rm = TRUE) == TRUE) {
 
-    x_mode <- "none"
+    x_mode <- "no mode"
 
-  } else {
+  } else if (all(x_table == x_max,
+                 na.rm = TRUE) == FALSE) {
 
     x_mode <- names(x = x_table)[x_table == x_max]
 
@@ -39,11 +40,11 @@ s_mode <- function(x) {
       x_mode <- as.numeric(x = x_mode)
 
     }
-    
-    if (is.logical(x = x) == TRUE) {
-      
+
+    else if (is.logical(x = x) == TRUE) {
+
       x_mode <- as.logical(x = x_mode)
-      
+
     }
 
   }

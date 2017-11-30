@@ -2,18 +2,18 @@
 % Please edit documentation in R/s_mode.R
 \name{s_mode}
 \alias{s_mode}
-\title{Statistical mode}
+\title{Calculate the mode}
 \usage{
 s_mode(x)
 }
 \arguments{
-\item{x}{an object for which the mode is desired.}
+\item{x}{a vector.}
 }
 \value{
-An object of the same type as input.
+a vector of length one.
 }
 \description{
-Calculates statistical mode.
+Calculate the mode.
 }
 \examples{
 s_mode(x = attenu$dist)
