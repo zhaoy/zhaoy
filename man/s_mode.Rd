@@ -2,18 +2,18 @@
 % Please edit documentation in R/s_mode.R
 \name{s_mode}
 \alias{s_mode}
-\title{Calculate the mode}
+\title{Statistical mode}
 \usage{
 s_mode(x)
 }
 \arguments{
-\item{x}{a vector.}
+\item{x}{a vector}
 }
 \value{
-a vector of length one.
+A vector.
 }
 \description{
-Calculate the mode.
+Calculate the mode. If there is no mode, the displayed value is "no mode".
 }
 \examples{
 s_mode(x = attenu$dist)

@@ -1,14 +1,14 @@
-#' Calculate the mode
+#' Statistical mode
 #'
 #' @description
-#' Calculate the mode.
+#' Calculate the mode. If there is no mode, the displayed value is "no mode".
 #'
 #' @usage
 #' s_mode(x)
 #'
-#' @param x a vector.
+#' @param x a vector
 #'
-#' @return a vector of length one.
+#' @return A vector.
 #'
 #' @seealso \code{\link{s_col} \link{s_tbl}}
 #'

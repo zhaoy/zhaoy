@@ -2,15 +2,15 @@
 % Please edit documentation in R/zhaoy_mode.R
 \name{zhaoy_mode}
 \alias{zhaoy_mode}
-\title{Calculate the mode.}
+\title{Statistical mode}
 \usage{
-zhaoy_numeric(x)
+zhaoy_mode(x)
 }
 \arguments{
 \item{x}{a vector.}
 }
 \value{
-a vector of length one.
+A vector.
 }
 \description{
 Calculate the mode.

@@ -2,19 +2,19 @@
 % Please edit documentation in R/s_col.R
 \name{s_col}
 \alias{s_col}
-\title{Column summaries}
+\title{Counts and percentages of column values}
 \usage{
 s_col(x)
 }
 \arguments{
-\item{x}{a column for which a summary is desired.}
+\item{x}{a column}
 }
 \value{
 A table.
 }
 \description{
-Tabulates counts and percentages of values that are in columns.
-Displays the values in ascending order, beginning with any \code{\link{NA}}s.
+Tabulate counts and percentages of values that are in columns.
+Display the values in ascending order, beginning with any \code{\link{NA}}s.
 }
 \examples{
 s_col(x = attenu$station)

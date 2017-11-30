@@ -2,7 +2,7 @@
 % Please edit documentation in R/zhaoy_tolower.R
 \name{zhaoy_tolower}
 \alias{zhaoy_tolower}
-\title{Convert characters and factors to lower-case.}
+\title{Convert characters and factors to lower-case}
 \usage{
 zhaoy_tolower(x)
 }
@@ -10,7 +10,7 @@ zhaoy_tolower(x)
 \item{x}{a vector.}
 }
 \value{
-a vector.
+A vector.
 }
 \description{
 If data are characters or factors, execute \code{\link{tolower}}.

@@ -1,4 +1,4 @@
-#' Convert characters and factors to lower-case.
+#' Convert characters and factors to lower-case
 #'
 #' @description
 #' If data are characters or factors, execute \code{\link{tolower}}.
@@ -8,7 +8,7 @@
 #'
 #' @param x a vector.
 #'
-#' @return a vector.
+#' @return A vector.
 
 zhaoy_tolower <- function(x) {
 

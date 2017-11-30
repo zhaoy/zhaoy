@@ -1,12 +1,12 @@
-#' Column or table summaries
+#' Summary statistics of columns and tables
 #'
 #' @description
-#' Tabulates summary statistics of columns or tables.
+#' Tabulate summary statistics of columns and tables.
 #'
 #' @usage
 #' s_tbl(x)
 #'
-#' @param x a column or table.
+#' @param x a column or table
 #'
 #' @return A table.
 #'
@@ -17,15 +17,17 @@
 #'
 #' n_miss: number of missing data
 #'
-#' pct_miss: percent of a column that are missing data
+#' pct_miss: percent of column that are missing data
 #'
-#' n_unique: number of unique values in a column
+#' n_unique: number of unique values in column
 #'
-#' pct_unique: percent of a column that are unique values
+#' pct_unique: percent of column that are unique values
 #'
 #' min, max, median, mean: \code{\link{NA}} when a column is non-numeric
 #'
-#' mode: NA only when NA is the most frequent value in a column
+#' mode: \code{\link{NA}} only when \code{\link{NA}} is the most frequent value in a column.
+#' If there is no mode, the displayed value is "no mode".
+#' If there is more than one mode, the displayed value is "> 1 mode".
 #'
 #' @seealso \code{\link{s_col} \link{s_mode}}
 #'

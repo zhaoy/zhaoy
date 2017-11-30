@@ -2,7 +2,7 @@
 % Please edit documentation in R/zhaoy_numeric.R
 \name{zhaoy_numeric}
 \alias{zhaoy_numeric}
-\title{Calculate summary statistics of numeric data.}
+\title{Summary statistics of numeric data}
 \usage{
 zhaoy_numeric(x, fun)
 }
@@ -10,7 +10,7 @@ zhaoy_numeric(x, fun)
 \item{x}{a vector.}
 }
 \value{
-a vector of length one.
+A vector.
 }
 \description{
 If data are numeric, calculate the minimum, maximum, median, and mean.

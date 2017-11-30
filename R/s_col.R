@@ -1,13 +1,13 @@
-#' Column summaries
+#' Counts and percentages of column values
 #'
 #' @description
-#' Tabulates counts and percentages of values that are in columns.
-#' Displays the values in ascending order, beginning with any \code{\link{NA}}s.
+#' Tabulate counts and percentages of values that are in columns.
+#' Display the values in ascending order, beginning with any \code{\link{NA}}s.
 #'
 #' @usage
 #' s_col(x)
 #'
-#' @param x a column for which a summary is desired.
+#' @param x a column
 #'
 #' @return A table.
 #'
@@ -15,7 +15,7 @@
 #'
 #' @examples
 #' s_col(x = attenu$station)
-#' 
+#'
 #' @export
 
 s_col <- function(x) {

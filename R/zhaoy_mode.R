@@ -1,14 +1,14 @@
-#' Calculate the mode.
+#' Statistical mode
 #'
 #' @description
 #' Calculate the mode.
 #'
 #' @usage
-#' zhaoy_numeric(x)
+#' zhaoy_mode(x)
 #'
 #' @param x a vector.
 #'
-#' @return a vector of length one.
+#' @return A vector.
 
 zhaoy_mode <- function(x) {
 
@@ -38,6 +38,13 @@ zhaoy_mode <- function(x) {
              is.numeric(x = x) == TRUE) {
 
       x_mode <- as.numeric(x = x_mode)
+
+    }
+
+    else if (length(x = x_mode) == 1 &
+             is.logical(x = x) == TRUE) {
+
+      x_mode <- as.logical(x = x_mode)
 
     }
 

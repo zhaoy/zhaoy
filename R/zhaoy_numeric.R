@@ -1,4 +1,4 @@
-#' Calculate summary statistics of numeric data.
+#' Summary statistics of numeric data
 #'
 #' @description
 #' If data are numeric, calculate the minimum, maximum, median, and mean.
@@ -8,7 +8,7 @@
 #'
 #' @param x a vector.
 #'
-#' @return a vector of length one.
+#' @return A vector.
 #'
 #' @importFrom stats median
 
