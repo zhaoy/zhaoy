@@ -1,13 +1,13 @@
-#' Open a customized .Rmd file
+#' Open a customized .Rmd template
 #'
 #' @description
-#' Open a customized .Rmd file in a text editor.
+#' Open a customized .Rmd template in a text editor.
 #'
 #' @usage
 #' new_rmd()
 #'
 #' @seealso \code{\link{new_r}}
-#' 
+#'
 #' @importFrom utils file.edit
 #'
 #' @export
