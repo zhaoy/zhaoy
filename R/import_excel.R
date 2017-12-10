@@ -24,7 +24,7 @@
 #'
 #' \code{trim_ws = TRUE}: Trim leading and trailing white-space.
 #'
-#' \code{skip = 0}: Skip a minimum of 0 rows before reading anything. 
+#' \code{skip = 0}: Skip a minimum of 0 rows before reading anything.
 #'
 #' \code{n_max = Inf}: Read a maximum of \code{\link{Inf}} rows.
 #'
@@ -33,6 +33,7 @@
 #' @importFrom purrr map
 #' @importFrom readxl read_excel
 #' @importFrom rprojroot find_root has_dirname
+#' @import feather
 #'
 #' @export
 
@@ -62,7 +63,7 @@ import_excel <- function(folder,
 
   names(x = x) <- tolower(x = names(x = x))
 
-  x %>%
+  x <- x %>%
     purrr::map(.f = zhaoy_tolower) %>%
     as.data.frame(row.names = NULL,
                   stringsAsFactors = FALSE,

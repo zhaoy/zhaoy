@@ -1,7 +1,7 @@
-#' Open a customized .R file
+#' Open a customized .R template
 #'
 #' @description
-#' Open a customized .R file in a text editor.
+#' Open a customized .R template in a text editor.
 #'
 #' @usage
 #' new_r()

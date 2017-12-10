@@ -35,7 +35,7 @@ The pre-set values in some arguments of readxl::\code{\link{read_excel}}, are:
 
 \code{trim_ws = TRUE}: Trim leading and trailing white-space.
 
-\code{skip = 0}: Skip a minimum of 0 rows before reading anything. 
+\code{skip = 0}: Skip a minimum of 0 rows before reading anything.
 
 \code{n_max = Inf}: Read a maximum of \code{\link{Inf}} rows.
 }

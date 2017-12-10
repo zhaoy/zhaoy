@@ -111,13 +111,14 @@ s_tbl <- function(x) {
                       "pct_unique",
                       "median",
                       "mean"),
-              .f = function(x) case_when(is.numeric(x = x) == TRUE ~
-                                         round(x = x,
-                                               digits = 1)))
+              .f = function(x) dplyr::case_when(is.numeric(x = x) == TRUE ~
+                                                round(x = x,
+                                                      digits = 1)))
 
   if (nrow(x = x) == 1) {
 
-    x %>% select(-col)
+    dplyr::select(.data = x,
+                  -col)
 
   } else {
 
