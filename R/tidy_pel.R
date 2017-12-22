@@ -175,6 +175,15 @@ tidy_pel <- function(folder,
                            fix.empty.names = TRUE,
                            stringsAsFactors = FALSE)
 
+      pe_lab <- map(.x = pe_lab,
+                    .f = zhaoy_tolower)
+
+      pe_lab <- as.data.frame(x = pe_lab,
+                              row.names = NULL,
+                              stringsAsFactors = FALSE,
+                              cut.names = TRUE,
+                              fix.empty.names = TRUE)
+
       return(value = pe_lab)
 
     }

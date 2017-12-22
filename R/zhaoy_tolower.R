@@ -1,14 +1,19 @@
-#' Convert characters and factors to lower-case
+#' Convert characters and factors to lower-case.
 #'
 #' @description
-#' If data are characters or factors, execute \code{\link{tolower}}.
+#' Execute \code{\link{tolower}} on character or factor vectors.
+#' Non-alphabetic characters are left un-changed.
 #'
 #' @usage
 #' zhaoy_tolower(x)
 #'
-#' @param x a vector.
+#' @param x a character or factor vector.
 #'
-#' @return A vector.
+#' @return A character or factor vector of the same length as \code{x}.
+#'
+#' @examples
+#' x <- c("MiXeD", "cAsE", "123")
+#' zhaoy_tolower(x = x)
 
 zhaoy_tolower <- function(x) {
 

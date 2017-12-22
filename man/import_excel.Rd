@@ -4,32 +4,30 @@
 \alias{import_excel}
 \title{Read xls and xlsx files.}
 \usage{
-import_excel(folder, path, sheet = NULL, range = NULL, guess_max)
+import_excel(folder, path, sheet = NULL, range = NULL)
 }
 \arguments{
-\item{folder}{Folder above the xls / xlsx file.}
+\item{folder}{Any folder above both 1) the xls / xlsx file and 2) the file that contains the code.}
 
-\item{path}{Path to the file, excluding \code{folder}.}
+\item{path}{Path to the xls / xlsx file, excluding \code{folder}.}
 
 \item{sheet}{Sheet to read.}
 
 \item{range}{A cell range to read from.}
-
-\item{guess_max}{Maximum number of data rows to use for guessing column types.}
 }
 \value{
-A \code{\link{data.frame}}.
+A base-R data-frame.
 }
 \description{
 Executes readxl::\code{\link{read_excel}} with pre-set values in some arguments.
 Converts column names and categorical data to lower-case.
 }
 \details{
-The pre-set values in some arguments of readxl::\code{\link{read_excel}}, are:
+\code{import_excel} excutes readxl::\code{\link{read_excel}} with the following pre-set argument values:
 
 \code{col_names = TRUE}: Use the first row as column names.
 
-\code{col_types = NULL}: Guess all column types from the spread-sheet.
+\code{col_types = NULL}: Guess all from the spread-sheet.
 
 \code{na = ""}: Treat blank cells as missing data.
 
@@ -38,4 +36,9 @@ The pre-set values in some arguments of readxl::\code{\link{read_excel}}, are:
 \code{skip = 0}: Skip a minimum of 0 rows before reading anything.
 
 \code{n_max = Inf}: Read a maximum of \code{\link{Inf}} rows.
+
+\code{guess_max = 100000}: Use a maximum of 100000 data rows to guess column types.
+}
+\seealso{
+\code{\link{import_feather}}
 }

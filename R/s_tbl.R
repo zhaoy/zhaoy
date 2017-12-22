@@ -120,7 +120,9 @@ s_tbl <- function(x) {
     dplyr::select(.data = x,
                   -col)
 
-  } else {
+  }
+
+  else if (nrow(x = x) != 1) {
 
     return(value = x)
 
