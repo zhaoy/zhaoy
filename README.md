@@ -1,14 +1,10 @@
-customized functions for importing, tidying, and transforming data
+customized functions for importing, tidying, transforming, and communicating data
 
 # import
 
 `import_excel`
 
 `import_feather`
-
-`new_r`
-
-`new_rmd`
 
 # tidy
 
@@ -27,3 +23,9 @@ customized functions for importing, tidying, and transforming data
 # export
 
 `export_feather`
+
+# communicate
+
+`new_r`
+
+`new_rmd`

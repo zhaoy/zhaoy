@@ -16,6 +16,7 @@ A base-R data-frame.
 }
 \description{
 Executes feather::\code{\link{read_feather}}.
+Uses relative file-paths.
 Converts column names and categorical data to lower-case.
 }
 \seealso{

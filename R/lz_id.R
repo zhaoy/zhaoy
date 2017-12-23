@@ -1,19 +1,16 @@
-#' Leading zeros in medical record numbers (MRNs)
+#' Leading zeros in numeric identifiers.
 #'
-#' Includes or excludes leading zeros in MRNs.
+#' @description
+#' Includes or excludes leading zeros in numeric identifiers.
 #'
-#' @param x a vector of MRNS, each up to 9 digits.
-#' @param lz logical: should leading zeros be included?.
+#' @usage
+#' lz_id(x, lz)
 #'
-#' @details
-#' Provide Enterprise requires 9-digit MRNs.
-#' 
-#' MRNs that include leading zeros, are 9 digits.
+#' @param x A vector of numeric identifiers, each up to 9 digits.
+#' @param lz Logical: should leading zeros be included?
 #'
 #' @return
-#' When \code{lz = TRUE}, a vector of type \code{\link{character}}.
-#' 
-#' When \code{lz = FALSE}, a vector of type \code{\link{integer}}.
+#' A character vector.
 #'
 #' @export
 #'
@@ -23,22 +20,39 @@
 
 lz_id <- function(x,
                   lz) {
-    
-  if (is.integer(x = x) == FALSE) {
-    
-    x <- as.integer(x = x)
-    
-  }
-  
-  if (lz == TRUE) {
-    
-    sprintf(fmt = "%09d",
-            x)
-    
-  } else if (lz == FALSE) {
-    
+
+  if ((is.character(x = x) == TRUE &
+       nchar(x = x,
+             keepNA = NA) == 9 &
+       lz == TRUE) |
+      (is.character(x = x) == TRUE &
+       nchar(x = x,
+             keepNA = NA) != 9 &
+       lz == FALSE)) {
+
     return(value = x)
-    
+
+  } else {
+
+    if (is.integer(x = x) == FALSE) {
+
+      x <- as.integer(x = x)
+
+    }
+
+    if (is.integer(x = x) == TRUE &
+        lz == TRUE) {
+
+      sprintf(fmt = "%09d",
+              x)
+
+    } else if (is.integer(x = x) == TRUE &
+               lz == FALSE) {
+
+      as.character(x = x)
+
+      }
+
   }
-  
+
 }

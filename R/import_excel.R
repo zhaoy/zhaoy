@@ -2,6 +2,7 @@
 #'
 #' @description
 #' Executes readxl::\code{\link{read_excel}} with pre-set values in some arguments.
+#' Uses relative file paths.
 #' Converts column names and categorical data to lower-case.
 #'
 #' @usage
@@ -25,7 +26,7 @@
 #'
 #' \code{skip = 0}: Skip a minimum of 0 rows before reading anything.
 #'
-#' \code{n_max = Inf}: Read a maximum of \code{\link{Inf}} rows.
+#' \code{n_max = Inf}: Read a maximum of data rows.
 #'
 #' \code{guess_max = 100000}: Use a maximum of 100000 data rows to guess column types.
 #'

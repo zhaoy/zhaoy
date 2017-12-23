@@ -18,4 +18,5 @@ A base-R data-frame.
 }
 \description{
 Executes feather::\code{\link{write_feather}}.
+Uses relative file-paths.
 }

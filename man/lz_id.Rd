@@ -2,27 +2,20 @@
 % Please edit documentation in R/lz_id.R
 \name{lz_id}
 \alias{lz_id}
-\title{Leading zeros in medical record numbers (MRNs)}
+\title{Leading zeros in numeric identifiers.}
 \usage{
 lz_id(x, lz)
 }
 \arguments{
-\item{x}{a vector of MRNS, each up to 9 digits.}
+\item{x}{A vector of numeric identifiers, each up to 9 digits.}
 
-\item{lz}{logical: should leading zeros be included?.}
+\item{lz}{Logical: should leading zeros be included?}
 }
 \value{
-When \code{lz = TRUE}, a vector of type \code{\link{character}}.
-
-When \code{lz = FALSE}, a vector of type \code{\link{integer}}.
+A character vector.
 }
 \description{
-Includes or excludes leading zeros in MRNs.
-}
-\details{
-Provide Enterprise requires 9-digit MRNs.
-
-MRNs that include leading zeros, are 9 digits.
+Includes or excludes leading zeros in numeric identifiers.
 }
 \examples{
 lz_id(x = 1, lz = TRUE)
