@@ -5,8 +5,7 @@
 #' Uses relative file-paths.
 #' Converts column names and categorical data to lower-case.
 #'
-#' @usage
-#' import_feather(folder, path)
+#' @usage import_feather(folder, path)
 #'
 #' @param folder Any folder above both 1) the Feather file and 2) the file that contains the code.
 #' @param path Path to the Feather file, excluding \code{folder}.

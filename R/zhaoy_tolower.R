@@ -4,8 +4,7 @@
 #' Execute \code{\link{tolower}} on character or factor vectors.
 #' Non-alphabetic characters are left un-changed.
 #'
-#' @usage
-#' zhaoy_tolower(x)
+#' @usage zhaoy_tolower(x)
 #'
 #' @param x a character or factor vector.
 #'

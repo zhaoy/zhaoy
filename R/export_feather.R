@@ -4,8 +4,7 @@
 #' Executes feather::\code{\link{write_feather}}.
 #' Uses relative file-paths.
 #'
-#' @usage
-#' export_feather(x, folder, path)
+#' @usage export_feather(x, folder, path)
 #'
 #' @param x A data-frame to write to disk.
 #' @param folder Any folder above both 1) the Feather file and 2) the file that contains the code.

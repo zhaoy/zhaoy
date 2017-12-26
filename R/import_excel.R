@@ -5,8 +5,7 @@
 #' Uses relative file paths.
 #' Converts column names and categorical data to lower-case.
 #'
-#' @usage
-#' import_excel(folder, path, sheet = NULL, range = NULL)
+#' @usage import_excel(folder, path, sheet = NULL, range = NULL)
 #'
 #' @param folder Any folder above both 1) the xls / xlsx file and 2) the file that contains the code.
 #' @param path Path to the xls / xlsx file, excluding \code{folder}.
