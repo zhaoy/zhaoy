@@ -2,7 +2,7 @@
 #'
 #' @description
 #' Executes readxl::\code{\link{read_excel}} with pre-set values in some arguments.
-#' Uses relative file paths.
+#' Uses relative file-paths.
 #' Converts column names and categorical data to lower-case.
 #'
 #' @usage import_excel(folder, path, sheet = NULL, range = NULL)
