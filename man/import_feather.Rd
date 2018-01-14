@@ -20,5 +20,5 @@ Uses relative file-paths.
 Converts column names and categorical data to lower-case.
 }
 \seealso{
-\code{\link{import_excel}}
+\code{\link{import_df import_excel}}
 }

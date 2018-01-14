@@ -12,7 +12,7 @@
 #'
 #' @return A base-R data-frame.
 #'
-#' @seealso \code{\link{import_excel}}
+#' @seealso \code{\link{import_df import_excel}}
 #'
 #' @importFrom feather read_feather
 #' @importFrom purrr map

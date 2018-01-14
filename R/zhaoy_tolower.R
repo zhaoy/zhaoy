@@ -1,8 +1,8 @@
 #' Convert characters and factors to lower-case.
 #'
 #' @description
-#' Execute \code{\link{tolower}} on character or factor vectors.
-#' Non-alphabetic characters are left un-changed.
+#' Execute \code{\link{tolower}} on character and factor vectors.
+#' Other vectors are left un-changed.
 #'
 #' @usage zhaoy_tolower(x)
 #'
@@ -24,7 +24,7 @@ zhaoy_tolower <- function(x) {
   } else if (is.character(x = x) == FALSE &
              is.factor(x = x) == FALSE) {
 
-    return(value = x)
+      return(value = x)
 
     }
 

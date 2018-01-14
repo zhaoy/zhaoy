@@ -31,7 +31,7 @@
 #'
 #' @return A base-R data-frame.
 #'
-#' @seealso \code{\link{import_feather}}
+#' @seealso \code{\link{import_df import_feather}}
 #'
 #' @importFrom purrr map
 #' @importFrom readxl read_excel

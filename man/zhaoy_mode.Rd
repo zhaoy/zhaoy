@@ -2,7 +2,7 @@
 % Please edit documentation in R/zhaoy_mode.R
 \name{zhaoy_mode}
 \alias{zhaoy_mode}
-\title{Statistical mode}
+\title{Statistical mode.}
 \usage{
 zhaoy_mode(x)
 }
@@ -13,5 +13,5 @@ zhaoy_mode(x)
 A vector.
 }
 \description{
-Calculate the mode.
+Calculate the statistical mode.
 }

@@ -41,5 +41,5 @@ Converts column names and categorical data to lower-case.
 \code{guess_max = 100000}: Use a maximum of 100000 data rows to guess column types.
 }
 \seealso{
-\code{\link{import_feather}}
+\code{\link{import_df import_feather}}
 }
