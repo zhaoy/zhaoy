@@ -7,19 +7,18 @@
 s_mode(x)
 }
 \arguments{
-\item{x}{a vector.}
+\item{x}{a character, factor, logical, or numeric vector.}
 }
 \value{
-A vector.
-If there is no mode, the return value is "no mode".
+A character, logical, or numeric vector.
+When the data has no mode, the return value is "no mode".
 }
 \description{
 Calculate the statistical mode.
 }
 \examples{
 s_mode(x = attenu$dist)
-
 }
 \seealso{
-\code{\link{s_col} \link{s_tbl}}
+\code{\link{s_cp} \link{s_s}}
 }

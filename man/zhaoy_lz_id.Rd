@@ -2,20 +2,20 @@
 % Please edit documentation in R/zhaoy_lz_id.R
 \name{zhaoy_lz_id}
 \alias{zhaoy_lz_id}
-\title{Leading zeros in numeric identifiers.}
+\title{Leading zeros in integer identifiers.}
 \usage{
 zhaoy_lz_id(x, lz)
 }
 \arguments{
-\item{x}{a vector of length one, up to 9 digits.}
+\item{x}{a character, factor, or numeric vector of one up-to-9-digits integer.}
 
-\item{lz}{Logical: include leading zeros?}
+\item{lz}{logical: TRUE includes, and FALSE excludes, leading zeros.}
 }
 \value{
 A character vector of length one.
 }
 \description{
-Includes or excludes leading zeros in numeric identifiers.
+Include or exclude leading zeros in integer identifiers.
 }
 \examples{
 zhaoy_lz_id(x = 1, lz = TRUE)

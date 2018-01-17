@@ -6,19 +6,19 @@
 #' @usage
 #' s_mode(x)
 #'
-#' @param x a vector.
+#' @param x a character, factor, logical, or numeric vector.
 #'
 #' @return
-#' A vector.
-#' If there is no mode, the return value is "no mode".
+#' A character, logical, or numeric vector.
+#' When the data has no mode, the return value is "no mode".
 #'
 #' @seealso
-#' \code{\link{s_col} \link{s_tbl}}
+#' \code{\link{s_cp} \link{s_s}}
+#'
+#' @export
 #'
 #' @examples
 #' s_mode(x = attenu$dist)
-#'
-#' @export
 
 s_mode <- function(x) {
 

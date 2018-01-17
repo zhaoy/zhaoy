@@ -1,18 +1,18 @@
-#' Leading zeros in numeric identifiers.
+#' Leading zeros in integer identifiers.
 #'
 #' @description
-#' Includes or excludes leading zeros in numeric identifiers.
+#' Include or exclude leading zeros in integer identifiers.
 #'
 #' @usage
 #' lz_id(x, lz)
 #'
-#' @param x A vector of numeric identifiers, each up to 9 digits.
-#' @param lz Logical: include leading zeros?
+#' @param x a character, factor, or numeric vector of up-to-9-digits integers.
+#' @param lz logical: TRUE includes, and FALSE excludes, leading zeros.
 #'
 #' @return
 #' A character vector.
 #'
-#' @importFrom purrr map
+#' @importFrom purrr map_chr
 #'
 #' @export
 #'

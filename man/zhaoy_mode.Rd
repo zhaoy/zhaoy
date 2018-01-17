@@ -7,16 +7,16 @@
 zhaoy_mode(x)
 }
 \arguments{
-\item{x}{a vector.}
+\item{x}{a character, factor, logical, or numeric vector.}
 }
 \value{
-A vector of length one.
-If there are multiple modes, the return value is "> 1 mode".
-If there is no mode, the return value is "no mode".
+A character, logical, or numeric vector of length one.
+When the data has multiple modes, the return value is "> 1 mode".
+When the data has no mode, the return value is "no mode".
 }
 \description{
 Calculate the statistical mode.
 }
 \examples{
-zhaoy_mode(x = mtcars$mpg)
+zhaoy_mode(x = attenu$dist)
 }

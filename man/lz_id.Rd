@@ -2,20 +2,20 @@
 % Please edit documentation in R/lz_id.R
 \name{lz_id}
 \alias{lz_id}
-\title{Leading zeros in numeric identifiers.}
+\title{Leading zeros in integer identifiers.}
 \usage{
 lz_id(x, lz)
 }
 \arguments{
-\item{x}{A vector of numeric identifiers, each up to 9 digits.}
+\item{x}{a character, factor, or numeric vector of up-to-9-digits integers.}
 
-\item{lz}{Logical: include leading zeros?}
+\item{lz}{logical: TRUE includes, and FALSE excludes, leading zeros.}
 }
 \value{
 A character vector.
 }
 \description{
-Includes or excludes leading zeros in numeric identifiers.
+Include or exclude leading zeros in integer identifiers.
 }
 \examples{
 x <- c("1", "000000002")

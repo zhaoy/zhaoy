@@ -1,26 +1,30 @@
-#' Column-oriented counts and percents.
+#' Counts and percents.
 #'
 #' @description
-#' Tabulate data as counts and percents of data-frame columns.
+#' Tabulate counts and percents of vectors.
 #'
 #' @usage
-#' s_col(x)
+#' s_cp(x)
 #'
-#' @param x a data-frame column.
+#' @param x a character, factor, logical, or numeric vector.
 #'
 #' @return
-#' A base-R data-frame.
-#' The "value" column is in ascending order, beginning with any \code{\link{NA}}s.
-#' The "pct" column rounds numbers to the nearest integers.
+#' A base-R data-frame with the following columns:
 #'
-#' @seealso \code{\link{s_mode} \link{s_tbl}}
+#' value: unique values, in ascending order beginning with any \code{\link{NA}}s.
 #'
-#' @examples
-#' s_col(x = attenu$station)
+#' n: counts.
+#'
+#' pct: percents rounded to the nearest integers.
+#'
+#' @seealso \code{\link{s_mode} \link{s_s}}
 #'
 #' @export
+#'
+#' @examples
+#' s_cp(x = attenu$station)
 
-s_col <- function(x) {
+s_cp <- function(x) {
 
   n <- table(x,
              useNA = "ifany")

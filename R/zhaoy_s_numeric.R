@@ -1,7 +1,7 @@
 #' Summary statistics of numeric data.
 #'
 #' @description
-#' If data are numeric, calculate the minimum, maximum, median, or mean.
+#' For numeric data, calculate the minimum, maximum, median, or mean.
 #'
 #' @usage
 #' zhaoy_s_numeric(x, fun)
@@ -9,12 +9,13 @@
 #' @param x a numeric vector.
 #'
 #' @return
-#' A vector of length one.
+#' A numeric vector of length one.
+#' For non-numeric data, the return value is \code{\link{NA}}.
 #'
 #' @importFrom stats median
 #'
 #' @examples
-#' zhaoy_s_numeric(x = mtcars$mpg, fun = "min")
+#' zhaoy_s_numeric(x = attenu$accel, fun = "min")
 
 zhaoy_s_numeric <- function(x,
                             fun) {

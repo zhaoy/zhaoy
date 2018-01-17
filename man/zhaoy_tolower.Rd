@@ -2,18 +2,18 @@
 % Please edit documentation in R/zhaoy_tolower.R
 \name{zhaoy_tolower}
 \alias{zhaoy_tolower}
-\title{Convert characters and factors to lower-case.}
+\title{Convert characters, factors, and logicals to lower-case.}
 \usage{
 zhaoy_tolower(x)
 }
 \arguments{
-\item{x}{a character or factor vector.}
+\item{x}{a character, factor, or logical vector.}
 }
 \value{
 A character or factor vector of the same length as \code{x}.
 }
 \description{
-Execute \code{\link{tolower}} on character and factor vectors.
+Execute \code{\link{tolower}} on character, factor, and logical vectors.
 }
 \examples{
 x <- c("MiXeD", "cAsE", "123")
