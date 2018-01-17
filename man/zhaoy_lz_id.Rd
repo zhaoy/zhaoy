@@ -7,12 +7,12 @@
 zhaoy_lz_id(x, lz)
 }
 \arguments{
-\item{x}{A numeric identifier, up to 9 digits.}
+\item{x}{a vector of length one, up to 9 digits.}
 
-\item{lz}{Logical: should leading zeros be included?}
+\item{lz}{Logical: include leading zeros?}
 }
 \value{
-A character.
+A character vector of length one.
 }
 \description{
 Includes or excludes leading zeros in numeric identifiers.

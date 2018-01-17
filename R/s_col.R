@@ -1,15 +1,17 @@
-#' Counts and percentages of column values
+#' Column-oriented counts and percents.
 #'
 #' @description
-#' Tabulate counts and percentages of values that are in columns.
-#' Display the values in ascending order, beginning with any \code{\link{NA}}s.
+#' Tabulate data as counts and percents of data-frame columns.
 #'
 #' @usage
 #' s_col(x)
 #'
-#' @param x a column
+#' @param x a data-frame column.
 #'
-#' @return A table.
+#' @return
+#' A base-R data-frame.
+#' The "value" column is in ascending order, beginning with any \code{\link{NA}}s.
+#' The "pct" column rounds numbers to the nearest integers.
 #'
 #' @seealso \code{\link{s_mode} \link{s_tbl}}
 #'
@@ -20,16 +22,13 @@
 
 s_col <- function(x) {
 
-  stopifnot(is.factor(x = x) == TRUE |
-            is.vector(x = x) == TRUE)
-
   n <- table(x,
              useNA = "ifany")
 
   pct <- prop.table(x = n) * 100
 
   pct <- round(x = pct,
-               digits = 1)
+               digits = 0)
 
   x <- data.frame(n,
                   pct,

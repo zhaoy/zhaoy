@@ -2,19 +2,20 @@
 % Please edit documentation in R/s_col.R
 \name{s_col}
 \alias{s_col}
-\title{Counts and percentages of column values}
+\title{Column-oriented counts and percents.}
 \usage{
 s_col(x)
 }
 \arguments{
-\item{x}{a column}
+\item{x}{a data-frame column.}
 }
 \value{
-A table.
+A base-R data-frame.
+The "value" column is in ascending order, beginning with any \code{\link{NA}}s.
+The "pct" column rounds numbers to the nearest integers.
 }
 \description{
-Tabulate counts and percentages of values that are in columns.
-Display the values in ascending order, beginning with any \code{\link{NA}}s.
+Tabulate data as counts and percents of data-frame columns.
 }
 \examples{
 s_col(x = attenu$station)

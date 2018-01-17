@@ -1,16 +1,19 @@
-#' Statistical mode
+#' Statistical mode.
 #'
 #' @description
-#' Calculate the mode. If there is no mode, the displayed value is "no mode".
+#' Calculate the statistical mode.
 #'
 #' @usage
 #' s_mode(x)
 #'
-#' @param x a vector
+#' @param x a vector.
 #'
-#' @return A vector.
+#' @return
+#' A vector.
+#' If there is no mode, the return value is "no mode".
 #'
-#' @seealso \code{\link{s_col} \link{s_tbl}}
+#' @seealso
+#' \code{\link{s_col} \link{s_tbl}}
 #'
 #' @examples
 #' s_mode(x = attenu$dist)

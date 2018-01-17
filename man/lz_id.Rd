@@ -9,7 +9,7 @@ lz_id(x, lz)
 \arguments{
 \item{x}{A vector of numeric identifiers, each up to 9 digits.}
 
-\item{lz}{Logical: should leading zeros be included?}
+\item{lz}{Logical: include leading zeros?}
 }
 \value{
 A character vector.

@@ -14,7 +14,6 @@ A character or factor vector of the same length as \code{x}.
 }
 \description{
 Execute \code{\link{tolower}} on character and factor vectors.
-Other vectors are left un-changed.
 }
 \examples{
 x <- c("MiXeD", "cAsE", "123")

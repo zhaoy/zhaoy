@@ -72,22 +72,22 @@ s_tbl <- function(x) {
   pct_unique <- n_unique / nrow(x = x) * 100
 
   zhaoy_min <- unlist(x = map(.x = x,
-                              .f = zhaoy_numeric,
+                              .f = zhaoy_s_numeric,
                               fun = "min"))
 
   zhaoy_max <- unlist(x = map(.x = x,
-                              .f = zhaoy_numeric,
+                              .f = zhaoy_s_numeric,
                               fun = "max"))
 
   zhaoy_median <- unlist(x = map(.x = x,
-                                 .f = zhaoy_numeric,
+                                 .f = zhaoy_s_numeric,
                                  fun = "median"))
 
   zhaoy_mode <- unlist(x = map(.x = x,
                                .f = zhaoy_mode))
 
   zhaoy_mean <- unlist(x = map(.x = x,
-                               .f = zhaoy_numeric,
+                               .f = zhaoy_s_numeric,
                                fun = "mean"))
 
   x <- data.frame(col,

@@ -1,7 +1,7 @@
 #' Summary statistics of numeric data.
 #'
 #' @description
-#' If data are numeric, calculate the minimum, maximum, median, and mean.
+#' If data are numeric, calculate the minimum, maximum, median, or mean.
 #'
 #' @usage
 #' zhaoy_s_numeric(x, fun)
