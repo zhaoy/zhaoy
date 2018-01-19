@@ -2,34 +2,34 @@
 % Please edit documentation in R/s_s.R
 \name{s_s}
 \alias{s_s}
-\title{Summary statistics of data-frames and vectors.}
+\title{Summary statistics.}
 \usage{
 s_s(x)
 }
 \arguments{
-\item{x}{a data-frame or vector.}
+\item{x}{a data-frame or vector or factor.}
 }
 \value{
 A base-R data-frame with the following columns:
 
-col: column names, displayed only when the input is a data-frame.
+col: column names, included only if \code{x} is a data-frame.
 
 n_miss: numbers of missing data.
 
-pct_miss: numbers of missing data, as percents rounded to the nearest integers.
+pct_miss: missing data as percents rounded to the nearest integers.
 
 n_unique: numbers of unique values.
 
-pct_unique: numbers of unique values, as percents rounded to the nearest integers.
+pct_unique: unique values as percents rounded to the nearest integers.
 
 min, max, median, mean: \code{\link{NA}} for non-numeric data.
 
-mode: \code{\link{NA}} only when \code{\link{NA}} is the most frequent value.
-When the data has multiple modes, "> 1 mode" is returned.
-When the data has no mode, "no mode" is returned.
+mode: \code{\link{NA}} if \code{\link{NA}} is the most frequent value.
+If the data has multiple modes, "> 1 mode" is returned.
+If the data has no mode, "no mode" is returned.
 }
 \description{
-Tabulate summary statistics of data-frames and vectors.
+Tabulate summary statistics of data-frames, vectors, and factors.
 }
 \examples{
 s_s(x = attenu$mag)

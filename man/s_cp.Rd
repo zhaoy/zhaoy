@@ -13,12 +13,12 @@ s_cp(x)
 A base-R data-frame with the following columns:
 
 value: unique values,
-in ascending order with the exception of \code{\link{NA}},
-which is first if it is present.
+which begin with \code{\link{NA}} if it is present,
+then continue in ascending order.
 
 n: counts.
 
-pct: percents rounded to the nearest integers.
+pct: counts as percents rounded to the nearest integers.
 }
 \description{
 Tabulate counts and percents of unique values within vectors and factors.

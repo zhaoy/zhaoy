@@ -12,6 +12,7 @@
 #' @return
 #' A character vector.
 #'
+#' @importFrom dplyr case_when
 #' @importFrom purrr map_chr
 #'
 #' @export
@@ -27,24 +28,19 @@ lz_id <- function(x,
   stopifnot(is.factor(x = x) |
             is.vector(x = x))
 
+  # Convert factors to vectors to by-pass factor-order pit-falls.
+
   if (is.factor(x = x) == TRUE) {
 
     x <- as.vector(x = x)
 
   }
 
-  if (lz == TRUE) {
-
-    purrr::map_chr(.x = x,
-                   .f = zhaoy_lz_id,
-                   lz = TRUE)
-
-  } else if (lz == FALSE) {
-
-    purrr::map_chr(.x = x,
-                   .f = zhaoy_lz_id,
-                   lz = FALSE)
-
-  }
+  case_when(lz == TRUE ~ purrr::map_chr(.x = x,
+                                        .f = zhaoy_lz_id,
+                                        lz = TRUE),
+            lz == FALSE ~ purrr::map_chr(.x = x,
+                                         .f = zhaoy_lz_id,
+                                         lz = FALSE))
 
 }

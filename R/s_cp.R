@@ -12,12 +12,12 @@
 #' A base-R data-frame with the following columns:
 #'
 #' value: unique values,
-#' in ascending order with the exception of \code{\link{NA}},
-#' which is first if it is present.
+#' which begin with \code{\link{NA}} if it is present,
+#' then continue in ascending order.
 #'
 #' n: counts.
 #'
-#' pct: percents rounded to the nearest integers.
+#' pct: counts as percents rounded to the nearest integers.
 #'
 #' @seealso \code{\link{s_mode} \link{s_s}}
 #'
@@ -47,9 +47,8 @@ s_cp <- function(x) {
                   fix.empty.names = TRUE,
                   stringsAsFactors = FALSE)
 
-  x <- x[, c("x",
-             "Freq",
-             "Freq.1")]
+  x <- subset(x = x,
+              select = -`x.1`)
 
   names(x = x)[names(x = x) == "x"] <- "value"
 

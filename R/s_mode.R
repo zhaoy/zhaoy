@@ -42,7 +42,11 @@ s_mode <- function(x) {
 
     x_mode <- names(x = x_table)[x_table == x_max]
 
-    if (is.numeric(x = x) == TRUE) {
+      # case_when is appealing, but it requires that conditions are all-inclusive and
+      # mutually exclusive.
+      # There are too many conditions to write to ensure that case_when is all-inclusive.
+
+     if (is.numeric(x = x) == TRUE) {
 
       x_mode <- as.numeric(x = x_mode)
 
@@ -50,7 +54,7 @@ s_mode <- function(x) {
 
       x_mode <- as.logical(x = x_mode)
 
-    }
+}
 
   }
 

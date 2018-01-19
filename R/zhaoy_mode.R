@@ -47,11 +47,11 @@ zhaoy_mode <- function(x) {
 
       if (is.numeric(x = x) == TRUE) {
 
-          x_mode <- as.numeric(x = x)
+        x_mode <- as.numeric(x = x_mode)
 
       } else if (is.logical(x = x) == TRUE) {
 
-        x_mode <- as.logical(x = x)
+        x_mode <- as.logical(x = x_mode)
 
       }
 

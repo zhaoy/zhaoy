@@ -2,7 +2,7 @@
 % Please edit documentation in R/zhaoy_tolower.R
 \name{zhaoy_tolower}
 \alias{zhaoy_tolower}
-\title{Convert characters and factor levels to lower-case.}
+\title{Convert to lower-case and retain un-converted.}
 \usage{
 zhaoy_tolower(x)
 }
@@ -17,7 +17,7 @@ If \code{x} is a non-character vector or non-alphabetic factor, \code{x} un-chan
 \description{
 Convert upper-case characters and factor levels to lower-case characters.
 
-Non-character vectors and non-alphabetic factors are returned un-changed.
+Return non-character vectors and non-alphabetic factors un-changed.
 }
 \examples{
 x <- c("MiXeD", "cAsE", "123")
