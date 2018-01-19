@@ -1,12 +1,12 @@
-#' Leading zeros in integer identifiers.
+#' Leading zeros in identifiers.
 #'
 #' @description
-#' Include or exclude leading zeros in integer identifiers.
+#' Include or exclude leading zeros in non-decimal numeric identifiers that have 1 - 9 digits.
 #'
 #' @usage
 #' zhaoy_lz_id(x, lz)
 #'
-#' @param x a character, factor, or numeric vector of one up-to-9-digits integer.
+#' @param x a vector or factor of one non-decimal numeric identifier that has 1 - 9 digits.
 #' @param lz logical: TRUE includes, and FALSE excludes, leading zeros.
 #'
 #' @return
@@ -19,33 +19,46 @@
 zhaoy_lz_id <- function(x,
                         lz) {
 
-  if ((is.character(x = x) == TRUE &
-      nchar(x = x,
-            keepNA = TRUE) == 9 &
-      lz == TRUE) |
-      (is.character(x = x) == TRUE &
-      nchar(x = x,
-            keepNA = TRUE) != 9 &
-      lz == FALSE)) {
+  stopifnot((is.factor(x = x) |
+             is.vector(x = x)),
+            length(x = x) == 1,
+            nchar(x = as.character(x = x),
+                  keepNA = TRUE) >= 1,
+            nchar(x = as.character(x = x),
+                  keepNA = TRUE) <= 9)
 
-    return(value = x)
+  if (is.character(x = x) == TRUE &
+      ((nchar(x = as.character(x = x),
+             keepNA = TRUE) == 9 &
+       lz == TRUE) |
+      (nchar(x = as.character(x = x),
+             keepNA = TRUE) >= 1 &
+       nchar(x = as.character(x = x),
+             keepNA = TRUE) < 9 &
+       lz == FALSE))) {
 
-  } else {if (is.integer(x = x) == FALSE) {
+      return(value = x)
+
+  } else {
+
+    if (is.integer(x = x) == FALSE) {
 
       x <- as.integer(x = x)
 
     }
 
-    if (is.integer(x = x) == TRUE &
-        lz == TRUE) {
+    if (is.integer(x = x) == TRUE) {
 
-      sprintf(fmt = "%09d",
-              x)
+      if (lz == TRUE) {
 
-    } else if (is.integer(x = x) == TRUE &
-               lz == FALSE) {
+        sprintf(fmt = "%09d",
+                x)
 
-      as.character(x = x)
+      } else if (lz == FALSE) {
+
+        as.character(x = x)
+
+      }
 
     }
 

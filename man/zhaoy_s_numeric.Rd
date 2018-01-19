@@ -7,11 +7,12 @@
 zhaoy_s_numeric(x, fun)
 }
 \arguments{
-\item{x}{a numeric vector.}
+\item{x}{a vector.}
 }
 \value{
-A numeric vector of length one.
-For non-numeric data, the return value is \code{\link{NA}}.
+If \code{x} is numeric, a vector of length one.
+
+If \code{x} is non-numeric, a vector of one \code{\link{NA}}.
 }
 \description{
 For numeric data, calculate the minimum, maximum, median, or mean.

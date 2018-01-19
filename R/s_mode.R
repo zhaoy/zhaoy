@@ -6,11 +6,12 @@
 #' @usage
 #' s_mode(x)
 #'
-#' @param x a character, factor, logical, or numeric vector.
+#' @param x a vector or factor.
 #'
 #' @return
-#' A character, logical, or numeric vector.
-#' When the data has no mode, the return value is "no mode".
+#' A vector.
+#'
+#' If \code{x} has no mode, "no mode" is returned.
 #'
 #' @seealso
 #' \code{\link{s_cp} \link{s_s}}
@@ -21,6 +22,9 @@
 #' s_mode(x = attenu$dist)
 
 s_mode <- function(x) {
+
+  stopifnot(is.factor(x = x) |
+            is.vector(x = x))
 
   x_table <- table(x,
                    useNA = "ifany")
@@ -42,9 +46,7 @@ s_mode <- function(x) {
 
       x_mode <- as.numeric(x = x_mode)
 
-    }
-
-    else if (is.logical(x = x) == TRUE) {
+    } else if (is.logical(x = x) == TRUE) {
 
       x_mode <- as.logical(x = x_mode)
 

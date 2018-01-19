@@ -7,11 +7,12 @@
 s_mode(x)
 }
 \arguments{
-\item{x}{a character, factor, logical, or numeric vector.}
+\item{x}{a vector or factor.}
 }
 \value{
-A character, logical, or numeric vector.
-When the data has no mode, the return value is "no mode".
+A vector.
+
+If \code{x} has no mode, "no mode" is returned.
 }
 \description{
 Calculate the statistical mode.

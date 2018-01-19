@@ -6,11 +6,12 @@
 #' @usage
 #' zhaoy_s_numeric(x, fun)
 #'
-#' @param x a numeric vector.
+#' @param x a vector.
 #'
 #' @return
-#' A numeric vector of length one.
-#' For non-numeric data, the return value is \code{\link{NA}}.
+#' If \code{x} is numeric, a vector of length one.
+#'
+#' If \code{x} is non-numeric, a vector of one \code{\link{NA}}.
 #'
 #' @importFrom stats median
 #'
@@ -20,11 +21,17 @@
 zhaoy_s_numeric <- function(x,
                             fun) {
 
-  if (is.numeric(x = x) == FALSE) {
+  stopifnot(is.vector(x = x))
+
+  if (is.complex(x = x) == FALSE &
+      is.double(x = x) == FALSE &
+      is.integer(x = x) == FALSE &
+      is.numeric(x = x) == FALSE &
+      is.raw(x = x) == FALSE) {
 
     return(value = NA)
 
-  } else if (is.numeric(x = x) == TRUE) {
+  } else {
 
     if (fun == "min") {
 

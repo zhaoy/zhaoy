@@ -1,12 +1,12 @@
-#' Leading zeros in integer identifiers.
+#' Leading zeros in identifiers.
 #'
 #' @description
-#' Include or exclude leading zeros in integer identifiers.
+#' Include or exclude leading zeros in non-decimal numeric identifiers that have 1 - 9 digits.
 #'
 #' @usage
 #' lz_id(x, lz)
 #'
-#' @param x a character, factor, or numeric vector of up-to-9-digits integers.
+#' @param x a vector or factor of non-decimal numeric identifiers that each have 1 - 9 digits.
 #' @param lz logical: TRUE includes, and FALSE excludes, leading zeros.
 #'
 #' @return
@@ -23,6 +23,15 @@
 
 lz_id <- function(x,
                   lz) {
+
+  stopifnot(is.factor(x = x) |
+            is.vector(x = x))
+
+  if (is.factor(x = x) == TRUE) {
+
+    x <- as.vector(x = x)
+
+  }
 
   if (lz == TRUE) {
 

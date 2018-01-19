@@ -1,17 +1,19 @@
 #' Counts and percents.
 #'
 #' @description
-#' Tabulate counts and percents of vectors.
+#' Tabulate counts and percents of unique values within vectors and factors.
 #'
 #' @usage
 #' s_cp(x)
 #'
-#' @param x a character, factor, logical, or numeric vector.
+#' @param x a vector or factor.
 #'
 #' @return
 #' A base-R data-frame with the following columns:
 #'
-#' value: unique values, in ascending order beginning with any \code{\link{NA}}s.
+#' value: unique values,
+#' in ascending order with the exception of \code{\link{NA}},
+#' which is first if it is present.
 #'
 #' n: counts.
 #'
@@ -25,6 +27,9 @@
 #' s_cp(x = attenu$station)
 
 s_cp <- function(x) {
+
+  stopifnot(is.factor(x = x) |
+            is.vector(x = x))
 
   n <- table(x,
              useNA = "ifany")
@@ -51,6 +56,8 @@ s_cp <- function(x) {
   names(x = x)[names(x = x) == "Freq"] <- "n"
 
   names(x = x)[names(x = x) == "Freq.1"] <- "pct"
+
+  x$value <- as.character(x = x$value)
 
   x_order <- order(x$value,
                    decreasing = FALSE,

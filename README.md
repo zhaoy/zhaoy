@@ -16,11 +16,11 @@ customized functions for importing, tidying, transforming, and communicating dat
 
 # transform
 
-`s_col`
+`s_cp`
 
 `s_mode`
 
-`s_tbl`
+`s_s`
 
 # export
 

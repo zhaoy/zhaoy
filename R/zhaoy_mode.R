@@ -6,17 +6,22 @@
 #' @usage
 #' zhaoy_mode(x)
 #'
-#' @param x a character, factor, logical, or numeric vector.
+#' @param x a vector or factor.
 #'
 #' @return
-#' A character, logical, or numeric vector of length one.
-#' When the data has multiple modes, the return value is "> 1 mode".
-#' When the data has no mode, the return value is "no mode".
+#' A vector of length one.
+#'
+#' If \code{x} has multiple modes, "> 1 mode" is returned.
+#'
+#' If \code{x} has no mode, "no mode" is returned.
 #'
 #' @examples
 #' zhaoy_mode(x = attenu$dist)
 
 zhaoy_mode <- function(x) {
+
+  stopifnot(is.factor(x = x) |
+            is.vector(x = x))
 
   x_table <- table(x,
                    useNA = "ifany")
@@ -38,15 +43,17 @@ zhaoy_mode <- function(x) {
 
       x_mode <- "> 1 mode"
 
-    } else if (length(x = x_mode) == 1 &
-      is.numeric(x = x) == TRUE) {
+    } else if (length(x = x_mode) == 1) {
 
-      x_mode <- as.numeric(x = x_mode)
+      if (is.numeric(x = x) == TRUE) {
 
-    } else if (length(x = x_mode) == 1 &
-      is.logical(x = x) == TRUE) {
+          x_mode <- as.numeric(x = x)
 
-      x_mode <- as.logical(x = x_mode)
+      } else if (is.logical(x = x) == TRUE) {
+
+        x_mode <- as.logical(x = x)
+
+      }
 
     }
 

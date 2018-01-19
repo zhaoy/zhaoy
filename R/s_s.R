@@ -9,36 +9,39 @@
 #' @param x a data-frame or vector.
 #'
 #' @return
-#' A data-frame with the following columns:
+#' A base-R data-frame with the following columns:
 #'
-#' col: column names that display only when the input is a data-frame.
+#' col: column names, displayed only when the input is a data-frame.
 #'
 #' n_miss: numbers of missing data.
 #'
-#' pct_miss: percents of data that are missing data, rounded to the nearest integers.
+#' pct_miss: numbers of missing data, as percents rounded to the nearest integers.
 #'
 #' n_unique: numbers of unique values.
 #'
-#' pct_unique: percents of data that are unique values, rounded to the nearest integers.
+#' pct_unique: numbers of unique values, as percents rounded to the nearest integers.
 #'
 #' min, max, median, mean: \code{\link{NA}} for non-numeric data.
 #'
 #' mode: \code{\link{NA}} only when \code{\link{NA}} is the most frequent value.
-#' When the data has multiple modes, the return value is "> 1 mode".
-#' When the data has no mode, the return value is "no mode".
+#' When the data has multiple modes, "> 1 mode" is returned.
+#' When the data has no mode, "no mode" is returned.
 #'
 #' @seealso \code{\link{s_cp} \link{s_mode}}
 #'
-#' @importFrom purrr map map_int modify_at
 #' @importFrom dplyr case_when select
+#' @importFrom purrr map map_int modify_at
 #'
 #' @export
 #'
 #' @examples
-#' s_s(x = attenu$station)
+#' s_s(x = attenu$mag)
 #' s_s(x = attenu)
 
 s_s <- function(x) {
+
+  stopifnot(is.data.frame(x = x) |
+            is.vector(x = x))
 
   if (is.factor(x = x) == TRUE |
       is.vector(x = x) == TRUE) {

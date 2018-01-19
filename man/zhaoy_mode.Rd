@@ -7,12 +7,14 @@
 zhaoy_mode(x)
 }
 \arguments{
-\item{x}{a character, factor, logical, or numeric vector.}
+\item{x}{a vector or factor.}
 }
 \value{
-A character, logical, or numeric vector of length one.
-When the data has multiple modes, the return value is "> 1 mode".
-When the data has no mode, the return value is "no mode".
+A vector of length one.
+
+If \code{x} has multiple modes, "> 1 mode" is returned.
+
+If \code{x} has no mode, "no mode" is returned.
 }
 \description{
 Calculate the statistical mode.

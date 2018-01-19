@@ -7,19 +7,21 @@
 s_cp(x)
 }
 \arguments{
-\item{x}{a character, factor, logical, or numeric vector.}
+\item{x}{a vector or factor.}
 }
 \value{
 A base-R data-frame with the following columns:
 
-value: unique values, in ascending order beginning with any \code{\link{NA}}s.
+value: unique values,
+in ascending order with the exception of \code{\link{NA}},
+which is first if it is present.
 
 n: counts.
 
 pct: percents rounded to the nearest integers.
 }
 \description{
-Tabulate counts and percents of vectors.
+Tabulate counts and percents of unique values within vectors and factors.
 }
 \examples{
 s_cp(x = attenu$station)
