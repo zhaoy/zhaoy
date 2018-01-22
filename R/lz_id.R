@@ -12,7 +12,6 @@
 #' @return
 #' A character vector.
 #'
-#' @importFrom dplyr case_when
 #' @importFrom purrr map_chr
 #'
 #' @export
@@ -36,11 +35,18 @@ lz_id <- function(x,
 
   }
 
-  case_when(lz == TRUE ~ purrr::map_chr(.x = x,
-                                        .f = zhaoy_lz_id,
-                                        lz = TRUE),
-            lz == FALSE ~ purrr::map_chr(.x = x,
-                                         .f = zhaoy_lz_id,
-                                         lz = FALSE))
+  if (lz == TRUE) {
+
+    purrr::map_chr(.x = x,
+                   .f = zhaoy_lz_id,
+                   lz = TRUE)
+
+  } else if (lz == FALSE) {
+
+    purrr::map_chr(.x = x,
+                   .f = zhaoy_lz_id,
+                   lz = FALSE)
+
+  }
 
 }

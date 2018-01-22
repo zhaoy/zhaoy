@@ -12,6 +12,8 @@ s_mode(x)
 \value{
 A vector.
 
+If \code{\link{NA}} is the most frequent value in \code{x}, "NA" or "<NA>" is returned.
+
 If \code{x} has no mode, "no mode" is returned.
 }
 \description{

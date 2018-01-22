@@ -1,8 +1,8 @@
 Type: package
 Package: zhaoy
 Title: customized functions
-Description: Import, tidy, transform, and communicate data
-Date: 2018-1-18
+Description: Import / export, tidy, transform, and communicate data
+Date: 2018-1-22
 Version: 0.0.1
 Imports: dplyr, feather, purrr, readxl, rprojroot, stats, tidyr, utils
 Encoding: UTF-8

@@ -7,10 +7,10 @@
 zhaoy_s_numeric(x, fun)
 }
 \arguments{
-\item{x}{a vector.}
+\item{x}{a vector or factor.}
 }
 \value{
-If \code{x} is numeric, a vector of length one.
+If \code{x} is numeric, a vector of one statistic.
 
 If \code{x} is non-numeric, a vector of one \code{\link{NA}}.
 }

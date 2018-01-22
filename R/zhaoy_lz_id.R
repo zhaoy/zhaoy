@@ -12,8 +12,6 @@
 #' @return
 #' A character vector of length one.
 #'
-#' @importFrom dplyr case_when
-#'
 #' @examples
 #' zhaoy_lz_id(x = 1, lz = TRUE)
 #' zhaoy_lz_id(x = "000000001", lz = FALSE)
@@ -37,11 +35,13 @@ zhaoy_lz_id <- function(x,
               keepNA = TRUE) >= 1 &
         nchar(x = as.character(x = x),
               keepNA = TRUE) < 9 &
-        lz == FALSE))) {
+       lz == FALSE))) {
 
     return(value = x)
 
   } else {
+
+    # The "d" in "%09d" means integers.
 
     if (is.integer(x = x) == FALSE) {
 
@@ -49,11 +49,14 @@ zhaoy_lz_id <- function(x,
 
     }
 
-    if (is.integer(x = x) == TRUE) {
+    if (lz == TRUE) {
 
-      case_when(lz == TRUE ~ sprintf(fmt = "%09d",
-                                     x),
-                lz == FALSE ~ as.character(x = x))
+      sprintf(fmt = "%09d",
+              x)
+
+    } else if (lz == FALSE) {
+
+      as.character(x = x)
 
     }
 

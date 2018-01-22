@@ -12,7 +12,7 @@ s_s(x)
 \value{
 A base-R data-frame with the following columns:
 
-col: column names, included only if \code{x} is a data-frame.
+var: variable names, included only if \code{x} is a data-frame.
 
 n_miss: numbers of missing data.
 
@@ -22,9 +22,9 @@ n_unique: numbers of unique values.
 
 pct_unique: unique values as percents rounded to the nearest integers.
 
-min, max, median, mean: \code{\link{NA}} for non-numeric data.
+min, max, median, mean: if the data is non-numeric, \code{\link{NA}} is returned.
 
-mode: \code{\link{NA}} if \code{\link{NA}} is the most frequent value.
+mode: if \code{\link{NA}} is the most frequent value in the data, \code{\link{NA}} is returned.
 If the data has multiple modes, "> 1 mode" is returned.
 If the data has no mode, "no mode" is returned.
 }

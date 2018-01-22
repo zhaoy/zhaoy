@@ -11,7 +11,7 @@
 #' @return
 #' A base-R data-frame with the following columns:
 #'
-#' col: column names, included only if \code{x} is a data-frame.
+#' var: variable names, included only if \code{x} is a data-frame.
 #'
 #' n_miss: numbers of missing data.
 #'
@@ -21,14 +21,15 @@
 #'
 #' pct_unique: unique values as percents rounded to the nearest integers.
 #'
-#' min, max, median, mean: \code{\link{NA}} for non-numeric data.
+#' min, max, median, mean: if the data is non-numeric, \code{\link{NA}} is returned.
 #'
-#' mode: \code{\link{NA}} if \code{\link{NA}} is the most frequent value.
+#' mode: if \code{\link{NA}} is the most frequent value in the data, \code{\link{NA}} is returned.
 #' If the data has multiple modes, "> 1 mode" is returned.
 #' If the data has no mode, "no mode" is returned.
 #'
 #' @seealso \code{\link{s_cp} \link{s_mode}}
 #'
+#' @importFrom dplyr case_when n_distinct select
 #' @importFrom purrr map map_dbl map_int modify_at
 #'
 #' @export
@@ -54,7 +55,7 @@ s_s <- function(x) {
 
   }
 
-  col <- names(x = x)
+  var <- names(x = x)
 
   n_miss <- purrr::map_int(.x = x,
                            .f = function(x) sum(is.na(x = x) == TRUE,
@@ -63,8 +64,8 @@ s_s <- function(x) {
   pct_miss <- n_miss / nrow(x = x) * 100
 
   n_unique <- purrr::map_int(.x = x,
-                             .f = function(x) length(x = unique(x = x,
-                                                                incomparables = FALSE)))
+                             .f = dplyr::n_distinct,
+                             na.rm = TRUE)
 
   pct_unique <- n_unique / nrow(x = x) * 100
 
@@ -87,7 +88,7 @@ s_s <- function(x) {
                                .f = zhaoy_s_numeric,
                                fun = "mean")
 
-  x <- data.frame(col,
+  x <- data.frame(var,
                   n_miss,
                   pct_miss,
                   n_unique,
@@ -109,15 +110,19 @@ s_s <- function(x) {
                         .f = round,
                         digits = 0)
 
+  # To retain their numeric status,
+  # do NOT drop trailing zeros
+  # from numbers in the min, max, median, and mean columns.
+
   if (nrow(x = x) == 1) {
 
     dplyr::select(.data = x,
-                  -col)
+                  -var)
 
   } else if (nrow(x = x) != 1) {
 
     return(value = x)
 
-}
+  }
 
 }

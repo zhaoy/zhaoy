@@ -11,6 +11,8 @@
 #' @return
 #' A vector of length one.
 #'
+#' If \code{\link{NA}} is the most frequent value in \code{x}, "NA" or "<NA>" is returned.
+#'
 #' If \code{x} has multiple modes, "> 1 mode" is returned.
 #'
 #' If \code{x} has no mode, "no mode" is returned.

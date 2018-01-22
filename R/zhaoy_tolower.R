@@ -1,4 +1,4 @@
-#' Convert to lower-case and retain un-converted.
+#' Convert to lower-case.
 #'
 #' @description
 #' Convert upper-case characters and factor levels to lower-case characters.
@@ -15,8 +15,6 @@
 #'
 #' If \code{x} is a non-character vector or non-alphabetic factor, \code{x} un-changed.
 #'
-#' @importFrom dplyr case_when
-#'
 #' @examples
 #' x <- c("MiXeD", "cAsE", "123")
 #' zhaoy_tolower(x = x)
@@ -26,9 +24,16 @@ zhaoy_tolower <- function(x) {
   stopifnot(is.factor(x = x) |
             is.vector(x = x))
 
-  case_when(is.character(x = x) == TRUE |
-            is.factor(x = x) == TRUE ~ tolower(x = x),
-            is.character(x = x) == FALSE &
-            is.factor(x = x) == FALSE ~ x)
+  if (is.character(x = x) == TRUE |
+      is.factor(x = x) == TRUE) {
+
+    tolower(x = x)
+
+  } else if (is.character(x = x) == FALSE &
+             is.factor(x = x) == FALSE) {
+
+    return(value = x)
+
+  }
 
 }

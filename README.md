@@ -1,4 +1,4 @@
-customized functions for importing, tidying, transforming, and communicating data
+customized functions for importing / exporting, tidying, transforming, and communicating data
 
 # import
 
@@ -7,6 +7,8 @@ customized functions for importing, tidying, transforming, and communicating dat
 `import_excel`
 
 `import_feather`
+
+`export_feather`
 
 # tidy
 
@@ -21,10 +23,6 @@ customized functions for importing, tidying, transforming, and communicating dat
 `s_mode`
 
 `s_s`
-
-# export
-
-`export_feather`
 
 # communicate
 
