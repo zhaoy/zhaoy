@@ -1,12 +1,12 @@
 #' Summary statistics.
 #'
 #' @description
-#' Tabulate summary statistics of data-frames, vectors, and factors.
+#' Tabulate summary statistics of data-frames, vectors, factors, and dates / date-times.
 #'
 #' @usage
 #' s_s(x)
 #'
-#' @param x a data-frame or vector or factor.
+#' @param x a data-frame, vector, factor, or one or more dates / date-times.
 #'
 #' @return
 #' A base-R data-frame with the following columns:
@@ -21,15 +21,15 @@
 #'
 #' pct_unique: unique values as percents rounded to the nearest integers.
 #'
-#' min, max, median, mean: if the data is non-numeric, \code{\link{NA}} is returned.
+#' min, max, median, mean: if the variable is non-numeric, \code{\link{NA}} is returned.
 #'
-#' mode: if \code{\link{NA}} is the most frequent value in the data, \code{\link{NA}} is returned.
-#' If the data has multiple modes, "> 1 mode" is returned.
-#' If the data has no mode, "no mode" is returned.
+#' mode: if \code{\link{NA}} is the most frequent value in the variable, \code{\link{NA}} or "<NA>" is returned.
+#' If the variable has multiple modes, "> 1 mode" is returned.
+#' If the variable has a length of one, or has otherwise no mode, "no mode" is returned.
 #'
 #' @seealso \code{\link{s_cp} \link{s_mode}}
 #'
-#' @importFrom dplyr case_when n_distinct select
+#' @importFrom dplyr n_distinct select
 #' @importFrom purrr map map_dbl map_int modify_at
 #'
 #' @export
@@ -40,11 +40,21 @@
 
 s_s <- function(x) {
 
-  stopifnot(is.data.frame(x = x) |
+  stopifnot(inherits(x = x,
+                     what = c("Date",
+                              "POSIXct",
+                              "POSIXlt"),
+                     which = FALSE) |
+            is.data.frame(x = x) |
             is.factor(x = x) |
             is.vector(x = x))
 
-  if (is.factor(x = x) == TRUE |
+  if (inherits(x = x,
+               what = c("Date",
+                        "POSIXct",
+                        "POSIXlt"),
+               which = FALSE) == TRUE |
+      is.factor(x = x) == TRUE |
       is.vector(x = x) == TRUE) {
 
     x <- as.data.frame(x = x,
@@ -117,9 +127,9 @@ s_s <- function(x) {
   if (nrow(x = x) == 1) {
 
     dplyr::select(.data = x,
-                  -var)
+                  n_miss:mean)
 
-  } else if (nrow(x = x) != 1) {
+  } else if (nrow(x = x) > 1) {
 
     return(value = x)
 

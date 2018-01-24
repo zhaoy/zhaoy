@@ -10,7 +10,7 @@
 #' @param lz logical: TRUE includes, and FALSE excludes, leading zeros.
 #'
 #' @return
-#' A character vector of length one.
+#' A length-one character vector.
 #'
 #' @examples
 #' zhaoy_lz_id(x = 1, lz = TRUE)

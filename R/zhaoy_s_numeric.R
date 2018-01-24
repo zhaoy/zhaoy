@@ -1,15 +1,17 @@
-#' Summary statistics of numeric data.
+#' Summary statistics.
 #'
 #' @description
 #' For numeric data, calculate the minimum, maximum, median, or mean.
 #'
+#' For dates / date-times, calculate the minimum and maximum.
+#'
 #' @usage
 #' zhaoy_s_numeric(x, fun)
 #'
-#' @param x a vector or factor.
+#' @param x a vector, factor, or one or more dates / date-times.
 #'
 #' @return
-#' If \code{x} is numeric, a vector of one statistic.
+#' If \code{x} is numeric, a length-one numeric vector.
 #'
 #' If \code{x} is non-numeric, a vector of one \code{\link{NA}}.
 #'
@@ -21,8 +23,19 @@
 zhaoy_s_numeric <- function(x,
                             fun) {
 
-  stopifnot(is.factor(x = x) |
+  stopifnot(inherits(x = x,
+                     what = c("Date",
+                              "POSIXct",
+                              "POSIXlt"),
+                     which = FALSE) |
+            is.factor(x = x) |
             is.vector(x = x))
+
+  # Conceptually and functionally,
+  # min(), max(), and median() are compatible with dates / date-times.
+  # But because dates / date-times and numbers cannot co-exist in vectors,
+  # s_s() and therefore zhaoy_s_numeric() execute min(), max(), and median()
+  # only for numeric data.
 
   if (is.numeric(x = x) == FALSE) {
 

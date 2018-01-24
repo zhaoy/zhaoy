@@ -7,7 +7,7 @@
 s_s(x)
 }
 \arguments{
-\item{x}{a data-frame or vector or factor.}
+\item{x}{a data-frame, vector, factor, or one or more dates / date-times.}
 }
 \value{
 A base-R data-frame with the following columns:
@@ -22,14 +22,14 @@ n_unique: numbers of unique values.
 
 pct_unique: unique values as percents rounded to the nearest integers.
 
-min, max, median, mean: if the data is non-numeric, \code{\link{NA}} is returned.
+min, max, median, mean: if the variable is non-numeric, \code{\link{NA}} is returned.
 
-mode: if \code{\link{NA}} is the most frequent value in the data, \code{\link{NA}} is returned.
-If the data has multiple modes, "> 1 mode" is returned.
-If the data has no mode, "no mode" is returned.
+mode: if \code{\link{NA}} is the most frequent value in the variable, \code{\link{NA}} or "<NA>" is returned.
+If the variable has multiple modes, "> 1 mode" is returned.
+If the variable has a length of one, or has otherwise no mode, "no mode" is returned.
 }
 \description{
-Tabulate summary statistics of data-frames, vectors, and factors.
+Tabulate summary statistics of data-frames, vectors, factors, and dates / date-times.
 }
 \examples{
 s_s(x = attenu$mag)

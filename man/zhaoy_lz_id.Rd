@@ -12,7 +12,7 @@ zhaoy_lz_id(x, lz)
 \item{lz}{logical: TRUE includes, and FALSE excludes, leading zeros.}
 }
 \value{
-A character vector of length one.
+A length-one character vector.
 }
 \description{
 Include or exclude leading zeros in non-decimal numeric identifiers that have 1 - 9 digits.

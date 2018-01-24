@@ -3,17 +3,17 @@
 #' @description
 #' Convert upper-case characters and factor levels to lower-case characters.
 #'
-#' Return non-character vectors and non-alphabetic factors un-changed.
+#' Return non-character vectors, non-alphabetic factors, and dates / date-times un-changed.
 #'
 #' @usage
 #' zhaoy_tolower(x)
 #'
-#' @param x a vector or factor.
+#' @param x a vector, factor, or one or more dates / date-times.
 #'
 #' @return
 #' If \code{x} is a character vector or alphabetic factor, a character vector of the same length as \code{x}.
 #'
-#' If \code{x} is a non-character vector or non-alphabetic factor, \code{x} un-changed.
+#' Otherwise, \code{x} un-changed.
 #'
 #' @examples
 #' x <- c("MiXeD", "cAsE", "123")
@@ -21,7 +21,12 @@
 
 zhaoy_tolower <- function(x) {
 
-  stopifnot(is.factor(x = x) |
+  stopifnot(inherits(x = x,
+                     what = c("Date",
+                              "POSIXct",
+                              "POSIXlt"),
+                     which = FALSE) |
+            is.factor(x = x) |
             is.vector(x = x))
 
   if (is.character(x = x) == TRUE |

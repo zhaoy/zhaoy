@@ -1,18 +1,18 @@
 #' Counts and percents.
 #'
 #' @description
-#' Tabulate counts and percents of unique values within vectors and factors.
+#' Tabulate counts and percents of unique values within vectors, factors, and dates / date-time(s).
 #'
 #' @usage
 #' s_cp(x)
 #'
-#' @param x a vector or factor.
+#' @param x a vector, factor, or one or more dates / date-time(s).
 #'
 #' @return
 #' A base-R data-frame with the following columns:
 #'
 #' value: unique values,
-#' which begin with \code{\link{NA}} if it is present,
+#' which begin with "<NA>" if \code{\link{NA}} is present,
 #' then continue in ascending order.
 #'
 #' n: counts.
@@ -28,7 +28,12 @@
 
 s_cp <- function(x) {
 
-  stopifnot(is.factor(x = x) |
+  stopifnot(inherits(x = x,
+                     what = c("Date",
+                              "POSIXct",
+                              "POSIXlt"),
+                     which = FALSE) |
+            is.factor(x = x) |
             is.vector(x = x))
 
   n <- table(x,
@@ -47,14 +52,15 @@ s_cp <- function(x) {
                   fix.empty.names = TRUE,
                   stringsAsFactors = FALSE)
 
-  x <- subset(x = x,
-              select = -`x.1`)
-
   names(x = x)[names(x = x) == "x"] <- "value"
 
   names(x = x)[names(x = x) == "Freq"] <- "n"
 
   names(x = x)[names(x = x) == "Freq.1"] <- "pct"
+
+  x <- subset(x = x,
+              select = c(value:n,
+                         pct))
 
   x$value <- as.character(x = x$value)
 

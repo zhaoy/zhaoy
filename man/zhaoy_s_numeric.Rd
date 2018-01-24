@@ -2,20 +2,22 @@
 % Please edit documentation in R/zhaoy_s_numeric.R
 \name{zhaoy_s_numeric}
 \alias{zhaoy_s_numeric}
-\title{Summary statistics of numeric data.}
+\title{Summary statistics.}
 \usage{
 zhaoy_s_numeric(x, fun)
 }
 \arguments{
-\item{x}{a vector or factor.}
+\item{x}{a vector, factor, or one or more dates / date-times.}
 }
 \value{
-If \code{x} is numeric, a vector of one statistic.
+If \code{x} is numeric, a length-one numeric vector.
 
 If \code{x} is non-numeric, a vector of one \code{\link{NA}}.
 }
 \description{
 For numeric data, calculate the minimum, maximum, median, or mean.
+
+For dates / date-times, calculate the minimum and maximum.
 }
 \examples{
 zhaoy_s_numeric(x = attenu$accel, fun = "min")

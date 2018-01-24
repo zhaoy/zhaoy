@@ -7,13 +7,13 @@
 s_cp(x)
 }
 \arguments{
-\item{x}{a vector or factor.}
+\item{x}{a vector, factor, or one or more dates / date-time(s).}
 }
 \value{
 A base-R data-frame with the following columns:
 
 value: unique values,
-which begin with \code{\link{NA}} if it is present,
+which begin with "<NA>" if \code{\link{NA}} is present,
 then continue in ascending order.
 
 n: counts.
@@ -21,7 +21,7 @@ n: counts.
 pct: counts as percents rounded to the nearest integers.
 }
 \description{
-Tabulate counts and percents of unique values within vectors and factors.
+Tabulate counts and percents of unique values within vectors, factors, and dates / date-time(s).
 }
 \examples{
 s_cp(x = attenu$station)
