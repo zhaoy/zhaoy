@@ -2,13 +2,13 @@ customized functions for importing / exporting, tidying, transforming, and commu
 
 # import
 
-`import_df`
-
 `import_excel`
 
 `import_feather`
 
 `export_feather`
+
+`import_df`
 
 # tidy
 
@@ -18,14 +18,16 @@ customized functions for importing / exporting, tidying, transforming, and commu
 
 # transform
 
+`s_s`
+
 `s_cp`
 
 `s_mode`
-
-`s_s`
 
 # communicate
 
 `new_r`
 
 `new_rmd`
+
+

@@ -7,18 +7,19 @@
 import_feather(folder, path)
 }
 \arguments{
-\item{folder}{Any folder above both 1) the Feather file and 2) the file that contains the code.}
+\item{folder}{Any folder above both 1) the Feather file and 2) the code file.}
 
-\item{path}{Path to the Feather file, excluding \code{folder}.}
+\item{path}{Relative to \code{folder}, path to the Feather file.}
 }
 \value{
 A base-R data-frame.
 }
 \description{
-Executes feather::\code{\link{read_feather}}.
-Uses relative file-paths.
-Converts column names and categorical data to lower-case.
+Combines \code{feather::read_feather} and \code{rprojroot::find_root}.
+
+Converts upper-case column names and categorical data to lower-case.
 }
 \seealso{
-\code{\link{import_df import_excel}}
+\code{\link{import_df}}
+\code{\link{import_excel}}
 }

@@ -7,9 +7,9 @@
 import_excel(folder, path, sheet = NULL, range = NULL)
 }
 \arguments{
-\item{folder}{Any folder above both 1) the xls / xlsx file and 2) the file that contains the code.}
+\item{folder}{Any folder above both 1) the xls / xlsx file and 2) the code file.}
 
-\item{path}{Path to the xls / xlsx file, excluding \code{folder}.}
+\item{path}{Relative to \code{folder}, path to the xls / xlsx file.}
 
 \item{sheet}{Sheet to read.}
 
@@ -19,27 +19,11 @@ import_excel(folder, path, sheet = NULL, range = NULL)
 A base-R data-frame.
 }
 \description{
-Executes readxl::\code{\link{read_excel}} with pre-set values in some arguments.
-Uses relative file-paths.
-Converts column names and categorical data to lower-case.
-}
-\details{
-\code{import_excel} excutes readxl::\code{\link{read_excel}} with the following pre-set argument values:
+Combines \code{readxl::read_excel} and \code{rprojroot::find_root}.
 
-\code{col_names = TRUE}: Use the first row as column names.
-
-\code{col_types = NULL}: Guess all from the spread-sheet.
-
-\code{na = ""}: Treat blank cells as missing data.
-
-\code{trim_ws = TRUE}: Trim leading and trailing white-space.
-
-\code{skip = 0}: Skip a minimum of 0 rows before reading anything.
-
-\code{n_max = Inf}: Read a maximum of data rows.
-
-\code{guess_max = 100000}: Use a maximum of 100000 data rows to guess column types.
+Converts upper-case column names and categorical data to lower-case.
 }
 \seealso{
-\code{\link{import_df import_feather}}
+\code{\link{import_df}}
+\code{\link{import_feather}}
 }

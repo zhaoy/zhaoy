@@ -1,16 +1,17 @@
 #' Write Feather files.
 #'
 #' @description
-#' Executes feather::\code{\link{write_feather}}.
-#' Uses relative file-paths.
+#' Combines \code{feather::write_feather} and \code{rprojroot::find_root}.
 #'
-#' @usage export_feather(x, folder, path)
+#' @usage
+#' export_feather(x, folder, path)
 #'
 #' @param x A data-frame to write to disk.
-#' @param folder Any folder above both 1) the Feather file and 2) the file that contains the code.
-#' @param path Path to the Feather file, excluding \code{folder}.
+#' @param folder Any folder above both 1) the Feather file and 2) the code file.
+#' @param path Relative to \code{folder}, path to the Feather file.
 #'
-#' @return A base-R data-frame.
+#' @return
+#' A data-frame.
 #'
 #' @importFrom feather write_feather
 #' @importFrom rprojroot find_root has_dirname
@@ -27,6 +28,9 @@ export_feather <- function(x,
   full_path <- file.path(root_path,
                          path,
                          fsep = "/")
+
+  # Because imports result in base-R data-frames,
+  # it is acceptable for exports to result in tibbles or other data-frames.
 
   feather::write_feather(x,
                          path = full_path)

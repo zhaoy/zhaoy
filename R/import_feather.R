@@ -1,21 +1,24 @@
 #' Read Feather files.
 #'
 #' @description
-#' Executes feather::\code{\link{read_feather}}.
-#' Uses relative file-paths.
-#' Converts column names and categorical data to lower-case.
+#' Combines \code{feather::read_feather} and \code{rprojroot::find_root}.
 #'
-#' @usage import_feather(folder, path)
+#' Converts upper-case column names and categorical data to lower-case.
 #'
-#' @param folder Any folder above both 1) the Feather file and 2) the file that contains the code.
-#' @param path Path to the Feather file, excluding \code{folder}.
+#' @usage
+#' import_feather(folder, path)
 #'
-#' @return A base-R data-frame.
+#' @param folder Any folder above both 1) the Feather file and 2) the code file.
+#' @param path Relative to \code{folder}, path to the Feather file.
 #'
-#' @seealso \code{\link{import_df import_excel}}
+#' @return
+#' A base-R data-frame.
+#'
+#' @seealso
+#' \code{\link{import_df}}
+#' \code{\link{import_excel}}
 #'
 #' @importFrom feather read_feather
-#' @importFrom purrr map
 #' @importFrom rprojroot find_root has_dirname
 #'
 #' @export
@@ -32,15 +35,6 @@ import_feather <- function(folder,
 
   x <- feather::read_feather(path = full_path)
 
-  names(x = x) <- tolower(x = names(x = x))
-
-  x <- purrr::map(.x = x,
-                  .f = zhaoy_tolower)
-
-  as.data.frame(x = x,
-                row.names = NULL,
-                stringsAsFactors = FALSE,
-                cut.names = TRUE,
-                fix.empty.names = TRUE)
+  zhaoy::import_df(x = x)
 
 }

@@ -1,39 +1,25 @@
 #' Read xls and xlsx files.
 #'
 #' @description
-#' Executes readxl::\code{\link{read_excel}} with pre-set values in some arguments.
-#' Uses relative file-paths.
-#' Converts column names and categorical data to lower-case.
+#' Combines \code{readxl::read_excel} and \code{rprojroot::find_root}.
 #'
-#' @usage import_excel(folder, path, sheet = NULL, range = NULL)
+#' Converts upper-case column names and categorical data to lower-case.
 #'
-#' @param folder Any folder above both 1) the xls / xlsx file and 2) the file that contains the code.
-#' @param path Path to the xls / xlsx file, excluding \code{folder}.
+#' @usage
+#' import_excel(folder, path, sheet = NULL, range = NULL)
+#'
+#' @param folder Any folder above both 1) the xls / xlsx file and 2) the code file.
+#' @param path Relative to \code{folder}, path to the xls / xlsx file.
 #' @param sheet Sheet to read.
 #' @param range A cell range to read from.
 #'
-#' @details
-#' \code{import_excel} excutes readxl::\code{\link{read_excel}} with the following pre-set argument values:
+#' @return
+#' A base-R data-frame.
 #'
-#' \code{col_names = TRUE}: Use the first row as column names.
+#' @seealso
+#' \code{\link{import_df}}
+#' \code{\link{import_feather}}
 #'
-#' \code{col_types = NULL}: Guess all from the spread-sheet.
-#'
-#' \code{na = ""}: Treat blank cells as missing data.
-#'
-#' \code{trim_ws = TRUE}: Trim leading and trailing white-space.
-#'
-#' \code{skip = 0}: Skip a minimum of 0 rows before reading anything.
-#'
-#' \code{n_max = Inf}: Read a maximum of data rows.
-#'
-#' \code{guess_max = 100000}: Use a maximum of 100000 data rows to guess column types.
-#'
-#' @return A base-R data-frame.
-#'
-#' @seealso \code{\link{import_df import_feather}}
-#'
-#' @importFrom purrr map
 #' @importFrom readxl read_excel
 #' @importFrom rprojroot find_root has_dirname
 #'
@@ -62,15 +48,6 @@ import_excel <- function(folder,
                           n_max = Inf,
                           guess_max = 100000)
 
-  names(x = x) <- tolower(x = names(x = x))
-
-  x <- purrr::map(.x = x,
-                  .f = zhaoy_tolower)
-
-  as.data.frame(x = x,
-                row.names = NULL,
-                stringsAsFactors = FALSE,
-                cut.names = TRUE,
-                fix.empty.names = TRUE)
+  zhaoy::import_df(x = x)
 
 }

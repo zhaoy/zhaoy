@@ -1,26 +1,33 @@
-#' Read data-frames.
+#' Read R-package data-frames.
 #'
 #' @description
-#' Converts column names and categorical data to lower-case.
+#' Converts upper-case column names and categorical data to lower-case.
 #'
-#' @usage import_df(x)
+#' @usage
+#' import_df(x)
 #'
-#' @param range A data-frame.
+#' @param x A R-package data-frame.
 #'
-#' @return A base-R data-frame.
+#' @return
+#' A base-R data-frame.
 #'
-#' @seealso \code{\link{import_excel import_feather}}
+#' @seealso
+#' \code{\link{import_excel}}
+#' \code{\link{import_feather}}
 #'
-#' @importFrom purrr map
+#' @importFrom purrr map_dfc
 #'
 #' @export
+#'
+#' @examples
+#' import_df(x = iris)
 
 import_df <- function(x) {
 
   names(x = x) <- tolower(x = names(x = x))
 
-  x <- purrr::map(.x = x,
-                  .f = zhaoy_tolower)
+  x <- purrr::map_dfc(.x = x,
+                      .f = zhaoy_tolower)
 
   as.data.frame(x = x,
                 row.names = NULL,

@@ -2,19 +2,23 @@
 % Please edit documentation in R/import_df.R
 \name{import_df}
 \alias{import_df}
-\title{Read data-frames.}
+\title{Read R-package data-frames.}
 \usage{
 import_df(x)
 }
 \arguments{
-\item{range}{A data-frame.}
+\item{x}{A R-package data-frame.}
 }
 \value{
 A base-R data-frame.
 }
 \description{
-Converts column names and categorical data to lower-case.
+Converts upper-case column names and categorical data to lower-case.
+}
+\examples{
+import_df(x = iris)
 }
 \seealso{
-\code{\link{import_excel import_feather}}
+\code{\link{import_excel}}
+\code{\link{import_feather}}
 }

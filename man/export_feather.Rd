@@ -9,14 +9,13 @@ export_feather(x, folder, path)
 \arguments{
 \item{x}{A data-frame to write to disk.}
 
-\item{folder}{Any folder above both 1) the Feather file and 2) the file that contains the code.}
+\item{folder}{Any folder above both 1) the Feather file and 2) the code file.}
 
-\item{path}{Path to the Feather file, excluding \code{folder}.}
+\item{path}{Relative to \code{folder}, path to the Feather file.}
 }
 \value{
-A base-R data-frame.
+A data-frame.
 }
 \description{
-Executes feather::\code{\link{write_feather}}.
-Uses relative file-paths.
+Combines \code{feather::write_feather} and \code{rprojroot::find_root}.
 }
