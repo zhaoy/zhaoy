@@ -1,12 +1,13 @@
-#' Open a customized .Rmd template
+#' Open a .Rmd template.
 #'
 #' @description
-#' Open a customized .Rmd template in a text editor.
+#' Open a .Rmd template in a text editor.
 #'
 #' @usage
 #' new_rmd()
 #'
-#' @seealso \code{\link{new_r}}
+#' @seealso
+#' \code{\link{new_r}}
 #'
 #' @importFrom utils file.edit
 #'
@@ -16,12 +17,12 @@ new_rmd <- function() {
 
   options(editor = "internal")
 
-  customized_rmd <- system.file("customized.Rmd",
-                                package = "zhaoy",
-                                mustWork = TRUE)
+  template_rmd <- system.file("template.Rmd",
+                              package = "zhaoy",
+                              mustWork = TRUE)
 
-  utils::file.edit(customized_rmd,
-                   title = "customized.Rmd",
+  utils::file.edit(template_rmd,
+                   title = "template.Rmd",
                    editor = getOption(x = "editor",
                                       default = "internal"))
 

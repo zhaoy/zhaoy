@@ -1,14 +1,14 @@
 customized functions for importing / exporting, tidying, transforming, and communicating data
 
-# import
+# import / export
 
 `import_excel`
 
 `import_feather`
 
-`export_feather`
-
 `import_df`
+
+`export_feather`
 
 # tidy
 

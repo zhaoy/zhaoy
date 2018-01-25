@@ -1,12 +1,13 @@
-#' Open a customized .R template
+#' Open a .R template.
 #'
 #' @description
-#' Open a customized .R template in a text editor.
+#' Open a .R template in a text editor.
 #'
 #' @usage
 #' new_r()
 #'
-#' @seealso \code{\link{new_rmd}}
+#' @seealso
+#' \code{\link{new_rmd}}
 #'
 #' @importFrom utils file.edit
 #'
@@ -16,12 +17,12 @@ new_r <- function() {
 
   options(editor = "internal")
 
-  customized_r <- system.file("customized.R",
-                              package = "zhaoy",
-                              mustWork = TRUE)
+  template_r <- system.file("template.R",
+                            package = "zhaoy",
+                            mustWork = TRUE)
 
-  utils::file.edit(customized_r,
-                   title = "customized.R",
+  utils::file.edit(template_r,
+                   title = "template.R",
                    editor = getOption(x = "editor",
                                       default = "internal"))
 

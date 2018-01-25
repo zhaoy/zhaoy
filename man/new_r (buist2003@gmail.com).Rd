@@ -2,12 +2,12 @@
 % Please edit documentation in R/new_r.R
 \name{new_r}
 \alias{new_r}
-\title{Open a .R template.}
+\title{Open a customized .R template}
 \usage{
 new_r()
 }
 \description{
-Open a .R template in a text editor.
+Open a customized .R template in a text editor.
 }
 \seealso{
 \code{\link{new_rmd}}
