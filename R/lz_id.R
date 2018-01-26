@@ -12,8 +12,6 @@
 #' @return
 #' A character vector.
 #'
-#' @importFrom purrr map_chr
-#'
 #' @export
 #'
 #' @examples
@@ -37,15 +35,19 @@ lz_id <- function(x,
 
   if (lz == TRUE) {
 
-    purrr::map_chr(.x = x,
-                   .f = zhaoy_lz_id,
-                   lz = TRUE)
+    vapply(X = x,
+           FUN = zhaoy_lz_id,
+           lz = TRUE,
+           FUN.VALUE = "a",
+           USE.NAMES = FALSE)
 
   } else if (lz == FALSE) {
 
-    purrr::map_chr(.x = x,
-                   .f = zhaoy_lz_id,
-                   lz = FALSE)
+    vapply(X = x,
+           FUN = zhaoy_lz_id,
+           lz = FALSE,
+           FUN.VALUE = "a",
+           USE.NAMES = FALSE)
 
   }
 

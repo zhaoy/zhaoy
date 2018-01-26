@@ -16,17 +16,18 @@ var: variable names, included only if \code{x} is a data-frame.
 
 n_miss: numbers of missing data.
 
-pct_miss: missing data as percents rounded to the nearest integers.
+pct_miss: missing data as percents rounded to one decimal place.
 
 n_unique: numbers of unique values.
 
-pct_unique: unique values as percents rounded to the nearest integers.
+pct_unique: unique values as percents rounded to one decimal place.
 
-min, max, median, mean: if the variable is non-numeric, \code{\link{NA}} is returned.
+min, max, median, mean: if a variable is non-numeric, \code{\link{NA}} is returned.
 
-mode: if \code{\link{NA}} is the most frequent value in the variable, \code{\link{NA}} or "<NA>" is returned.
-If the variable has multiple modes, "> 1 mode" is returned.
-If the variable has a length of one, or has otherwise no mode, "no mode" is returned.
+mode: if \code{\link{NA}} is the most frequent element in a variable, \code{\link{NA}} or "<NA>" is returned.
+If a variable has multiple modes, "s_mode()" is returned.
+If a variable has one element, "no mode" is returned.
+If a variable has multiple elements and no mode, "no mode" is returned.
 }
 \description{
 Tabulate summary statistics of data-frames, vectors, factors, and dates / date-times.
@@ -36,5 +37,5 @@ s_s(x = attenu$mag)
 s_s(x = attenu)
 }
 \seealso{
-\code{\link{s_cp} \link{s_mode}}
+\code{\link{s_mode} \link{s_unique}}
 }

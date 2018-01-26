@@ -6,17 +6,19 @@
 #' @usage
 #' s_mode(x)
 #'
-#' @param x a vector factor, or one or more dates / date-times.
+#' @param x a vector, factor, or one or more dates / date-times.
 #'
 #' @return
 #' A vector.
 #'
-#' If \code{\link{NA}} is the most frequent value in \code{x}, \code{\link{NA}} is returned.
+#' If \code{\link{NA}} is the most frequent element in \code{x}, \code{\link{NA}} is returned.
 #'
-#' If \code{x} has a length of one, or has otherwise no mode, "no mode" is returned.
+#' If \code{x} has one element, "no mode" is returned.
+#'
+#' If \code{x} has multiple elements and no mode, "no mode" is returned.
 #'
 #' @seealso
-#' \code{\link{s_cp} \link{s_s}}
+#' \code{\link{s_s} \link{s_unique}}
 #'
 #' @export
 #'

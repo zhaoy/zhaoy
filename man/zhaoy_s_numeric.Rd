@@ -4,21 +4,21 @@
 \alias{zhaoy_s_numeric}
 \title{Summary statistics.}
 \usage{
-zhaoy_s_numeric(x, fun)
+zhaoy_s_numeric(x, s)
 }
 \arguments{
 \item{x}{a vector, factor, or one or more dates / date-times.}
 }
 \value{
-If \code{x} is numeric, a length-one numeric vector.
+A vector.
 
-If \code{x} is non-numeric, a vector of one \code{\link{NA}}.
+If \code{x} is numeric, a number is returned.
+
+If \code{x} is non-numeric, \code{\link{NA}} is returned.
 }
 \description{
 For numeric data, calculate the minimum, maximum, median, or mean.
-
-For dates / date-times, calculate the minimum and maximum.
 }
 \examples{
-zhaoy_s_numeric(x = attenu$accel, fun = "min")
+zhaoy_s_numeric(x = attenu$accel, s = "min")
 }

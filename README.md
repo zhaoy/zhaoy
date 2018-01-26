@@ -20,7 +20,7 @@ customized functions for importing / exporting, tidying, transforming, and commu
 
 `s_s`
 
-`s_cp`
+`s_unique`
 
 `s_mode`
 

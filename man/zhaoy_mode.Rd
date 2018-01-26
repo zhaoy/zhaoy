@@ -10,13 +10,15 @@ zhaoy_mode(x)
 \item{x}{a vector, factor, or one or more dates / date-times.}
 }
 \value{
-A vector of length one.
+A length-one vector.
 
-If \code{\link{NA}} is the most frequent value in \code{x}, \code{\link{NA}} is returned.
+If \code{\link{NA}} is the most frequent element in \code{x}, \code{\link{NA}} is returned.
 
-If \code{x} has multiple modes, "> 1 mode" is returned.
+If \code{x} has multiple modes, "s_mode()" is returned.
 
-If \code{x} has a length of one, or has otherwise no mode, "no mode" is returned.
+If \code{x} has one element, "no mode" is returned.
+
+If \code{x} has multiple elements and no mode, "no mode" is returned.
 }
 \description{
 Calculate the statistical mode.

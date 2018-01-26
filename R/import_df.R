@@ -15,8 +15,6 @@
 #' \code{\link{import_excel}}
 #' \code{\link{import_feather}}
 #'
-#' @importFrom purrr map_dfc
-#'
 #' @export
 #'
 #' @examples
@@ -24,10 +22,12 @@
 
 import_df <- function(x) {
 
+  stopifnot(is.data.frame(x = x))
+
   names(x = x) <- tolower(x = names(x = x))
 
-  x <- purrr::map_dfc(.x = x,
-                      .f = zhaoy_tolower)
+  x <- lapply(X = x,
+              FUN = zhaoy_tolower)
 
   as.data.frame(x = x,
                 row.names = NULL,

@@ -15,22 +15,20 @@
 #'
 #' n_miss: numbers of missing data.
 #'
-#' pct_miss: missing data as percents rounded to the nearest integers.
+#' pct_miss: missing data as percents rounded to one decimal place.
 #'
 #' n_unique: numbers of unique values.
 #'
-#' pct_unique: unique values as percents rounded to the nearest integers.
+#' pct_unique: unique values as percents rounded to one decimal place.
 #'
-#' min, max, median, mean: if the variable is non-numeric, \code{\link{NA}} is returned.
+#' min, max, median, mean: if a variable is non-numeric, \code{\link{NA}} is returned.
 #'
-#' mode: if \code{\link{NA}} is the most frequent value in the variable, \code{\link{NA}} or "<NA>" is returned.
-#' If the variable has multiple modes, "> 1 mode" is returned.
-#' If the variable has a length of one, or has otherwise no mode, "no mode" is returned.
+#' mode: if \code{\link{NA}} is the most frequent element in a variable, \code{\link{NA}} or "<NA>" is returned.
+#' If a variable has multiple modes, "s_mode()" is returned.
+#' If a variable has one element, "no mode" is returned.
+#' If a variable has multiple elements and no mode, "no mode" is returned.
 #'
-#' @seealso \code{\link{s_cp} \link{s_mode}}
-#'
-#' @importFrom dplyr n_distinct select
-#' @importFrom purrr map map_dbl map_int modify_at
+#' @seealso \code{\link{s_mode} \link{s_unique}}
 #'
 #' @export
 #'
@@ -67,36 +65,50 @@ s_s <- function(x) {
 
   var <- names(x = x)
 
-  n_miss <- purrr::map_int(.x = x,
-                           .f = function(x) sum(is.na(x = x) == TRUE,
-                                                na.rm = FALSE))
+  n_miss <- vapply(X = x,
+                   FUN = function(x) sum(is.na(x = x) == TRUE,
+                                         na.rm = FALSE),
+                   FUN.VALUE = 1,
+                   USE.NAMES = FALSE)
 
   pct_miss <- n_miss / nrow(x = x) * 100
 
-  n_unique <- purrr::map_int(.x = x,
-                             .f = dplyr::n_distinct,
-                             na.rm = TRUE)
+  n_unique <- vapply(X = x,
+                     FUN = function(x) length(x = unique(x = x,
+                                                         incomparables = FALSE)),
+                     FUN.VALUE = 1,
+                     USE.NAMES = FALSE)
 
   pct_unique <- n_unique / nrow(x = x) * 100
 
-  zhaoy_min <- purrr::map_dbl(.x = x,
-                              .f = zhaoy_s_numeric,
-                              fun = "min")
+  zhaoy_min <- vapply(X = x,
+                      FUN = zhaoy_s_numeric,
+                      s = "min",
+                      FUN.VALUE = 1,
+                      USE.NAMES = FALSE)
 
-  zhaoy_max <- purrr::map_dbl(.x = x,
-                              .f = zhaoy_s_numeric,
-                              fun = "max")
+  zhaoy_max <- vapply(X = x,
+                      FUN = zhaoy_s_numeric,
+                      s = "max",
+                      FUN.VALUE = 1,
+                      USE.NAMES = FALSE)
 
-  zhaoy_median <- purrr::map_dbl(.x = x,
-                                 .f = zhaoy_s_numeric,
-                                 fun = "median")
+  zhaoy_median <- vapply(X = x,
+                         FUN = zhaoy_s_numeric,
+                         s = "median",
+                         FUN.VALUE = 1,
+                         USE.NAMES = FALSE)
 
-  zhaoy_mode <- unlist(x = purrr::map(.x = x,
-                                      .f = zhaoy_mode))
+  zhaoy_mode <- lapply(X = x,
+                       FUN = zhaoy_mode)
 
-  zhaoy_mean <- purrr::map_dbl(.x = x,
-                               .f = zhaoy_s_numeric,
-                               fun = "mean")
+  zhaoy_mode <- unlist(x = zhaoy_mode)
+
+  zhaoy_mean <- vapply(X = x,
+                       FUN = zhaoy_s_numeric,
+                       s = "mean",
+                       FUN.VALUE = 1,
+                       USE.NAMES = FALSE)
 
   x <- data.frame(var,
                   n_miss,
@@ -114,11 +126,10 @@ s_s <- function(x) {
                   fix.empty.names = TRUE,
                   stringsAsFactors = FALSE)
 
-  x <- purrr::modify_at(.x = x,
-                        .at = c("pct_miss",
-                                "pct_unique"),
-                        .f = round,
-                        digits = 0)
+  x[, c("pct_miss",
+        "pct_unique")] <- round(x = x[, c("pct_miss",
+                                          "pct_unique")],
+                                digits = 1)
 
   # To retain their numeric status,
   # do NOT drop trailing zeros
@@ -126,8 +137,8 @@ s_s <- function(x) {
 
   if (nrow(x = x) == 1) {
 
-    dplyr::select(.data = x,
-                  n_miss:mean)
+    subset(x = x,
+           select = -var)
 
   } else if (nrow(x = x) > 1) {
 
