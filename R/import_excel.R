@@ -3,7 +3,7 @@
 #' @description
 #' Combines \code{readxl::read_excel} and \code{rprojroot::find_root}.
 #'
-#' Converts upper-case column names and categorical data to lower-case.
+#' Converts upper-case variable names and categorical data to lower-case.
 #'
 #' @usage
 #' import_excel(folder, path, sheet = NULL, range = NULL)
@@ -30,14 +30,35 @@ import_excel <- function(folder,
                          sheet = NULL,
                          range = NULL) {
 
+  stopifnot(is.character(x = folder),
+            is.character(x = path),
+            (substring(text = x,
+                       first = nchar(x = x,
+                                     type = "chars",
+                                     allowNA = FALSE,
+                                     keepNA = TRUE) - 3 + 1,
+                       last = nchar(x = x,
+                                    type = "chars",
+                                    allowNA = FALSE,
+                                    keepNA = TRUE)) == "xls") |
+            (substring(text = x,
+                       first = nchar(x = x,
+                                     type = "chars",
+                                     allowNA = FALSE,
+                                     keepNA = TRUE) - 4 + 1,
+                       last = nchar(x = x,
+                                    type = "chars",
+                                    allowNA = FALSE,
+                                    keepNA = TRUE)) == "xlsx"))
+
   root_path <- rprojroot::find_root(criterion = rprojroot::has_dirname(dirname = folder),
                                     path = ".")
 
-  full_path <- file.path(root_path,
-                         path,
-                         fsep = "/")
+  import_path <- file.path(root_path,
+                           path,
+                           fsep = "/")
 
-  x <- readxl::read_excel(path = full_path,
+  x <- readxl::read_excel(path = import_path,
                           sheet = sheet,
                           range = range,
                           col_names = TRUE,

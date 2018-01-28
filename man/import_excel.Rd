@@ -21,7 +21,7 @@ A base-R data-frame.
 \description{
 Combines \code{readxl::read_excel} and \code{rprojroot::find_root}.
 
-Converts upper-case column names and categorical data to lower-case.
+Converts upper-case variable names and categorical data to lower-case.
 }
 \seealso{
 \code{\link{import_df}}

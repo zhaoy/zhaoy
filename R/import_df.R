@@ -1,12 +1,12 @@
-#' Read R-package data-frames.
+#' Read R data-frames.
 #'
 #' @description
-#' Converts upper-case column names and categorical data to lower-case.
+#' Converts upper-case variable names and categorical data to lower-case.
 #'
 #' @usage
 #' import_df(x)
 #'
-#' @param x A R-package data-frame.
+#' @param x A data-frame.
 #'
 #' @return
 #' A base-R data-frame.

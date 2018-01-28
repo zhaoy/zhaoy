@@ -2,16 +2,16 @@
 % Please edit documentation in R/export_feather.R
 \name{export_feather}
 \alias{export_feather}
-\title{Write Feather files.}
+\title{Write data-frames to Feather files.}
 \usage{
 export_feather(x, folder, path)
 }
 \arguments{
 \item{x}{A data-frame to write to disk.}
 
-\item{folder}{Any folder above both 1) the Feather file and 2) the code file.}
+\item{folder}{Any folder above both 1) the path to write to and 2) the code file.}
 
-\item{path}{Relative to \code{folder}, path to the Feather file.}
+\item{path}{Relative to \code{folder}, path to write to.}
 }
 \value{
 A data-frame.
