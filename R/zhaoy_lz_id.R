@@ -1,12 +1,14 @@
 #' Leading zeros in identifiers.
 #'
 #' @description
-#' Includes or excludes leading zeros in number-only identifiers of 1 - 9 digits.
+#' Includes or excludes leading zeros in identifiers that have 1 - 9 digits,
+#' of which at least one digit is a positive integer
+#' and any remaining digits are either zeros or positive integers.
 #'
 #' @usage
 #' zhaoy_lz_id(x, lz)
 #'
-#' @param x a vector or factor of one numbers-only identifier that has 1 - 9 digits.
+#' @param x a vector or factor of one identifier.
 #' @param lz logical: TRUE includes, and FALSE excludes, leading zeros.
 #'
 #' @return
@@ -32,16 +34,16 @@ zhaoy_lz_id <- function(x,
                   keepNA = TRUE) <= 9)
 
   if (is.character(x = x) == TRUE &
-      ((nchar(x = x,
+      ((nchar(x = as.character(x = x),
               type = "chars",
               allowNA = FALSE,
               keepNA = TRUE) == 9 &
         lz == TRUE) |
-       (nchar(x = x,
+       (nchar(x = as.character(x = x),
               type = "chars",
               allowNA = FALSE,
               keepNA = TRUE) >= 1 &
-        nchar(x = x,
+        nchar(x = as.character(x = x),
               type = "chars",
               allowNA = FALSE,
               keepNA = TRUE) < 9 &

@@ -7,7 +7,7 @@
 zhaoy_lz_id(x, lz)
 }
 \arguments{
-\item{x}{a vector or factor of one numbers-only identifier that has 1 - 9 digits.}
+\item{x}{a vector or factor of one identifier.}
 
 \item{lz}{logical: TRUE includes, and FALSE excludes, leading zeros.}
 }
@@ -15,7 +15,9 @@ zhaoy_lz_id(x, lz)
 A length-one character vector.
 }
 \description{
-Includes or excludes leading zeros in number-only identifiers of 1 - 9 digits.
+Includes or excludes leading zeros in identifiers that have 1 - 9 digits,
+of which at least one digit is a positive integer
+and any remaining digits are either zeros or positive integers.
 }
 \examples{
 zhaoy_lz_id(x = 1, lz = TRUE)

@@ -7,7 +7,7 @@
 lz_id(x, lz)
 }
 \arguments{
-\item{x}{a vector or factor of non-decimal numeric identifiers that each have 1 - 9 digits.}
+\item{x}{a vector or factor of identifiers.}
 
 \item{lz}{logical: TRUE includes, and FALSE excludes, leading zeros.}
 }
@@ -15,7 +15,9 @@ lz_id(x, lz)
 A character vector.
 }
 \description{
-Include or exclude leading zeros in non-decimal numeric identifiers that have 1 - 9 digits.
+Includes or excludes leading zeros in identifiers that have 1 - 9 digits,
+of which at least one digit is a positive integer
+and any remaining digits are either zeros or positive integers.
 }
 \examples{
 x <- c("1", "000000002")

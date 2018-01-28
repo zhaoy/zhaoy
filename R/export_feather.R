@@ -27,14 +27,14 @@ export_feather <- function(x,
   root_path <- rprojroot::find_root(criterion = rprojroot::has_dirname(dirname = folder),
                                     path = ".")
 
-  absolute_path <- file.path(root_path,
-                             path,
-                             fsep = "/")
+  export_path <- file.path(root_path,
+                           path,
+                           fsep = "/")
 
   # Because zhaoy::import_feather generates base-R data-frames,
   # it is tolerable for zhaoy::export_feather to potentially generate tibbles.
 
   feather::write_feather(x,
-                         path = absolute_path)
+                         path = export_path)
 
 }
