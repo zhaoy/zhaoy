@@ -1,14 +1,16 @@
-#' Leading zeros in identifiers.
+#' Leading zeros in Epic identifiers.
 #'
 #' @description
-#' Includes or excludes leading zeros in identifiers that have 1 - 9 digits,
+#' Includes or excludes leading zeros in Epic identifiers.
+#'
+#' Epic identifiers have 1 - 9 digits,
 #' of which at least one digit is a positive integer
 #' and any remaining digits are either zeros or positive integers.
 #'
 #' @usage
 #' lz_id(x, lz)
 #'
-#' @param x a vector or factor of identifiers.
+#' @param x a vector or factor of Epic identifiers.
 #' @param lz logical: TRUE includes, and FALSE excludes, leading zeros.
 #'
 #' @return
