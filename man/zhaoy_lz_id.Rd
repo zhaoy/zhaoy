@@ -2,12 +2,12 @@
 % Please edit documentation in R/zhaoy_lz_id.R
 \name{zhaoy_lz_id}
 \alias{zhaoy_lz_id}
-\title{Leading zeros in identifiers.}
+\title{Leading zeros in Epic identifiers.}
 \usage{
 zhaoy_lz_id(x, lz)
 }
 \arguments{
-\item{x}{a vector or factor of one identifier.}
+\item{x}{a vector or factor of one Epic identifier.}
 
 \item{lz}{logical: TRUE includes, and FALSE excludes, leading zeros.}
 }
@@ -15,7 +15,9 @@ zhaoy_lz_id(x, lz)
 A length-one character vector.
 }
 \description{
-Includes or excludes leading zeros in identifiers that have 1 - 9 digits,
+Includes or excludes leading zeros in Epic identifiers.
+
+Epic identifiers have 1 - 9 digits,
 of which at least one digit is a positive integer
 and any remaining digits are either zeros or positive integers.
 }
