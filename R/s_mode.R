@@ -47,8 +47,7 @@ s_mode <- function(x) {
 
     x_mode <- x
 
-  } else if (length(x = x) > 1 &
-             all(x_table == x_max,
+  } else if (all(x_table == x_max,
                  na.rm = TRUE) == TRUE) {
 
     x_mode <- "no mode"
