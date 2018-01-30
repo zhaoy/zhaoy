@@ -14,7 +14,9 @@ A vector.
 
 If \code{\link{NA}} is the most frequent element in \code{x}, \code{\link{NA}} is returned.
 
-If \code{x} has one element, "no mode" is returned.
+If \code{x} has one element, that element is returned.
+
+If \code{x} has multiple modes, "s_mode()" is returned.
 
 If \code{x} has multiple elements and no mode, "no mode" is returned.
 }

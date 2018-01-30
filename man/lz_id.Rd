@@ -2,12 +2,12 @@
 % Please edit documentation in R/lz_id.R
 \name{lz_id}
 \alias{lz_id}
-\title{Leading zeros in Epic identifiers.}
+\title{Leading zeros in Epic ID numbers.}
 \usage{
 lz_id(x, lz)
 }
 \arguments{
-\item{x}{a vector or factor of Epic identifiers.}
+\item{x}{a vector or factor of Epic ID numbers.}
 
 \item{lz}{logical: TRUE includes, and FALSE excludes, leading zeros.}
 }
@@ -15,9 +15,9 @@ lz_id(x, lz)
 A character vector.
 }
 \description{
-Includes or excludes leading zeros in Epic identifiers.
+Includes or excludes leading zeros in Epic ID numbers.
 
-Epic identifiers have 1 - 9 digits,
+Epic ID numbers have 1 - 9 digits,
 of which at least one digit is a positive integer
 and any remaining digits are either zeros or positive integers.
 }

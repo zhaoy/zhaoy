@@ -1,4 +1,4 @@
-customized functions for importing / exporting, tidying, transforming, and communicating data
+customized functions for importing / exporting, organizing, summarizing, and communicating data
 
 # import / export
 
@@ -10,13 +10,13 @@ customized functions for importing / exporting, tidying, transforming, and commu
 
 `export_feather`
 
-# tidy
+# organize
 
 `lz_id`
 
 `tidy_pel`
 
-# transform
+# summarize
 
 `s_s`
 

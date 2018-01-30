@@ -1,7 +1,7 @@
 Type: package
 Package: zhaoy
 Title: customized functions
-Description: Import / export, tidy, transform, and communicate data
+Description: Import / export, organize, summarize, and communicate data
 Date: 2018-1-24
 Version: 0.0.1
 Imports: feather, readxl, rprojroot, stats, utils

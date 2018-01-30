@@ -13,9 +13,9 @@
 #'
 #' If \code{\link{NA}} is the most frequent element in \code{x}, \code{\link{NA}} is returned.
 #'
-#' If \code{x} has multiple modes, "s_mode()" is returned.
+#' If \code{x} has one element, that element is returned.
 #'
-#' If \code{x} has one element, "no mode" is returned.
+#' If \code{x} has multiple modes, "s_mode()" is returned.
 #'
 #' If \code{x} has multiple elements and no mode, "no mode" is returned.
 #'
@@ -38,8 +38,13 @@ zhaoy_mode <- function(x) {
   x_max <- max(x_table,
                na.rm = TRUE)
 
-  if (all(x_table == x_max,
-          na.rm = TRUE) == TRUE) {
+  if (length(x = x) == 1) {
+
+    x_mode <- x
+
+  } else if (length(x = x) > 1 &
+             all(x_table == x_max,
+                 na.rm = TRUE) == TRUE) {
 
     x_mode <- "no mode"
 

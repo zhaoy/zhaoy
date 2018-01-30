@@ -1,16 +1,16 @@
-#' Leading zeros in Epic identifiers.
+#' Leading zeros in Epic ID numbers.
 #'
 #' @description
-#' Includes or excludes leading zeros in Epic identifiers.
+#' Includes or excludes leading zeros in Epic ID numbers.
 #'
-#' Epic identifiers have 1 - 9 digits,
+#' Epic ID numbers have 1 - 9 digits,
 #' of which at least one digit is a positive integer
 #' and any remaining digits are either zeros or positive integers.
 #'
 #' @usage
 #' zhaoy_lz_id(x, lz)
 #'
-#' @param x a vector or factor of one Epic identifier.
+#' @param x a vector or factor of one Epic ID number.
 #' @param lz logical: TRUE includes, and FALSE excludes, leading zeros.
 #'
 #' @return
