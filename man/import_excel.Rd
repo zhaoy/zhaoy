@@ -7,7 +7,7 @@
 import_excel(folder, path, sheet = NULL, range = NULL)
 }
 \arguments{
-\item{folder}{Any folder above both 1) the xls / xlsx file and 2) the code file.}
+\item{folder}{Any folder above both 1) the xls / xlsx file and 2) the R file.}
 
 \item{path}{Relative to \code{folder}, path to the xls / xlsx file.}
 

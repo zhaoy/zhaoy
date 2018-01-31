@@ -33,8 +33,8 @@ If a variable has multiple elements and no mode, "no mode" is returned.
 Tabulate summary statistics of data-frames, vectors, factors, and dates / date-times.
 }
 \examples{
-s_s(x = attenu$mag)
-s_s(x = attenu)
+zhaoy::s_s(x = attenu$mag)
+zhaoy::s_s(x = attenu)
 }
 \seealso{
 \code{\link{s_mode} \link{s_unique}}

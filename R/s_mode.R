@@ -25,17 +25,18 @@
 #' @export
 #'
 #' @examples
-#' s_mode(x = attenu$dist)
+#' zhaoy::s_mode(x = attenu$dist)
 
 s_mode <- function(x) {
 
-  stopifnot(inherits(x = x,
+  stopifnot((inherits(x = x,
                      what = c("Date",
                               "POSIXct",
                               "POSIXlt"),
                      which = FALSE) |
-            is.factor(x = x) |
-            is.vector(x = x))
+             is.factor(x = x) |
+             is.vector(x = x)),
+            length(x = x) >= 1)
 
   x_table <- table(x,
                    useNA = "ifany")

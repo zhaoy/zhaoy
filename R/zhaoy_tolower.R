@@ -17,17 +17,18 @@
 #'
 #' @examples
 #' x <- c("MiXeD", "cAsE", "123")
-#' zhaoy_tolower(x = x)
+#' zhaoy::zhaoy_tolower(x = x)
 
 zhaoy_tolower <- function(x) {
 
-  stopifnot(inherits(x = x,
+  stopifnot((inherits(x = x,
                      what = c("Date",
                               "POSIXct",
                               "POSIXlt"),
                      which = FALSE) |
-            is.factor(x = x) |
-            is.vector(x = x))
+             is.factor(x = x) |
+             is.vector(x = x)),
+            length(x = x) >= 1)
 
   if (is.character(x = x) == TRUE |
       is.factor(x = x) == TRUE) {

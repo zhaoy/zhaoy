@@ -33,19 +33,22 @@
 #' @export
 #'
 #' @examples
-#' s_s(x = attenu$mag)
-#' s_s(x = attenu)
+#' zhaoy::s_s(x = attenu$mag)
+#' zhaoy::s_s(x = attenu)
 
 s_s <- function(x) {
 
-  stopifnot(inherits(x = x,
+  stopifnot((inherits(x = x,
                      what = c("Date",
                               "POSIXct",
                               "POSIXlt"),
                      which = FALSE) |
-            is.data.frame(x = x) |
-            is.factor(x = x) |
-            is.vector(x = x))
+             is.data.frame(x = x) |
+             is.factor(x = x) |
+             is.vector(x = x)),
+            (length(x = x) >= 1 |
+             (nrow(x = x) >= 1 &
+              ncol(x = x) >= 1)))
 
   if (inherits(x = x,
                what = c("Date",

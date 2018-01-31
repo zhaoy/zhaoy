@@ -7,7 +7,7 @@
 import_feather(folder, path)
 }
 \arguments{
-\item{folder}{Any folder above both 1) the Feather file and 2) the code file.}
+\item{folder}{Any folder above both 1) the Feather file and 2) the R file.}
 
 \item{path}{Relative to \code{folder}, path to the Feather file.}
 }

@@ -20,17 +20,18 @@
 #' If \code{x} has multiple elements and no mode, "no mode" is returned.
 #'
 #' @examples
-#' zhaoy_mode(x = attenu$dist)
+#' zhaoy::zhaoy_mode(x = attenu$dist)
 
 zhaoy_mode <- function(x) {
 
-  stopifnot(inherits(x = x,
+  stopifnot((inherits(x = x,
                      what = c("Date",
                               "POSIXct",
                               "POSIXlt"),
                      which = FALSE) |
-            is.factor(x = x) |
-            is.vector(x = x))
+             is.factor(x = x) |
+             is.vector(x = x)),
+            length(x = x) >= 1)
 
   x_table <- table(x,
                    useNA = "ifany")

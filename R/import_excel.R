@@ -8,7 +8,7 @@
 #' @usage
 #' import_excel(folder, path, sheet = NULL, range = NULL)
 #'
-#' @param folder Any folder above both 1) the xls / xlsx file and 2) the code file.
+#' @param folder Any folder above both 1) the xls / xlsx file and 2) the R file.
 #' @param path Relative to \code{folder}, path to the xls / xlsx file.
 #' @param sheet Sheet to read.
 #' @param range A cell range to read from.
@@ -30,31 +30,47 @@ import_excel <- function(folder,
                          sheet = NULL,
                          range = NULL) {
 
+  suffix_xls <- "xls"
+
+  suffix_xls_nchar <- nchar(x = suffix_xls,
+                            type = "chars",
+                            allowNA = FALSE,
+                            keepNA = TRUE)
+
+  suffix_xlsx <- "xlsx"
+
+  suffix_xlsx_nchar <- nchar(x = suffix_xlsx,
+                             type = "chars",
+                             allowNA = FALSE,
+                             keepNA = TRUE)
+
   stopifnot(is.character(x = folder),
+            nzchar(x = folder,
+                   keepNA = TRUE),
             is.character(x = path),
+            ((substring(text = path,
+                       first = nchar(x = path,
+                                     type = "chars",
+                                     allowNA = FALSE,
+                                     keepNA = TRUE) - suffix_xls_nchar + 1,
+                       last = nchar(x = path,
+                                    type = "chars",
+                                    allowNA = FALSE,
+                                    keepNA = TRUE)) == suffix_xls) |
             (substring(text = path,
                        first = nchar(x = path,
                                      type = "chars",
                                      allowNA = FALSE,
-                                     keepNA = TRUE) - 3 + 1,
+                                     keepNA = TRUE) - suffix_xlsx_nchar + 1,
                        last = nchar(x = path,
                                     type = "chars",
                                     allowNA = FALSE,
-                                    keepNA = TRUE)) == "xls") |
-            (substring(text = path,
-                       first = nchar(x = path,
-                                     type = "chars",
-                                     allowNA = FALSE,
-                                     keepNA = TRUE) - 4 + 1,
-                       last = nchar(x = path,
-                                    type = "chars",
-                                    allowNA = FALSE,
-                                    keepNA = TRUE)) == "xlsx"))
+                                    keepNA = TRUE)) == suffix_xlsx)))
 
-  root_path <- rprojroot::find_root(criterion = rprojroot::has_dirname(dirname = folder),
-                                    path = ".")
+  root <- rprojroot::find_root(criterion = rprojroot::has_dirname(dirname = folder),
+                               path = ".")
 
-  import_path <- file.path(root_path,
+  import_path <- file.path(root,
                            path,
                            fsep = "/")
 

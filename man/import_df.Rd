@@ -16,7 +16,7 @@ A base-R data-frame.
 Converts upper-case variable names and categorical data to lower-case.
 }
 \examples{
-import_df(x = iris)
+zhaoy::import_df(x = iris)
 }
 \seealso{
 \code{\link{import_excel}}

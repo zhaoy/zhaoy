@@ -21,5 +21,5 @@ Return non-character vectors, non-alphabetic factors, and dates / date-times un-
 }
 \examples{
 x <- c("MiXeD", "cAsE", "123")
-zhaoy_tolower(x = x)
+zhaoy::zhaoy_tolower(x = x)
 }

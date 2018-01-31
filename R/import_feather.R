@@ -8,7 +8,7 @@
 #' @usage
 #' import_feather(folder, path)
 #'
-#' @param folder Any folder above both 1) the Feather file and 2) the code file.
+#' @param folder Any folder above both 1) the Feather file and 2) the R file.
 #' @param path Relative to \code{folder}, path to the Feather file.
 #'
 #' @return
@@ -26,22 +26,31 @@
 import_feather <- function(folder,
                            path) {
 
+  suffix <- "feather"
+
+  suffix_nchar <- nchar(x = suffix,
+                        type = "chars",
+                        allowNA = FALSE,
+                        keepNA = TRUE)
+
   stopifnot(is.character(x = folder),
+            nzchar(x = folder,
+                   keepNA = TRUE),
             is.character(x = path),
-            (substring(text = path,
+            ((substring(text = path,
                        first = nchar(x = path,
                                      type = "chars",
                                      allowNA = FALSE,
-                                     keepNA = TRUE) - 7 + 1,
+                                     keepNA = TRUE) - suffix_nchar + 1,
                        last = nchar(x = path,
                                     type = "chars",
                                     allowNA = FALSE,
-                                    keepNA = TRUE)) == "feather"))
+                                    keepNA = TRUE)) == suffix)))
 
-  root_path <- rprojroot::find_root(criterion = rprojroot::has_dirname(dirname = folder),
-                                    path = ".")
+  root <- rprojroot::find_root(criterion = rprojroot::has_dirname(dirname = folder),
+                               path = ".")
 
-  import_path <- file.path(root_path,
+  import_path <- file.path(root,
                            path,
                            fsep = "/")
 

@@ -24,17 +24,18 @@
 #' @export
 #'
 #' @examples
-#' s_unique(x = attenu$station)
+#' zhaoy::s_unique(x = attenu$station)
 
 s_unique <- function(x) {
 
-  stopifnot(inherits(x = x,
+  stopifnot((inherits(x = x,
                      what = c("Date",
                               "POSIXct",
                               "POSIXlt"),
                      which = FALSE) |
-            is.factor(x = x) |
-            is.vector(x = x))
+             is.factor(x = x) |
+             is.vector(x = x)),
+            length(x = x) >= 1)
 
   n <- table(x,
              useNA = "ifany")

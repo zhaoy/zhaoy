@@ -20,5 +20,5 @@ If \code{x} is non-numeric, \code{\link{NA}} is returned.
 For numeric data, calculate the minimum, maximum, median, or mean.
 }
 \examples{
-zhaoy_s_numeric(x = attenu$accel, s = "min")
+zhaoy::zhaoy_s_numeric(x = attenu$accel, s = "min")
 }

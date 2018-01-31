@@ -18,11 +18,13 @@
 #' @export
 #'
 #' @examples
-#' import_df(x = iris)
+#' zhaoy::import_df(x = iris)
 
 import_df <- function(x) {
 
-  stopifnot(is.data.frame(x = x))
+  stopifnot(is.data.frame(x = x),
+            nrow(x = x) >= 1,
+            ncol(x = x) >= 1)
 
   names(x = x) <- tolower(x = names(x = x))
 

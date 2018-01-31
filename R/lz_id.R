@@ -20,14 +20,15 @@
 #'
 #' @examples
 #' x <- c("1", "000000002")
-#' lz_id(x = x, lz = TRUE)
-#' lz_id(x = x, lz = FALSE)
+#' zhaoy::lz_id(x = x, lz = TRUE)
+#' zhaoy::lz_id(x = x, lz = FALSE)
 
 lz_id <- function(x,
                   lz) {
 
-  stopifnot(is.factor(x = x) |
-            is.vector(x = x))
+  stopifnot((is.factor(x = x) |
+             is.vector(x = x)),
+            length(x = x) >= 1)
 
   if (lz == TRUE) {
 

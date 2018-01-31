@@ -18,20 +18,21 @@
 #' @importFrom stats median
 #'
 #' @examples
-#' zhaoy_s_numeric(x = attenu$accel, s = "min")
+#' zhaoy::zhaoy_s_numeric(x = attenu$accel, s = "min")
 
 zhaoy_s_numeric <- function(x,
                             s) {
 
-  stopifnot(inherits(x = x,
+  stopifnot((inherits(x = x,
                      what = c("Date",
                               "POSIXct",
                               "POSIXlt"),
                      which = FALSE) |
-            is.factor(x = x) |
-            is.vector(x = x))
+             is.factor(x = x) |
+             is.vector(x = x)),
+            length(x = x) >= 1)
 
-  # Conceptually and fctionally,
+  # Conceptually and functionally,
   # min(), max(), and median() are compatible with dates / date-times.
   # But because dates / date-times and numbers cannot co-exist in vectors,
   # s_s() and therefore zhaoy_s_numeric() execute min(), max(), and median()

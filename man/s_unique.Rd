@@ -24,7 +24,7 @@ pct: counts as percents rounded to one decimal place.
 Tabulate counts and percents of unique elements within vectors, factors, and dates / date-time(s).
 }
 \examples{
-s_unique(x = attenu$station)
+zhaoy::s_unique(x = attenu$station)
 }
 \seealso{
 \code{\link{s_mode} \link{s_s}}

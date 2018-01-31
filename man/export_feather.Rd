@@ -9,12 +9,9 @@ export_feather(x, folder, path)
 \arguments{
 \item{x}{A data-frame to write to disk.}
 
-\item{folder}{Any folder above both 1) the path to write to and 2) the code file.}
+\item{folder}{Any folder above both 1) the path to write to and 2) the R file.}
 
 \item{path}{Relative to \code{folder}, path to write to.}
-}
-\value{
-A data-frame.
 }
 \description{
 Combines \code{feather::write_feather} and \code{rprojroot::find_root}.
