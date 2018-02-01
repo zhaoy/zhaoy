@@ -25,10 +25,10 @@
 zhaoy_mode <- function(x) {
 
   stopifnot((inherits(x = x,
-                     what = c("Date",
-                              "POSIXct",
-                              "POSIXlt"),
-                     which = FALSE) |
+                      what = c("Date",
+                               "POSIXct",
+                               "POSIXlt"),
+                      which = FALSE) |
              is.factor(x = x) |
              is.vector(x = x)),
             length(x = x) >= 1)

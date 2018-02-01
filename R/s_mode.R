@@ -15,7 +15,7 @@
 #'
 #' If \code{x} has one element, that element is returned.
 #'
-#' If \code{x} has multiple modes, "s_mode()" is returned.
+#' If \code{x} has multiple modes, all those modes are returned.
 #'
 #' If \code{x} has multiple elements and no mode, "no mode" is returned.
 #'
@@ -30,10 +30,10 @@
 s_mode <- function(x) {
 
   stopifnot((inherits(x = x,
-                     what = c("Date",
-                              "POSIXct",
-                              "POSIXlt"),
-                     which = FALSE) |
+                      what = c("Date",
+                               "POSIXct",
+                               "POSIXlt"),
+                      which = FALSE) |
              is.factor(x = x) |
              is.vector(x = x)),
             length(x = x) >= 1)
