@@ -24,7 +24,7 @@ If \code{x} has multiple elements and no mode, "no mode" is returned.
 Calculate the statistical mode.
 }
 \examples{
-zhaoy::s_mode(x = attenu$dist)
+s_mode(x = attenu$dist)
 }
 \seealso{
 \code{\link{s_s} \link{s_unique}}

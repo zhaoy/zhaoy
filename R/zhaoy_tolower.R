@@ -17,7 +17,7 @@
 #'
 #' @examples
 #' x <- c("MiXeD", "cAsE", "123")
-#' zhaoy::zhaoy_tolower(x = x)
+#' zhaoy_tolower(x = x)
 
 zhaoy_tolower <- function(x) {
 

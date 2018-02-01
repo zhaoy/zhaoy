@@ -20,7 +20,7 @@
 #' If \code{x} has multiple elements and no mode, "no mode" is returned.
 #'
 #' @examples
-#' zhaoy::zhaoy_mode(x = attenu$dist)
+#' zhaoy_mode(x = attenu$dist)
 
 zhaoy_mode <- function(x) {
 

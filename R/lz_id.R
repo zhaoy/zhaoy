@@ -20,8 +20,8 @@
 #'
 #' @examples
 #' x <- c("1", "000000002")
-#' zhaoy::lz_id(x = x, lz = TRUE)
-#' zhaoy::lz_id(x = x, lz = FALSE)
+#' lz_id(x = x, lz = TRUE)
+#' lz_id(x = x, lz = FALSE)
 
 lz_id <- function(x,
                   lz) {

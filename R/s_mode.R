@@ -25,7 +25,7 @@
 #' @export
 #'
 #' @examples
-#' zhaoy::s_mode(x = attenu$dist)
+#' s_mode(x = attenu$dist)
 
 s_mode <- function(x) {
 

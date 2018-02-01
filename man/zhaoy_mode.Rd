@@ -24,5 +24,5 @@ If \code{x} has multiple elements and no mode, "no mode" is returned.
 Calculate the statistical mode.
 }
 \examples{
-zhaoy::zhaoy_mode(x = attenu$dist)
+zhaoy_mode(x = attenu$dist)
 }

@@ -18,7 +18,7 @@
 #' @importFrom stats median
 #'
 #' @examples
-#' zhaoy::zhaoy_s_numeric(x = attenu$accel, s = "min")
+#' zhaoy_s_numeric(x = attenu$accel, s = "min")
 
 zhaoy_s_numeric <- function(x,
                             s) {

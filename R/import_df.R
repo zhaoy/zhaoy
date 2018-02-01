@@ -18,7 +18,7 @@
 #' @export
 #'
 #' @examples
-#' zhaoy::import_df(x = iris)
+#' import_df(x = iris)
 
 import_df <- function(x) {
 
