@@ -17,7 +17,7 @@
 #'
 #' n: counts.
 #'
-#' pct: counts as percents rounded to one decimal place.
+#' pct: counts as percents of \code{x}, rounded to one decimal place.
 #'
 #' @seealso \code{\link{s_mode} \link{s_s}}
 #'

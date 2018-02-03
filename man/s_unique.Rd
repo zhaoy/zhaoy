@@ -18,7 +18,7 @@ then continuing in ascending order.
 
 n: counts.
 
-pct: counts as percents rounded to one decimal place.
+pct: counts as percents of \code{x}, rounded to one decimal place.
 }
 \description{
 Tabulate counts and percents of unique elements within vectors, factors, and dates / date-time(s).

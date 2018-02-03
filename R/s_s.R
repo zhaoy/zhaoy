@@ -103,7 +103,7 @@ s_s <- function(x) {
                          USE.NAMES = FALSE)
 
   zhaoy_mode <- lapply(X = x,
-                       FUN = zhaoy_mode)
+                       FUN = zhaoy_s_mode)
 
   zhaoy_mode <- unlist(x = zhaoy_mode)
 

@@ -29,5 +29,3 @@ customized functions for importing / exporting, organizing, summarizing, and com
 `new_r`
 
 `new_rmd`
-
-
