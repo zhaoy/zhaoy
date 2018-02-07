@@ -6,7 +6,7 @@
 #' @usage
 #' zhaoy_s_numeric(x, s)
 #'
-#' @param x a vector, factor, or one or more dates / date-times.
+#' @param x a vector, factor, or one or more POSIXlt / POSIXct objects.
 #'
 #' @return
 #' A vector.
@@ -33,8 +33,8 @@ zhaoy_s_numeric <- function(x,
             length(x = x) >= 1)
 
   # Conceptually and functionally,
-  # min(), max(), and median() are compatible with dates / date-times.
-  # But because dates / date-times and numbers cannot co-exist in vectors,
+  # min(), max(), and median() are compatible with POSIXlt / POSIXct objects.
+  # But because numbers and POSIXlt / POSIXct objects cannot co-exist in vectors,
   # s_s() and therefore zhaoy_s_numeric() execute min(), max(), and median()
   # only for numeric data.
 

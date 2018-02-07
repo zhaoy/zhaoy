@@ -1,4 +1,4 @@
-customized functions for importing / exporting, organizing, summarizing, and communicating data
+convenience functions for importing / exporting, organizing, summarizing, and communicating data
 
 # import / export
 

@@ -7,23 +7,19 @@
 import_excel(folder, path, sheet = NULL, range = NULL)
 }
 \arguments{
-\item{folder}{Any folder above both 1) the xls / xlsx file and 2) the R file.}
+\item{folder}{any folder above both 1) the xls / xlsx file and 2) the R file.}
 
-\item{path}{Relative to \code{folder}, path to the xls / xlsx file.}
+\item{path}{relative to \code{folder}, path to the xls / xlsx file.}
 
-\item{sheet}{Sheet to read.}
+\item{sheet}{sheet to read.}
 
-\item{range}{A cell range to read from.}
+\item{range}{a cell range to read from.}
 }
 \value{
 A base-R data-frame.
 }
 \description{
-Combines \code{readxl::read_excel} and \code{rprojroot::find_root}.
+Read xls and xlsx files.
 
-Converts upper-case variable names and categorical data to lower-case.
-}
-\seealso{
-\code{\link{import_df}}
-\code{\link{import_feather}}
+Convert upper-case variable names and categorical data to lower-case.
 }

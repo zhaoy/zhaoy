@@ -1,31 +1,31 @@
 #' Summary statistics.
 #'
 #' @description
-#' Tabulate summary statistics of data-frames, vectors, factors, and dates / date-times.
+#' Tabulate summary statistics of data-frames, vectors, factors, and POSIXlt / POSIXct objects.
 #'
 #' @usage
 #' s_s(x)
 #'
-#' @param x a data-frame, vector, factor, or one or more dates / date-times.
+#' @param x a data-frame, vector, factor, or one or more POSIXlt / POSIXct objects.
 #'
 #' @return
 #' A base-R data-frame with the following columns:
 #'
 #' var: variable names, included only if \code{x} is a data-frame.
 #'
-#' n_miss: numbers of missing data.
+#' n_miss: count of missing data.
 #'
-#' pct_miss: missing data as percents rounded to one decimal place.
+#' pct_miss: missing data as percents of variables, rounded to one decimal place.
 #'
-#' n_unique: numbers of unique values.
+#' n_unique: count of unique values.
 #'
-#' pct_unique: unique values as percents rounded to one decimal place.
+#' pct_unique: unique values as percents of variables, rounded to one decimal place.
 #'
 #' min, max, median, mean: if a variable is non-numeric, \code{\link{NA}} is returned.
 #'
 #' mode: if \code{\link{NA}} is the most frequent element in a variable, \code{\link{NA}} or "<NA>" is returned.
+#' If a variable has one element, that element is returned.
 #' If a variable has multiple modes, "s_mode()" is returned.
-#' If a variable has one element, "no mode" is returned.
 #' If a variable has multiple elements and no mode, "no mode" is returned.
 #'
 #' @seealso \code{\link{s_mode} \link{s_unique}}

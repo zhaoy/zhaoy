@@ -7,7 +7,7 @@
 s_unique(x)
 }
 \arguments{
-\item{x}{a vector, factor, or one or more dates / date-time(s).}
+\item{x}{a vector, factor, or one or more POSIXlt / POSIXct objects.}
 }
 \value{
 A base-R data-frame with the following columns:
@@ -21,7 +21,7 @@ n: counts.
 pct: counts as percents of \code{x}, rounded to one decimal place.
 }
 \description{
-Tabulate counts and percents of unique elements within vectors, factors, and dates / date-time(s).
+Tabulate counts and percents of unique elements within vectors, factors, and POSIXlt / POSIXct objects.
 }
 \examples{
 s_unique(x = attenu$station)

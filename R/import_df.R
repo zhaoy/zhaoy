@@ -1,19 +1,15 @@
-#' Read R data-frames.
+#' Read data-frames.
 #'
 #' @description
-#' Converts upper-case variable names and categorical data to lower-case.
+#' Convert upper-case variable names and categorical data to lower-case.
 #'
 #' @usage
 #' import_df(x)
 #'
-#' @param x A data-frame.
+#' @param x a data-frame.
 #'
 #' @return
 #' A base-R data-frame.
-#'
-#' @seealso
-#' \code{\link{import_excel}}
-#' \code{\link{import_feather}}
 #'
 #' @export
 #'
@@ -22,9 +18,25 @@
 
 import_df <- function(x) {
 
-  stopifnot(is.data.frame(x = x),
-            nrow(x = x) >= 1,
-            ncol(x = x) >= 1)
+  stopifnot((inherits(x = x,
+                      what = c("data.frame",
+                               "tbl",
+                               "tbl_lazy",
+                               "tbl_monetdb",
+                               "tbl_sql"),
+                      which = FALSE) == TRUE) |
+            (nrow(x = x) >= 1 &
+             ncol(x = x) >= 1))
+
+  if (is.data.frame(x = x) == FALSE) {
+
+    x <- as.data.frame(x = x,
+                       row.names = NULL,
+                       stringsAsFactors = FALSE,
+                       cut.names = TRUE,
+                       fix.empty.names = TRUE)
+
+  }
 
   names(x = x) <- tolower(x = names(x = x))
 

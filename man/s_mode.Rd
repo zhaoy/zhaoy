@@ -7,7 +7,7 @@
 s_mode(x)
 }
 \arguments{
-\item{x}{a vector, factor, or one or more dates / date-times.}
+\item{x}{a vector, factor, or one or more POSIXlt / POSIXct objects.}
 }
 \value{
 A vector.

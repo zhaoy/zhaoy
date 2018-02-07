@@ -1,24 +1,20 @@
 #' Read xls and xlsx files.
 #'
 #' @description
-#' Combines \code{readxl::read_excel} and \code{rprojroot::find_root}.
+#' Read xls and xlsx files.
 #'
-#' Converts upper-case variable names and categorical data to lower-case.
+#' Convert upper-case variable names and categorical data to lower-case.
 #'
 #' @usage
 #' import_excel(folder, path, sheet = NULL, range = NULL)
 #'
-#' @param folder Any folder above both 1) the xls / xlsx file and 2) the R file.
-#' @param path Relative to \code{folder}, path to the xls / xlsx file.
-#' @param sheet Sheet to read.
-#' @param range A cell range to read from.
+#' @param folder any folder above both 1) the xls / xlsx file and 2) the R file.
+#' @param path relative to \code{folder}, path to the xls / xlsx file.
+#' @param sheet sheet to read.
+#' @param range a cell range to read from.
 #'
 #' @return
 #' A base-R data-frame.
-#'
-#' @seealso
-#' \code{\link{import_df}}
-#' \code{\link{import_feather}}
 #'
 #' @importFrom readxl read_excel
 #' @importFrom rprojroot find_root has_dirname
@@ -30,42 +26,17 @@ import_excel <- function(folder,
                          sheet = NULL,
                          range = NULL) {
 
-  suffix_xls <- "xls"
-
-  suffix_xls_nchar <- nchar(x = suffix_xls,
-                            type = "chars",
-                            allowNA = FALSE,
-                            keepNA = TRUE)
-
-  suffix_xlsx <- "xlsx"
-
-  suffix_xlsx_nchar <- nchar(x = suffix_xlsx,
-                             type = "chars",
-                             allowNA = FALSE,
-                             keepNA = TRUE)
+  # is.character() is necessary because
+  # nzchar() and grepl() can return TRUE / FALSE
+  # for non-character inputs.
 
   stopifnot(is.character(x = folder),
             nzchar(x = folder,
                    keepNA = TRUE),
             is.character(x = path),
-            ((substring(text = path,
-                       first = nchar(x = path,
-                                     type = "chars",
-                                     allowNA = FALSE,
-                                     keepNA = TRUE) - suffix_xls_nchar + 1,
-                       last = nchar(x = path,
-                                    type = "chars",
-                                    allowNA = FALSE,
-                                    keepNA = TRUE)) == suffix_xls) |
-            (substring(text = path,
-                       first = nchar(x = path,
-                                     type = "chars",
-                                     allowNA = FALSE,
-                                     keepNA = TRUE) - suffix_xlsx_nchar + 1,
-                       last = nchar(x = path,
-                                    type = "chars",
-                                    allowNA = FALSE,
-                                    keepNA = TRUE)) == suffix_xlsx)))
+            grepl(pattern = "[.xls]|[.xlsx]",
+                  x = path,
+                  ignore.case = TRUE))
 
   root <- rprojroot::find_root(criterion = rprojroot::has_dirname(dirname = folder),
                                path = ".")

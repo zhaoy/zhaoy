@@ -7,7 +7,7 @@
 zhaoy_s_numeric(x, s)
 }
 \arguments{
-\item{x}{a vector, factor, or one or more dates / date-times.}
+\item{x}{a vector, factor, or one or more POSIXlt / POSIXct objects.}
 }
 \value{
 A vector.

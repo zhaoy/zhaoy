@@ -1,6 +1,6 @@
 Type: package
 Package: zhaoy
-Title: customized functions
+Title: convenience functions
 Description: Import / export, organize, summarize, and communicate data
 Date: 2018-1-24
 Version: 0.0.1

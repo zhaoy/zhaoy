@@ -6,7 +6,7 @@
 #' @usage
 #' s_mode(x)
 #'
-#' @param x a vector, factor, or one or more dates / date-times.
+#' @param x a vector, factor, or one or more POSIXlt / POSIXct objects.
 #'
 #' @return
 #' A vector.

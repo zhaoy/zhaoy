@@ -1,12 +1,12 @@
 #' Summarize unique elements.
 #'
 #' @description
-#' Tabulate counts and percents of unique elements within vectors, factors, and dates / date-time(s).
+#' Tabulate counts and percents of unique elements within vectors, factors, and POSIXlt / POSIXct objects.
 #'
 #' @usage
 #' s_unique(x)
 #'
-#' @param x a vector, factor, or one or more dates / date-time(s).
+#' @param x a vector, factor, or one or more POSIXlt / POSIXct objects.
 #'
 #' @return
 #' A base-R data-frame with the following columns:
