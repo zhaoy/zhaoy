@@ -27,8 +27,7 @@ zhaoy_tolower <- function(x) {
                                "POSIXlt"),
                       which = FALSE) |
              is.factor(x = x) |
-             is.vector(x = x)),
-            length(x = x) >= 1)
+             is.vector(x = x)))
 
   if (is.character(x = x) == TRUE |
       is.factor(x = x) == TRUE) {
