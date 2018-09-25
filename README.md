@@ -1,6 +1,8 @@
-convenience functions for importing / exporting, organizing, summarizing, and communicating data
+custom functions for importing / exporting, organizing, summarizing, and communicating data
 
 # import / export
+
+`import_csv`
 
 `import_excel`
 

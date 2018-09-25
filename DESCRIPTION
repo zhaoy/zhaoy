@@ -1,13 +1,12 @@
-Type: package
 Package: zhaoy
-Title: convenience functions
-Description: Import / export, organize, summarize, and communicate data
-Date: 2018-1-24
+Title: Custom Functions
+Description: Import / export, organize, summarize, and communicate data.
+Date: 2018-9-25
 Version: 0.0.1
-Imports: feather, readxl, rprojroot, stats, utils
+Imports: feather, readxl, rprojroot, purrr, stats, utils
 Encoding: UTF-8
 LazyData: true
-Author: zhaoy zhaoy <zhaoy@users.noreply.github.com>
-Maintainer: zhaoy zhaoy <zhaoy@users.noreply.github.com>
 License: GPL-3
-RoxygenNote: 6.0.1
+Author: zhaoy zhaoy <username@users.noreply.github.com>
+Maintainer: zhaoy zhaoy <username@users.noreply.github.com>
+RoxygenNote: 6.1.0
