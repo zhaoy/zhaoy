@@ -15,10 +15,6 @@
 #'
 #' @return
 #' A length-one character vector.
-#'
-#' @examples
-#' zhaoy_lz_id(x = 1, lz = TRUE)
-#' zhaoy_lz_id(x = "000000001", lz = FALSE)
 
 zhaoy_lz_id <- function(x,
                         lz) {

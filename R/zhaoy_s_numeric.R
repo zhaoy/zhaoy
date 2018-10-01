@@ -7,6 +7,7 @@
 #' zhaoy_s_numeric(x, s)
 #'
 #' @param x a vector, factor, or one or more POSIXlt / POSIXct objects.
+#' @param s summary statistic
 #'
 #' @return
 #' A vector.
@@ -16,9 +17,6 @@
 #' If \code{x} is non-numeric, \code{\link{NA}} is returned.
 #'
 #' @importFrom stats median
-#'
-#' @examples
-#' zhaoy_s_numeric(x = attenu$accel, s = "min")
 
 zhaoy_s_numeric <- function(x,
                             s) {

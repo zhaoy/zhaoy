@@ -18,9 +18,6 @@
 #' If \code{x} has multiple modes, "s_mode()" is returned.
 #'
 #' If \code{x} has multiple elements and no mode, "no mode" is returned.
-#'
-#' @examples
-#' zhaoy_s_mode(x = attenu$dist)
 
 zhaoy_s_mode <- function(x) {
 

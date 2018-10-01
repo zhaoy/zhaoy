@@ -2,8 +2,6 @@ custom functions for importing / exporting, organizing, summarizing, and communi
 
 # import / export
 
-`import_csv`
-
 `import_excel`
 
 `import_feather`

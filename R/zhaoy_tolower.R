@@ -1,23 +1,17 @@
 #' Convert to lower-case.
 #'
 #' @description
-#' Convert upper-case characters and factor levels to lower-case characters.
+#' Convert upper-case letters to lower-case letters.
 #'
-#' Return non-alphabetic vectors and factors, and Date / POSIXlt / POSIXct objects, un-changed.
+#' Return numbers, factors, and Date / POSIXlt / POSIXct objects un-changed.
 #'
 #' @usage
 #' zhaoy_tolower(x)
 #'
-#' @param x a vector, factor, or one or more Date / POSIXlt / POSIXct objects.
+#' @param x a vector or factor.
 #'
 #' @return
-#' If \code{x} is an alphabetic vector or factor, a character vector of the same length as \code{x}.
-#'
-#' Otherwise, \code{x} un-changed.
-#'
-#' @examples
-#' x <- c("MiXeD", "cAsE", "123")
-#' zhaoy_tolower(x = x)
+#' A vector of the same length as \code{x}.
 
 zhaoy_tolower <- function(x) {
 
@@ -25,17 +19,15 @@ zhaoy_tolower <- function(x) {
                       what = c("Date",
                                "POSIXct",
                                "POSIXlt"),
-                      which = FALSE) |
-             is.factor(x = x) |
-             is.vector(x = x)))
+                      which = FALSE) == TRUE |
+            is.factor(x = x) == TRUE |
+            is.vector(x = x) == TRUE))
 
-  if (is.character(x = x) == TRUE |
-      is.factor(x = x) == TRUE) {
+  if (is.character(x = x) == TRUE) {
 
     tolower(x = x)
 
-  } else if (is.character(x = x) == FALSE &
-             is.factor(x = x) == FALSE) {
+  } else if (is.character(x = x) == FALSE) {
 
     return(value = x)
 
