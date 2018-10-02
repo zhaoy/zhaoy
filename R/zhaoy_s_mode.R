@@ -21,13 +21,15 @@ zhaoy_s_mode <- function(x) {
 
   stopifnot(inherits(x = x,
                      what = c("character",
+                              "integer",
                               "logical",
                               "numeric",
                               "factor",
                               "Date",
                               "POSIXct",
                               "POSIXlt"),
-                     which = FALSE) == TRUE)
+                     which = FALSE) == TRUE,
+            length(x = x) >= 1)
 
   x_table <- table(x,
                    useNA = "ifany")
@@ -39,13 +41,13 @@ zhaoy_s_mode <- function(x) {
 
     x_mode <- x
 
-  } else if (length(x = x) != 1 &
+  } else if (length(x = x) > 1 &
              all(x_table == x_max,
                  na.rm = FALSE) == TRUE) {
 
     x_mode <- "no mode"
 
-  } else if (length(x = x) != 1 &
+  } else if (length(x = x) > 1 &
              all(x_table == x_max,
                  na.rm = FALSE) == FALSE) {
 

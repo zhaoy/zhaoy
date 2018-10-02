@@ -17,13 +17,15 @@ zhaoy_tolower <- function(x) {
 
   stopifnot(inherits(x = x,
                      what = c("character",
+                              "integer",
                               "logical",
                               "numeric",
                               "factor",
                               "Date",
                               "POSIXct",
                               "POSIXlt"),
-                     which = FALSE) == TRUE)
+                     which = FALSE) == TRUE,
+            length(x = x) >= 1)
 
   if (is.character(x = x) == TRUE) {
 
