@@ -3,25 +3,27 @@
 #' @description
 #' Convert upper-case letters to lower-case letters.
 #'
-#' Return numbers, factors, and Date / POSIXlt / POSIXct objects un-changed.
+#' Return non-alphabetical objects un-changed.
 #'
 #' @usage
 #' zhaoy_tolower(x)
 #'
-#' @param x a vector or factor.
+#' @param x a vector.
 #'
 #' @return
 #' A vector of the same length as \code{x}.
 
 zhaoy_tolower <- function(x) {
 
-  stopifnot((inherits(x = x,
-                      what = c("Date",
-                               "POSIXct",
-                               "POSIXlt"),
-                      which = FALSE) == TRUE |
-            is.factor(x = x) == TRUE |
-            is.vector(x = x) == TRUE))
+  stopifnot(inherits(x = x,
+                     what = c("character",
+                              "logical",
+                              "numeric",
+                              "factor",
+                              "Date",
+                              "POSIXct",
+                              "POSIXlt"),
+                     which = FALSE) == TRUE)
 
   if (is.character(x = x) == TRUE) {
 
