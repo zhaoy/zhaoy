@@ -85,19 +85,19 @@ s_s <- function(x) {
   pct_unique <- n_unique / nrow(x = x) * 100
 
   zhaoy_min <- vapply(X = x,
-                      FUN = zhaoy_s_numeric,
+                      FUN = zhaoy_s_s,
                       s = "min",
                       FUN.VALUE = 1,
                       USE.NAMES = FALSE)
 
   zhaoy_max <- vapply(X = x,
-                      FUN = zhaoy_s_numeric,
+                      FUN = zhaoy_s_s,
                       s = "max",
                       FUN.VALUE = 1,
                       USE.NAMES = FALSE)
 
   zhaoy_median <- vapply(X = x,
-                         FUN = zhaoy_s_numeric,
+                         FUN = zhaoy_s_s,
                          s = "median",
                          FUN.VALUE = 1,
                          USE.NAMES = FALSE)
@@ -108,7 +108,7 @@ s_s <- function(x) {
   zhaoy_mode <- unlist(x = zhaoy_mode)
 
   zhaoy_mean <- vapply(X = x,
-                       FUN = zhaoy_s_numeric,
+                       FUN = zhaoy_s_s,
                        s = "mean",
                        FUN.VALUE = 1,
                        USE.NAMES = FALSE)

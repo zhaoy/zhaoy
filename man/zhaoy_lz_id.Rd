@@ -21,7 +21,3 @@ Epic ID numbers have 1 - 9 digits,
 of which at least one digit is a positive integer
 and any remaining digits are either zeros or positive integers.
 }
-\examples{
-zhaoy_lz_id(x = 1, lz = TRUE)
-zhaoy_lz_id(x = "000000001", lz = FALSE)
-}

@@ -9,7 +9,7 @@
 #' @param x a numeric or logical vector, or a date / date-time / time-interval object.
 #'
 #' @return
-#' A length-one vector.
+#' A length-one character vector.
 #'
 #' If multiple modes exist, "s_mode()" is returned.
 #'
@@ -28,7 +28,7 @@ zhaoy_s_mode <- function(x) {
                               "Date",
                               "POSIXct",
                               "POSIXlt"),
-                     which = FALSE) == TRUE,
+                     which = FALSE),
             length(x = x) >= 1)
 
   x_table <- table(x,

@@ -7,18 +7,14 @@
 s_mode(x)
 }
 \arguments{
-\item{x}{a vector, factor, or one or more POSIXlt / POSIXct objects.}
+\item{x}{a numeric or logical vector, or a date / date-time / time-interval object.}
 }
 \value{
 A vector.
 
-If \code{\link{NA}} is the most frequent element in \code{x}, \code{\link{NA}} is returned.
+If the mode is \code{\link{NA}}, \code{\link{NA}} is returned.
 
-If \code{x} has one element, that element is returned.
-
-If \code{x} has multiple modes, all those modes are returned.
-
-If \code{x} has multiple elements and no mode, "no mode" is returned.
+If no mode exists, "no mode" is returned.
 }
 \description{
 Calculate the statistical mode.

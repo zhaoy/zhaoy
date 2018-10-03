@@ -24,7 +24,7 @@ zhaoy_tolower <- function(x) {
                               "Date",
                               "POSIXct",
                               "POSIXlt"),
-                     which = FALSE) == TRUE,
+                     which = FALSE),
             length(x = x) >= 1)
 
   if (is.character(x = x) == TRUE) {

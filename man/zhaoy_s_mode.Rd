@@ -7,22 +7,17 @@
 zhaoy_s_mode(x)
 }
 \arguments{
-\item{x}{a vector, factor, or one or more dates / date-times.}
+\item{x}{a numeric or logical vector, or a date / date-time / time-interval object.}
 }
 \value{
-A length-one vector.
+A length-one character vector.
 
-If \code{\link{NA}} is the most frequent element in \code{x}, \code{\link{NA}} is returned.
+If multiple modes exist, "s_mode()" is returned.
 
-If \code{x} has one element, that element is returned.
+If the mode is \code{\link{NA}}, \code{\link{NA}} is returned.
 
-If \code{x} has multiple modes, "s_mode()" is returned.
-
-If \code{x} has multiple elements and no mode, "no mode" is returned.
+If no mode exists, "no mode" is returned.
 }
 \description{
 Calculate the statistical mode.
-}
-\examples{
-zhaoy_s_mode(x = attenu$dist)
 }

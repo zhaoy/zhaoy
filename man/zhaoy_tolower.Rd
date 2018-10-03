@@ -7,19 +7,13 @@
 zhaoy_tolower(x)
 }
 \arguments{
-\item{x}{a vector, factor, or one or more Date / POSIXlt / POSIXct objects.}
+\item{x}{a vector.}
 }
 \value{
-If \code{x} is an alphabetic vector or factor, a character vector of the same length as \code{x}.
-
-Otherwise, \code{x} un-changed.
+A vector of the same length as \code{x}.
 }
 \description{
-Convert upper-case characters and factor levels to lower-case characters.
+Convert upper-case letters to lower-case letters.
 
-Return non-alphabetic vectors and factors, and Date / POSIXlt / POSIXct objects, un-changed.
-}
-\examples{
-x <- c("MiXeD", "cAsE", "123")
-zhaoy_tolower(x = x)
+Return non-alphabetical objects un-changed.
 }
