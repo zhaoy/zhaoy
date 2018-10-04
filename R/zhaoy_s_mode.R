@@ -1,12 +1,12 @@
 #' Statistical mode.
 #'
 #' @description
-#' Calculate the statistical mode.
+#' Compute the statistical mode.
 #'
 #' @usage
 #' zhaoy_s_mode(x)
 #'
-#' @param x a numeric or logical vector, or a date / date-time / time-interval object.
+#' @param x a vector.
 #'
 #' @return
 #' A length-one character vector.

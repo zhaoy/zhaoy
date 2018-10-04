@@ -7,17 +7,17 @@
 s_mode(x)
 }
 \arguments{
-\item{x}{a numeric or logical vector, or a date / date-time / time-interval object.}
+\item{x}{a vector.}
 }
 \value{
-A vector.
+A character vector.
 
 If the mode is \code{\link{NA}}, \code{\link{NA}} is returned.
 
 If no mode exists, "no mode" is returned.
 }
 \description{
-Calculate the statistical mode.
+Compute the statistical mode.
 }
 \examples{
 s_mode(x = attenu$dist)

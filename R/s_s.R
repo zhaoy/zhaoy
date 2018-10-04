@@ -1,34 +1,38 @@
 #' Summary statistics.
 #'
 #' @description
-#' Tabulate summary statistics of data-frames, vectors, factors, and POSIXlt / POSIXct objects.
+#' Tabulate summary statistics.
 #'
 #' @usage
 #' s_s(x)
 #'
-#' @param x a data-frame, vector, factor, or one or more POSIXlt / POSIXct objects.
+#' @param x a data-frame, vector, factor, or date / date-time / time-interval object.
 #'
 #' @return
-#' A base-R data-frame with the following columns:
+#' A data-frame with the following columns:
 #'
-#' var: variable names, included only if \code{x} is a data-frame.
+#' var: variable name.
 #'
-#' n_miss: count of missing data.
+#' n_miss: count of missing data in variable.
 #'
-#' pct_miss: missing data as percents of variables, rounded to one decimal place.
+#' pct_miss: percent of variable that has missing data, rounded to one decimal place.
 #'
-#' n_unique: count of unique values.
+#' n_unique: count of unique values in variable.
 #'
-#' pct_unique: unique values as percents of variables, rounded to one decimal place.
+#' pct_unique: percent of variable that has unique values, rounded to one decimal place.
 #'
-#' min, max, median, mean: if a variable is non-numeric, \code{\link{NA}} is returned.
+#' min and max: If \code{x} is not a numeric or date / date-time / time-interval object, \code{\link{NA}} is returned.
 #'
-#' mode: if \code{\link{NA}} is the most frequent element in a variable, \code{\link{NA}} or "<NA>" is returned.
-#' If a variable has one element, that element is returned.
-#' If a variable has multiple modes, "s_mode()" is returned.
-#' If a variable has multiple elements and no mode, "no mode" is returned.
+#' median and mean: If \code{x} is a date / date-time / time-interval object, \code{\link{NA}} is returned.
+#'
+#' mode:
+#' If multiple modes exist, "s_mode()" is returned.
+#' If the mode is \code{\link{NA}}, \code{\link{NA}} is returned.
+#' If no mode exists, "no mode" is returned.
 #'
 #' @seealso \code{\link{s_mode} \link{s_unique}}
+#'
+#' @import purrr
 #'
 #' @export
 #'
@@ -39,24 +43,19 @@
 s_s <- function(x) {
 
   stopifnot((inherits(x = x,
-                     what = c("Date",
-                              "POSIXct",
-                              "POSIXlt"),
-                     which = FALSE) |
-             is.data.frame(x = x) |
-             is.factor(x = x) |
-             is.vector(x = x)),
-            (length(x = x) >= 1 |
-             (nrow(x = x) >= 1 &
-              ncol(x = x) >= 1)))
+                      what = c("character",
+                               "integer",
+                               "logical",
+                               "numeric",
+                               "factor",
+                               "Date",
+                               "POSIXct",
+                               "POSIXlt"),
+                      which = FALSE) == TRUE |
+             is.data.frame(x = x) == TRUE),
+            length(x = x) >= 1)
 
-  if (inherits(x = x,
-               what = c("Date",
-                        "POSIXct",
-                        "POSIXlt"),
-               which = FALSE) == TRUE |
-      is.factor(x = x) == TRUE |
-      is.vector(x = x) == TRUE) {
+  if (is.data.frame(x = x) == FALSE) {
 
     x <- as.data.frame(x = x,
                        row.names = NULL,
@@ -68,50 +67,36 @@ s_s <- function(x) {
 
   var <- names(x = x)
 
-  n_miss <- vapply(X = x,
-                   FUN = function(x) sum(is.na(x = x) == TRUE,
-                                         na.rm = FALSE),
-                   FUN.VALUE = 1,
-                   USE.NAMES = FALSE)
+  n_miss <- purrr::map_int(.x = x,
+                           .f = function(x) sum(is.na(x = x) == TRUE,
+                                                na.rm = FALSE))
 
   pct_miss <- n_miss / nrow(x = x) * 100
 
-  n_unique <- vapply(X = x,
-                     FUN = function(x) length(x = unique(x = x,
-                                                         incomparables = FALSE)),
-                     FUN.VALUE = 1,
-                     USE.NAMES = FALSE)
+  n_unique <- purrr::map_int(.x = x,
+                             .f = function(x) length(x = unique(x = x,
+                                                                incomparables = FALSE)))
 
   pct_unique <- n_unique / nrow(x = x) * 100
 
-  zhaoy_min <- vapply(X = x,
-                      FUN = zhaoy_s_s,
-                      s = "min",
-                      FUN.VALUE = 1,
-                      USE.NAMES = FALSE)
+  zhaoy_min <- purrr::map_chr(.x = x,
+                              .f = zhaoy_s_s,
+                              s = "min")
 
-  zhaoy_max <- vapply(X = x,
-                      FUN = zhaoy_s_s,
-                      s = "max",
-                      FUN.VALUE = 1,
-                      USE.NAMES = FALSE)
+  zhaoy_max <- purrr::map_chr(.x = x,
+                              .f = zhaoy_s_s,
+                              s = "max")
 
-  zhaoy_median <- vapply(X = x,
-                         FUN = zhaoy_s_s,
-                         s = "median",
-                         FUN.VALUE = 1,
-                         USE.NAMES = FALSE)
+  zhaoy_median <- purrr::map_chr(.x = x,
+                                 .f = zhaoy_s_s,
+                                 s = "median")
 
-  zhaoy_mode <- lapply(X = x,
-                       FUN = zhaoy_s_mode)
+  zhaoy_mode <- purrr::map_chr(.x = x,
+                               .f = zhaoy_s_mode)
 
-  zhaoy_mode <- unlist(x = zhaoy_mode)
-
-  zhaoy_mean <- vapply(X = x,
-                       FUN = zhaoy_s_s,
-                       s = "mean",
-                       FUN.VALUE = 1,
-                       USE.NAMES = FALSE)
+  zhaoy_mean <- purrr::map_chr(.x = x,
+                               .f = zhaoy_s_s,
+                               s = "mean")
 
   x <- data.frame(var,
                   n_miss,
@@ -133,10 +118,6 @@ s_s <- function(x) {
         "pct_unique")] <- round(x = x[, c("pct_miss",
                                           "pct_unique")],
                                 digits = 1)
-
-  # To retain their numeric status,
-  # do NOT drop trailing zeros
-  # from numbers in the min, max, median, and mean columns.
 
   if (nrow(x = x) == 1) {
 

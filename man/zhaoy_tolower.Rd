@@ -13,7 +13,8 @@ zhaoy_tolower(x)
 A vector of the same length as \code{x}.
 }
 \description{
-Convert upper-case letters to lower-case letters.
-
-Return non-alphabetical objects un-changed.
+Convert characters in character vectors from upper to lower case.
+}
+\details{
+Non-alphabetic characters are left un-changed.
 }

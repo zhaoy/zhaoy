@@ -7,30 +7,32 @@
 s_s(x)
 }
 \arguments{
-\item{x}{a data-frame, vector, factor, or one or more POSIXlt / POSIXct objects.}
+\item{x}{a data-frame, vector, factor, or date / date-time / time-interval object.}
 }
 \value{
-A base-R data-frame with the following columns:
+A data-frame with the following columns:
 
-var: variable names, included only if \code{x} is a data-frame.
+var: variable name.
 
-n_miss: count of missing data.
+n_miss: count of missing data in variable.
 
-pct_miss: missing data as percents of variables, rounded to one decimal place.
+pct_miss: percent of variable that has missing data, rounded to one decimal place.
 
-n_unique: count of unique values.
+n_unique: count of unique values in variable.
 
-pct_unique: unique values as percents of variables, rounded to one decimal place.
+pct_unique: percent of variable that has unique values, rounded to one decimal place.
 
-min, max, median, mean: if a variable is non-numeric, \code{\link{NA}} is returned.
+min and max: If \code{x} is not a numeric or date / date-time / time-interval object, \code{\link{NA}} is returned.
 
-mode: if \code{\link{NA}} is the most frequent element in a variable, \code{\link{NA}} or "<NA>" is returned.
-If a variable has one element, that element is returned.
-If a variable has multiple modes, "s_mode()" is returned.
-If a variable has multiple elements and no mode, "no mode" is returned.
+median and mean: If \code{x} is a date / date-time / time-interval object, \code{\link{NA}} is returned.
+
+mode:
+If multiple modes exist, "s_mode()" is returned.
+If the mode is \code{\link{NA}}, \code{\link{NA}} is returned.
+If no mode exists, "no mode" is returned.
 }
 \description{
-Tabulate summary statistics of data-frames, vectors, factors, and POSIXlt / POSIXct objects.
+Tabulate summary statistics.
 }
 \examples{
 s_s(x = attenu$mag)

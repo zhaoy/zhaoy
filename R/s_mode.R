@@ -1,15 +1,15 @@
 #' Statistical mode.
 #'
 #' @description
-#' Calculate the statistical mode.
+#' Compute the statistical mode.
 #'
 #' @usage
 #' s_mode(x)
 #'
-#' @param x a numeric or logical vector, or a date / date-time / time-interval object.
+#' @param x a vector.
 #'
 #' @return
-#' A vector.
+#' A character vector.
 #'
 #' If the mode is \code{\link{NA}}, \code{\link{NA}} is returned.
 #'

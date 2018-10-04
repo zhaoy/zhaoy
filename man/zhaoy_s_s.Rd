@@ -12,12 +12,12 @@ zhaoy_s_s(x, s)
 \item{s}{a summary statistic.}
 }
 \value{
-A length-one vector.
+A length-one character vector.
 
-If \code{x} is non-numeric and not a date / date-time / time-interval object, \code{\link{NA}} is returned.
+If \code{x} is not a numeric or date / date-time / time-interval object, \code{\link{NA}} is returned.
 
 If \code{x} is a date / date-time / time-interval object and the summary statistic is median or mean, \code{\link{NA}} is returned.
 }
 \description{
-Calculate the minimum, maximum, median, or mean.
+Compute the minimum, maximum, median, or mean.
 }
