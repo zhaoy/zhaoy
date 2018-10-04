@@ -15,9 +15,9 @@ zhaoy_lz_id(x, lz)
 A length-one character vector.
 }
 \description{
-Includes or excludes leading zeros in Epic ID numbers.
+Include or exclude leading zeros in Epic ID numbers.
 
 Epic ID numbers have 1 - 9 digits,
-of which at least one digit is a positive integer
+of which one digit is a positive integer
 and any remaining digits are either zeros or positive integers.
 }

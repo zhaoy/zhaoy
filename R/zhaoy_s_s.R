@@ -94,16 +94,6 @@ zhaoy_s_s <- function(x,
 
   }
 
-  if (is.na(x = x_s) == TRUE) {
-
-    return(value = NA)
-
-  } else if (is.na(x = x_s) == FALSE) {
-
-    x_s <- as.character(x = x_s)
-
-    return(value = x_s)
-
-  }
+  as.character(x = x_s)
 
 }

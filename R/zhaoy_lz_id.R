@@ -1,10 +1,10 @@
 #' Leading zeros in Epic ID numbers.
 #'
 #' @description
-#' Includes or excludes leading zeros in Epic ID numbers.
+#' Include or exclude leading zeros in Epic ID numbers.
 #'
 #' Epic ID numbers have 1 - 9 digits,
-#' of which at least one digit is a positive integer
+#' of which one digit is a positive integer
 #' and any remaining digits are either zeros or positive integers.
 #'
 #' @usage
@@ -19,26 +19,22 @@
 zhaoy_lz_id <- function(x,
                         lz) {
 
-  stopifnot((is.factor(x = x) |
-             is.vector(x = x)),
+  stopifnot((is.factor(x = x) == TRUE |
+             is.vector(x = x) == TRUE),
             length(x = x) == 1,
             nchar(x = as.character(x = x),
-                  type = "chars",
                   allowNA = FALSE,
                   keepNA = TRUE) >= 1,
             nchar(x = as.character(x = x),
-                  type = "chars",
                   allowNA = FALSE,
                   keepNA = TRUE) <= 9)
 
   if (is.character(x = x) == TRUE &
       ((nchar(x = as.character(x = x),
-              type = "chars",
               allowNA = FALSE,
               keepNA = TRUE) == 9 &
         lz == TRUE) |
        (nchar(x = as.character(x = x),
-              type = "chars",
               allowNA = FALSE,
               keepNA = TRUE) >= 1 &
         nchar(x = as.character(x = x),
@@ -58,7 +54,6 @@ zhaoy_lz_id <- function(x,
     }
 
     x_nchar <- nchar(x = x,
-                     type = "chars",
                      allowNA = FALSE,
                      keepNA = TRUE)
 
@@ -74,8 +69,7 @@ zhaoy_lz_id <- function(x,
 
       paste(x_lz,
             x,
-            sep = "",
-            collapse = NULL)
+            sep = "")
 
     } else if (lz == FALSE) {
 
