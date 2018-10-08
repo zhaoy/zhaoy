@@ -1,7 +1,7 @@
 #' Convert to lower-case.
 #'
 #' @description
-#' Convert characters in character vectors from upper to lower case.
+#' Convert characters from upper to lower case.
 #'
 #' @usage
 #' zhaoy_tolower(x)
@@ -9,7 +9,7 @@
 #' @param x a vector.
 #'
 #' @details
-#' Non-alphabetic characters are left un-changed.
+#' Non-alphabetic characters, and non-character vectors, are left un-changed.
 #'
 #' @return
 #' A vector of the same length as \code{x}.

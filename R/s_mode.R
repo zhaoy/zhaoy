@@ -6,14 +6,12 @@
 #' @usage
 #' s_mode(x)
 #'
-#' @param x a vector.
+#' @param x an R object.
 #'
 #' @return
 #' A character vector.
 #'
 #' If the mode is \code{\link{NA}}, \code{\link{NA}} is returned.
-#'
-#' If no mode exists, "no mode" is returned.
 #'
 #' @seealso
 #' \code{\link{s_s} \link{s_unique}}
@@ -47,15 +45,13 @@ s_mode <- function(x) {
 
     x_mode <- x
 
-  } else if (length(x = x) > 1 &
-             all(x_table == x_max,
-                 na.rm = FALSE) == TRUE) {
+    if (is.character(x = x_mode) == FALSE) {
 
-    x_mode <- "no mode"
+      x_mode <- as.character(x = x_mode)
 
-  } else if (length(x = x) > 1 &
-             all(x_table == x_max,
-                 na.rm = FALSE) == FALSE) {
+    }
+
+  } else if (length(x = x) > 1) {
 
     x_mode <- names(x = x_table)[x_table == x_max]
 

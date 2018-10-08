@@ -7,16 +7,16 @@
 zhaoy_s_s(x, s)
 }
 \arguments{
-\item{x}{a numeric or logical vector, or a date / date-time / time-interval object.}
+\item{x}{an R object.}
 
-\item{s}{a summary statistic.}
+\item{s}{a statistic.}
 }
 \value{
 A length-one character vector.
 
 If \code{x} is not a numeric or date / date-time / time-interval object, \code{\link{NA}} is returned.
 
-If \code{x} is a date / date-time / time-interval object and the summary statistic is median or mean, \code{\link{NA}} is returned.
+If \code{x} is a date / date-time / time-interval object and the statistic is median or mean, \code{\link{NA}} is returned.
 }
 \description{
 Compute the minimum, maximum, median, or mean.

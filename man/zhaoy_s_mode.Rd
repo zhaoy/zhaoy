@@ -7,7 +7,7 @@
 zhaoy_s_mode(x)
 }
 \arguments{
-\item{x}{a vector.}
+\item{x}{an R object.}
 }
 \value{
 A length-one character vector.
@@ -15,8 +15,6 @@ A length-one character vector.
 If multiple modes exist, "s_mode()" is returned.
 
 If the mode is \code{\link{NA}}, \code{\link{NA}} is returned.
-
-If no mode exists, "no mode" is returned.
 }
 \description{
 Compute the statistical mode.

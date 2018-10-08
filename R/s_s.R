@@ -6,10 +6,10 @@
 #' @usage
 #' s_s(x)
 #'
-#' @param x a data-frame, vector, factor, or date / date-time / time-interval object.
+#' @param x an R object.
 #'
 #' @return
-#' A data-frame with the following columns:
+#' A data-frame with the following variables:
 #'
 #' var: variable name.
 #'
@@ -28,7 +28,6 @@
 #' mode:
 #' If multiple modes exist, "s_mode()" is returned.
 #' If the mode is \code{\link{NA}}, \code{\link{NA}} is returned.
-#' If no mode exists, "no mode" is returned.
 #'
 #' @seealso \code{\link{s_mode} \link{s_unique}}
 #'
@@ -42,17 +41,17 @@
 
 s_s <- function(x) {
 
-  stopifnot((inherits(x = x,
-                      what = c("character",
-                               "integer",
-                               "logical",
-                               "numeric",
-                               "factor",
-                               "Date",
-                               "POSIXct",
-                               "POSIXlt"),
-                      which = FALSE) == TRUE |
-             is.data.frame(x = x) == TRUE),
+  stopifnot(inherits(x = x,
+                     what = c("character",
+                              "integer",
+                              "logical",
+                              "numeric",
+                              "factor",
+                              "Date",
+                              "POSIXct",
+                              "POSIXlt",
+                              "data.frame"),
+                     which = FALSE) == TRUE,
             length(x = x) >= 1)
 
   if (is.data.frame(x = x) == FALSE) {

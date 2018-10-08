@@ -6,7 +6,7 @@
 #' @usage
 #' zhaoy_s_mode(x)
 #'
-#' @param x a vector.
+#' @param x an R object.
 #'
 #' @return
 #' A length-one character vector.
@@ -14,8 +14,6 @@
 #' If multiple modes exist, "s_mode()" is returned.
 #'
 #' If the mode is \code{\link{NA}}, \code{\link{NA}} is returned.
-#'
-#' If no mode exists, "no mode" is returned.
 
 zhaoy_s_mode <- function(x) {
 
@@ -28,7 +26,7 @@ zhaoy_s_mode <- function(x) {
                               "Date",
                               "POSIXct",
                               "POSIXlt"),
-                     which = FALSE),
+                     which = FALSE) == TRUE,
             length(x = x) >= 1)
 
   x_table <- table(x,
@@ -41,11 +39,17 @@ zhaoy_s_mode <- function(x) {
 
     x_mode <- x
 
+    if (is.character(x = x_mode) == FALSE) {
+
+      x_mode <- as.character(x = x_mode)
+
+    }
+
   } else if (length(x = x) > 1 &
              all(x_table == x_max,
                  na.rm = FALSE) == TRUE) {
 
-    x_mode <- "no mode"
+    x_mode <- "s_mode()"
 
   } else if (length(x = x) > 1 &
              all(x_table == x_max,
