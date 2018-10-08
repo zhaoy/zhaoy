@@ -16,5 +16,5 @@ A vector of the same length as \code{x}.
 Convert characters from upper to lower case.
 }
 \details{
-Non-alphabetic characters, and non-character vectors, are left un-changed.
+Non-alphabetic characters and non-character objects are left un-changed.
 }

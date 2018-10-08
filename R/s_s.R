@@ -31,7 +31,7 @@
 #'
 #' @seealso \code{\link{s_mode} \link{s_unique}}
 #'
-#' @import purrr
+#' @importFrom purrr map_chr map_int
 #'
 #' @export
 #'

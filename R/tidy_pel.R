@@ -1,28 +1,30 @@
-#' Convert PE lab data into tidy tables
+#' Tidy PE laboratory data.
 #'
 #' @description
-#' Tidies PE lab data that are in Microsoft Excel files.
+#' Tidy the Microsoft Excel .xlsx version of the Provide Enterprise "Test Results by Client ID" report.
 #'
 #' @usage
-#' tidy_pel(folder, path, sheet = NULL)
+#' tidy_pel(folder, path, sheet = NULL, range = NULL)
 #'
-#' @param folder Folder above the xls / xlsx file.
-#' @param path Path to the file, excluding the folder.
-#' @param sheet Sheet to read.
+#' @param folder any folder above both 1) the .xlsx file and 2) the R file.
+#' @param path relative to \code{folder}, path to the .xlsx file.
+#' @param sheet sheet to read.
+#' @param range a cell range to read from.
 #'
-#' @return A table.
+#' @return
+#' A data-frame.
 #'
-#' @import purrr rprojroot
+#' @importFrom purrr map
+#' @importFrom rprojroot find_root has_dirname
 #' @importFrom readxl read_excel
 #' @importFrom utils capture.output
 #'
 #' @export
-#'
-#' @examples
 
 tidy_pel <- function(folder,
                      path,
-                     sheet = NULL) {
+                     sheet = NULL,
+                     range = NULL) {
 
   root_path <- rprojroot::find_root(criterion = has_dirname(dirname = folder),
                                     path = ".")
@@ -33,7 +35,7 @@ tidy_pel <- function(folder,
 
   pe_lab <- readxl::read_excel(path = import_path,
                                sheet = sheet,
-                               range = NULL,
+                               range = range,
                                col_names = c("test_name",
                                              "mrn",
                                              "result_modifier",
@@ -43,16 +45,18 @@ tidy_pel <- function(folder,
                                trim_ws = TRUE,
                                skip = 0,
                                n_max = Inf,
-                               guess_max = 10)
+                               guess_max = 100000)
 
-  pe_lab <- pe_lab[pe_lab$test_name != "1" &
-                   (is.na(x = pe_lab$result) == TRUE |
-                   pe_lab$result != "Result"), ]
+  pe_lab <- subset(x = pe_lab,
+                   subset = test_name != "1" &
+                            (is.na(x = result) == TRUE |
+                             result != "Result") == TRUE)
 
-  missing_mrn <- pe_lab[is.na(x = pe_lab$mrn) == FALSE &
-                        pe_lab$mrn == "Client ID:",
-                        c("test_name",
-                          "mrn")]
+  missing_mrn <- subset(x = pe_lab,
+                        subset = is.na(x = mrn) == FALSE &
+                                 mrn == "Client ID:",
+                        select = c(test_name,
+                                   mrn))
 
   if (nrow(x = missing_mrn) != 0) {
 

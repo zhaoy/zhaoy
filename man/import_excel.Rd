@@ -16,7 +16,7 @@ import_excel(folder, path, sheet = NULL, range = NULL)
 \item{range}{a cell range to read from.}
 }
 \value{
-A base-R data-frame.
+A data-frame.
 }
 \description{
 Read xls and xlsx files.

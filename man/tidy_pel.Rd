@@ -2,20 +2,22 @@
 % Please edit documentation in R/tidy_pel.R
 \name{tidy_pel}
 \alias{tidy_pel}
-\title{Convert PE lab data into tidy tables}
+\title{Tidy PE laboratory data.}
 \usage{
-tidy_pel(folder, path, sheet = NULL)
+tidy_pel(folder, path, sheet = NULL, range = NULL)
 }
 \arguments{
-\item{folder}{Folder above the xls / xlsx file.}
+\item{folder}{any folder above both 1) the .xlsx file and 2) the R file.}
 
-\item{path}{Path to the file, excluding the folder.}
+\item{path}{relative to \code{folder}, path to the .xlsx file.}
 
-\item{sheet}{Sheet to read.}
+\item{sheet}{sheet to read.}
+
+\item{range}{a cell range to read from.}
 }
 \value{
-A table.
+A data-frame.
 }
 \description{
-Tidies PE lab data that are in Microsoft Excel files.
+Tidy the Microsoft Excel .xlsx version of the Provide Enterprise "Test Results by Client ID" report.
 }
