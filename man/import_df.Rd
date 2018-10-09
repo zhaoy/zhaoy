@@ -2,7 +2,7 @@
 % Please edit documentation in R/import_df.R
 \name{import_df}
 \alias{import_df}
-\title{Read data-frames.}
+\title{Convert data-frame characters to lower-case.}
 \usage{
 import_df(x)
 }
@@ -10,11 +10,12 @@ import_df(x)
 \item{x}{a data-frame.}
 }
 \value{
-A base-R data-frame.
+A data-frame.
 }
 \description{
-Convert upper-case variable names and categorical data to lower-case.
+Convert characters from upper to lower case, in variable names and in data points.
 }
 \examples{
-import_df(x = iris)
+ToothGrowth$supp <- as.character(x = ToothGrowth$supp)
+import_df(x = ToothGrowth)
 }

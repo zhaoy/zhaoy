@@ -14,7 +14,7 @@
 #' @param range a cell range to read from.
 #'
 #' @return
-#' A data-frame.
+#' A base-R data-frame.
 #'
 #' @importFrom readxl read_excel
 #' @importFrom rprojroot find_root has_dirname

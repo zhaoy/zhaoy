@@ -56,11 +56,12 @@ s_s <- function(x) {
 
   if (is.data.frame(x = x) == FALSE) {
 
-    x <- as.data.frame(x = x,
-                       row.names = NULL,
-                       stringsAsFactors = FALSE,
-                       cut.names = TRUE,
-                       fix.empty.names = TRUE)
+    x <- data.frame(x = x,
+                    row.names = NULL,
+                    check.rows = TRUE,
+                    check.names = TRUE,
+                    fix.empty.names = TRUE,
+                    stringsAsFactors = FALSE)
 
   }
 

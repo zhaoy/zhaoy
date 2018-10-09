@@ -1,7 +1,7 @@
-#' Read data-frames.
+#' Convert data-frame characters to lower-case.
 #'
 #' @description
-#' Convert upper-case variable names and categorical data to lower-case.
+#' Convert characters from upper to lower case, in variable names and in data points.
 #'
 #' @usage
 #' import_df(x)
@@ -9,24 +9,26 @@
 #' @param x a data-frame.
 #'
 #' @return
-#' A base-R data-frame.
+#' A data-frame.
+#'
+#' @importFrom purrr map_dfc
 #'
 #' @export
 #'
 #' @examples
-#' import_df(x = iris)
+#' ToothGrowth$supp <- as.character(x = ToothGrowth$supp)
+#' import_df(x = ToothGrowth)
 
 import_df <- function(x) {
 
-  stopifnot((inherits(x = x,
-                      what = c("data.frame",
-                               "tbl",
-                               "tbl_lazy",
-                               "tbl_monetdb",
-                               "tbl_sql"),
-                      which = FALSE) == TRUE) |
-            (nrow(x = x) >= 1 &
-             ncol(x = x) >= 1))
+  stopifnot(inherits(x = x,
+                     what = c("data.frame",
+                              "tbl_lazy",
+                              "tbl_monetdb",
+                              "tbl_sql"),
+                     which = FALSE) == TRUE &
+            nrow(x = x) >= 1 &
+            ncol(x = x) >= 1)
 
   if (is.data.frame(x = x) == FALSE) {
 
@@ -40,8 +42,8 @@ import_df <- function(x) {
 
   names(x = x) <- tolower(x = names(x = x))
 
-  x <- lapply(X = x,
-              FUN = zhaoy_tolower)
+  x <- purrr::map_dfc(.x = x,
+                      .f = zhaoy_tolower)
 
   as.data.frame(x = x,
                 row.names = NULL,

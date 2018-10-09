@@ -19,5 +19,5 @@ tidy_pel(folder, path, sheet = NULL, range = NULL)
 A data-frame.
 }
 \description{
-Tidy the Microsoft Excel .xlsx version of the Provide Enterprise "Test Results by Client ID" report.
+Tidy the .xlsx version of the Provide Enterprise "Test Results by Client With ID" report.
 }
