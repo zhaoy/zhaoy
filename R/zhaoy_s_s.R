@@ -32,22 +32,22 @@ zhaoy_s_s <- function(x,
                               "numeric",
                               "factor",
                               "Date",
+                              "difftime",
                               "POSIXct",
                               "POSIXlt"),
                      which = FALSE),
             length(x = x) >= 1)
 
+  date_time_interval <- inherits(x = x,
+                                 what = c("Date",
+                                          "difftime",
+                                          "POSIXct",
+                                          "POSIXlt"),
+                                 which = FALSE)
+
   if ((is.numeric(x = x) == FALSE &
-       inherits(x = x,
-                what = c("Date",
-                         "POSIXct",
-                         "POSIXlt"),
-                which = FALSE) == FALSE) == TRUE |
-      (inherits(x = x,
-                what = c("Date",
-                         "POSIXct",
-                         "POSIXlt"),
-                which = FALSE) == TRUE &
+       date_time_interval == FALSE) == TRUE |
+      (date_time_interval == TRUE &
        s %in% c("median",
                 "mean") == TRUE) == TRUE) {
 
@@ -81,11 +81,7 @@ zhaoy_s_s <- function(x,
 
     }
 
-  } else if (inherits(x = x,
-                      what = c("Date",
-                               "POSIXct",
-                               "POSIXlt"),
-                      which = FALSE) == TRUE) {
+  } else if (date_time_interval == TRUE) {
 
     if (s == "min") {
 

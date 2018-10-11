@@ -7,7 +7,7 @@
 zhaoy_lz_id(x, lz)
 }
 \arguments{
-\item{x}{a vector or factor of one Epic ID number.}
+\item{x}{a vector of one Epic ID number.}
 
 \item{lz}{logical: TRUE includes, and FALSE excludes, leading zeros.}
 }

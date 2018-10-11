@@ -24,6 +24,7 @@ zhaoy_s_mode <- function(x) {
                               "numeric",
                               "factor",
                               "Date",
+                              "difftime",
                               "POSIXct",
                               "POSIXlt"),
                      which = FALSE) == TRUE,
@@ -35,7 +36,7 @@ zhaoy_s_mode <- function(x) {
   x_max <- max(x_table,
                na.rm = FALSE)
 
-  if (length(x = x) == 1) {
+  if (length(x = x_table) == 1) {
 
     x_mode <- x
 
@@ -45,13 +46,13 @@ zhaoy_s_mode <- function(x) {
 
     }
 
-  } else if (length(x = x) > 1 &
+  } else if (length(x = x_table) > 1 &
              all(x_table == x_max,
                  na.rm = FALSE) == TRUE) {
 
     x_mode <- "s_mode()"
 
-  } else if (length(x = x) > 1 &
+  } else if (length(x = x_table) > 1 &
              all(x_table == x_max,
                  na.rm = FALSE) == FALSE) {
 

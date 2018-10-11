@@ -23,6 +23,7 @@ zhaoy_tolower <- function(x) {
                               "numeric",
                               "factor",
                               "Date",
+                              "difftime",
                               "POSIXct",
                               "POSIXlt"),
                      which = FALSE),
