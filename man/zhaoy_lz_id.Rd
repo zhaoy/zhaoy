@@ -18,6 +18,6 @@ A length-one character vector.
 Include or exclude leading zeros in Epic ID numbers.
 
 Epic ID numbers have 1 - 9 digits,
-of which one digit is a positive integer
+of which at least one digit is a positive integer
 and any remaining digits are either zeros or positive integers.
 }

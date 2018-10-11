@@ -12,9 +12,13 @@
 #' @return
 #' A length-one character vector.
 #'
-#' If \code{x} is not a numeric or date / date-time / time-interval object, \code{\link{NA}} is returned.
+#' If \code{x} is not a numeric or date / date-time / time-interval object,
+#' and the statistic is "min" or "max",
+#' \code{\link{NA}} is returned.
 #'
-#' If \code{x} is a date / date-time / time-interval object and the statistic is median or mean, \code{\link{NA}} is returned.
+#' If \code{x} is a date / date-time / time-interval object,
+#' and the statistic is median or mean,
+#' \code{\link{NA}} is returned.
 #'
 #' @importFrom stats median
 
@@ -47,7 +51,7 @@ zhaoy_s_s <- function(x,
        s %in% c("median",
                 "mean") == TRUE) == TRUE) {
 
-    x_s <- NA
+    x_s <- NA_character_
 
   } else if (is.numeric(x = x) == TRUE) {
 
@@ -65,9 +69,6 @@ zhaoy_s_s <- function(x,
 
       x_s <- stats::median(x = x,
                            na.rm = TRUE)
-
-      x_s <- round(x = x_s,
-                   digits = 1)
 
     } else if (s == "mean") {
 

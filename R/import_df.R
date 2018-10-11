@@ -11,7 +11,7 @@
 #' @return
 #' A data-frame.
 #'
-#' @importFrom purrr map_dfc
+#' @importFrom purrr map
 #'
 #' @export
 #'
@@ -26,8 +26,8 @@ import_df <- function(x) {
                               "tbl_lazy",
                               "tbl_monetdb",
                               "tbl_sql"),
-                     which = FALSE) == TRUE &
-            nrow(x = x) >= 1 &
+                     which = FALSE) == TRUE,
+            nrow(x = x) >= 1,
             ncol(x = x) >= 1)
 
   if (is.data.frame(x = x) == FALSE) {
@@ -42,8 +42,8 @@ import_df <- function(x) {
 
   names(x = x) <- tolower(x = names(x = x))
 
-  x <- purrr::map_dfc(.x = x,
-                      .f = zhaoy_tolower)
+  x <- purrr::map(.x = x,
+                  .f = zhaoy_tolower)
 
   as.data.frame(x = x,
                 row.names = NULL,

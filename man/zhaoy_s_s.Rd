@@ -14,9 +14,13 @@ zhaoy_s_s(x, s)
 \value{
 A length-one character vector.
 
-If \code{x} is not a numeric or date / date-time / time-interval object, \code{\link{NA}} is returned.
+If \code{x} is not a numeric or date / date-time / time-interval object,
+and the statistic is "min" or "max",
+\code{\link{NA}} is returned.
 
-If \code{x} is a date / date-time / time-interval object and the statistic is median or mean, \code{\link{NA}} is returned.
+If \code{x} is a date / date-time / time-interval object,
+and the statistic is median or mean,
+\code{\link{NA}} is returned.
 }
 \description{
 Compute the minimum, maximum, median, or mean.
