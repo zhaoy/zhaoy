@@ -26,8 +26,8 @@
 #' median and mean: If \code{x} is a date / date-time / time-interval object, \code{\link{NA}} is returned.
 #'
 #' mode:
-#' If multiple modes exist, "s_mode()" is returned.
 #' If the mode is \code{\link{NA}}, \code{\link{NA}} is returned.
+#' If multiple modes exist, "s_mode()" is returned.
 #'
 #' @seealso \code{\link{s_mode} \link{s_unique}}
 #'
@@ -48,6 +48,7 @@ s_s <- function(x) {
                               "numeric",
                               "factor",
                               "Date",
+                              "difftime",
                               "POSIXct",
                               "POSIXlt",
                               "data.frame"),
@@ -56,7 +57,7 @@ s_s <- function(x) {
 
   if (is.data.frame(x = x) == FALSE) {
 
-    x <- data.frame(x = x,
+    x <- data.frame(x,
                     row.names = NULL,
                     check.rows = TRUE,
                     check.names = TRUE,

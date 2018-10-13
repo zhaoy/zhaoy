@@ -12,9 +12,9 @@ zhaoy_s_mode(x)
 \value{
 A length-one character vector.
 
-If multiple modes exist, "s_mode()" is returned.
-
 If the mode is \code{\link{NA}}, \code{\link{NA}} is returned.
+
+If multiple modes exist, "s_mode()" is returned.
 }
 \description{
 Compute the statistical mode.

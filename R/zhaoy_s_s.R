@@ -97,6 +97,8 @@ zhaoy_s_s <- function(x,
 
   }
 
-  as.character(x = x_s)
+  x <- as.character(x = x_s)
+
+  return(value = x)
 
 }

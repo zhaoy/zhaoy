@@ -1,7 +1,7 @@
-#' Tidy PE laboratory data.
+#' Tidy Provide Enterprise laboratory data.
 #'
 #' @description
-#' Tidy the .xlsx version of the Provide Enterprise "Test Results by Client With ID" report.
+#' Tidy the .xlsx version of the Provide Enterprise "Test Results by Client with ID" report.
 #'
 #' @usage
 #' tidy_pel(folder, path, sheet = NULL, range = NULL)

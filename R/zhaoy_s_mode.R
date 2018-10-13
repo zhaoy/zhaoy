@@ -11,9 +11,9 @@
 #' @return
 #' A length-one character vector.
 #'
-#' If multiple modes exist, "s_mode()" is returned.
-#'
 #' If the mode is \code{\link{NA}}, \code{\link{NA}} is returned.
+#'
+#' If multiple modes exist, "s_mode()" is returned.
 
 zhaoy_s_mode <- function(x) {
 
