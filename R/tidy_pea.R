@@ -35,28 +35,15 @@ tidy_pea <- function(folder,
                            "x_5",
                            "x_6")
 
+  activity_x_1_pattern <- "(musc - adult hiv clinic)|count:|totals|(print date:)"
+
   activity <- subset(x = activity,
-                   subset = x_1 %in% c("musc - adult hiv clinic",
-                                       "count:") == FALSE,
-                   select = -c(x_4,
-                               x_5,
-                               x_6))
-
-# activity_type
-
-  activity_type <- unique(x = activity$x_1[activity$x_2 == "service type"],
-                          incomparables = FALSE)
-
-  activity_type <- unique(x = activity_type,
-                          incomparables = FALSE)
-
-  activity$activity_type <- ifelse(test = activity$x_1 %in% activity_type == TRUE,
-                                   yes = activity$x_1,
-                                   no = NA_character_)
-
-  activity$activity_type <- zoo::na.locf(object = activity$activity_type,
-                                         na.rm = FALSE,
-                                         fromLast = FALSE)
+                     subset = grepl(pattern = activity_x_1_pattern,
+                                    x = activity$x_1,
+                                    fixed = FALSE) == FALSE,
+                     select = -c(x_4,
+                                 x_5,
+                                 x_6))
 
 # provider
 
@@ -81,6 +68,22 @@ tidy_pea <- function(folder,
                                     x = x_1,
                                     fixed = TRUE) == FALSE)
 
+# activity_type
+
+  activity_type <- unique(x = activity$x_1[activity$x_2 == "service type"],
+                          incomparables = FALSE)
+
+  activity$activity_type <- ifelse(test = activity$x_1 %in% activity_type == TRUE,
+                                   yes = activity$x_1,
+                                   no = NA_character_)
+
+  activity$activity_type <- zoo::na.locf(object = activity$activity_type,
+                                         na.rm = FALSE,
+                                         fromLast = FALSE)
+
+  activity <- subset(x = activity,
+                     subset = activity$x_2 != "service type")
+
 # mrn
 
   activity$mrn <- ifelse(test = activity$x_2 == "client id:",
@@ -100,25 +103,11 @@ tidy_pea <- function(folder,
 
 # activity_desc
 
-  activity$activity_desc <- ifelse(test = activity$x_1 %in% activity_type,
-                                   yes = NA_character_,
-                                   no = activity$x_1)
-
-  activity$activity_desc <- zoo::na.locf(object = activity$activity_desc,
-                                         na.rm = FALSE,
-                                         fromLast = FALSE)
-
-  activity <- subset(x = activity,
-                     subset = x_1 %in% activity_type == FALSE,
-                     select = -x_1)
+  names(x = activity)[names(x = activity) == "x_1"] <- "activity_desc"
 
 # activity_date
 
-  activity$activity_date <- ifelse(test = grepl(pattern = "\\d{5,}",
-                                                x = activity$x_2,
-                                                fixed = FALSE),
-                                   yes = activity$x_2,
-                                   no = NA_character_)
+  names(x = activity)[names(x = activity) == "x_2"] <- "activity_date"
 
   activity$activity_date <- as.numeric(x = activity$activity_date)
 
@@ -126,10 +115,6 @@ tidy_pea <- function(folder,
 
   activity$activity_date <- as.Date(x = activity$activity_date,
                                     origin = "1899-12-30")
-
-  activity <- subset(x = activity,
-                     subset = is.na(x = activity_date) == FALSE,
-                     select = -x_2)
 
   activity <- subset(x = activity,
                      select = c(mrn,

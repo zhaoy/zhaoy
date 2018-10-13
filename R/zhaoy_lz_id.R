@@ -23,7 +23,8 @@ zhaoy_lz_id <- function(x,
                    allowNA = FALSE,
                    keepNA = TRUE)
 
-  stopifnot(is.vector(x = x) == TRUE,
+  stopifnot(is.na(x = as.numeric(x = x)) == FALSE,
+            is.vector(x = x) == TRUE,
             length(x = x) == 1,
             x_nchar >= 1,
             x_nchar <= 9)

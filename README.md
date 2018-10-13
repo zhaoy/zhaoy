@@ -14,6 +14,8 @@ custom functions for importing / exporting, organizing, summarizing, and communi
 
 `lz_id`
 
+`tidy_pea`
+
 `tidy_pel`
 
 # summarize
