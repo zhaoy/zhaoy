@@ -2,7 +2,7 @@
 % Please edit documentation in R/s_s.R
 \name{s_s}
 \alias{s_s}
-\title{Summary statistics.}
+\title{Summary Statistics}
 \usage{
 s_s(x)
 }

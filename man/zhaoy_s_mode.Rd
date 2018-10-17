@@ -2,7 +2,7 @@
 % Please edit documentation in R/zhaoy_s_mode.R
 \name{zhaoy_s_mode}
 \alias{zhaoy_s_mode}
-\title{Statistical mode.}
+\title{Statistical Mode}
 \usage{
 zhaoy_s_mode(x)
 }

@@ -1,23 +1,21 @@
-#' Summarize unique elements.
+#' Unique Values
 #'
 #' @description
-#' Tabulate counts and percents of unique elements within vectors, factors, and POSIXlt / POSIXct objects.
+#' Tabulate counts and percents of unique values, including \code{NA}.
 #'
 #' @usage
 #' s_unique(x)
 #'
-#' @param x a vector, factor, or one or more POSIXlt / POSIXct objects.
+#' @param x an R object.
 #'
 #' @return
-#' A base-R data-frame with the following columns:
+#' A data-frame with the following variables:
 #'
-#' element: unique elements,
-#' beginning with "<NA>" if \code{\link{NA}} is present,
-#' then continuing in ascending order.
+#' value: value name.
 #'
-#' n: counts.
+#' n: count of value.
 #'
-#' pct: counts as percents of \code{x}, rounded to one decimal place.
+#' pct: percent of \code{x} that has the value, rounded to one decimal place.
 #'
 #' @seealso \code{\link{s_mode} \link{s_s}}
 #'
@@ -28,13 +26,17 @@
 
 s_unique <- function(x) {
 
-  stopifnot((inherits(x = x,
-                     what = c("Date",
+  stopifnot(inherits(x = x,
+                     what = c("character",
+                              "integer",
+                              "logical",
+                              "numeric",
+                              "factor",
+                              "Date",
+                              "difftime",
                               "POSIXct",
                               "POSIXlt"),
-                     which = FALSE) |
-             is.factor(x = x) |
-             is.vector(x = x)),
+                     which = FALSE),
             length(x = x) >= 1)
 
   n <- table(x,
@@ -45,30 +47,31 @@ s_unique <- function(x) {
   pct <- round(x = pct,
                digits = 1)
 
-  x <- data.frame(n,
-                  pct,
-                  row.names = NULL,
-                  check.rows = TRUE,
-                  check.names = TRUE,
-                  fix.empty.names = TRUE,
-                  stringsAsFactors = FALSE)
+  s_unique <- data.frame(n,
+                         pct,
+                         row.names = NULL,
+                         check.rows = TRUE,
+                         check.names = TRUE,
+                         fix.empty.names = TRUE,
+                         stringsAsFactors = FALSE)
 
-  names(x = x)[names(x = x) == "x"] <- "element"
+  names(x = s_unique)[names(x = s_unique) == "x"] <- "value"
 
-  names(x = x)[names(x = x) == "Freq"] <- "n"
+  names(x = s_unique)[names(x = s_unique) == "Freq"] <- "n"
 
-  names(x = x)[names(x = x) == "Freq.1"] <- "pct"
+  names(x = s_unique)[names(x = s_unique) == "Freq.1"] <- "pct"
 
-  x <- subset(x = x,
-              select = c(element:n,
-                         pct))
+  s_unique <- subset(x = s_unique,
+                     select = c(value,
+                                n,
+                                pct))
 
-  x$element <- as.character(x = x$element)
+  s_unique$value <- as.character(x = s_unique$value)
 
-  x_order <- order(x$element,
+  s_order <- order(s_unique$value,
                    decreasing = FALSE,
                    na.last = FALSE)
 
-  x[x_order, ]
+  s_unique[s_order, ]
 
 }

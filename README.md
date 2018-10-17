@@ -20,11 +20,11 @@ custom functions for importing / exporting, organizing, summarizing, and communi
 
 # summarize
 
-`s_s`
+`s_mode`
 
 `s_unique`
 
-`s_mode`
+`s_s`
 
 # communicate
 

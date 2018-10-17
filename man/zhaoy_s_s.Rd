@@ -2,7 +2,7 @@
 % Please edit documentation in R/zhaoy_s_s.R
 \name{zhaoy_s_s}
 \alias{zhaoy_s_s}
-\title{Summary statistics.}
+\title{Summary Statistics}
 \usage{
 zhaoy_s_s(x, s)
 }

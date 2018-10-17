@@ -2,7 +2,7 @@
 % Please edit documentation in R/s_mode.R
 \name{s_mode}
 \alias{s_mode}
-\title{Statistical mode.}
+\title{Statistical Mode}
 \usage{
 s_mode(x)
 }

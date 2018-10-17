@@ -23,106 +23,104 @@ tidy_pea <- function(folder,
                      sheet = NULL,
                      range = NULL) {
 
-  activity <- zhaoy::import_excel(folder = folder,
-                                  path = path,
-                                  sheet = sheet,
-                                  range = range)
+  pea <- zhaoy::import_excel(folder = folder,
+                             path = path,
+                             sheet = sheet,
+                             range = range)
 
-  names(x = activity) <- c("x_1",
-                           "x_2",
-                           "x_3",
-                           "x_4",
-                           "x_5",
-                           "x_6")
+  names(x = pea) <- c("x_1",
+                      "x_2",
+                      "x_3",
+                      "x_4",
+                      "x_5",
+                      "x_6")
 
-  activity_x_1_pattern <- "(musc - adult hiv clinic)|count:|totals|(print date:)"
+  x_1_pattern <- "(musc - adult hiv clinic)|count:|totals|(print date:)"
 
-  activity <- subset(x = activity,
-                     subset = grepl(pattern = activity_x_1_pattern,
-                                    x = activity$x_1,
-                                    fixed = FALSE) == FALSE,
-                     select = -c(x_4,
-                                 x_5,
-                                 x_6))
+  pea <- subset(x = pea,
+                subset = grepl(pattern = x_1_pattern,
+                               x = pea$x_1,
+                               fixed = FALSE) == FALSE,
+                select = -c(x_4,
+                            x_5,
+                            x_6))
 
 # provider
 
-  activity$provider <- ifelse(test = grepl(pattern = "provider:",
-                                           x = activity$x_1,
-                                           fixed = TRUE),
-                              yes = activity$x_1,
-                              no = NA_character_)
-
-  activity$provider <- zoo::na.locf(object = activity$provider,
-                                    na.rm = FALSE,
-                                    fromLast = FALSE)
-
-  activity$provider <- substring(text = activity$provider,
-                                 first = 11,
-                                 last = nchar(x = activity$provider,
-                                              allowNA = FALSE,
-                                              keepNA = TRUE))
-
-  activity <- subset(x = activity,
-                     subset = grepl(pattern = "provider:",
-                                    x = x_1,
-                                    fixed = TRUE) == FALSE)
-
-# activity_type
-
-  activity_type <- unique(x = activity$x_1[activity$x_2 == "service type"],
-                          incomparables = FALSE)
-
-  activity$activity_type <- ifelse(test = activity$x_1 %in% activity_type == TRUE,
-                                   yes = activity$x_1,
-                                   no = NA_character_)
-
-  activity$activity_type <- zoo::na.locf(object = activity$activity_type,
-                                         na.rm = FALSE,
-                                         fromLast = FALSE)
-
-  activity <- subset(x = activity,
-                     subset = activity$x_2 != "service type")
-
-# mrn
-
-  activity$mrn <- ifelse(test = activity$x_2 == "client id:",
-                         yes = activity$x_3,
+  pea$provider <- ifelse(test = grepl(pattern = "provider:",
+                                      x = pea$x_1,
+                                      fixed = TRUE),
+                         yes = pea$x_1,
                          no = NA_character_)
 
-  activity$mrn <- zoo::na.locf(object = activity$mrn,
+  pea$provider <- zoo::na.locf(object = pea$provider,
                                na.rm = FALSE,
                                fromLast = FALSE)
 
-  activity$mrn <- zhaoy::lz_id(x = activity$mrn,
-                               lz = TRUE)
+  pea$provider <- substring(text = pea$provider,
+                            first = 11,
+                            last = nchar(x = pea$provider,
+                                         allowNA = FALSE,
+                                         keepNA = TRUE))
 
-  activity <- subset(x = activity,
-                     subset = x_2 != "client id:",
-                     select = -x_3)
+  pea <- subset(x = pea,
+                subset = grepl(pattern = "provider:",
+                               x = x_1,
+                               fixed = TRUE) == FALSE)
+
+# activity_type
+
+  activity_type <- unique(x = pea$x_1[pea$x_2 == "service type"],
+                          incomparables = FALSE)
+
+  pea$activity_type <- ifelse(test = pea$x_1 %in% activity_type == TRUE,
+                              yes = pea$x_1,
+                              no = NA_character_)
+
+  pea$activity_type <- zoo::na.locf(object = pea$activity_type,
+                                    na.rm = FALSE,
+                                    fromLast = FALSE)
+
+  pea <- subset(x = pea,
+                subset = pea$x_2 != "service type")
+
+# mrn
+
+  pea$mrn <- ifelse(test = pea$x_2 == "client id:",
+                    yes = pea$x_3,
+                    no = NA_character_)
+
+  pea$mrn <- zoo::na.locf(object = pea$mrn,
+                          na.rm = FALSE,
+                          fromLast = FALSE)
+
+  pea$mrn <- zhaoy::lz_id(x = pea$mrn,
+                          lz = TRUE)
+
+  pea <- subset(x = pea,
+                subset = x_2 != "client id:",
+                select = -x_3)
 
 # activity_desc
 
-  names(x = activity)[names(x = activity) == "x_1"] <- "activity_desc"
+  names(x = pea)[names(x = pea) == "x_1"] <- "activity_desc"
 
 # activity_date
 
-  names(x = activity)[names(x = activity) == "x_2"] <- "activity_date"
+  names(x = pea)[names(x = pea) == "x_2"] <- "activity_date"
 
-  activity$activity_date <- as.numeric(x = activity$activity_date)
+  pea$activity_date <- as.numeric(x = pea$activity_date)
 
-  activity$activity_date <- trunc(x = activity$activity_date)
+  pea$activity_date <- trunc(x = pea$activity_date)
 
-  activity$activity_date <- as.Date(x = activity$activity_date,
-                                    origin = "1899-12-30")
+  pea$activity_date <- as.Date(x = pea$activity_date,
+                               origin = "1899-12-30")
 
-  activity <- subset(x = activity,
-                     select = c(mrn,
-                                provider,
-                                activity_type,
-                                activity_desc,
-                                activity_date))
-
-  return(value = activity)
+  subset(x = pea,
+         select = c(mrn,
+                    provider,
+                    activity_type,
+                    activity_desc,
+                    activity_date))
 
 }

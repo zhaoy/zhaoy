@@ -1,4 +1,4 @@
-#' Summary statistics.
+#' Summary Statistics
 #'
 #' @description
 #' Tabulate summary statistics.
@@ -52,7 +52,7 @@ s_s <- function(x) {
                               "POSIXct",
                               "POSIXlt",
                               "data.frame"),
-                     which = FALSE) == TRUE,
+                     which = FALSE),
             length(x = x) >= 1)
 
   if (is.data.frame(x = x) == FALSE) {
@@ -99,35 +99,35 @@ s_s <- function(x) {
                                .f = zhaoy_s_s,
                                s = "mean")
 
-  x <- data.frame(var,
-                  n_miss,
-                  pct_miss,
-                  n_unique,
-                  pct_unique,
-                  min = zhaoy_min,
-                  max = zhaoy_max,
-                  median = zhaoy_median,
-                  mode = zhaoy_mode,
-                  mean = zhaoy_mean,
-                  row.names = NULL,
-                  check.rows = TRUE,
-                  check.names = TRUE,
-                  fix.empty.names = TRUE,
-                  stringsAsFactors = FALSE)
+  s_s <- data.frame(var,
+                    n_miss,
+                    pct_miss,
+                    n_unique,
+                    pct_unique,
+                    min = zhaoy_min,
+                    max = zhaoy_max,
+                    median = zhaoy_median,
+                    mode = zhaoy_mode,
+                    mean = zhaoy_mean,
+                    row.names = NULL,
+                    check.rows = TRUE,
+                    check.names = TRUE,
+                    fix.empty.names = TRUE,
+                    stringsAsFactors = FALSE)
 
-  x[, c("pct_miss",
-        "pct_unique")] <- round(x = x[, c("pct_miss",
-                                          "pct_unique")],
-                                digits = 1)
+  s_s[, c("pct_miss",
+          "pct_unique")] <- round(x = s_s[, c("pct_miss",
+                                              "pct_unique")],
+                                  digits = 1)
 
-  if (nrow(x = x) == 1) {
+  if (nrow(x = s_s) == 1) {
 
-    subset(x = x,
+    subset(x = s_s,
            select = -var)
 
-  } else if (nrow(x = x) > 1) {
+  } else if (nrow(x = s_s) > 1) {
 
-    return(value = x)
+    s_s
 
   }
 

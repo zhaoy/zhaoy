@@ -26,170 +26,98 @@ tidy_pel <- function(folder,
                      sheet = NULL,
                      range = NULL) {
 
-  root_path <- rprojroot::find_root(criterion = has_dirname(dirname = folder),
-                                    path = ".")
+  pel <- zhaoy::import_excel(folder = folder,
+                             path = path,
+                             sheet = sheet,
+                             range = range)
 
-  import_path <- file.path(root_path,
-                           path,
-                           fsep = "/")
+  pel[1, 1] <- names(x = pel)[1]
 
-  pe_lab <- readxl::read_excel(path = import_path,
-                               sheet = sheet,
-                               range = range,
-                               col_names = c("test_name",
-                                             "mrn",
-                                             "result_modifier",
-                                             "result"),
-                               col_types = NULL,
-                               na = "",
-                               trim_ws = TRUE,
-                               skip = 0,
-                               n_max = Inf,
-                               guess_max = 100000)
+  pel[1, 2] <- names(x = pel)[2]
 
-  pe_lab <- subset(x = pe_lab,
-                   subset = test_name != "1" &
-                            (is.na(x = result) == TRUE |
-                             result != "Result") == TRUE)
+  names(x = pel) <- c("x_1",
+                      "x_2",
+                      "x_3",
+                      "x_4")
 
-  missing_mrn <- subset(x = pe_lab,
-                        subset = is.na(x = mrn) == FALSE &
-                                 mrn == "Client ID:",
-                        select = c(test_name,
-                                   mrn))
+  pel <- subset(x = pel,
+                subset = x_1 != "1" &
+                         grepl(pattern = "(test name)|(total tests for this client:)",
+                               x = pel$x_1,
+                               ignore.case = TRUE,
+                               fixed = FALSE) == FALSE)
 
-  if (nrow(x = missing_mrn) != 0) {
+# mrn
 
-    stop("Please find the missing MRN(s):\n",
-         call. = FALSE,
-         paste0(utils::capture.output(missing_mrn),
-                collapse = "\n"))
+  pel$mrn <- ifelse(test = grepl(pattern = "(client.id...)|(client id:)",
+                                 x = pel$x_2,
+                                 ignore.case = TRUE,
+                                 fixed = FALSE),
+                    yes = pel$x_2,
+                    no = NA_character_)
 
-    } else {
+  pel$mrn[is.na(x = pel$mrn) == FALSE] <- strsplit(x = pel$mrn[is.na(x = pel$mrn) == FALSE],
+                                                   split = "",
+                                                   fixed = FALSE)
 
-    # test_count
+  pel$mrn[is.na(x = pel$mrn) == FALSE] <- purrr::map(.x = pel$mrn[is.na(x = pel$mrn) == FALSE],
+                                                     .f = grep,
+                                                     pattern = "\\d",
+                                                     value = TRUE,
+                                                     fixed = FALSE,
+                                                     invert = FALSE)
 
-      pe_lab$tcl <- grepl(x = pe_lab$test_name,
-                          pattern = "Total Tests for this Client:",
-                          ignore.case = TRUE)
+  pel$mrn[is.na(x = pel$mrn) == FALSE] <- purrr::map(.x = pel$mrn[is.na(x = pel$mrn) == FALSE],
+                                                     .f = paste,
+                                                     sep = "",
+                                                     collapse = "")
 
-      pe_lab$test_count <- NA
+  pel$mrn <- unlist(x = pel$mrn)
 
-      pe_lab$test_count[pe_lab$tcl == TRUE] <- gsub(x = pe_lab$test_name[pe_lab$tcl == TRUE],
-                                                    pattern = "Total Tests for this Client:   ",
-                                                    replacement = "",
-                                                    ignore.case = TRUE)
+  pel$mrn[pel$mrn == ""] <- "confidential"
 
-    # test_date
+  pel <- subset(x = pel,
+                subset = is.na(x = mrn) == TRUE |
+                         mrn != "confidential")
 
-      pe_lab$tdl <- grepl(x = pe_lab$mrn,
-                          pattern = "Client ID:",
-                          ignore.case = TRUE)
+  pel$mrn <- zoo::na.locf(object = pel$mrn,
+                          na.rm = FALSE,
+                          fromLast = FALSE)
 
-      pe_lab$test_date <- pe_lab$mrn
+  pel$mrn[is.na(x = pel$mrn) == FALSE] <- zhaoy::lz_id(x = pel$mrn[is.na(x = pel$mrn) == FALSE],
+                                                       lz = TRUE)
 
-      pe_lab$test_date[pe_lab$tdl == TRUE] <- NA
+  pel <- subset(x = pel,
+                subset = x_3 != "result modifier")
 
-      pe_lab$test_date <- as.numeric(x = pe_lab$test_date)
+# test_name
 
-      pe_lab$test_date <- as.Date(x = as.numeric(x = pe_lab$test_date),
-                                  origin = "1899-12-30",
-                                  tz = "")
+  names(x = pel)[names(x = pel) == "x_1"] <- "test_name"
 
-    # mrn: value of 1 MRN is "confidential"
+# test_date
 
-      pe_lab$mrnl <- grepl(x = pe_lab$mrn,
-                           pattern = "Client ID:",
-                           ignore.case = TRUE)
+  names(x = pel)[names(x = pel) == "x_2"] <- "test_date"
 
-      pe_lab$mrn_2 <- NA
+  pel$test_date <- as.numeric(x = pel$test_date)
 
-      pe_lab$mrn_2[pe_lab$mrnl == TRUE] <- gsub(x = pe_lab$mrn[pe_lab$mrnl == TRUE],
-                                                pattern = "Client ID:  ",
-                                                replacement = "",
-                                                ignore.case = TRUE)
+  pel$test_date <- trunc(x = pel$test_date)
 
-      pe_lab$mrn <- NULL
+  pel$test_date <- as.Date(x = pel$test_date,
+                           origin = "1899-12-30")
 
-      names(x = pe_lab)[names(x = pe_lab) == "mrn_2"] <- "mrn"
+# result_modifier
 
-    # test_name
+  names(x = pel)[names(x = pel) == "x_3"] <- "result_modifier"
 
-      pe_lab$tnl_1 <- grepl(x = pe_lab$test_name,
-                            pattern = " , ",
-                            ignore.case = TRUE)
+# result_value
 
-      pe_lab$tnl_2 <- grepl(x = pe_lab$test_name,
-                            pattern = "Total Tests for this Client:",
-                            ignore.case = TRUE)
+  names(x = pel)[names(x = pel) == "x_4"] <- "result_value"
 
-      pe_lab$test_name_2 <- pe_lab$test_name
-
-      pe_lab$test_name_2[pe_lab$tnl_1 == TRUE |
-                         pe_lab$tnl_2 == TRUE] <- NA
-
-      pe_lab$test_name <- NULL
-
-      names(x = pe_lab)[names(x = pe_lab) == "test_name_2"] <- "test_name"
-
-    # pe_lab: some records are missing result modifiers
-
-      pe_lab <- pe_lab[, c("mrn",
-                           "test_count",
-                           "test_name",
-                           "test_date",
-                           "result_modifier",
-                           "result")]
-
-      pel_no_rep <- pe_lab[(is.na(x = pe_lab$test_name) == FALSE) &
-                           (is.na(x = pe_lab$test_date) == FALSE),
-                           c("test_name",
-                             "test_date",
-                             "result_modifier",
-                             "result")]
-
-      pel_mrn <- pe_lab$mrn[is.na(x = pe_lab$mrn) == FALSE]
-
-      pel_test_count <- pe_lab$test_count[is.na(x = pe_lab$test_count) == FALSE]
-
-      pel_test_count <- gsub(x = pel_test_count,
-                             pattern = ",",
-                             replacement = "",
-                             ignore.case = TRUE)
-
-      pel_test_count <- as.integer(x = pel_test_count)
-
-      pel_mrn <- as.character(x = pel_mrn)
-
-      pel_mrn_rep <- rep(x = pel_mrn,
-                         times = pel_test_count)
-
-      pel_test_count_rep <- rep(x = pel_test_count,
-                                times = pel_test_count)
-
-      pe_lab <- data.frame(mrn = pel_mrn_rep,
-                           test_count = pel_test_count_rep,
-                           test_name = pel_no_rep$test_name,
-                           test_date = pel_no_rep$test_date,
-                           result_modifier = pel_no_rep$result_modifier,
-                           result = pel_no_rep$result,
-                           row.names = NULL,
-                           check.rows = TRUE,
-                           check.names = TRUE,
-                           fix.empty.names = TRUE,
-                           stringsAsFactors = FALSE)
-
-      pe_lab <- map(.x = pe_lab,
-                    .f = zhaoy_tolower)
-
-      pe_lab <- as.data.frame(x = pe_lab,
-                              row.names = NULL,
-                              stringsAsFactors = FALSE,
-                              cut.names = TRUE,
-                              fix.empty.names = TRUE)
-
-      return(value = pe_lab)
-
-    }
+  subset(x = pel,
+         select = c(mrn,
+                    test_name,
+                    test_date,
+                    result_modifier,
+                    result_value))
 
 }

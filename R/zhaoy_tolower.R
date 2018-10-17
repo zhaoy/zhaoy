@@ -1,4 +1,4 @@
-#' Convert to lower-case.
+#' Convert Characters to Lower Case
 #'
 #' @description
 #' Convert characters from upper to lower case.
@@ -35,7 +35,7 @@ zhaoy_tolower <- function(x) {
 
   } else if (is.character(x = x) == FALSE) {
 
-    return(value = x)
+    x
 
   }
 

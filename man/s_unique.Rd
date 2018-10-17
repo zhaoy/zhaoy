@@ -2,26 +2,24 @@
 % Please edit documentation in R/s_unique.R
 \name{s_unique}
 \alias{s_unique}
-\title{Summarize unique elements.}
+\title{Unique Values}
 \usage{
 s_unique(x)
 }
 \arguments{
-\item{x}{a vector, factor, or one or more POSIXlt / POSIXct objects.}
+\item{x}{an R object.}
 }
 \value{
-A base-R data-frame with the following columns:
+A data-frame with the following variables:
 
-element: unique elements,
-beginning with "<NA>" if \code{\link{NA}} is present,
-then continuing in ascending order.
+value: value name.
 
-n: counts.
+n: count of value.
 
-pct: counts as percents of \code{x}, rounded to one decimal place.
+pct: percent of \code{x} that has the value, rounded to one decimal place.
 }
 \description{
-Tabulate counts and percents of unique elements within vectors, factors, and POSIXlt / POSIXct objects.
+Tabulate counts and percents of unique values, including \code{NA}.
 }
 \examples{
 s_unique(x = attenu$station)

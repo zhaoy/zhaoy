@@ -2,7 +2,7 @@
 % Please edit documentation in R/zhaoy_lz_id.R
 \name{zhaoy_lz_id}
 \alias{zhaoy_lz_id}
-\title{Leading zeros in Epic ID numbers.}
+\title{Leading Zeros in Epic ID Numbers}
 \usage{
 zhaoy_lz_id(x, lz)
 }

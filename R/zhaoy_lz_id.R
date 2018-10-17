@@ -1,4 +1,4 @@
-#' Leading zeros in Epic ID numbers.
+#' Leading Zeros in Epic ID Numbers
 #'
 #' @description
 #' Include or exclude leading zeros in Epic ID numbers.
@@ -19,51 +19,54 @@
 zhaoy_lz_id <- function(x,
                         lz) {
 
-  x_nchar <- nchar(x = as.character(x = x),
-                   allowNA = FALSE,
-                   keepNA = TRUE)
+  id_nchar <- nchar(x = as.character(x = x),
+                    allowNA = FALSE,
+                    keepNA = TRUE)
 
-  stopifnot(is.na(x = as.numeric(x = x)) == FALSE,
-            is.vector(x = x) == TRUE,
+  stopifnot(inherits(x = x,
+                     what = c("data.frame",
+                              "list"),
+                     which = FALSE) == FALSE,
+            is.na(x = as.numeric(x = x)) == FALSE,
             length(x = x) == 1,
-            x_nchar >= 1,
-            x_nchar <= 9)
+            id_nchar >= 1,
+            id_nchar <= 9)
 
   if (is.character(x = x) == TRUE &
-      ((x_nchar == 9 &
+      ((id_nchar == 9 &
         lz == TRUE) == TRUE |
-       (x_nchar >= 1 &
-        x_nchar < 9 &
+       (id_nchar >= 1 &
+        id_nchar < 9 &
         lz == FALSE) == TRUE) == TRUE) {
 
-    return(value = x)
+    x
 
   } else {
 
-    if (x_nchar >= 1 &
-        x_nchar < 9 &
+    if (id_nchar >= 1 &
+        id_nchar < 9 &
         lz == TRUE) {
 
-      x_lz <- rep(x = 0,
-                  times = 9 - x_nchar)
+      lz_id <- rep(x = 0,
+                   times = 9 - id_nchar)
 
-      x_lz <- paste(x_lz,
-                    sep = "",
-                    collapse = "")
+      lz_id <- paste(lz_id,
+                     sep = "",
+                     collapse = "")
 
-      paste(x_lz,
+      paste(lz_id,
             x,
             sep = "")
 
     } else if (lz == FALSE) {
 
-      if (x_nchar == 9) {
+      if (id_nchar == 9) {
 
-      x <- as.integer(x = x)
+      lz_id <- as.integer(x = x)
 
       }
 
-      as.character(x = x)
+      as.character(x = lz_id)
 
     }
 

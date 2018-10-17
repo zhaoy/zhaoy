@@ -1,4 +1,4 @@
-#' Summary statistics.
+#' Summary Statistics
 #'
 #' @description
 #' Compute the minimum, maximum, median, or mean.
@@ -51,32 +51,32 @@ zhaoy_s_s <- function(x,
        s %in% c("median",
                 "mean") == TRUE) == TRUE) {
 
-    x_s <- NA_character_
+    s_s <- NA_character_
 
   } else if (is.numeric(x = x) == TRUE) {
 
     if (s == "min") {
 
-      x_s <- min(x = x,
+      s_s <- min(x = x,
                  na.rm = TRUE)
 
     } else if (s == "max") {
 
-      x_s <- max(x = x,
+      s_s <- max(x = x,
                  na.rm = TRUE)
 
     } else if (s == "median") {
 
-      x_s <- stats::median(x = x,
+      s_s <- stats::median(x = x,
                            na.rm = TRUE)
 
     } else if (s == "mean") {
 
-      x_s <- mean(x = x,
+      s_s <- mean(x = x,
                   trim = 0,
                   na.rm = TRUE)
 
-      x_s <- round(x = x_s,
+      s_s <- round(x = s_s,
                    digits = 1)
 
     }
@@ -85,20 +85,18 @@ zhaoy_s_s <- function(x,
 
     if (s == "min") {
 
-      x_s <- min(x = x,
+      s_s <- min(x = x,
                  na.rm = TRUE)
 
     } else if (s == "max") {
 
-      x_s <- max(x = x,
+      s_s <- max(x = x,
                  na.rm = TRUE)
 
     }
 
   }
 
-  x <- as.character(x = x_s)
-
-  return(value = x)
+  as.character(x = s_s)
 
 }

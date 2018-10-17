@@ -1,4 +1,4 @@
-#' Statistical mode.
+#' Statistical Mode
 #'
 #' @description
 #' Compute the statistical mode.
@@ -27,45 +27,45 @@ zhaoy_s_mode <- function(x) {
                               "difftime",
                               "POSIXct",
                               "POSIXlt"),
-                     which = FALSE) == TRUE,
+                     which = FALSE),
             length(x = x) >= 1)
 
-  x_table <- table(x,
+  s_table <- table(x,
                    useNA = "ifany")
 
-  x_max <- max(x_table,
+  s_max <- max(s_table,
                na.rm = FALSE)
 
-  if (length(x = x_table) == 1) {
+  if (length(x = s_table) == 1) {
 
-    x_mode <- x
+    s_mode <- x
 
-    if (is.character(x = x_mode) == FALSE) {
+    if (is.character(x = s_mode) == FALSE) {
 
-      x_mode <- as.character(x = x_mode)
+      s_mode <- as.character(x = s_mode)
 
     }
 
-  } else if (length(x = x_table) > 1 &
-             all(x_table == x_max,
+  } else if (length(x = s_table) > 1 &
+             all(s_table == s_max,
                  na.rm = FALSE) == TRUE) {
 
-    x_mode <- "s_mode()"
+    s_mode <- "s_mode()"
 
-  } else if (length(x = x_table) > 1 &
-             all(x_table == x_max,
+  } else if (length(x = s_table) > 1 &
+             all(s_table == s_max,
                  na.rm = FALSE) == FALSE) {
 
-    x_mode <- names(x = x_table)[x_table == x_max]
+    s_mode <- names(x = s_table)[s_table == s_max]
 
-    if (length(x = x_mode) > 1) {
+    if (length(x = s_mode) > 1) {
 
-      x_mode <- "s_mode()"
+      s_mode <- "s_mode()"
 
     }
 
   }
 
-  return(value = x_mode)
+  s_mode
 
 }

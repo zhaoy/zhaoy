@@ -1,4 +1,4 @@
-#' Statistical mode.
+#' Statistical Mode
 #'
 #' @description
 #' Compute the statistical mode.
@@ -33,31 +33,31 @@ s_mode <- function(x) {
                               "difftime",
                               "POSIXct",
                               "POSIXlt"),
-                     which = FALSE) == TRUE,
+                     which = FALSE),
             length(x = x) >= 1)
 
-  x_table <- table(x,
+  s_table <- table(x,
                    useNA = "ifany")
 
-  x_max <- max(x_table,
+  s_max <- max(s_table,
                na.rm = FALSE)
 
-  if (length(x = x_table) == 1) {
+  if (length(x = s_table) == 1) {
 
-    x_mode <- x
+    s_mode <- x
 
-    if (is.character(x = x_mode) == FALSE) {
+    if (is.character(x = s_mode) == FALSE) {
 
-      x_mode <- as.character(x = x_mode)
+      s_mode <- as.character(x = s_mode)
 
     }
 
-  } else if (length(x = x_table) > 1) {
+  } else if (length(x = s_table) > 1) {
 
-    x_mode <- names(x = x_table)[x_table == x_max]
+    s_mode <- names(x = s_table)[s_table == s_max]
 
   }
 
-  return(value = x_mode)
+  s_mode
 
 }
