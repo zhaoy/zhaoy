@@ -14,10 +14,8 @@
 #' @return
 #' A data-frame.
 #'
-#' @importFrom purrr map
-#' @importFrom rprojroot find_root has_dirname
-#' @importFrom readxl read_excel
-#' @importFrom utils capture.output
+#' @importFrom purrr map map_chr
+#' @importFrom zoo na.locf
 #'
 #' @export
 
@@ -67,43 +65,39 @@ tidy_pel <- function(folder,
                                                      fixed = FALSE,
                                                      invert = FALSE)
 
-  pel$mrn[is.na(x = pel$mrn) == FALSE] <- purrr::map(.x = pel$mrn[is.na(x = pel$mrn) == FALSE],
-                                                     .f = paste,
-                                                     sep = "",
-                                                     collapse = "")
-
-  pel$mrn <- unlist(x = pel$mrn)
-
-  pel$mrn[pel$mrn == ""] <- "confidential"
-
-  pel <- subset(x = pel,
-                subset = is.na(x = mrn) == TRUE |
-                         mrn != "confidential")
+  pel$mrn[is.na(x = pel$mrn) == FALSE] <- purrr::map_chr(.x = pel$mrn[is.na(x = pel$mrn) == FALSE],
+                                                         .f = paste,
+                                                         sep = "",
+                                                         collapse = "")
 
   pel$mrn <- zoo::na.locf(object = pel$mrn,
                           na.rm = FALSE,
                           fromLast = FALSE)
 
-  pel$mrn[is.na(x = pel$mrn) == FALSE] <- zhaoy::lz_id(x = pel$mrn[is.na(x = pel$mrn) == FALSE],
-                                                       lz = TRUE)
+  pel <- subset(x = pel,
+                subset = is.na(x = mrn) == TRUE |
+                         mrn != "")
+
+  pel$mrn <- zhaoy::lz_id(x = pel$mrn,
+                          lz = TRUE)
 
   pel <- subset(x = pel,
                 subset = x_3 != "result modifier")
 
-# test_name
+# lab_name
 
-  names(x = pel)[names(x = pel) == "x_1"] <- "test_name"
+  names(x = pel)[names(x = pel) == "x_1"] <- "lab_name"
 
-# test_date
+# result_date
 
-  names(x = pel)[names(x = pel) == "x_2"] <- "test_date"
+  names(x = pel)[names(x = pel) == "x_2"] <- "result_date"
 
-  pel$test_date <- as.numeric(x = pel$test_date)
+  pel$result_date <- as.numeric(x = pel$result_date)
 
-  pel$test_date <- trunc(x = pel$test_date)
+  pel$result_date <- trunc(x = pel$result_date)
 
-  pel$test_date <- as.Date(x = pel$test_date,
-                           origin = "1899-12-30")
+  pel$result_date <- as.Date(x = pel$result_date,
+                             origin = "1899-12-30")
 
 # result_modifier
 
@@ -115,8 +109,8 @@ tidy_pel <- function(folder,
 
   subset(x = pel,
          select = c(mrn,
-                    test_name,
-                    test_date,
+                    lab_name,
+                    result_date,
                     result_modifier,
                     result_value))
 

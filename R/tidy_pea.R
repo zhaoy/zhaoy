@@ -58,14 +58,17 @@ tidy_pea <- function(folder,
                                fromLast = FALSE)
 
   pea$provider <- substring(text = pea$provider,
-                            first = 11,
+                            first = nchar(x = "provider: ",
+                                          allowNA = FALSE,
+                                          keepNA = TRUE) +
+                                    1,
                             last = nchar(x = pea$provider,
                                          allowNA = FALSE,
                                          keepNA = TRUE))
 
   pea <- subset(x = pea,
                 subset = grepl(pattern = "provider:",
-                               x = x_1,
+                               x = pea$x_1,
                                fixed = TRUE) == FALSE)
 
 # activity_type
