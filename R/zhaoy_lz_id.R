@@ -23,10 +23,8 @@ zhaoy_lz_id <- function(x,
                     allowNA = FALSE,
                     keepNA = TRUE)
 
-  stopifnot(inherits(x = x,
-                     what = c("data.frame",
-                              "list"),
-                     which = FALSE) == FALSE,
+  stopifnot(is.list(x) == FALSE,
+            is.vector(x) == TRUE,
             is.na(x = as.numeric(x = x)) == FALSE,
             length(x = x) == 1,
             id_nchar >= 1,

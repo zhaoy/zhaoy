@@ -1,7 +1,7 @@
-#' Leading zeros in Epic ID numbers.
+#' Leading Zeros in Epic ID Numbers
 #'
 #' @description
-#' Includes or excludes leading zeros in Epic ID numbers.
+#' Include or exclude leading zeros in Epic ID numbers.
 #'
 #' Epic ID numbers have 1 - 9 digits,
 #' of which at least one digit is a positive integer
@@ -10,11 +10,13 @@
 #' @usage
 #' lz_id(x, lz)
 #'
-#' @param x a vector or factor of Epic ID numbers.
+#' @param x a vector of Epic ID numbers.
 #' @param lz logical: TRUE includes, and FALSE excludes, leading zeros.
 #'
 #' @return
 #' A character vector.
+#'
+#' @importFrom purrr map_chr
 #'
 #' @export
 #'
@@ -26,25 +28,17 @@
 lz_id <- function(x,
                   lz) {
 
-  stopifnot((is.factor(x = x) |
-             is.vector(x = x)),
-            length(x = x) >= 1)
-
   if (lz == TRUE) {
 
-    vapply(X = x,
-           FUN = zhaoy_lz_id,
-           lz = TRUE,
-           FUN.VALUE = "a",
-           USE.NAMES = FALSE)
+    purrr::map_chr(.x = x,
+                   .f = zhaoy_lz_id,
+                   lz = TRUE)
 
   } else if (lz == FALSE) {
 
-    vapply(X = x,
-           FUN = zhaoy_lz_id,
-           lz = FALSE,
-           FUN.VALUE = "a",
-           USE.NAMES = FALSE)
+    purrr::map_chr(.x = x,
+                   .f = zhaoy_lz_id,
+                   lz = FALSE)
 
   }
 
