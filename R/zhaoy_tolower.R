@@ -1,7 +1,7 @@
-#' Convert Characters to Lower Case
+#' Character Lower Case
 #'
 #' @description
-#' Convert characters from upper to lower case.
+#' Convert upper-case characters in character vectors to lower case.
 #'
 #' @usage
 #' zhaoy_tolower(x)

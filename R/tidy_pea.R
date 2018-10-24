@@ -42,7 +42,6 @@ tidy_pea <- function(folder,
                                x = pea$x_1,
                                fixed = FALSE) == FALSE,
                 select = -c(x_4,
-                            x_5,
                             x_6))
 
 # provider
@@ -58,10 +57,7 @@ tidy_pea <- function(folder,
                                fromLast = FALSE)
 
   pea$provider <- substring(text = pea$provider,
-                            first = nchar(x = "provider: ",
-                                          allowNA = FALSE,
-                                          keepNA = TRUE) +
-                                    1,
+                            first = 12,
                             last = nchar(x = pea$provider,
                                          allowNA = FALSE,
                                          keepNA = TRUE))
@@ -100,6 +96,16 @@ tidy_pea <- function(folder,
   pea$mrn <- zhaoy::lz_id(x = pea$mrn,
                           lz = TRUE)
 
+# provider_ship
+
+  pea$provider_ship <- ifelse(test = pea$x_2 == "client id:",
+                              yes = pea$x_5,
+                              no = NA_character_)
+
+  pea$provider_ship <- zoo::na.locf(object = pea$provider_ship,
+                                    na.rm = FALSE,
+                                    fromLast = FALSE)
+
   pea <- subset(x = pea,
                 subset = x_2 != "client id:",
                 select = -x_3)
@@ -124,6 +130,7 @@ tidy_pea <- function(folder,
                     provider,
                     activity_type,
                     activity_desc,
-                    activity_date))
+                    activity_date,
+                    provider_ship))
 
 }

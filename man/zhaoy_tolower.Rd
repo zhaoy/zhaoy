@@ -2,7 +2,7 @@
 % Please edit documentation in R/zhaoy_tolower.R
 \name{zhaoy_tolower}
 \alias{zhaoy_tolower}
-\title{Convert Characters to Lower Case}
+\title{Character Lower Case}
 \usage{
 zhaoy_tolower(x)
 }
@@ -13,7 +13,7 @@ zhaoy_tolower(x)
 A vector of the same length as \code{x}.
 }
 \description{
-Convert characters from upper to lower case.
+Convert upper-case characters in character vectors to lower case.
 }
 \details{
 Non-alphabetic characters and non-character objects are left un-changed.
