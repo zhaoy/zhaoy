@@ -13,7 +13,7 @@
 #' A length-one character vector.
 #'
 #' If \code{x} is not a numeric or date / date-time / time-interval object,
-#' and the statistic is "min" or "max",
+#' and the statistic is minimum or maximum,
 #' \code{\link{NA}} is returned.
 #'
 #' If \code{x} is a date / date-time / time-interval object,
