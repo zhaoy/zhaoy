@@ -46,15 +46,7 @@ zhaoy_s_mode <- function(x) {
 
     }
 
-  } else if (length(x = s_table) > 1 &
-             all(s_table == s_max,
-                 na.rm = FALSE) == TRUE) {
-
-    s_mode <- "s_mode()"
-
-  } else if (length(x = s_table) > 1 &
-             all(s_table == s_max,
-                 na.rm = FALSE) == FALSE) {
+  } else if (length(x = s_table) > 1) {
 
     s_mode <- names(x = s_table)[s_table == s_max]
 
