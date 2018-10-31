@@ -10,7 +10,7 @@
 #' @usage
 #' zhaoy_lz_id(x, lz)
 #'
-#' @param x a vector of one Epic ID number.
+#' @param x an Epic ID number.
 #' @param lz logical: TRUE includes, and FALSE excludes, leading zeros.
 #'
 #' @return
@@ -19,16 +19,29 @@
 zhaoy_lz_id <- function(x,
                         lz) {
 
-  id_nchar <- nchar(x = as.character(x = x),
+  id_character <- as.character(x = x)
+
+  id_nchar <- nchar(x = id_character,
                     allowNA = FALSE,
                     keepNA = TRUE)
 
-  stopifnot(is.list(x) == FALSE,
+  id_substring <- substring(text = id_character,
+                            first = 1,
+                            last = 1)
+
+  stopifnot(id_nchar >= 1,
+            id_nchar <= 9,
+            (id_nchar == 9 &
+             id_substring != "0") == FALSE,
+            inherits(x = x,
+                     what = c("character",
+                              "integer",
+                              "numeric"),
+                     which = FALSE),
+            is.list(x) == FALSE,
             is.vector(x) == TRUE,
             is.na(x = as.numeric(x = x)) == FALSE,
-            length(x = x) == 1,
-            id_nchar >= 1,
-            id_nchar <= 9)
+            length(x = x) == 1)
 
   if (is.character(x = x) == TRUE &
       ((id_nchar == 9 &
@@ -58,15 +71,18 @@ zhaoy_lz_id <- function(x,
 
     } else if (lz == FALSE) {
 
-      if (id_nchar == 9) {
+      lz_id <- as.integer(x = x) # is.character(x = x) == TRUE &
+                                 # id_nchar == 9 &
+                                 # id_substring == "0"
 
-      lz_id <- as.integer(x = x)
-
-      }
+                                 # is. character(x = x) == FALSE &
+                                 # id_nchar >= 1 &
+                                 # id_nchar < 9 &
+                                 # id_substring != "0"
 
       as.character(x = lz_id)
 
-    }
+      }
 
   }
 
