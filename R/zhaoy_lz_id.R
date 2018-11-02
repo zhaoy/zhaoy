@@ -3,9 +3,8 @@
 #' @description
 #' Include or exclude leading zeros in Epic ID numbers.
 #'
-#' Epic ID numbers have 1 - 9 digits,
-#' of which at least one digit is a positive integer
-#' and any remaining digits are either zeros or positive integers.
+#' Epic ID numbers are positive integers of up to 8 digits,
+#' with optional leading zeros.
 #'
 #' @usage
 #' zhaoy_lz_id(x, lz)
@@ -25,22 +24,35 @@ zhaoy_lz_id <- function(x,
                     allowNA = FALSE,
                     keepNA = TRUE)
 
+  id_regex <- strsplit(x = id_character,
+                       split = "",
+                       fixed = TRUE)
+
+  id_regex <- unlist(x = id_regex)
+
+  id_regex <- grepl(pattern = "\\D",
+                    x = id_regex,
+                    ignore.case = TRUE,
+                    fixed = FALSE)
+
   id_substring <- substring(text = id_character,
                             first = 1,
                             last = 1)
 
   stopifnot(id_nchar >= 1,
             id_nchar <= 9,
-            (id_nchar == 9 &
-             id_substring != "0") == FALSE,
+            ((id_nchar >= 1 &
+              id_nchar < 9 &
+              id_substring != "0") == TRUE |
+             (id_nchar == 9 &
+              id_substring == "0") == TRUE),
+            id_regex == FALSE,
             inherits(x = x,
                      what = c("character",
                               "integer",
                               "numeric"),
                      which = FALSE),
             is.list(x) == FALSE,
-            is.vector(x) == TRUE,
-            is.na(x = as.numeric(x = x)) == FALSE,
             length(x = x) == 1)
 
   if (is.character(x = x) == TRUE &
@@ -66,23 +78,27 @@ zhaoy_lz_id <- function(x,
                      collapse = "")
 
       paste(lz_id,
-            x,
+            id_character,
             sep = "")
 
     } else if (lz == FALSE) {
 
-      lz_id <- as.integer(x = x) # is.character(x = x) == TRUE &
-                                 # id_nchar == 9 &
-                                 # id_substring == "0"
+      if(id_nchar == 9 &
+         id_substring == "0") {
 
-                                 # is. character(x = x) == FALSE &
-                                 # id_nchar >= 1 &
-                                 # id_nchar < 9 &
-                                 # id_substring != "0"
+        lz_id <- as.integer(x = id_character)
 
-      as.character(x = lz_id)
+        as.character(x = lz_id)
+
+      } else if (id_nchar >= 1 &
+                 id_nchar < 9 &
+                 id_substring != "0") {
+
+        id_character
 
       }
+
+    }
 
   }
 
