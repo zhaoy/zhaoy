@@ -7,7 +7,7 @@
 lz_id(x, lz)
 }
 \arguments{
-\item{x}{a vector of Epic ID numbers.}
+\item{x}{at least one Epic ID number.}
 
 \item{lz}{logical: TRUE includes, and FALSE excludes, leading zeros.}
 }
@@ -17,9 +17,7 @@ A character vector.
 \description{
 Include or exclude leading zeros in Epic ID numbers.
 
-Epic ID numbers have 1 - 9 digits,
-of which at least one digit is a positive integer
-and any remaining digits are either zeros or positive integers.
+Epic ID numbers have 1-8 positive integers and 0-8 leading zeros.
 }
 \examples{
 x <- c("1", "000000002")

@@ -3,14 +3,12 @@
 #' @description
 #' Include or exclude leading zeros in Epic ID numbers.
 #'
-#' Epic ID numbers have 1 - 9 digits,
-#' of which at least one digit is a positive integer
-#' and any remaining digits are either zeros or positive integers.
+#' Epic ID numbers have 1-8 positive integers and 0-8 leading zeros.
 #'
 #' @usage
 #' lz_id(x, lz)
 #'
-#' @param x a vector of Epic ID numbers.
+#' @param x at least one Epic ID number.
 #' @param lz logical: TRUE includes, and FALSE excludes, leading zeros.
 #'
 #' @return

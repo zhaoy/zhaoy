@@ -3,8 +3,7 @@
 #' @description
 #' Include or exclude leading zeros in Epic ID numbers.
 #'
-#' Epic ID numbers are positive integers of up to 8 digits,
-#' with optional leading zeros.
+#' Epic ID numbers have 1-8 positive integers and 0-8 leading zeros.
 #'
 #' @usage
 #' zhaoy_lz_id(x, lz)
