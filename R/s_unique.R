@@ -9,13 +9,7 @@
 #' @param x an R object.
 #'
 #' @return
-#' A data-frame with the following variables:
-#'
-#' value: value name.
-#'
-#' n: count of value.
-#'
-#' pct: percent of \code{x} that has the value, rounded to one decimal place.
+#' A data-frame.
 #'
 #' @seealso \code{\link{s_mode} \link{s_s}}
 #'
@@ -55,6 +49,8 @@ s_unique <- function(x) {
                          fix.empty.names = TRUE,
                          stringsAsFactors = FALSE)
 
+  s_unique$x <- as.character(x = s_unique$x)
+
   names(x = s_unique)[names(x = s_unique) == "x"] <- "value"
 
   names(x = s_unique)[names(x = s_unique) == "Freq"] <- "n"
@@ -65,8 +61,6 @@ s_unique <- function(x) {
                      select = c(value,
                                 n,
                                 pct))
-
-  s_unique$value <- as.character(x = s_unique$value)
 
   s_order <- order(s_unique$value,
                    decreasing = FALSE,

@@ -10,13 +10,7 @@ s_unique(x)
 \item{x}{an R object.}
 }
 \value{
-A data-frame with the following variables:
-
-value: value name.
-
-n: count of value.
-
-pct: percent of \code{x} that has the value, rounded to one decimal place.
+A data-frame.
 }
 \description{
 Tabulate counts and percents of unique values, including \code{NA}.
