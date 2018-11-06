@@ -75,14 +75,14 @@ tidy_pel <- function(folder,
                           fromLast = FALSE)
 
   pel <- subset(x = pel,
-                subset = is.na(x = mrn) == TRUE |
-                         mrn != "")
+                subset = mrn != "")
 
   pel$mrn <- zhaoy::lz_id(x = pel$mrn,
                           lz = TRUE)
 
   pel <- subset(x = pel,
-                subset = x_3 != "result modifier")
+                subset = is.na(x = x_3) == TRUE |
+                         x_3 != "result modifier")
 
 # lab_name
 

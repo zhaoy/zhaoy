@@ -9,17 +9,7 @@
 #' @param x an R object.
 #'
 #' @return
-#' A data-frame with the following variables:
-#'
-#' var: variable name.
-#'
-#' n_miss: count of missing data in variable.
-#'
-#' pct_miss: percent of variable that has missing data, rounded to one decimal place.
-#'
-#' n_unique: count of unique values in variable.
-#'
-#' pct_unique: percent of variable that has unique values, rounded to one decimal place.
+#' A data-frame.
 #'
 #' min and max: If \code{x} is not a numeric or date / date-time / time-interval object, \code{\link{NA}} is returned.
 #'
