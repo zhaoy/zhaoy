@@ -13,6 +13,8 @@
 #'
 #' If the mode is \code{\link{NA}}, \code{\link{NA}} is returned.
 #'
+#' If no mode exists, "no mode" is returned.
+#'
 #' @seealso
 #' \code{\link{s_s} \link{s_unique}}
 #'
@@ -42,7 +44,13 @@ s_mode <- function(x) {
   s_max <- max(s_table,
                na.rm = FALSE)
 
-  if (length(x = s_table) == 1) {
+  if (length(x = s_table) > 1 &
+      s_max == 1) {
+
+    s_mode <- "no mode"
+
+  } else if (length(x = s_table) == 1 &
+             s_max == 1) {
 
     s_mode <- x
 
@@ -52,7 +60,8 @@ s_mode <- function(x) {
 
     }
 
-  } else if (length(x = s_table) > 1) {
+  } else if (length(x = s_table) > 1 &
+             s_max > 1) {
 
     s_mode <- names(x = s_table)[s_table == s_max]
 

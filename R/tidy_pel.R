@@ -39,7 +39,8 @@ tidy_pel <- function(folder,
                       "x_4")
 
   pel <- subset(x = pel,
-                subset = x_1 != "1" &
+                subset = is.na(x = x_1) == FALSE &
+                         x_1 != "1" &
                          grepl(pattern = "(test name)|(total tests for this client:)",
                                x = pel$x_1,
                                ignore.case = TRUE,
@@ -47,16 +48,15 @@ tidy_pel <- function(folder,
 
 # mrn
 
-  pel$mrn <- ifelse(test = grepl(pattern = "(client.id...)|(client id:)",
+  pel$mrn <- ifelse(test = grepl(pattern = "client id:",
                                  x = pel$x_2,
-                                 ignore.case = TRUE,
-                                 fixed = FALSE),
+                                 fixed = TRUE),
                     yes = pel$x_2,
                     no = NA_character_)
 
   pel$mrn[is.na(x = pel$mrn) == FALSE] <- strsplit(x = pel$mrn[is.na(x = pel$mrn) == FALSE],
                                                    split = "",
-                                                   fixed = FALSE)
+                                                   fixed = TRUE)
 
   pel$mrn[is.na(x = pel$mrn) == FALSE] <- purrr::map(.x = pel$mrn[is.na(x = pel$mrn) == FALSE],
                                                      .f = grep,
@@ -75,14 +75,20 @@ tidy_pel <- function(folder,
                           fromLast = FALSE)
 
   pel <- subset(x = pel,
-                subset = mrn != "")
+                subset = is.na(x = mrn) == FALSE &
+                         mrn != "")
 
   pel$mrn <- zhaoy::lz_id(x = pel$mrn,
                           lz = TRUE)
 
   pel <- subset(x = pel,
-                subset = is.na(x = x_3) == TRUE |
-                         x_3 != "result modifier")
+                subset = is.na(x = x_2) == FALSE &
+                         grepl(pattern = "client id:",
+                               x = pel$x_2,
+                               fixed = TRUE) == FALSE &
+                         (is.na(x = x_3) == TRUE |
+                          (is.na(x = x_3) == FALSE &
+                           x_3 != "result modifier") == TRUE))
 
 # lab_name
 

@@ -14,6 +14,8 @@
 #' If the mode is \code{\link{NA}}, \code{\link{NA}} is returned.
 #'
 #' If multiple modes exist, "s_mode()" is returned.
+#'
+#' If no mode exists, "no mode" is returned.
 
 zhaoy_s_mode <- function(x) {
 
@@ -36,7 +38,13 @@ zhaoy_s_mode <- function(x) {
   s_max <- max(s_table,
                na.rm = FALSE)
 
-  if (length(x = s_table) == 1) {
+  if (length(x = s_table) > 1 &
+      s_max == 1) {
+
+    s_mode <- "no mode"
+
+  } else if (length(x = s_table) == 1 &
+             s_max == 1) {
 
     s_mode <- x
 
@@ -46,7 +54,8 @@ zhaoy_s_mode <- function(x) {
 
     }
 
-  } else if (length(x = s_table) > 1) {
+  } else if (length(x = s_table) > 1 &
+             s_max > 1) {
 
     s_mode <- names(x = s_table)[s_table == s_max]
 
