@@ -16,8 +16,6 @@ A base-R data-frame.
 }
 \description{
 Read Feather files.
-
-Converts upper-case variable names and categorical data to lower-case.
 }
 \seealso{
 \code{\link{export_feather}}

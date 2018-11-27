@@ -23,16 +23,14 @@ export_feather <- function(x,
                            path) {
 
   # is.character() is necessary because
-  # nzchar() and grepl() can return TRUE / FALSE
+  # nzchar() can return TRUE or FALSE
   # for non-character inputs.
 
-  stopifnot(is.character(x = folder),
+  stopifnot(is.data.frame(x = x),
+            is.character(x = folder),
             nzchar(x = folder,
                    keepNA = TRUE),
-            is.character(x = path),
-            grepl(pattern = "[.feather]",
-                  x = path,
-                  ignore.case = TRUE))
+            is.character(x = path))
 
   root <- rprojroot::find_root(criterion = rprojroot::has_dirname(dirname = folder),
                                path = ".")
@@ -40,9 +38,6 @@ export_feather <- function(x,
   export_path <- file.path(root,
                            path,
                            fsep = "/")
-
-  # Because zhaoy::import_feather generates base-R data-frames,
-  # it is tolerable for zhaoy::export_feather to generate tibbles.
 
   feather::write_feather(x,
                          path = export_path)

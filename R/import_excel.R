@@ -27,7 +27,7 @@ import_excel <- function(folder,
                          range = NULL) {
 
   # is.character() is necessary because
-  # nzchar() and grepl() can return TRUE / FALSE
+  # nzchar() can return TRUE / FALSE
   # for non-character inputs.
 
   stopifnot(is.character(x = folder),

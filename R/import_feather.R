@@ -3,8 +3,6 @@
 #' @description
 #' Read Feather files.
 #'
-#' Converts upper-case variable names and categorical data to lower-case.
-#'
 #' @usage
 #' import_feather(folder, path)
 #'
@@ -26,16 +24,13 @@ import_feather <- function(folder,
                            path) {
 
   # is.character() is necessary because
-  # nzchar() and grepl() can return TRUE / FALSE
+  # nzchar() can return TRUE or FALSE
   # for non-character inputs.
 
   stopifnot(is.character(x = folder),
             nzchar(x = folder,
                    keepNA = TRUE),
-            is.character(x = path),
-            grepl(pattern = "[.feather]",
-                  x = path,
-                  ignore.case = TRUE))
+            is.character(x = path))
 
   root <- rprojroot::find_root(criterion = rprojroot::has_dirname(dirname = folder),
                                path = ".")

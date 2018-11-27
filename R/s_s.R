@@ -16,8 +16,12 @@
 #' median and mean: If \code{x} is a date / date-time / time-interval object, \code{\link{NA}} is returned.
 #'
 #' mode:
+#'
 #' If the mode is \code{\link{NA}}, \code{\link{NA}} is returned.
+#'
 #' If multiple modes exist, "s_mode()" is returned.
+#'
+#' If no mode exists, "no mode" is returned.
 #'
 #' @seealso \code{\link{s_mode} \link{s_unique}}
 #'

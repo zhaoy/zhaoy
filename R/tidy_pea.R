@@ -44,23 +44,23 @@ tidy_pea <- function(folder,
                 select = -c(x_4,
                             x_6))
 
-# provider
+# provider_name
 
-  pea$provider <- ifelse(test = grepl(pattern = "provider:",
-                                      x = pea$x_1,
-                                      fixed = TRUE),
-                         yes = pea$x_1,
-                         no = NA_character_)
+  pea$provider_name <- ifelse(test = grepl(pattern = "provider:",
+                                           x = pea$x_1,
+                                           fixed = TRUE),
+                              yes = pea$x_1,
+                              no = NA_character_)
 
-  pea$provider <- zoo::na.locf(object = pea$provider,
-                               na.rm = FALSE,
-                               fromLast = FALSE)
+  pea$provider_name <- zoo::na.locf(object = pea$provider_name,
+                                    na.rm = FALSE,
+                                    fromLast = FALSE)
 
-  pea$provider <- substring(text = pea$provider,
-                            first = 12,
-                            last = nchar(x = pea$provider,
-                                         allowNA = FALSE,
-                                         keepNA = TRUE))
+  pea$provider_name <- substring(text = pea$provider_name,
+                                 first = 12,
+                                 last = nchar(x = pea$provider_name,
+                                              allowNA = FALSE,
+                                              keepNA = TRUE))
 
   pea <- subset(x = pea,
                 subset = grepl(pattern = "provider:",
@@ -127,7 +127,7 @@ tidy_pea <- function(folder,
 
   subset(x = pea,
          select = c(mrn,
-                    provider,
+                    provider_name,
                     activity_type,
                     activity_desc,
                     activity_date,
