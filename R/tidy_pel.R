@@ -29,10 +29,6 @@ tidy_pel <- function(folder,
                              sheet = sheet,
                              range = range)
 
-  pel[1, 1] <- names(x = pel)[1]
-
-  pel[1, 2] <- names(x = pel)[2]
-
   names(x = pel) <- c("x_1",
                       "x_2",
                       "x_3",
