@@ -13,19 +13,21 @@
 #'
 #' @return
 #' A vector of the same length as \code{x}.
+#'
+#' @importFrom dplyr combine
 
 zhaoy_tolower <- function(x) {
 
   stopifnot(inherits(x = x,
-                     what = c("character",
-                              "integer",
-                              "logical",
-                              "numeric",
-                              "factor",
-                              "Date",
-                              "difftime",
-                              "POSIXct",
-                              "POSIXlt"),
+                     what = dplyr::combine("character",
+                                           "integer",
+                                           "logical",
+                                           "numeric",
+                                           "factor",
+                                           "Date",
+                                           "difftime",
+                                           "POSIXct",
+                                           "POSIXlt"),
                      which = FALSE),
             is.list(x = x) == FALSE)
 

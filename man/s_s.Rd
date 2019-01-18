@@ -10,19 +10,21 @@ s_s(x)
 \item{x}{an R object.}
 }
 \value{
-A data-frame.
+A tibble.
 
-min and max: If \code{x} is not a numeric or date / date-time / time-interval object, \code{\link{NA}} is returned.
+If \code{x}, or columns in \code{x}, are missing-data, the min / max / median / mode / mean are \code{NA}s.
 
-median and mean: If \code{x} is a date / date-time / time-interval object, \code{\link{NA}} is returned.
+min and max: If \code{x}, or columns in \code{x}, are not numeric or date / date-time / time-interval objects, the results are \code{NA}s.
+
+median and mean: If \code{x}, or columns in \code{x}, are not numeric, the results are \code{NA}s.
 
 mode:
 
-If the mode is \code{\link{NA}}, \code{\link{NA}} is returned.
+If no mode exists, the result is "no mode".
 
-If multiple modes exist, "s_mode()" is returned.
+If the mode is missing-data, the result is \code{NA}.
 
-If no mode exists, "no mode" is returned.
+If multiple modes exist, the result is "s_mode()".
 }
 \description{
 Tabulate summary statistics.

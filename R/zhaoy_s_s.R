@@ -12,86 +12,80 @@
 #' @return
 #' A length-one character vector.
 #'
-#' If \code{x} is \code{\link{NA}}, \code{\link{NA}} is returned.
+#' The result is \code{NA} if \code{x} is:
 #'
-#' If \code{x} is a date / date-time / time-interval object,
-#' and \code{x = "median"} or \code{x = "mean"},
-#' \code{\link{NA}} is returned.
+#' missing-data
 #'
+#' a date / date-time / time-interval object,
+#' and \code{s = "median"} or \code{s = "mean"}
+#'
+#' not a numeric or date / date-time / time-interval object.
+#'
+#' @importFrom dplyr combine
 #' @importFrom stats median
 
 zhaoy_s_s <- function(x,
                       s) {
 
   stopifnot(inherits(x = x,
-                     what = c("character",
-                              "integer",
-                              "logical",
-                              "numeric",
-                              "factor",
-                              "Date",
-                              "difftime",
-                              "POSIXct",
-                              "POSIXlt"),
+                     what = dplyr::combine("character",
+                                           "integer",
+                                           "logical",
+                                           "numeric",
+                                           "factor",
+                                           "Date",
+                                           "difftime",
+                                           "POSIXct",
+                                           "POSIXlt"),
                      which = FALSE),
-            length(x = x) >= 1)
+            is.list(x = x) == FALSE)
 
   date_time_interval <- inherits(x = x,
-                                 what = c("Date",
-                                          "difftime",
-                                          "POSIXct",
-                                          "POSIXlt"),
+                                 what = dplyr::combine("Date",
+                                                       "difftime",
+                                                       "POSIXct",
+                                                       "POSIXlt"),
                                  which = FALSE)
 
-  if ((is.numeric(x = x) == FALSE &
-       date_time_interval == FALSE) == TRUE |
-      (date_time_interval == TRUE &
-       s %in% c("median",
-                "mean") == TRUE) == TRUE) {
+  if (is.na(x = x) == TRUE ||
+      (is.numeric(x = x) == FALSE &&
+       date_time_interval == FALSE) == TRUE ||
+      (is.numeric(x = x) == FALSE &&
+       date_time_interval == TRUE &&
+       s %in% dplyr::combine("median",
+                             "mean") == TRUE) == TRUE) {
 
     s_s <- NA_character_
 
   } else if (is.numeric(x = x) == TRUE) {
 
-    if (s == "min") {
 
-      s_s <- min(x = x,
-                 na.rm = TRUE)
-
-    } else if (s == "max") {
-
-      s_s <- max(x = x,
-                 na.rm = TRUE)
-
-    } else if (s == "median") {
-
-      s_s <- stats::median(x = x,
-                           na.rm = TRUE)
-
-    } else if (s == "mean") {
-
-      s_s <- mean(x = x,
-                  trim = 0,
-                  na.rm = TRUE)
-
-      s_s <- round(x = s_s,
-                   digits = 1)
-
-    }
+    s_s <- switch(EXPR = s,
+                  min = min(x = x,
+                            na.rm = TRUE),
+                  max = max(x = x,
+                            na.rm = TRUE),
+                  median = stats::median(x = x,
+                                         na.rm = TRUE),
+                  mean = mean(x = x,
+                              trim = 0,
+                              na.rm = TRUE))
 
   } else if (date_time_interval == TRUE) {
 
-    if (s == "min") {
+    s_s <- switch(EXPR = s,
+                  min = min(x = x,
+                            na.rm = TRUE),
+                  max = max(x = x,
+                            na.rm = TRUE))
 
-      s_s <- min(x = x,
-                 na.rm = TRUE)
+  }
 
-    } else if (s == "max") {
+  if (s == "mean" &&
+      is.na(x = s_s) == FALSE) {
 
-      s_s <- max(x = x,
-                 na.rm = TRUE)
-
-    }
+    s_s <- round(x = s_s,
+                 digits = 1)
 
   }
 

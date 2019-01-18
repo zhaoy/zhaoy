@@ -1,6 +1,6 @@
-custom functions for importing, transforming, summarizing, exporting, and communicating data
+custom functions for extracting / importing, transforming, summarizing, loading / exporting, and communicating data
 
-# import
+# extract / import
 
 `db_dir`
 
@@ -8,15 +8,15 @@ custom functions for importing, transforming, summarizing, exporting, and commun
 
 `import_feather`
 
-`tidy_activity`
-
-`tidy_lab`
-
 # transform
 
 `lc_df`
 
 `lz_id`
+
+`tidy_activity`
+
+`tidy_lab`
 
 # summarize
 
@@ -26,7 +26,7 @@ custom functions for importing, transforming, summarizing, exporting, and commun
 
 `s_unique`
 
-# export
+# load / export
 
 `export_feather`
 
