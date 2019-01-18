@@ -1,30 +1,34 @@
-custom functions for importing / exporting, organizing, summarizing, and communicating data
+custom functions for importing, transforming, summarizing, exporting, and communicating data
 
-# import / export
+# import
+
+`db_dir`
 
 `import_excel`
 
 `import_feather`
 
-`import_df`
+`tidy_activity`
 
-`export_feather`
+`tidy_lab`
 
-# organize
+# transform
+
+`lc_df`
 
 `lz_id`
-
-`tidy_pea`
-
-`tidy_pel`
 
 # summarize
 
 `s_mode`
 
+`s_s`
+
 `s_unique`
 
-`s_s`
+# export
+
+`export_feather`
 
 # communicate
 

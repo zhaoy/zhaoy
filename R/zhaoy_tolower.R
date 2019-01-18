@@ -1,7 +1,7 @@
-#' Character Lower Case
+#' Character Translation
 #'
 #' @description
-#' Convert upper-case characters in character vectors to lower case.
+#' Translate characters from upper to lower case.
 #'
 #' @usage
 #' zhaoy_tolower(x)
@@ -9,7 +9,7 @@
 #' @param x a vector.
 #'
 #' @details
-#' Non-alphabetic characters and non-character objects are left un-changed.
+#' Non-alphabetic characters and non-character vectors are left un-changed.
 #'
 #' @return
 #' A vector of the same length as \code{x}.
@@ -27,7 +27,7 @@ zhaoy_tolower <- function(x) {
                               "POSIXct",
                               "POSIXlt"),
                      which = FALSE),
-            length(x = x) >= 1)
+            is.list(x = x) == FALSE)
 
   if (is.character(x = x) == TRUE) {
 

@@ -1,10 +1,10 @@
 Package: zhaoy
 Title: Custom Functions
-Description: Import / export, organize, summarize, and communicate data.
-Date: 2018-11-12
+Description: Import, transform, summarize, export, and communicate data.
+Date: 2019-1-17
 Version: 1.0.0
 Depends: R (>= 3.5.0)
-Imports: feather, readxl, rprojroot, purrr, stats, utils, zoo
+Imports: feather, purrr, readxl, rprojroot, stats, utils, zoo
 Encoding: UTF-8
 LazyData: true
 License: GPL-3
