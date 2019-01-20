@@ -28,8 +28,8 @@
 #' @seealso \code{\link{s_mode} \link{s_unique}}
 #'
 #' @importFrom dplyr combine n_distinct select
-#' @importFrom purrr map_chr map_int
-#' @importFrom tibble as_tibble tibble
+#' @importFrom purrr map_chr map_dbl map_int
+#' @importFrom tibble tibble
 #'
 #' @export
 #'

@@ -70,14 +70,6 @@ zhaoy_s_s <- function(x,
                               trim = 0,
                               na.rm = TRUE))
 
-    if (s %in% dplyr::combine("median",
-                              "mean") == TRUE) {
-
-      s_s <- signif(x = s_s,
-                    digits = 100)
-
-  }
-
   } else if (date_time_interval == TRUE) {
 
     s_s <- switch(EXPR = s,
