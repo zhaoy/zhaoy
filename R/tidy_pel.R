@@ -4,30 +4,21 @@
 #' Tidy the .xlsx version of the Provide Enterprise "Test Results by Client with ID" report.
 #'
 #' @usage
-#' tidy_pel(folder, path, sheet = NULL, range = NULL)
+#' tidy_pel(x)
 #'
-#' @param folder any folder above both 1) the .xlsx file and 2) the R file.
-#' @param path relative to \code{folder}, path to the .xlsx file.
-#' @param sheet sheet to read.
-#' @param range a cell range to read from.
+#' @param x a data-frame.
 #'
 #' @return
 #' A data-frame.
 #'
 #' @importFrom purrr map map_chr
-#' @importFrom zoo na.locf
+#' @importFrom tidyr fill
 #'
 #' @export
 
-tidy_pel <- function(folder,
-                     path,
-                     sheet = NULL,
-                     range = NULL) {
+tidy_pel <- function(x) {
 
-  pel <- zhaoy::import_excel(folder = folder,
-                             path = path,
-                             sheet = sheet,
-                             range = range)
+  pel <- x
 
   names(x = pel) <- c("x_1",
                       "x_2",
@@ -66,9 +57,9 @@ tidy_pel <- function(folder,
                                                          sep = "",
                                                          collapse = "")
 
-  pel$mrn <- zoo::na.locf(object = pel$mrn,
-                          na.rm = FALSE,
-                          fromLast = FALSE)
+  pel$mrn <- tidyr::fill(data = pel,
+                         mrn,
+                         .direction = "down")
 
   pel <- subset(x = pel,
                 subset = is.na(x = mrn) == FALSE &

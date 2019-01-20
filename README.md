@@ -16,7 +16,7 @@ custom functions for extracting / importing, transforming, summarizing, loading 
 
 `tidy_activity`
 
-`tidy_lab`
+`tidy_lab_pe`
 
 # summarize
 

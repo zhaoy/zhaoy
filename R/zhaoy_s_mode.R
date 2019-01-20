@@ -11,26 +11,28 @@
 #' @return
 #' A length-one character vector.
 #'
-#' If the mode is \code{\link{NA}}, \code{\link{NA}} is returned.
+#' If no mode exists, the result is "no mode".
 #'
-#' If multiple modes exist, "s_mode()" is returned.
+#' If the mode is missing-data, the result is \code{NA}.
 #'
-#' If no mode exists, "no mode" is returned.
+#' If multiple modes exist, the result is "s_mode()".
+#'
+#' @importFrom dplyr combine
 
 zhaoy_s_mode <- function(x) {
 
   stopifnot(inherits(x = x,
-                     what = c("character",
-                              "integer",
-                              "logical",
-                              "numeric",
-                              "factor",
-                              "Date",
-                              "difftime",
-                              "POSIXct",
-                              "POSIXlt"),
+                     what = dplyr::combine("character",
+                                           "integer",
+                                           "logical",
+                                           "numeric",
+                                           "factor",
+                                           "Date",
+                                           "difftime",
+                                           "POSIXct",
+                                           "POSIXlt"),
                      which = FALSE),
-            length(x = x) >= 1)
+            is.list(x = x) == FALSE)
 
   s_table <- table(x,
                    useNA = "ifany")
@@ -38,12 +40,12 @@ zhaoy_s_mode <- function(x) {
   s_max <- max(s_table,
                na.rm = FALSE)
 
-  if (length(x = s_table) > 1 &
+  if (length(x = s_table) > 1 &&
       s_max == 1) {
 
     s_mode <- "no mode"
 
-  } else if (length(x = s_table) == 1 &
+  } else if (length(x = s_table) == 1 &&
              s_max == 1) {
 
     s_mode <- x
@@ -54,7 +56,7 @@ zhaoy_s_mode <- function(x) {
 
     }
 
-  } else if (length(x = s_table) > 1 &
+  } else if (length(x = s_table) > 1 &&
              s_max > 1) {
 
     s_mode <- names(x = s_table)[s_table == s_max]

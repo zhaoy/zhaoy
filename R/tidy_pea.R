@@ -4,29 +4,20 @@
 #' Tidy the .xlsx version of the Provide Enterprise "Activity Summary by Provider by Client by Date" report.
 #'
 #' @usage
-#' tidy_pea(folder, path, sheet = NULL, range = NULL)
+#' tidy_pea(x)
 #'
-#' @param folder any folder above both 1) the .xlsx file and 2) the R file.
-#' @param path relative to \code{folder}, path to the .xlsx file.
-#' @param sheet sheet to read.
-#' @param range a cell range to read from.
+#' @param x a data-frame.
 #'
 #' @return
 #' A data-frame.
 #'
-#' @importFrom zoo na.locf
+#' @importFrom tidyr fill
 #'
 #' @export
 
-tidy_pea <- function(folder,
-                     path,
-                     sheet = NULL,
-                     range = NULL) {
+tidy_pea <- function(x) {
 
-  pea <- zhaoy::import_excel(folder = folder,
-                             path = path,
-                             sheet = sheet,
-                             range = range)
+  pea <- x
 
   names(x = pea) <- c("x_1",
                       "x_2",
@@ -52,9 +43,9 @@ tidy_pea <- function(folder,
                               yes = pea$x_1,
                               no = NA_character_)
 
-  pea$provider_name <- zoo::na.locf(object = pea$provider_name,
-                                    na.rm = FALSE,
-                                    fromLast = FALSE)
+  pea$provider_name <- tidyr::fill(data = pea,
+                                   provider_name,
+                                   .direction = "down")
 
   pea$provider_name <- substring(text = pea$provider_name,
                                  first = 12,
@@ -76,9 +67,9 @@ tidy_pea <- function(folder,
                               yes = pea$x_1,
                               no = NA_character_)
 
-  pea$activity_type <- zoo::na.locf(object = pea$activity_type,
-                                    na.rm = FALSE,
-                                    fromLast = FALSE)
+  pea$activity_type <- tidyr::fill(data = pea,
+                                   activity_type,
+                                   .direction = "down")
 
   pea <- subset(x = pea,
                 subset = pea$x_2 != "service type")
@@ -89,9 +80,9 @@ tidy_pea <- function(folder,
                     yes = pea$x_3,
                     no = NA_character_)
 
-  pea$mrn <- zoo::na.locf(object = pea$mrn,
-                          na.rm = FALSE,
-                          fromLast = FALSE)
+  pea$mrn <- tidyr::fill(data = pea,
+                         mrn,
+                         .direction = "down")
 
   pea$mrn <- zhaoy::lz_id(x = pea$mrn,
                           lz = TRUE)
@@ -102,9 +93,9 @@ tidy_pea <- function(folder,
                               yes = pea$x_5,
                               no = NA_character_)
 
-  pea$provider_ship <- zoo::na.locf(object = pea$provider_ship,
-                                    na.rm = FALSE,
-                                    fromLast = FALSE)
+  pea$provider_ship <- tidyr::fill(data = pea,
+                                   provider_ship,
+                                   .direction = "down")
 
   pea <- subset(x = pea,
                 subset = x_2 != "client id:",

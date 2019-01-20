@@ -4,16 +4,10 @@
 \alias{tidy_pel}
 \title{Tidy Provide Enterprise laboratory data.}
 \usage{
-tidy_pel(folder, path, sheet = NULL, range = NULL)
+tidy_pel(x)
 }
 \arguments{
-\item{folder}{any folder above both 1) the .xlsx file and 2) the R file.}
-
-\item{path}{relative to \code{folder}, path to the .xlsx file.}
-
-\item{sheet}{sheet to read.}
-
-\item{range}{a cell range to read from.}
+\item{x}{a data-frame.}
 }
 \value{
 A data-frame.

@@ -11,12 +11,14 @@
 #' @return
 #' A character vector.
 #'
-#' If the mode is \code{\link{NA}}, \code{\link{NA}} is returned.
+#' If no mode exists, the result is "no mode".
 #'
-#' If no mode exists, "no mode" is returned.
+#' If the mode is missing-data, the result is \code{NA}.
 #'
 #' @seealso
 #' \code{\link{s_s} \link{s_unique}}
+#'
+#' @importFrom dplyr combine
 #'
 #' @export
 #'
@@ -26,17 +28,17 @@
 s_mode <- function(x) {
 
   stopifnot(inherits(x = x,
-                     what = c("character",
-                              "integer",
-                              "logical",
-                              "numeric",
-                              "factor",
-                              "Date",
-                              "difftime",
-                              "POSIXct",
-                              "POSIXlt"),
+                     what = dplyr::combine("character",
+                                           "integer",
+                                           "logical",
+                                           "numeric",
+                                           "factor",
+                                           "Date",
+                                           "difftime",
+                                           "POSIXct",
+                                           "POSIXlt"),
                      which = FALSE),
-            length(x = x) >= 1)
+            is.list(x = x) == FALSE)
 
   s_table <- table(x,
                    useNA = "ifany")
@@ -49,7 +51,7 @@ s_mode <- function(x) {
 
     s_mode <- "no mode"
 
-  } else if (length(x = s_table) == 1 &
+  } else if (length(x = s_table) == 1 &&
              s_max == 1) {
 
     s_mode <- x

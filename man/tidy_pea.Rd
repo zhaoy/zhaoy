@@ -4,16 +4,10 @@
 \alias{tidy_pea}
 \title{Tidy Provide Enterprise activity data.}
 \usage{
-tidy_pea(folder, path, sheet = NULL, range = NULL)
+tidy_pea(x)
 }
 \arguments{
-\item{folder}{any folder above both 1) the .xlsx file and 2) the R file.}
-
-\item{path}{relative to \code{folder}, path to the .xlsx file.}
-
-\item{sheet}{sheet to read.}
-
-\item{range}{a cell range to read from.}
+\item{x}{a data-frame.}
 }
 \value{
 A data-frame.

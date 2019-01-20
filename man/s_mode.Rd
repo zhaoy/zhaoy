@@ -12,9 +12,9 @@ s_mode(x)
 \value{
 A character vector.
 
-If the mode is \code{\link{NA}}, \code{\link{NA}} is returned.
+If no mode exists, the result is "no mode".
 
-If no mode exists, "no mode" is returned.
+If the mode is missing-data, the result is \code{NA}.
 }
 \description{
 Compute the statistical mode.
