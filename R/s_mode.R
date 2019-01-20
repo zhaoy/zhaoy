@@ -56,16 +56,15 @@ s_mode <- function(x) {
 
     s_mode <- x
 
-    if (is.character(x = s_mode) == FALSE) {
-
-      s_mode <- as.character(x = s_mode)
-
-    }
-
   } else if (length(x = s_table) > 1 &
              s_max > 1) {
 
     s_mode <- names(x = s_table)[s_table == s_max]
+
+    s_unique <- unique(x = x,
+                       incomparables = FALSE)
+
+    s_mode <- s_unique[s_unique %in% s_mode == TRUE]
 
   }
 

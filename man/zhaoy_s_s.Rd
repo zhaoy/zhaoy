@@ -12,7 +12,7 @@ zhaoy_s_s(x, s)
 \item{s}{a statistic.}
 }
 \value{
-A length-one character vector.
+A length-one vector.
 
 The result is \code{NA} if \code{x} is:
 

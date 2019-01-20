@@ -10,7 +10,7 @@
 #' @param s a statistic.
 #'
 #' @return
-#' A length-one character vector.
+#' A length-one vector.
 #'
 #' The result is \code{NA} if \code{x} is:
 #'
@@ -55,10 +55,9 @@ zhaoy_s_s <- function(x,
        s %in% dplyr::combine("median",
                              "mean") == TRUE) == TRUE) {
 
-    s_s <- NA_character_
+    s_s <- NA
 
   } else if (is.numeric(x = x) == TRUE) {
-
 
     s_s <- switch(EXPR = s,
                   min = min(x = x,
@@ -71,6 +70,14 @@ zhaoy_s_s <- function(x,
                               trim = 0,
                               na.rm = TRUE))
 
+    if (s %in% dplyr::combine("median",
+                              "mean") == TRUE) {
+
+      s_s <- signif(x = s_s,
+                    digits = 100)
+
+  }
+
   } else if (date_time_interval == TRUE) {
 
     s_s <- switch(EXPR = s,
@@ -81,14 +88,6 @@ zhaoy_s_s <- function(x,
 
   }
 
-  if (s == "mean" &&
-      is.na(x = s_s) == FALSE) {
-
-    s_s <- round(x = s_s,
-                 digits = 1)
-
-  }
-
-  as.character(x = s_s)
+  s_s
 
 }

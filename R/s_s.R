@@ -82,14 +82,14 @@ s_s <- function(x) {
                         .f = zhaoy_s_s,
                         s = "max")
 
-  median <- purrr::map_chr(.x = x,
+  median <- purrr::map_dbl(.x = x,
                            .f = zhaoy_s_s,
                            s = "median")
 
   mode <- purrr::map_chr(.x = x,
                          .f = zhaoy_s_mode)
 
-  mean <- purrr::map_chr(.x = x,
+  mean <- purrr::map_dbl(.x = x,
                          .f = zhaoy_s_s,
                          s = "mean")
 
