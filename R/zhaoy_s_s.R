@@ -16,10 +16,10 @@
 #'
 #' missing-data
 #'
-#' a date / date-time / time-interval object,
+#' a date / date-time object,
 #' and \code{s = "median"} or \code{s = "mean"}
 #'
-#' not a numeric or date / date-time / time-interval object.
+#' not a numeric or date / date-time object.
 #'
 #' @importFrom dplyr combine
 #' @importFrom stats median
@@ -40,18 +40,17 @@ zhaoy_s_s <- function(x,
                      which = FALSE),
             is.list(x = x) == FALSE)
 
-  date_time_interval <- inherits(x = x,
-                                 what = dplyr::combine("Date",
-                                                       "difftime",
-                                                       "POSIXct",
-                                                       "POSIXlt"),
-                                 which = FALSE)
+  date_time <- inherits(x = x,
+                        what = dplyr::combine("Date",
+                                              "difftime",
+                                              "POSIXct",
+                                              "POSIXlt"),
+                        which = FALSE)
 
   if (is.na(x = x) == TRUE ||
       (is.numeric(x = x) == FALSE &&
-       date_time_interval == FALSE) == TRUE ||
-      (is.numeric(x = x) == FALSE &&
-       date_time_interval == TRUE &&
+       date_time == FALSE) == TRUE ||
+      (date_time == TRUE &&
        s %in% dplyr::combine("median",
                              "mean") == TRUE) == TRUE) {
 
@@ -70,7 +69,7 @@ zhaoy_s_s <- function(x,
                               trim = 0,
                               na.rm = TRUE))
 
-  } else if (date_time_interval == TRUE) {
+  } else if (date_time == TRUE) {
 
     s_s <- switch(EXPR = s,
                   min = min(x = x,

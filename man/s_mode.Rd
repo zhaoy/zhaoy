@@ -10,7 +10,7 @@ s_mode(x)
 \item{x}{an R object.}
 }
 \value{
-A character vector.
+A vector.
 
 If no mode exists, the result is "no mode".
 

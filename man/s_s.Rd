@@ -14,7 +14,7 @@ A tibble.
 
 If \code{x}, or columns in \code{x}, are missing-data, the min / max / median / mode / mean are \code{NA}s.
 
-min and max: If \code{x}, or columns in \code{x}, are not numeric or date / date-time / time-interval objects, the results are \code{NA}s.
+min and max: If \code{x}, or columns in \code{x}, are not numeric or date / date-time objects, the results are \code{NA}s.
 
 median and mean: If \code{x}, or columns in \code{x}, are not numeric, the results are \code{NA}s.
 

@@ -2,12 +2,12 @@
 % Please edit documentation in R/zhaoy_lz_id.R
 \name{zhaoy_lz_id}
 \alias{zhaoy_lz_id}
-\title{Leading Zeros in Epic ID Numbers}
+\title{Leading Zeros in Medical Record Numbers (MRNs)}
 \usage{
 zhaoy_lz_id(x, lz)
 }
 \arguments{
-\item{x}{an Epic ID number.}
+\item{x}{a MRN.}
 
 \item{lz}{logical: TRUE includes, and FALSE excludes, leading zeros.}
 }
@@ -15,7 +15,7 @@ zhaoy_lz_id(x, lz)
 A length-one character vector.
 }
 \description{
-Include or exclude leading zeros in Epic ID numbers.
+Include or exclude leading zeros in MRNs.
 
-Epic ID numbers have 0-8 leading zeros and 1-8 positive integers.
+MRNs have 0-8 leading zeros and 1-8 positive integers.
 }

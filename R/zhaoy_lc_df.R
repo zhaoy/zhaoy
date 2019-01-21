@@ -4,7 +4,7 @@
 #' Translate characters from upper to lower case.
 #'
 #' @usage
-#' zhaoy_tolower(x)
+#' zhaoy_lc_df(x)
 #'
 #' @param x a vector.
 #'
@@ -16,7 +16,7 @@
 #'
 #' @importFrom dplyr combine
 
-zhaoy_tolower <- function(x) {
+zhaoy_lc_df <- function(x) {
 
   stopifnot(inherits(x = x,
                      what = dplyr::combine("character",

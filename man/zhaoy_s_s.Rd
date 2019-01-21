@@ -18,10 +18,10 @@ The result is \code{NA} if \code{x} is:
 
 missing-data
 
-a date / date-time / time-interval object,
+a date / date-time object,
 and \code{s = "median"} or \code{s = "mean"}
 
-not a numeric or date / date-time / time-interval object.
+not a numeric or date / date-time object.
 }
 \description{
 Compute the minimum, maximum, median, or mean.

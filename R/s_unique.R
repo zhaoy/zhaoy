@@ -1,17 +1,20 @@
 #' Unique Values
 #'
 #' @description
-#' Tabulate counts and percents of unique values, including \code{NA}.
+#' Tabulate counts and percents of unique values, including missing-data.
 #'
 #' @usage
 #' s_unique(x)
 #'
-#' @param x an R object.
+#' @param x a vector.
 #'
 #' @return
-#' A data-frame.
+#' A tibble.
 #'
 #' @seealso \code{\link{s_mode} \link{s_s}}
+#'
+#' @importFrom dplyr arrange combine
+#' @importFrom tibble tibble
 #'
 #' @export
 #'
@@ -20,52 +23,51 @@
 
 s_unique <- function(x) {
 
+  options(tibble.print_max = Inf,
+          tibble.width = Inf)
+
   stopifnot(inherits(x = x,
-                     what = c("character",
-                              "integer",
-                              "logical",
-                              "numeric",
-                              "factor",
-                              "Date",
-                              "difftime",
-                              "POSIXct",
-                              "POSIXlt"),
+                     what = dplyr::combine("character",
+                                           "integer",
+                                           "logical",
+                                           "numeric",
+                                           "factor",
+                                           "Date",
+                                           "difftime",
+                                           "POSIXct",
+                                           "POSIXlt"),
                      which = FALSE),
-            length(x = x) >= 1)
+            is.list(x = x) == FALSE)
 
-  n <- table(x,
-             useNA = "ifany")
+  count <- table(x,
+                 useNA = "ifany")
 
-  pct <- prop.table(x = n) * 100
+  value <- names(x = count)
+
+  if (is.factor(x = x) == FALSE) {
+
+    class(x = value) <- class(x = x)
+
+    mode(x = value) <- mode(x = x)
+
+  }
+
+  pct <- prop.table(x = count) * 100
 
   pct <- round(x = pct,
                digits = 1)
 
-  s_unique <- data.frame(n,
-                         pct,
-                         row.names = NULL,
-                         check.rows = TRUE,
-                         check.names = TRUE,
-                         fix.empty.names = TRUE,
-                         stringsAsFactors = FALSE)
+  s_unique <- tibble::tibble(value,
+                             count,
+                             pct,
+                             .rows = NULL,
+                             .name_repair = "universal")
 
-  s_unique$x <- as.character(x = s_unique$x)
+  s_unique$count <- as.integer(x = s_unique$count)
 
-  names(x = s_unique)[names(x = s_unique) == "x"] <- "value"
+  s_unique$pct <- as.numeric(x = s_unique$pct)
 
-  names(x = s_unique)[names(x = s_unique) == "Freq"] <- "n"
-
-  names(x = s_unique)[names(x = s_unique) == "Freq.1"] <- "pct"
-
-  s_unique <- subset(x = s_unique,
-                     select = c(value,
-                                n,
-                                pct))
-
-  s_order <- order(s_unique$value,
-                   decreasing = FALSE,
-                   na.last = FALSE)
-
-  s_unique[s_order, ]
+  dplyr::arrange(.data = s_unique,
+                 value)
 
 }

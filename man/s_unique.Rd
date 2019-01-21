@@ -7,13 +7,13 @@
 s_unique(x)
 }
 \arguments{
-\item{x}{an R object.}
+\item{x}{a vector.}
 }
 \value{
-A data-frame.
+A tibble.
 }
 \description{
-Tabulate counts and percents of unique values, including \code{NA}.
+Tabulate counts and percents of unique values, including missing-data.
 }
 \examples{
 s_unique(x = attenu$station)

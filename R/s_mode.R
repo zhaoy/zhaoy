@@ -9,7 +9,7 @@
 #' @param x an R object.
 #'
 #' @return
-#' A character vector.
+#' A vector.
 #'
 #' If no mode exists, the result is "no mode".
 #'

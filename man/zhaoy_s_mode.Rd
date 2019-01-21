@@ -10,7 +10,7 @@ zhaoy_s_mode(x)
 \item{x}{an R object.}
 }
 \value{
-A length-one character vector.
+A length-one vector.
 
 If no mode exists, the result is "no mode".
 

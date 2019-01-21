@@ -2,12 +2,12 @@
 % Please edit documentation in R/lz_id.R
 \name{lz_id}
 \alias{lz_id}
-\title{Leading Zeros in Epic ID Numbers}
+\title{Leading Zeros in Medical Record Numbers (MRNs)}
 \usage{
 lz_id(x, lz)
 }
 \arguments{
-\item{x}{at least one Epic ID number.}
+\item{x}{a vector of MRNs.}
 
 \item{lz}{logical: TRUE includes, and FALSE excludes, leading zeros.}
 }
@@ -15,9 +15,9 @@ lz_id(x, lz)
 A character vector.
 }
 \description{
-Include or exclude leading zeros in Epic ID numbers.
+Include or exclude leading zeros in MRNs.
 
-Epic ID numbers have 1-8 positive integers and 0-8 leading zeros.
+MRNs have 0-8 leading zeros and 1-8 positive integers.
 }
 \examples{
 x <- c("1", "000000002")

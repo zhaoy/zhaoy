@@ -1,14 +1,14 @@
-#' Leading Zeros in Epic ID Numbers
+#' Leading Zeros in Medical Record Numbers (MRNs)
 #'
 #' @description
-#' Include or exclude leading zeros in Epic ID numbers.
+#' Include or exclude leading zeros in MRNs.
 #'
-#' Epic ID numbers have 1-8 positive integers and 0-8 leading zeros.
+#' MRNs have 0-8 leading zeros and 1-8 positive integers.
 #'
 #' @usage
 #' lz_id(x, lz)
 #'
-#' @param x at least one Epic ID number.
+#' @param x a vector of MRNs.
 #' @param lz logical: TRUE includes, and FALSE excludes, leading zeros.
 #'
 #' @return

@@ -41,6 +41,6 @@ import_feather <- function(folder,
 
   x <- feather::read_feather(path = import_path)
 
-  zhaoy::import_df(x = x)
+  zhaoy::lc_df(x = x)
 
 }
