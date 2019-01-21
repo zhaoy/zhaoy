@@ -28,7 +28,7 @@
 #' @seealso \code{\link{s_mode} \link{s_unique}}
 #'
 #' @importFrom dplyr combine n_distinct select
-#' @importFrom purrr map_chr map_dbl map_int
+#' @importFrom purrr map_chr map_dbl map_int modify_at
 #' @importFrom tibble tibble
 #'
 #' @export
@@ -109,10 +109,20 @@ s_s <- function(x) {
                         .rows = NULL,
                         .name_repair = "universal")
 
-  s_s[, dplyr::combine("pct_miss",
-                       "pct_unique")] <- round(x = s_s[, dplyr::combine("pct_miss",
-                                                                        "pct_unique")],
-                                               digits = 1)
+  s_s <- purrr::modify_at(.x = s_s,
+                          .at = dplyr::combine("pct_miss",
+                                               "pct_unique"),
+                          .f = round,
+                          digits = 1)
+
+  s_s$min[is.na(x = s_s$min) == FALSE] <- prettyNum(x = s_s$min[is.na(x = s_s$min) == FALSE],
+                                                    drop0trailing = TRUE)
+
+  s_s$max[is.na(x = s_s$max) == FALSE] <- prettyNum(x = s_s$max[is.na(x = s_s$max) == FALSE],
+                                                    drop0trailing = TRUE)
+
+  s_s$mode[is.na(x = s_s$mode) == FALSE] <- prettyNum(x = s_s$mode[is.na(x = s_s$mode) == FALSE],
+                                                      drop0trailing = TRUE)
 
   if (nrow(x = s_s) == 1) {
 
