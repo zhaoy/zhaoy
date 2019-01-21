@@ -7,7 +7,7 @@
 zhaoy_lz_id(x, lz)
 }
 \arguments{
-\item{x}{a MRN.}
+\item{x}{a length-one vector.}
 
 \item{lz}{logical: TRUE includes, and FALSE excludes, leading zeros.}
 }

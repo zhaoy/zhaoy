@@ -10,7 +10,7 @@ lc_df(x)
 \item{x}{a data-frame.}
 }
 \value{
-A data-frame.
+A tibble.
 }
 \description{
 Translate characters from upper to lower case.

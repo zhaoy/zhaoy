@@ -8,7 +8,7 @@
 #' @usage
 #' lz_id(x, lz)
 #'
-#' @param x a vector of MRNs.
+#' @param x a vector.
 #' @param lz logical: TRUE includes, and FALSE excludes, leading zeros.
 #'
 #' @return
@@ -25,6 +25,13 @@
 
 lz_id <- function(x,
                   lz) {
+
+  stopifnot(inherits(x = x,
+                     what = dplyr::combine("character",
+                                           "integer",
+                                           "numeric"),
+                     which = FALSE),
+            is.list(x = x) == FALSE)
 
   if (lz == TRUE) {
 

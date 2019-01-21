@@ -8,7 +8,7 @@
 #' @usage
 #' zhaoy_lz_id(x, lz)
 #'
-#' @param x a MRN.
+#' @param x a length-one vector.
 #' @param lz logical: TRUE includes, and FALSE excludes, leading zeros.
 #'
 #' @return
@@ -19,18 +19,18 @@
 zhaoy_lz_id <- function(x,
                         lz) {
 
-  id_character <- as.character(x = x)
-
-  id_nchar <- nchar(x = id_character,
-                    allowNA = FALSE,
-                    keepNA = TRUE)
-
   stopifnot(inherits(x = x,
                      what = dplyr::combine("character",
                                            "integer",
                                            "numeric"),
                      which = FALSE),
             is.list(x = x) == FALSE)
+
+  id_character <- as.character(x = x)
+
+  id_nchar <- nchar(x = id_character,
+                    allowNA = FALSE,
+                    keepNA = TRUE)
 
   if (is.character(x = x) == TRUE &&
       ((id_nchar == 9 &&

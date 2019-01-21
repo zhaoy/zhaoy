@@ -7,7 +7,7 @@
 lz_id(x, lz)
 }
 \arguments{
-\item{x}{a vector of MRNs.}
+\item{x}{a vector.}
 
 \item{lz}{logical: TRUE includes, and FALSE excludes, leading zeros.}
 }

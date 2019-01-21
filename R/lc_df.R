@@ -12,7 +12,7 @@
 #' Non-alphabetic characters and non-character vectors are left un-changed.
 #'
 #' @return
-#' A data-frame.
+#' A tibble.
 #'
 #' @importFrom purrr map_dfc
 #'
@@ -23,6 +23,9 @@
 #' lc_df(x = ToothGrowth)
 
 lc_df <- function(x) {
+
+  options(tibble.print_max = Inf,
+          tibble.width = Inf)
 
   stopifnot(inherits(x = x,
                      what = "data.frame",
