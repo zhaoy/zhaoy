@@ -45,10 +45,10 @@ zhaoy_s_mode <- function(x) {
 
     s_mode <- "no mode"
 
-  } else if (length(x = s_table) == 1 &&
-             s_max == 1) {
+  } else if (length(x = s_table) == 1) {
 
-    s_mode <- x
+    s_mode <- unique(x = x,
+                     incomparables = FALSE)
 
   } else if (length(x = s_table) > 1 &&
              s_max > 1) {

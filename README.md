@@ -1,4 +1,4 @@
-custom functions for extracting / importing, transforming, summarizing, loading / exporting, and communicating data
+custom functions for extracting / importing, transforming, summarizing, and loading / exporting
 
 # extract / import
 
@@ -31,9 +31,3 @@ custom functions for extracting / importing, transforming, summarizing, loading 
 # load / export
 
 `export_feather`
-
-# communicate
-
-`new_r`
-
-`new_rmd`
