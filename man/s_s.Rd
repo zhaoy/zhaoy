@@ -20,8 +20,6 @@ median and mean: If \code{x}, or columns in \code{x}, are not numeric, the resul
 
 mode:
 
-If no mode exists, the result is "no mode".
-
 If the mode is missing-data, the result is \code{NA}.
 
 If multiple modes exist, the result is "s_mode()".

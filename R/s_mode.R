@@ -11,8 +11,6 @@
 #' @return
 #' A vector.
 #'
-#' If no mode exists, the result is "no mode".
-#'
 #' If the mode is missing-data, the result is \code{NA}.
 #'
 #' @seealso
@@ -40,31 +38,37 @@ s_mode <- function(x) {
                      which = FALSE),
             is.list(x = x) == FALSE)
 
+  ciln <- inherits(x = x,
+                   what = dplyr::combine("character",
+                                         "integer",
+                                         "logical",
+                                         "numeric"),
+                   which = FALSE)
+
+  s_unique <- unique(x = x,
+                     incomparables = FALSE)
+
   s_table <- table(x,
                    useNA = "ifany")
 
   s_max <- max(s_table,
                na.rm = FALSE)
 
-  if (length(x = s_table) > 1 &
-      s_max == 1) {
+  if (length(x = s_table) == 1) {
 
-    s_mode <- "no mode"
+    s_mode <- s_unique
 
-  } else if (length(x = s_table) == 1 &&
-             s_max == 1) {
-
-    s_mode <- x
-
-  } else if (length(x = s_table) > 1 &
-             s_max > 1) {
+  } else if (length(x = s_table) > 1) {
 
     s_mode <- names(x = s_table)[s_table == s_max]
 
-    s_unique <- unique(x = x,
-                       incomparables = FALSE)
+    if (ciln == TRUE) {
 
-    s_mode <- s_unique[s_unique %in% s_mode == TRUE]
+    class(x = s_mode) <- class(x = x)
+
+    mode(x = s_mode) <- mode(x = x)
+
+    }
 
   }
 

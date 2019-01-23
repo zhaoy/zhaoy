@@ -1,6 +1,6 @@
-custom functions for extracting / importing, transforming, summarizing, and loading / exporting
+custom functions for importing, transforming, summarizing, and exporting
 
-# extract / import
+# import
 
 `db_dir`
 
@@ -28,6 +28,6 @@ custom functions for extracting / importing, transforming, summarizing, and load
 
 `s_unique`
 
-# load / export
+# export
 
 `export_feather`

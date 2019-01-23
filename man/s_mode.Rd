@@ -12,8 +12,6 @@ s_mode(x)
 \value{
 A vector.
 
-If no mode exists, the result is "no mode".
-
 If the mode is missing-data, the result is \code{NA}.
 }
 \description{

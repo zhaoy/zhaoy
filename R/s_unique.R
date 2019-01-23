@@ -39,12 +39,19 @@ s_unique <- function(x) {
                      which = FALSE),
             is.list(x = x) == FALSE)
 
+  ciln <- inherits(x = x,
+                   what = dplyr::combine("character",
+                                         "integer",
+                                         "logical",
+                                         "numeric"),
+                   which = FALSE)
+
   count <- table(x,
                  useNA = "ifany")
 
   value <- names(x = count)
 
-  if (is.factor(x = x) == FALSE) {
+  if (ciln == TRUE) {
 
     class(x = value) <- class(x = x)
 

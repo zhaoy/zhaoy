@@ -12,8 +12,6 @@ zhaoy_s_mode(x)
 \value{
 A length-one vector.
 
-If no mode exists, the result is "no mode".
-
 If the mode is missing-data, the result is \code{NA}.
 
 If multiple modes exist, the result is "s_mode()".
