@@ -1,4 +1,4 @@
-custom functions for importing, transforming, summarizing, and exporting
+custom functions for importing, transforming, summarizing, and exporting data
 
 # import
 
