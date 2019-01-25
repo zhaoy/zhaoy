@@ -21,6 +21,6 @@ MRNs have 0-8 leading zeros and 1-8 positive integers.
 }
 \examples{
 x <- c("1", "000000002")
-lz_id(x = x, lz = TRUE)
-lz_id(x = x, lz = FALSE)
+zhaoy::lz_id(x = x, lz = TRUE)
+zhaoy::lz_id(x = x, lz = FALSE)
 }

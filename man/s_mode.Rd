@@ -18,7 +18,7 @@ If the mode is missing-data, the result is \code{NA}.
 Compute the statistical mode.
 }
 \examples{
-s_mode(x = attenu$dist)
+zhaoy::s_mode(x = attenu$dist)
 }
 \seealso{
 \code{\link{s_s} \link{s_unique}}

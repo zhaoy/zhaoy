@@ -19,7 +19,7 @@
 #' @export
 #'
 #' @examples
-#' s_unique(x = attenu$station)
+#' zhaoy::s_unique(x = attenu$station)
 
 s_unique <- function(x) {
 

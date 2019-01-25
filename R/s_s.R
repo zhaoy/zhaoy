@@ -32,8 +32,8 @@
 #' @export
 #'
 #' @examples
-#' s_s(x = attenu$mag)
-#' s_s(x = attenu)
+#' zhaoy::s_s(x = attenu$mag)
+#' zhaoy::s_s(x = attenu)
 
 s_s <- function(x) {
 

@@ -20,7 +20,7 @@
 #'
 #' @examples
 #' ToothGrowth$supp <- as.character(x = ToothGrowth$supp)
-#' lc_df(x = ToothGrowth)
+#' zhaoy::lc_df(x = ToothGrowth)
 
 lc_df <- function(x) {
 

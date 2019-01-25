@@ -1,14 +1,14 @@
-#' Write data-frames to Feather files.
+#' Write Feather files.
 #'
 #' @description
-#' Write data-frames to Feather files.
+#' Write Feather files.
 #'
 #' @usage
 #' export_feather(x, folder, path)
 #'
-#' @param x a data-frame to write to \code{path}.
-#' @param folder any folder above both 1) the path to write to and 2) the R file.
-#' @param path relative to \code{folder}, path to write to.
+#' @param x a data-frame to write to disk.
+#' @param folder any folder above the R file.
+#' @param path relative to \code{folder}, path to Feather file.
 #'
 #' @seealso
 #' \code{\link{import_feather}}
@@ -22,24 +22,16 @@ export_feather <- function(x,
                            folder,
                            path) {
 
-  # is.character() is necessary because
-  # nzchar() can return TRUE or FALSE
-  # for non-character inputs.
-
-  stopifnot(is.data.frame(x = x),
-            is.character(x = folder),
-            nzchar(x = folder,
-                   keepNA = TRUE),
-            is.character(x = path))
+  stopifnot(is.data.frame(x = x))
 
   root <- rprojroot::find_root(criterion = rprojroot::has_dirname(dirname = folder),
                                path = ".")
 
-  export_path <- file.path(root,
-                           path,
-                           fsep = "/")
+  path <- file.path(root,
+                    path,
+                    fsep = "/")
 
   feather::write_feather(x,
-                         path = export_path)
+                         path = path)
 
 }

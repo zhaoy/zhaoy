@@ -1,18 +1,18 @@
-custom functions for importing, transforming, summarizing, and exporting data
+custom functions for extracting / importing, transforming, summarizing, and loading / exporting data
 
-# import
+# extract / import
 
 `db_dir`
 
-`import_db`
+`extract_db`
 
-`import_excel`
+`import_excel` (deprecates `i_excel`)
 
-`import_feather`
+`import_feather` (deprecates `i_feather`)
 
 # transform
 
-`lc_df`
+`lc_df` (deprecates `i_df`)
 
 `lz_id`
 
@@ -28,6 +28,6 @@ custom functions for importing, transforming, summarizing, and exporting data
 
 `s_unique`
 
-# export
+# load / export
 
 `export_feather`

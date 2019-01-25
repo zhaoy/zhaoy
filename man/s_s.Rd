@@ -28,8 +28,8 @@ If multiple modes exist, the result is "s_mode()".
 Tabulate summary statistics.
 }
 \examples{
-s_s(x = attenu$mag)
-s_s(x = attenu)
+zhaoy::s_s(x = attenu$mag)
+zhaoy::s_s(x = attenu)
 }
 \seealso{
 \code{\link{s_mode} \link{s_unique}}
