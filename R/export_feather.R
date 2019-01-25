@@ -22,7 +22,7 @@ export_feather <- function(x,
                            folder,
                            path) {
 
-  stopifnot(is.data.frame(x = x))
+  stopifnot(is.data.frame(x = x) == TRUE)
 
   root <- rprojroot::find_root(criterion = rprojroot::has_dirname(dirname = folder),
                                path = ".")

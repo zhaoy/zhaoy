@@ -37,7 +37,7 @@ zhaoy_s_s <- function(x,
                                            "difftime",
                                            "POSIXct",
                                            "POSIXlt"),
-                     which = FALSE),
+                     which = FALSE) == TRUE,
             is.list(x = x) == FALSE)
 
   date_time <- inherits(x = x,

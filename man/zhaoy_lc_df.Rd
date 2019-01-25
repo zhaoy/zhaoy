@@ -11,10 +11,9 @@ zhaoy_lc_df(x)
 }
 \value{
 A vector of the same length as \code{x}.
+
+Non-alphabetic characters and non-character vectors are left un-changed.
 }
 \description{
 Translate characters from upper to lower case.
-}
-\details{
-Non-alphabetic characters and non-character vectors are left un-changed.
 }

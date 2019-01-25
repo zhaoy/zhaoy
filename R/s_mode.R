@@ -35,7 +35,7 @@ s_mode <- function(x) {
                                            "difftime",
                                            "POSIXct",
                                            "POSIXlt"),
-                     which = FALSE),
+                     which = FALSE) == TRUE,
             is.list(x = x) == FALSE)
 
   ciln <- inherits(x = x,

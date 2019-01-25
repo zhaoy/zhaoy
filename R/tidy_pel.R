@@ -4,9 +4,12 @@
 #' Tidy the .xlsx version of the Provide Enterprise "Test Results by Client with ID" report.
 #'
 #' @usage
-#' tidy_pel(x)
+#' tidy_pel(folder, path, sheet = NULL, range = NULL)
 #'
-#' @param x a data-frame.
+#' @param folder any folder above both 1) the .xlsx file and 2) the R file.
+#' @param path relative to \code{folder}, path to the .xlsx file.
+#' @param sheet sheet to read.
+#' @param range a cell range to read from.
 #'
 #' @return
 #' A data-frame.
@@ -16,9 +19,15 @@
 #'
 #' @export
 
-tidy_pel <- function(x) {
+tidy_pel <- function(folder,
+                     path,
+                     sheet = NULL,
+                     range = NULL) {
 
-  pel <- x
+  pel <- zhaoy::import_excel(folder = folder,
+                             path = path,
+                             sheet = sheet,
+                             range = range)
 
   names(x = pel) <- c("x_1",
                       "x_2",
@@ -56,6 +65,8 @@ tidy_pel <- function(x) {
                                                          .f = paste,
                                                          sep = "",
                                                          collapse = "")
+
+  pel$mrn <- unlist(x = pel$mrn)
 
   pel$mrn <- tidyr::fill(data = pel,
                          mrn,

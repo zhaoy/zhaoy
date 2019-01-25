@@ -51,7 +51,7 @@ s_s <- function(x) {
                                            "POSIXct",
                                            "POSIXlt",
                                            "data.frame"),
-                     which = FALSE))
+                     which = FALSE) == TRUE)
 
   if (is.data.frame(x = x) == FALSE) {
 

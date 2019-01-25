@@ -11,6 +11,9 @@ import_feather(folder, path)
 
 \item{path}{relative to \code{folder}, path to Feather file.}
 }
+\value{
+A tibble.
+}
 \description{
 Read Feather files.
 }

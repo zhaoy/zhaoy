@@ -9,6 +9,9 @@
 #' @param folder any folder above both 1) the Feather file and 2) the R file.
 #' @param path relative to \code{folder}, path to Feather file.
 #'
+#' @return
+#' A tibble.
+#'
 #' @seealso
 #' \code{\link{export_feather}}
 #'

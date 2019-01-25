@@ -4,33 +4,38 @@
 #' Translate characters from upper to lower case.
 #'
 #' @usage
-#' lc_df(x)
+#' i_df(x)
 #'
 #' @param x a data-frame.
 #'
-#' @return
-#' A tibble.
-#'
+#' @details
 #' Non-alphabetic characters and non-character vectors are left un-changed.
 #'
-#' @importFrom purrr map_dfc
+#' @return
+#' A data-frame.
+#'
+#' @importFrom purrr map
 #'
 #' @export
 #'
 #' @examples
 #' ToothGrowth$supp <- as.character(x = ToothGrowth$supp)
-#' zhaoy::lc_df(x = ToothGrowth)
+#' zhaoy::i_df(x = ToothGrowth)
 
-lc_df <- function(x) {
-
-  options(tibble.print_max = Inf,
-          tibble.width = Inf)
+i_df <- function(x) {
 
   stopifnot(is.data.frame(x = x) == TRUE)
 
   names(x = x) <- tolower(x = names(x = x))
 
-  purrr::map_dfc(.x = x,
-                 .f = zhaoy_lc_df)
+  x <- purrr::map(.x = x,
+                  .f = zhaoy_lc_df)
+
+  data.frame(x,
+             row.names = NULL,
+             check.rows = TRUE,
+             check.names = TRUE,
+             fix.empty.names = TRUE,
+             stringsAsFactors = FALSE)
 
 }

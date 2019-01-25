@@ -8,11 +8,10 @@
 #'
 #' @param x a vector.
 #'
-#' @details
-#' Non-alphabetic characters and non-character vectors are left un-changed.
-#'
 #' @return
 #' A vector of the same length as \code{x}.
+#'
+#' Non-alphabetic characters and non-character vectors are left un-changed.
 #'
 #' @importFrom dplyr combine
 
@@ -28,7 +27,7 @@ zhaoy_lc_df <- function(x) {
                                            "difftime",
                                            "POSIXct",
                                            "POSIXlt"),
-                     which = FALSE),
+                     which = FALSE) == TRUE,
             is.list(x = x) == FALSE)
 
   if (is.character(x = x) == TRUE) {

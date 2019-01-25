@@ -56,6 +56,6 @@ import_excel <- function(folder,
                           n_max = Inf,
                           guess_max = 100000)
 
-  zhaoy::lc_df(x = x)
+  zhaoy::i_df(x = x)
 
 }

@@ -4,9 +4,12 @@
 #' Tidy the .xlsx version of the Provide Enterprise "Activity Summary by Provider by Client by Date" report.
 #'
 #' @usage
-#' tidy_pea(x)
+#' tidy_pea(folder, path, sheet = NULL, range = NULL)
 #'
-#' @param x a data-frame.
+#' @param folder any folder above both 1) the .xlsx file and 2) the R file.
+#' @param path relative to \code{folder}, path to the .xlsx file.
+#' @param sheet sheet to read.
+#' @param range a cell range to read from.
 #'
 #' @return
 #' A data-frame.
@@ -15,9 +18,15 @@
 #'
 #' @export
 
-tidy_pea <- function(x) {
+tidy_pea <- function(folder,
+                     path,
+                     sheet = NULL,
+                     range = NULL) {
 
-  pea <- x
+  pea <- zhaoy::import_excel(folder = folder,
+                             path = path,
+                             sheet = sheet,
+                             range = range)
 
   names(x = pea) <- c("x_1",
                       "x_2",

@@ -11,12 +11,11 @@ lc_df(x)
 }
 \value{
 A tibble.
+
+Non-alphabetic characters and non-character vectors are left un-changed.
 }
 \description{
 Translate characters from upper to lower case.
-}
-\details{
-Non-alphabetic characters and non-character vectors are left un-changed.
 }
 \examples{
 ToothGrowth$supp <- as.character(x = ToothGrowth$supp)

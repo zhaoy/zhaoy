@@ -30,7 +30,7 @@ lz_id <- function(x,
                      what = dplyr::combine("character",
                                            "integer",
                                            "numeric"),
-                     which = FALSE),
+                     which = FALSE) == TRUE,
             is.list(x = x) == FALSE)
 
   if (lz == TRUE) {

@@ -9,14 +9,11 @@ i_feather(folder, path)
 \arguments{
 \item{folder}{any folder above both 1) the Feather file and 2) the R file.}
 
-\item{path}{relative to \code{folder}, path to the Feather file.}
+\item{path}{relative to \code{folder}, path to Feather file.}
 }
 \value{
-A base-R data-frame.
+A data-frame.
 }
 \description{
 Read Feather files.
-}
-\seealso{
-\code{\link{export_feather}}
 }
