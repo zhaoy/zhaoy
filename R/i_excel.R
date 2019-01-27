@@ -4,7 +4,7 @@
 #' Read xls and xlsx files.
 #'
 #' @usage
-#' import_excel(folder, path, sheet = NULL, range = NULL)
+#' i_excel(folder, path, sheet = NULL, range = NULL)
 #'
 #' @param folder any folder above both 1) the xls / xlsx file and 2) the R file.
 #' @param path relative to \code{folder}, path to the xls / xlsx file.
@@ -12,17 +12,17 @@
 #' @param range a cell range to read from.
 #'
 #' @return
-#' A tibble.
+#' A data-frame.
 #'
 #' @importFrom readxl read_excel
 #' @importFrom rprojroot find_root has_dirname
 #'
 #' @export
 
-import_excel <- function(folder,
-                         path,
-                         sheet = NULL,
-                         range = NULL) {
+i_excel <- function(folder,
+                    path,
+                    sheet = NULL,
+                    range = NULL) {
 
   root <- rprojroot::find_root(criterion = rprojroot::has_dirname(dirname = folder),
                                path = ".")
@@ -43,6 +43,6 @@ import_excel <- function(folder,
                           guess_max = 100000,
                           .name_repair = "universal")
 
-  zhaoy::lc_df(x = x)
+  zhaoy::i_df(x = x)
 
 }

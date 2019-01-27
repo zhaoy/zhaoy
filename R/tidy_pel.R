@@ -24,10 +24,10 @@ tidy_pel <- function(folder,
                      sheet = NULL,
                      range = NULL) {
 
-  pel <- zhaoy::import_excel(folder = folder,
-                             path = path,
-                             sheet = sheet,
-                             range = range)
+  pel <- zhaoy::i_excel(folder = folder,
+                        path = path,
+                        sheet = sheet,
+                        range = range)
 
   names(x = pel) <- c("x_1",
                       "x_2",

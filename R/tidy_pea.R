@@ -23,10 +23,10 @@ tidy_pea <- function(folder,
                      sheet = NULL,
                      range = NULL) {
 
-  pea <- zhaoy::import_excel(folder = folder,
-                             path = path,
-                             sheet = sheet,
-                             range = range)
+  pea <- zhaoy::i_excel(folder = folder,
+                        path = path,
+                        sheet = sheet,
+                        range = range)
 
   names(x = pea) <- c("x_1",
                       "x_2",
