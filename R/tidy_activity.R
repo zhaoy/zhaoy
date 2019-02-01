@@ -1,7 +1,7 @@
 #' Tidy Provide Enterprise activity data.
 #'
 #' @description
-#' Tidy the .xlsx version of the Provide Enterprise "Activity Summary by Provider by Client by Date" report.
+#' Tidy the Provide Enterprise "Activity Summary by Provider by Client by Date" report.
 #'
 #' @usage
 #' tidy_activity(x)
@@ -18,6 +18,8 @@
 #' @export
 
 tidy_activity <- function(x) {
+
+  activity <- x
 
   names(x = activity) <- c("x_1",
                            "x_2",
@@ -42,17 +44,15 @@ tidy_activity <- function(x) {
 
   activity$provider_name <- dplyr::case_when(grepl(pattern = "provider:",
                                                    x = activity$x_1,
-                                                   ignore.case = TRUE,
-                                                   fixed = FALSE) == TRUE ~
+                                                   fixed = TRUE) == TRUE ~
                                              activity$x_1,
                                              grepl(pattern = "provider:",
                                                    x = activity$x_1,
-                                                   ignore.case = TRUE,
-                                                   fixed = FALSE) == FALSE ~
+                                                   fixed = TRUE) == FALSE ~
                                              NA_character_)
 
   activity$provider_name[is.na(x = activity$provider_name) == FALSE] <- strsplit(x = activity$provider_name[is.na(x = activity$provider_name) == FALSE],
-                                                                                 split = "\\s{2}",
+                                                                                 split = ":\\s{2}",
                                                                                  fixed = FALSE)
 
   activity$provider_name[is.na(x = activity$provider_name) == FALSE] <- purrr::map(.x = activity$provider_name[is.na(x = activity$provider_name) == FALSE],
@@ -61,6 +61,18 @@ tidy_activity <- function(x) {
   activity$provider_name <- c(activity$provider_name,
                               recursive = TRUE)
 
+  activity$provider_name <- gsub(pattern = "/musc/scgov",
+                                 replacement = "",
+                                 x = activity$provider_name,
+                                 ignore.case = TRUE,
+                                 fixed = FALSE)
+
+  activity$provider_name <- gsub(pattern = "\\s{2,}",
+                                 replacement = " ",
+                                 x = activity$provider_name,
+                                 ignore.case = TRUE,
+                                 fixed = FALSE)
+
   activity <- tidyr::fill(data = activity,
                           provider_name,
                           .direction = "down")
@@ -68,7 +80,6 @@ tidy_activity <- function(x) {
   activity <- dplyr::filter(.data = activity,
                             grepl(pattern = "provider:",
                                   x = activity$x_1,
-                                  ignore.case = TRUE,
                                   fixed = TRUE) == FALSE)
 
 # activity_type
@@ -117,7 +128,8 @@ tidy_activity <- function(x) {
                             x_2 != "client id:")
 
   activity <- dplyr::select(.data = activity,
-                            -x_3)
+                            -c(x_3,
+                               x_5))
 
 # activity_desc
 
@@ -127,7 +139,7 @@ tidy_activity <- function(x) {
 
   activity$x_2 <- as.numeric(x = activity$x_2)
 
-  activity$x_2 <- trunc(x = activity$x_2)
+  activity$x_2 <- floor(x = activity$x_2)
 
   activity$x_2 <- as.Date(x = activity$x_2,
                           origin = "1899-12-30")

@@ -13,5 +13,5 @@ tidy_activity(x)
 A tibble.
 }
 \description{
-Tidy the .xlsx version of the Provide Enterprise "Activity Summary by Provider by Client by Date" report.
+Tidy the Provide Enterprise "Activity Summary by Provider by Client by Date" report.
 }

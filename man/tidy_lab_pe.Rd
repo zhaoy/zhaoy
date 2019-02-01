@@ -13,5 +13,5 @@ tidy_lab_pe(x)
 A tibble.
 }
 \description{
-Tidy the .xlsx version of the Provide Enterprise "Test Results by Client with ID" report.
+Tidy the Provide Enterprise "Test Results by Client with ID" report.
 }

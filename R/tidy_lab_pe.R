@@ -1,7 +1,7 @@
 #' Tidy Provide Enterprise laboratory data.
 #'
 #' @description
-#' Tidy the .xlsx version of the Provide Enterprise "Test Results by Client with ID" report.
+#' Tidy the Provide Enterprise "Test Results by Client with ID" report.
 #'
 #' @usage
 #' tidy_lab_pe(x)
@@ -19,17 +19,20 @@
 
 tidy_lab_pe <- function(x) {
 
-  names(x = pel) <- c("x_1",
-                      "x_2",
-                      "x_3",
-                      "x_4")
+  lab_pe <- x
+
+  names(x = lab_pe) <- c("x_1",
+                         "x_2",
+                         "x_3",
+                         "x_4")
 
   lab_pe <- dplyr::filter(.data = lab_pe,
-                          x_1 != "1" &
-                          grepl(pattern = "(test name)|(total tests for this client:)",
+                          x_1 %in% c("test name",
+                                     "1") == FALSE &
+                          x_2 != "client id:" &
+                          grepl(pattern = "total tests for this client:",
                                 x = lab_pe$x_1,
-                                ignore.case = TRUE,
-                                fixed = FALSE) == FALSE)
+                                fixed = TRUE) == FALSE)
 
 # mrn
 
@@ -42,24 +45,12 @@ tidy_lab_pe <- function(x) {
                                        fixed = TRUE) == FALSE ~
                                  NA_character_)
 
-  lab_pe$mrn <- dplyr::case_when(is.na(x = lab_pe$mrn) == FALSE &
-                                 lab_pe$mrn != "client id:" ~
-                                 lab_pe$mrn,
-                                 is.na(x = lab_pe$mrn) == TRUE |
-                                 lab_pe$mrn == "client id:" ~
-                                 NA_character_)
-
   lab_pe$mrn[is.na(x = lab_pe$mrn) == FALSE] <- strsplit(x = lab_pe$mrn[is.na(x = lab_pe$mrn) == FALSE],
                                                          split = "\\s{2}",
                                                          fixed = FALSE)
 
   lab_pe$mrn[is.na(x = lab_pe$mrn) == FALSE] <- purrr::map(.x = lab_pe$mrn[is.na(x = lab_pe$mrn) == FALSE],
-                                                           .f = grep,
-                                                           pattern = "\\d",
-                                                           ignore.case = TRUE,
-                                                           value = TRUE,
-                                                           fixed = FALSE,
-                                                           invert = FALSE)
+                                                           .f = 2)
 
   lab_pe$mrn <- c(lab_pe$mrn,
                   recursive = TRUE)
@@ -82,14 +73,14 @@ tidy_lab_pe <- function(x) {
 
 # result_date
 
+  lab_pe$x_2 <- as.numeric(x = lab_pe$x_2)
+
+  lab_pe$x_2 <- floor(x = lab_pe$x_2)
+
+  lab_pe$x_2 <- as.Date(x = lab_pe$x_2,
+                        origin = "1899-12-30")
+
   names(x = lab_pe)[names(x = lab_pe) == "x_2"] <- "result_date"
-
-  lab_pe$result_date <- as.numeric(x = lab_pe$result_date)
-
-  lab_pe$result_date <- trunc(x = lab_pe$result_date)
-
-  lab_pe$result_date <- as.Date(x = lab_pe$result_date,
-                                origin = "1899-12-30")
 
 # result_modifier
 
