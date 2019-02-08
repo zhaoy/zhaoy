@@ -27,9 +27,9 @@ lz_id <- function(x,
                   lz) {
 
   stopifnot(inherits(x = x,
-                     what = dplyr::combine("character",
-                                           "integer",
-                                           "numeric"),
+                     what = c("character",
+                              "integer",
+                              "numeric"),
                      which = FALSE) == TRUE,
             is.list(x = x) == FALSE)
 

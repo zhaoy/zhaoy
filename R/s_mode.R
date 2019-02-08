@@ -16,8 +16,6 @@
 #' @seealso
 #' \code{\link{s_s} \link{s_unique}}
 #'
-#' @importFrom dplyr combine
-#'
 #' @export
 #'
 #' @examples
@@ -26,23 +24,23 @@
 s_mode <- function(x) {
 
   stopifnot(inherits(x = x,
-                     what = dplyr::combine("character",
-                                           "integer",
-                                           "logical",
-                                           "numeric",
-                                           "factor",
-                                           "Date",
-                                           "difftime",
-                                           "POSIXct",
-                                           "POSIXlt"),
+                     what = c("character",
+                              "integer",
+                              "logical",
+                              "numeric",
+                              "factor",
+                              "Date",
+                              "difftime",
+                              "POSIXct",
+                              "POSIXlt"),
                      which = FALSE) == TRUE,
             is.list(x = x) == FALSE)
 
   ciln <- inherits(x = x,
-                   what = dplyr::combine("character",
-                                         "integer",
-                                         "logical",
-                                         "numeric"),
+                   what = c("character",
+                            "integer",
+                            "logical",
+                            "numeric"),
                    which = FALSE)
 
   s_unique <- unique(x = x,

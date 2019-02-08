@@ -25,7 +25,7 @@
 #'
 #' @seealso \code{\link{s_mode} \link{s_unique}}
 #'
-#' @importFrom dplyr combine n_distinct select
+#' @importFrom dplyr n_distinct select
 #' @importFrom purrr map_chr map_dbl map_int modify_at
 #' @importFrom tibble tibble
 #'
@@ -41,16 +41,16 @@ s_s <- function(x) {
           tibble.width = Inf)
 
   stopifnot(inherits(x = x,
-                     what = dplyr::combine("character",
-                                           "integer",
-                                           "logical",
-                                           "numeric",
-                                           "factor",
-                                           "Date",
-                                           "difftime",
-                                           "POSIXct",
-                                           "POSIXlt",
-                                           "data.frame"),
+                     what = c("character",
+                              "integer",
+                              "logical",
+                              "numeric",
+                              "factor",
+                              "Date",
+                              "difftime",
+                              "POSIXct",
+                              "POSIXlt",
+                              "data.frame"),
                      which = FALSE) == TRUE)
 
   if (is.data.frame(x = x) == FALSE) {
@@ -75,20 +75,29 @@ s_s <- function(x) {
 
   pct_unique <- n_unique / nrow(x = x) * 100
 
-  min <- purrr::map_chr(.x = x,
-                        .f = zhaoy_s_s,
-                        s = "min")
+  min <- purrr::map(.x = x,
+                    .f = zhaoy_s_s,
+                    s = "min")
 
-  max <- purrr::map_chr(.x = x,
-                        .f = zhaoy_s_s,
-                        s = "max")
+  min <- purrr::map_chr(.x = min,
+                        .f = as.character)
+
+  max <- purrr::map(.x = x,
+                    .f = zhaoy_s_s,
+                    s = "max")
+
+  max <- purrr::map_chr(.x = max,
+                        .f = as.character)
 
   median <- purrr::map_dbl(.x = x,
                            .f = zhaoy_s_s,
                            s = "median")
 
-  mode <- purrr::map_chr(.x = x,
-                         .f = zhaoy_s_mode)
+  mode <- purrr::map(.x = x,
+                     .f = zhaoy_s_mode)
+
+  mode <- purrr::map_chr(.x = mode,
+                         .f = as.character)
 
   mean <- purrr::map_dbl(.x = x,
                          .f = zhaoy_s_s,
@@ -108,19 +117,12 @@ s_s <- function(x) {
                         .name_repair = "universal")
 
   s_s <- purrr::modify_at(.x = s_s,
-                          .at = dplyr::combine("pct_miss",
-                                               "pct_unique"),
+                          .at = c("pct_miss",
+                                  "pct_unique",
+                                  "median",
+                                  "mean"),
                           .f = round,
                           digits = 1)
-
-  s_s$min[is.na(x = s_s$min) == FALSE] <- prettyNum(x = s_s$min[is.na(x = s_s$min) == FALSE],
-                                                    drop0trailing = TRUE)
-
-  s_s$max[is.na(x = s_s$max) == FALSE] <- prettyNum(x = s_s$max[is.na(x = s_s$max) == FALSE],
-                                                    drop0trailing = TRUE)
-
-  s_s$mode[is.na(x = s_s$mode) == FALSE] <- prettyNum(x = s_s$mode[is.na(x = s_s$mode) == FALSE],
-                                                      drop0trailing = TRUE)
 
   if (nrow(x = s_s) == 1) {
 
