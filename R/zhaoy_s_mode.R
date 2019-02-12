@@ -14,21 +14,19 @@
 #' If the mode is missing-data, the result is \code{NA}.
 #'
 #' If multiple modes exist, the result is "s_mode()".
-#'
-#' @importFrom dplyr combine
 
 zhaoy_s_mode <- function(x) {
 
   stopifnot(inherits(x = x,
-                     what = dplyr::combine("character",
-                                           "integer",
-                                           "logical",
-                                           "numeric",
-                                           "factor",
-                                           "Date",
-                                           "difftime",
-                                           "POSIXct",
-                                           "POSIXlt"),
+                     what = c("character",
+                              "integer",
+                              "logical",
+                              "numeric",
+                              "factor",
+                              "Date",
+                              "difftime",
+                              "POSIXct",
+                              "POSIXlt"),
                      which = FALSE) == TRUE,
             is.list(x = x) == FALSE)
 

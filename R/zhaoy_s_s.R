@@ -21,38 +21,37 @@
 #'
 #' not a numeric or date / date-time object.
 #'
-#' @importFrom dplyr combine
 #' @importFrom stats median
 
 zhaoy_s_s <- function(x,
                       s) {
 
   stopifnot(inherits(x = x,
-                     what = dplyr::combine("character",
-                                           "integer",
-                                           "logical",
-                                           "numeric",
-                                           "factor",
-                                           "Date",
-                                           "difftime",
-                                           "POSIXct",
-                                           "POSIXlt"),
+                     what = c("character",
+                              "integer",
+                              "logical",
+                              "numeric",
+                              "factor",
+                              "Date",
+                              "difftime",
+                              "POSIXct",
+                              "POSIXlt"),
                      which = FALSE) == TRUE,
             is.list(x = x) == FALSE)
 
   date_time <- inherits(x = x,
-                        what = dplyr::combine("Date",
-                                              "difftime",
-                                              "POSIXct",
-                                              "POSIXlt"),
+                        what = c("Date",
+                                 "difftime",
+                                 "POSIXct",
+                                 "POSIXlt"),
                         which = FALSE)
 
   if (is.na(x = x) == TRUE ||
       (is.numeric(x = x) == FALSE &&
        date_time == FALSE) == TRUE ||
       (date_time == TRUE &&
-       s %in% dplyr::combine("median",
-                             "mean") == TRUE) == TRUE) {
+       s %in% c("median",
+                "mean") == TRUE) == TRUE) {
 
     s_s <- NA
 

@@ -25,7 +25,7 @@
 #'
 #' @seealso \code{\link{s_mode} \link{s_unique}}
 #'
-#' @importFrom dplyr n_distinct select
+#' @importFrom dplyr n_distinct select vars
 #' @importFrom purrr map_chr map_dbl map_int modify_at
 #' @importFrom tibble tibble
 #'
@@ -117,10 +117,10 @@ s_s <- function(x) {
                         .name_repair = "universal")
 
   s_s <- purrr::modify_at(.x = s_s,
-                          .at = c("pct_miss",
-                                  "pct_unique",
-                                  "median",
-                                  "mean"),
+                          .at = dplyr::vars(pct_miss,
+                                            pct_unique,
+                                            median,
+                                            mean),
                           .f = round,
                           digits = 1)
 

@@ -13,7 +13,7 @@
 #'
 #' @seealso \code{\link{s_mode} \link{s_s}}
 #'
-#' @importFrom dplyr arrange combine
+#' @importFrom dplyr arrange
 #' @importFrom tibble tibble
 #'
 #' @export
@@ -27,23 +27,23 @@ s_unique <- function(x) {
           tibble.width = Inf)
 
   stopifnot(inherits(x = x,
-                     what = dplyr::combine("character",
-                                           "integer",
-                                           "logical",
-                                           "numeric",
-                                           "factor",
-                                           "Date",
-                                           "difftime",
-                                           "POSIXct",
-                                           "POSIXlt"),
+                     what = c("character",
+                              "integer",
+                              "logical",
+                              "numeric",
+                              "factor",
+                              "Date",
+                              "difftime",
+                              "POSIXct",
+                              "POSIXlt"),
                      which = FALSE) == TRUE,
             is.list(x = x) == FALSE)
 
   ciln <- inherits(x = x,
-                   what = dplyr::combine("character",
-                                         "integer",
-                                         "logical",
-                                         "numeric"),
+                   what = c("character",
+                            "integer",
+                            "logical",
+                            "numeric"),
                    which = FALSE)
 
   count <- table(x,
