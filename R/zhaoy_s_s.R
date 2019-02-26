@@ -46,7 +46,8 @@ zhaoy_s_s <- function(x,
                                  "POSIXlt"),
                         which = FALSE)
 
-  if (is.na(x = x) == TRUE ||
+  if (all(is.na(x = x) == TRUE,
+          na.rm = FALSE) == TRUE ||
       (is.numeric(x = x) == FALSE &&
        date_time == FALSE) == TRUE ||
       (date_time == TRUE &&
