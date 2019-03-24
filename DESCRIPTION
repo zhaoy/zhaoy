@@ -1,10 +1,10 @@
 Package: zhaoy
 Title: Custom Functions
-Description: Import / export, tidy, transform, and summarize data.
+Description: Import / export, tidy, transform, summarize, and check data.
 Date: 2019-1-18
 Version: 1.0.0
 Depends: R (>= 3.5.0)
-Imports: dplyr, feather, purrr, readxl, rprojroot, stats, tibble, tidyr
+Imports: assertr, dplyr, feather, purrr, readxl, rprojroot, stats, tibble, tidyr
 Encoding: UTF-8
 LazyData: true
 License: GPL-3

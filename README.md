@@ -1,4 +1,4 @@
-custom functions for importing / exporting, tidying, transforming, and summarizing data
+custom functions for importing / exporting, tidying, transforming, summarizing, and checking data
 
 # import / export
 
@@ -29,3 +29,7 @@ custom functions for importing / exporting, tidying, transforming, and summarizi
 `s_s`
 
 `s_unique`
+
+# check
+
+`c_assert`
