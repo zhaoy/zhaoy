@@ -82,18 +82,18 @@ tidy_activity <- function(x) {
                                   x = activity$x_1,
                                   fixed = TRUE) == FALSE)
 
-# activity_type
+# type
 
-  activity_type <- unique(x = activity$x_1[activity$x_2 == "service type"],
-                          incomparables = FALSE)
+  type <- unique(x = activity$x_1[activity$x_2 == "service type"],
+                 incomparables = FALSE)
 
-  activity$activity_type <- dplyr::case_when(activity$x_1 %in% activity_type == TRUE ~
-                                             activity$x_1,
-                                             activity$x_1 %in% activity_type == FALSE ~
-                                             NA_character_)
+  activity$type <- dplyr::case_when(activity$x_1 %in% type == TRUE ~
+                                    activity$x_1,
+                                    activity$x_1 %in% type == FALSE ~
+                                    NA_character_)
 
   activity <- tidyr::fill(data = activity,
-                          activity_type,
+                          type,
                           .direction = "down")
 
   activity <- dplyr::filter(.data = activity,
@@ -113,15 +113,15 @@ tidy_activity <- function(x) {
   activity$mrn <- zhaoy::lz_id(x = activity$mrn,
                                lz = TRUE)
 
-# provider_ship
+# pp_ship
 
-  activity$provider_ship <- dplyr::case_when(activity$x_2 == "client id:" ~
-                                             activity$x_5,
-                                             activity$x_2 != "client id:" ~
-                                             NA_character_)
+  activity$pp_ship <- dplyr::case_when(activity$x_2 == "client id:" ~
+                                       activity$x_5,
+                                       activity$x_2 != "client id:" ~
+                                       NA_character_)
 
   activity <- tidyr::fill(data = activity,
-                          provider_ship,
+                          pp_ship,
                           .direction = "down")
 
   activity <- dplyr::filter(.data = activity,
@@ -131,11 +131,11 @@ tidy_activity <- function(x) {
                             -c(x_3,
                                x_5))
 
-# activity_desc
+# desc
 
-  names(x = activity)[names(x = activity) == "x_1"] <- "activity_desc"
+  names(x = activity)[names(x = activity) == "x_1"] <- "desc"
 
-# activity_date
+# date
 
   activity$x_2 <- as.numeric(x = activity$x_2)
 
@@ -144,14 +144,14 @@ tidy_activity <- function(x) {
   activity$x_2 <- as.Date(x = activity$x_2,
                           origin = "1899-12-30")
 
-  names(x = activity)[names(x = activity) == "x_2"] <- "activity_date"
+  names(x = activity)[names(x = activity) == "x_2"] <- "date"
 
   dplyr::select(.data = activity,
                 mrn,
                 provider_name,
-                activity_type,
-                activity_desc,
-                activity_date,
-                provider_ship)
+                type,
+                desc,
+                date,
+                pp_ship)
 
 }

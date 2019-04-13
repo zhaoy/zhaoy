@@ -1,15 +1,15 @@
-#' Check data.
+#' Check assertions about data.
 #'
 #' @description
-#' Check data.
+#' Check assertions aout data.
 #'
 #' @usage
 #' c_assert(data, predicate, source, ...)
 #'
 #' @param data A data frame.
 #' @param predicate A function that returns FALSE when violated.
-#' @param source Logical: display source data or not.
-#' @param ... Comma-separated list of unquoted expressions. Selects columns from data.
+#' @param source Logical: TRUE or FALSE.
+#' @param ... Comma-separated list of unquoted columns.
 #'
 #' @return
 #' If the predicate assertion is true, TRUE.
@@ -22,7 +22,6 @@
 #' @importFrom dplyr filter row_number select
 #'
 #' @export
-#'
 
 c_assert <- function(data,
                      predicate,

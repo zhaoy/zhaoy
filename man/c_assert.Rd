@@ -2,7 +2,7 @@
 % Please edit documentation in R/c_assert.R
 \name{c_assert}
 \alias{c_assert}
-\title{Check data.}
+\title{Check assertions about data.}
 \usage{
 c_assert(data, predicate, source, ...)
 }
@@ -11,9 +11,9 @@ c_assert(data, predicate, source, ...)
 
 \item{predicate}{A function that returns FALSE when violated.}
 
-\item{source}{Logical: display source data or not.}
+\item{source}{Logical: TRUE or FALSE.}
 
-\item{...}{Comma-separated list of unquoted expressions. Selects columns from data.}
+\item{...}{Comma-separated list of unquoted columns.}
 }
 \value{
 If the predicate assertion is true, TRUE.
@@ -23,5 +23,5 @@ If the predicate assertion is false and source is TRUE, a data-frame with the of
 If the predicate assertion is false and source is FALSE, an assertr data-frame.
 }
 \description{
-Check data.
+Check assertions aout data.
 }
