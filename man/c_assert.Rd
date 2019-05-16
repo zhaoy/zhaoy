@@ -23,5 +23,5 @@ If the predicate assertion is false and source is TRUE, a data-frame with the of
 If the predicate assertion is false and source is FALSE, an assertr data-frame.
 }
 \description{
-Check assertions aout data.
+Check assertions about data.
 }

@@ -1,14 +1,20 @@
-custom functions for importing / exporting, tidying, transforming, summarizing, and checking data
+custom functions to import / export, tidy, transform, summarize, and check data
 
 # import / export
 
-`db_dir`
-
 `import_excel` (deprecates `i_excel`)
+
+`export_excel`
 
 `import_feather` (deprecates `i_feather`)
 
 `export_feather`
+
+`import_rds`
+
+`export_rds`
+
+`file_path`
 
 # tidy
 
@@ -27,6 +33,8 @@ custom functions for importing / exporting, tidying, transforming, summarizing, 
 `s_mode`
 
 `s_s`
+
+`s_table`
 
 `s_unique`
 

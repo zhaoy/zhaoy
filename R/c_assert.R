@@ -1,7 +1,7 @@
 #' Check assertions about data.
 #'
 #' @description
-#' Check assertions aout data.
+#' Check assertions about data.
 #'
 #' @usage
 #' c_assert(data, predicate, source, ...)

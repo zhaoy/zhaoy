@@ -1,35 +1,33 @@
-#' Read xls and xlsx files.
+#' Read xls and xlsx files
 #'
 #' @description
-#' Read xls and xlsx files.
+#' Read xls and xlsx files. Translate upper-case alphabetic characters to lower-case. 
 #'
 #' @usage
-#' import_excel(folder, path, sheet = NULL, range = NULL)
+#' import_excel(dirname, rpath, sheet = NULL, range = NULL)
 #'
-#' @param folder any folder above both 1) the xls / xlsx file and 2) the R file.
-#' @param path relative to \code{folder}, path to the xls / xlsx file.
-#' @param sheet sheet to read.
-#' @param range a cell range to read from.
+#' @param dirname a directory above both 1) the xls / xlsx file and 2) the R file.
+#' @param rpath relative to \code{dirname}, the path to the xls / xlsx file.
+#' @param sheet (optional) sheet to read.
+#' @param range (optional) a cell range to read from.
 #'
 #' @return
 #' A tibble.
+#' 
+#' @seealso
+#' \code{\link{export_excel}}
 #'
 #' @importFrom readxl read_excel
-#' @importFrom rprojroot find_root has_dirname
 #'
 #' @export
 
-import_excel <- function(folder,
-                         path,
+import_excel <- function(dirname,
+                         rpath,
                          sheet = NULL,
                          range = NULL) {
 
-  root <- rprojroot::find_root(criterion = rprojroot::has_dirname(dirname = folder),
-                               path = ".")
-
-  path <- file.path(root,
-                    path,
-                    fsep = "/")
+  path <- zhaoy::file_path(dirname = dirname,
+                           rpath = rpath)
 
   x <- readxl::read_excel(path = path,
                           sheet = sheet,
@@ -40,7 +38,8 @@ import_excel <- function(folder,
                           trim_ws = TRUE,
                           skip = 0,
                           n_max = Inf,
-                          guess_max = 100000,
+                          guess_max = 10000,
+                          progress = TRUE,
                           .name_repair = "universal")
 
   zhaoy::lc_df(x = x)

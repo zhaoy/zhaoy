@@ -2,20 +2,20 @@
 % Please edit documentation in R/import_feather.R
 \name{import_feather}
 \alias{import_feather}
-\title{Read Feather files.}
+\title{Read Feather files}
 \usage{
-import_feather(folder, path)
+import_feather(dirname, rpath)
 }
 \arguments{
-\item{folder}{any folder above both 1) the Feather file and 2) the R file.}
+\item{dirname}{a directory above both 1) the Feather file and 2) the R file.}
 
-\item{path}{relative to \code{folder}, path to Feather file.}
+\item{rpath}{relative to \code{dirname}, the path to the Feather file.}
 }
 \value{
 A tibble.
 }
 \description{
-Read Feather files.
+Read Feather files. Translate upper-case alphabetic characters to lower-case.
 }
 \seealso{
 \code{\link{export_feather}}

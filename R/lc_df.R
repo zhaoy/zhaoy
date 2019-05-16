@@ -1,7 +1,7 @@
-#' Character Translation
+#' Character case
 #'
 #' @description
-#' Translate characters from upper to lower case.
+#' Translate characters from upper to lower case. Leave non-alphabetic characters un-changed.
 #'
 #' @usage
 #' lc_df(x)
@@ -10,8 +10,6 @@
 #'
 #' @return
 #' A tibble.
-#'
-#' Non-alphabetic characters and non-character vectors are left un-changed.
 #'
 #' @importFrom purrr map_dfc
 #'
@@ -25,8 +23,6 @@ lc_df <- function(x) {
 
   options(tibble.print_max = Inf,
           tibble.width = Inf)
-
-  stopifnot(is.data.frame(x = x) == TRUE)
 
   names(x = x) <- tolower(x = names(x = x))
 

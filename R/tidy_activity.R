@@ -131,11 +131,11 @@ tidy_activity <- function(x) {
                             -c(x_3,
                                x_5))
 
-# desc
+# summary
 
-  names(x = activity)[names(x = activity) == "x_1"] <- "desc"
+  names(x = activity)[names(x = activity) == "x_1"] <- "summary"
 
-# date
+# activity_date
 
   activity$x_2 <- as.numeric(x = activity$x_2)
 
@@ -144,14 +144,14 @@ tidy_activity <- function(x) {
   activity$x_2 <- as.Date(x = activity$x_2,
                           origin = "1899-12-30")
 
-  names(x = activity)[names(x = activity) == "x_2"] <- "date"
+  names(x = activity)[names(x = activity) == "x_2"] <- "activity_date"
 
   dplyr::select(.data = activity,
                 mrn,
                 provider_name,
                 type,
-                desc,
-                date,
+                summary,
+                activity_date,
                 pp_ship)
 
 }

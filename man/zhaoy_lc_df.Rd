@@ -2,7 +2,7 @@
 % Please edit documentation in R/zhaoy_lc_df.R
 \name{zhaoy_lc_df}
 \alias{zhaoy_lc_df}
-\title{Character Translation}
+\title{Character case}
 \usage{
 zhaoy_lc_df(x)
 }
@@ -11,9 +11,7 @@ zhaoy_lc_df(x)
 }
 \value{
 A vector of the same length as \code{x}.
-
-Non-alphabetic characters and non-character vectors are left un-changed.
 }
 \description{
-Translate characters from upper to lower case.
+Translate characters from upper to lower case. Leave non-alphabetic characters un-changed.
 }

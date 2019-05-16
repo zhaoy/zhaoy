@@ -13,19 +13,14 @@
 #' A data-frame.
 #'
 #' @importFrom feather read_feather
-#' @importFrom rprojroot find_root has_dirname
 #'
 #' @export
 
 i_feather <- function(folder,
                       path) {
 
-  root <- rprojroot::find_root(criterion = rprojroot::has_dirname(dirname = folder),
-                               path = ".")
-
-  path <- file.path(root,
-                    path,
-                    fsep = "/")
+  path <- zhaoy::file_path(dirname = folder,
+                           rpath = path)
 
   x <- feather::read_feather(path = path)
 

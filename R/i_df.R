@@ -1,15 +1,12 @@
-#' Character Translation
+#' Character case
 #'
 #' @description
-#' Translate characters from upper to lower case.
+#' Translate characters from upper to lower case. Leave non-alphabetic characters un-changed.
 #'
 #' @usage
 #' i_df(x)
 #'
 #' @param x a data-frame.
-#'
-#' @details
-#' Non-alphabetic characters and non-character vectors are left un-changed.
 #'
 #' @return
 #' A data-frame.
@@ -23,8 +20,6 @@
 #' zhaoy::i_df(x = ToothGrowth)
 
 i_df <- function(x) {
-
-  stopifnot(is.data.frame(x = x) == TRUE)
 
   names(x = x) <- tolower(x = names(x = x))
 

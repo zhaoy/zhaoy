@@ -1,21 +1,20 @@
-#' Read xls and xlsx files.
+#' Read xls and xlsx files
 #'
 #' @description
-#' Read xls and xlsx files.
+#' Read xls and xlsx files. Translate upper-case alphabetic characters to lower-case.
 #'
 #' @usage
 #' i_excel(folder, path, sheet = NULL, range = NULL)
 #'
-#' @param folder any folder above both 1) the xls / xlsx file and 2) the R file.
-#' @param path relative to \code{folder}, path to the xls / xlsx file.
-#' @param sheet sheet to read.
-#' @param range a cell range to read from.
+#' @param folder a folder above both 1) the xls / xlsx file and 2) the R file.
+#' @param path relative to \code{folder}, the path to the xls / xlsx file.
+#' @param sheet (optional) sheet to read.
+#' @param range (optional) a cell range to read from.
 #'
 #' @return
 #' A data-frame.
 #'
 #' @importFrom readxl read_excel
-#' @importFrom rprojroot find_root has_dirname
 #'
 #' @export
 
@@ -24,12 +23,8 @@ i_excel <- function(folder,
                     sheet = NULL,
                     range = NULL) {
 
-  root <- rprojroot::find_root(criterion = rprojroot::has_dirname(dirname = folder),
-                               path = ".")
-
-  path <- file.path(root,
-                    path,
-                    fsep = "/")
+  path <- zhaoy::file_path(dirname = folder,
+                           rpath = path)
 
   x <- readxl::read_excel(path = path,
                           sheet = sheet,
@@ -40,7 +35,7 @@ i_excel <- function(folder,
                           trim_ws = TRUE,
                           skip = 0,
                           n_max = Inf,
-                          guess_max = 100000,
+                          guess_max = 10000,
                           .name_repair = "universal")
 
   zhaoy::i_df(x = x)

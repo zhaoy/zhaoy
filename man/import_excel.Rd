@@ -2,22 +2,25 @@
 % Please edit documentation in R/import_excel.R
 \name{import_excel}
 \alias{import_excel}
-\title{Read xls and xlsx files.}
+\title{Read xls and xlsx files}
 \usage{
-import_excel(folder, path, sheet = NULL, range = NULL)
+import_excel(dirname, rpath, sheet = NULL, range = NULL)
 }
 \arguments{
-\item{folder}{any folder above both 1) the xls / xlsx file and 2) the R file.}
+\item{dirname}{a directory above both 1) the xls / xlsx file and 2) the R file.}
 
-\item{path}{relative to \code{folder}, path to the xls / xlsx file.}
+\item{rpath}{relative to \code{dirname}, the path to the xls / xlsx file.}
 
-\item{sheet}{sheet to read.}
+\item{sheet}{(optional) sheet to read.}
 
-\item{range}{a cell range to read from.}
+\item{range}{(optional) a cell range to read from.}
 }
 \value{
 A tibble.
 }
 \description{
-Read xls and xlsx files.
+Read xls and xlsx files. Translate upper-case alphabetic characters to lower-case.
+}
+\seealso{
+\code{\link{export_excel}}
 }

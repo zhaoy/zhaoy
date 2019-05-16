@@ -1,13 +1,13 @@
-#' Read Feather files.
+#' Read Feather files
 #'
 #' @description
-#' Read Feather files.
+#' Read Feather files. Translate upper-case alphabetic characters to lower-case.
 #'
 #' @usage
-#' import_feather(folder, path)
+#' import_feather(dirname, rpath)
 #'
-#' @param folder any folder above both 1) the Feather file and 2) the R file.
-#' @param path relative to \code{folder}, path to Feather file.
+#' @param dirname a directory above both 1) the Feather file and 2) the R file.
+#' @param rpath relative to \code{dirname}, the path to the Feather file.
 #'
 #' @return
 #' A tibble.
@@ -16,19 +16,14 @@
 #' \code{\link{export_feather}}
 #'
 #' @importFrom feather read_feather
-#' @importFrom rprojroot find_root has_dirname
 #'
 #' @export
 
-import_feather <- function(folder,
-                           path) {
+import_feather <- function(dirname,
+                           rpath) {
 
-  root <- rprojroot::find_root(criterion = rprojroot::has_dirname(dirname = folder),
-                               path = ".")
-
-  path <- file.path(root,
-                    path,
-                    fsep = "/")
+  path <- zhaoy::file_path(dirname = dirname,
+                           rpath = rpath)
 
   x <- feather::read_feather(path = path)
 

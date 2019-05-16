@@ -2,7 +2,7 @@
 % Please edit documentation in R/lc_df.R
 \name{lc_df}
 \alias{lc_df}
-\title{Character Translation}
+\title{Character case}
 \usage{
 lc_df(x)
 }
@@ -11,11 +11,9 @@ lc_df(x)
 }
 \value{
 A tibble.
-
-Non-alphabetic characters and non-character vectors are left un-changed.
 }
 \description{
-Translate characters from upper to lower case.
+Translate characters from upper to lower case. Leave non-alphabetic characters un-changed.
 }
 \examples{
 ToothGrowth$supp <- as.character(x = ToothGrowth$supp)
