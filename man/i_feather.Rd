@@ -2,18 +2,18 @@
 % Please edit documentation in R/i_feather.R
 \name{i_feather}
 \alias{i_feather}
-\title{Read Feather files.}
+\title{Read Feather files}
 \usage{
 i_feather(folder, path)
 }
 \arguments{
-\item{folder}{any folder above both 1) the Feather file and 2) the R file.}
+\item{folder}{a folder above both 1) the Feather file and 2) the R file.}
 
-\item{path}{relative to \code{folder}, path to Feather file.}
+\item{path}{relative to \code{folder}, the path to the Feather file.}
 }
 \value{
 A data-frame.
 }
 \description{
-Read Feather files.
+Read Feather files. Translate upper-case alphabetic characters to lower-case.
 }

@@ -39,7 +39,7 @@ import_excel <- function(dirname,
                           skip = 0,
                           n_max = Inf,
                           guess_max = 10000,
-                          progress = TRUE,
+                          progress = FALSE,
                           .name_repair = "universal")
 
   zhaoy::lc_df(x = x)

@@ -1,6 +1,6 @@
 Package: zhaoy
 Title: Custom Functions
-Description: Import / export, tidy, transform, summarize, and check data.
+Description: Transfer, tidy, transform, summarize, and check data.
 Date: 2019-5-14
 Version: 1.0.0
 Depends: R (>= 3.6.0)

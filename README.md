@@ -1,18 +1,12 @@
-custom functions to import / export, tidy, transform, summarize, and check data
+custom functions to transfer, tidy, transform, summarize, and check data
 
-# import / export
+# transfer
 
-`import_excel` (deprecates `i_excel`)
+`import_excel` (deprecates `i_excel`) and `export_excel`
 
-`export_excel`
+`import_feather` (deprecates `i_feather`) and `export_feather`
 
-`import_feather` (deprecates `i_feather`)
-
-`export_feather`
-
-`import_rds`
-
-`export_rds`
+`import_rds` and `export_rds`
 
 `file_path`
 
