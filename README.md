@@ -2,7 +2,7 @@ zhaoy provides functions for 5 data tasks: transfer, tidy, transform, summarize,
 
 Some advantages of zhaoy functions:
 
-- The first argument is always data, so functions are compatible with the tidyverse pipe.
+- First arguments are data, so functions are compatible with the tidyverse pipe.
 
 - Within data tasks, function names and arguments are consistent.
 
