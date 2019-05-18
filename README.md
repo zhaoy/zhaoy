@@ -1,4 +1,10 @@
-custom functions to transfer, tidy, transform, summarize, and check data
+zhaoy provides functions for 5 data tasks: transfer, tidy, transform, summarize, and check.
+
+Some advantages of zhaoy functions:
+
+- The first argument is always data, so functions are compatible with the tidyverse pipe.
+
+- Within data tasks, function names and arguments are consistent.
 
 # transfer
 

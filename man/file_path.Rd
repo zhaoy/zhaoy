@@ -2,18 +2,18 @@
 % Please edit documentation in R/file_path.R
 \name{file_path}
 \alias{file_path}
-\title{Construct path to file or folder}
+\title{Build absolute paths to files or folders}
 \usage{
 file_path(dirname, rpath)
 }
 \arguments{
-\item{dirname}{a directory above both 1) the file / folder and 2) the R file.}
+\item{dirname}{a directory above 1) the file / folder and 2) the R file.}
 
-\item{rpath}{relative to \code{dirname}, the path to the file / folder.}
+\item{rpath}{relative to \code{dirname}, path to the file / folder.}
 }
 \value{
 A character vector.
 }
 \description{
-Construct path to file or folder.
+Build absolute paths to files or folders.
 }

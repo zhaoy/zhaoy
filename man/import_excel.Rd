@@ -2,24 +2,26 @@
 % Please edit documentation in R/import_excel.R
 \name{import_excel}
 \alias{import_excel}
-\title{Read xls and xlsx files}
+\title{Import Microsoft Excel files}
 \usage{
 import_excel(dirname, rpath, sheet = NULL, range = NULL)
 }
 \arguments{
-\item{dirname}{a directory above both 1) the xls / xlsx file and 2) the R file.}
+\item{dirname}{a directory above 1) the Excel file and 2) the R file.}
 
-\item{rpath}{relative to \code{dirname}, the path to the xls / xlsx file.}
+\item{rpath}{relative to \code{dirname}, path to the Excel file.}
 
-\item{sheet}{(optional) sheet to read.}
+\item{sheet}{(optional) a sheet to import.}
 
-\item{range}{(optional) a cell range to read from.}
+\item{range}{(optional) a cell range to import.}
 }
 \value{
 A tibble.
 }
 \description{
-Read xls and xlsx files. Translate upper-case alphabetic characters to lower-case.
+Import Microsoft Excel files.
+
+Convert upper-case English characters to lower-case.
 }
 \seealso{
 \code{\link{export_excel}}

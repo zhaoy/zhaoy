@@ -1,15 +1,17 @@
-#' Read xls and xlsx files
+#' Import Microsoft Excel files
 #'
 #' @description
-#' Read xls and xlsx files. Translate upper-case alphabetic characters to lower-case.
+#' Import Microsoft Excel files.
+#'
+#' Convert upper-case English characters to lower-case.
 #'
 #' @usage
 #' i_excel(folder, path, sheet = NULL, range = NULL)
 #'
-#' @param folder a folder above both 1) the xls / xlsx file and 2) the R file.
-#' @param path relative to \code{folder}, the path to the xls / xlsx file.
-#' @param sheet (optional) sheet to read.
-#' @param range (optional) a cell range to read from.
+#' @param folder a folder above 1) the Excel file and 2) the R file.
+#' @param path relative to \code{folder}, path to the Excel file.
+#' @param sheet (optional) a sheet to import.
+#' @param range (optional) a cell range to import.
 #'
 #' @return
 #' A data-frame.
@@ -36,6 +38,7 @@ i_excel <- function(folder,
                           skip = 0,
                           n_max = Inf,
                           guess_max = 10000,
+                          progress = FALSE,
                           .name_repair = "universal")
 
   zhaoy::i_df(x = x)

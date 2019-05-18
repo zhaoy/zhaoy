@@ -2,7 +2,7 @@
 % Please edit documentation in R/i_df.R
 \name{i_df}
 \alias{i_df}
-\title{Character case}
+\title{Convert upper-case English characters to lower-case.}
 \usage{
 i_df(x)
 }
@@ -13,7 +13,7 @@ i_df(x)
 A data-frame.
 }
 \description{
-Translate characters from upper to lower case. Leave non-alphabetic characters un-changed.
+Convert upper-case English characters to lower-case.
 }
 \examples{
 ToothGrowth$supp <- as.character(x = ToothGrowth$supp)

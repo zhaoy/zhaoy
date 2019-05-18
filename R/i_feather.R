@@ -1,13 +1,15 @@
-#' Read Feather files
+#' Import Feather files
 #'
 #' @description
-#' Read Feather files. Translate upper-case alphabetic characters to lower-case.
+#' Import Feather files.
+#'
+#' Convert upper-case English characters to lower-case.
 #'
 #' @usage
 #' i_feather(folder, path)
 #'
-#' @param folder a folder above both 1) the Feather file and 2) the R file.
-#' @param path relative to \code{folder}, the path to the Feather file.
+#' @param folder a folder above 1) the Feather file and 2) the R file.
+#' @param path relative to \code{folder}, path to the Feather file.
 #'
 #' @return
 #' A data-frame.

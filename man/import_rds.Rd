@@ -2,20 +2,22 @@
 % Please edit documentation in R/import_rds.R
 \name{import_rds}
 \alias{import_rds}
-\title{Read rds files}
+\title{Import rds files}
 \usage{
 import_rds(dirname, rpath)
 }
 \arguments{
-\item{dirname}{a directory above both 1) the rds file and 2) the R file.}
+\item{dirname}{a directory above 1) the rds file and 2) the R file.}
 
-\item{rpath}{relative to \code{dirname}, the path to the rds file.}
+\item{rpath}{relative to \code{dirname}, path to the rds file.}
 }
 \value{
 A tibble.
 }
 \description{
-Read rds files. Translate upper-case alphabetic characters to lower-case.
+Import rds files.
+
+Convert upper-case English characters to lower-case.
 }
 \seealso{
 \code{\link{export_rds}}

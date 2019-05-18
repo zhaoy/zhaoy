@@ -1,19 +1,21 @@
-#' Read xls and xlsx files
+#' Import Microsoft Excel files
 #'
 #' @description
-#' Read xls and xlsx files. Translate upper-case alphabetic characters to lower-case. 
+#' Import Microsoft Excel files.
+#'
+#' Convert upper-case English characters to lower-case.
 #'
 #' @usage
 #' import_excel(dirname, rpath, sheet = NULL, range = NULL)
 #'
-#' @param dirname a directory above both 1) the xls / xlsx file and 2) the R file.
-#' @param rpath relative to \code{dirname}, the path to the xls / xlsx file.
-#' @param sheet (optional) sheet to read.
-#' @param range (optional) a cell range to read from.
+#' @param dirname a directory above 1) the Excel file and 2) the R file.
+#' @param rpath relative to \code{dirname}, path to the Excel file.
+#' @param sheet (optional) a sheet to import.
+#' @param range (optional) a cell range to import.
 #'
 #' @return
 #' A tibble.
-#' 
+#'
 #' @seealso
 #' \code{\link{export_excel}}
 #'

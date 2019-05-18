@@ -1,28 +1,28 @@
-#' Write rds files
+#' Export data-frames as rds files.
 #'
 #' @description
-#' Write rds files.
+#' Export data-frames as rds files.
 #'
 #' @usage
-#' export_rds(object, dirname, rpath)
+#' export_rds(x, dirname, rpath)
 #'
-#' @param object R object to serialize.
-#' @param dirname a directory above both 1) the future rds file and 2) the R file.
-#' @param rpath relative to \code{dirname}, the path to the future rds file.
+#' @param x a data-frame.
+#' @param dirname a directory above 1) the rds file and 2) the R file.
+#' @param rpath relative to \code{dirname}, path to the rds file.
 #'
 #' @seealso
 #' \code{\link{import_rds}}
-#' 
+#'
 #' @export
 
-export_rds <- function(object,
+export_rds <- function(x,
                        dirname,
                        rpath) {
-  
+
   file <- zhaoy::file_path(dirname = dirname,
                            rpath = rpath)
-  
-  saveRDS(object = object,
+
+  saveRDS(object = x,
           file = file)
-  
+
 }

@@ -2,19 +2,19 @@
 % Please edit documentation in R/export_rds.R
 \name{export_rds}
 \alias{export_rds}
-\title{Write rds files}
+\title{Export data-frames as rds files.}
 \usage{
-export_rds(object, dirname, rpath)
+export_rds(x, dirname, rpath)
 }
 \arguments{
-\item{object}{R object to serialize.}
+\item{x}{a data-frame.}
 
-\item{dirname}{a directory above both 1) the future rds file and 2) the R file.}
+\item{dirname}{a directory above 1) the rds file and 2) the R file.}
 
-\item{rpath}{relative to \code{dirname}, the path to the future rds file.}
+\item{rpath}{relative to \code{dirname}, path to the rds file.}
 }
 \description{
-Write rds files.
+Export data-frames as rds files.
 }
 \seealso{
 \code{\link{import_rds}}

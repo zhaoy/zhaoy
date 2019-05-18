@@ -2,22 +2,24 @@
 % Please edit documentation in R/i_excel.R
 \name{i_excel}
 \alias{i_excel}
-\title{Read xls and xlsx files}
+\title{Import Microsoft Excel files}
 \usage{
 i_excel(folder, path, sheet = NULL, range = NULL)
 }
 \arguments{
-\item{folder}{a folder above both 1) the xls / xlsx file and 2) the R file.}
+\item{folder}{a folder above 1) the Excel file and 2) the R file.}
 
-\item{path}{relative to \code{folder}, the path to the xls / xlsx file.}
+\item{path}{relative to \code{folder}, path to the Excel file.}
 
-\item{sheet}{(optional) sheet to read.}
+\item{sheet}{(optional) a sheet to import.}
 
-\item{range}{(optional) a cell range to read from.}
+\item{range}{(optional) a cell range to import.}
 }
 \value{
 A data-frame.
 }
 \description{
-Read xls and xlsx files. Translate upper-case alphabetic characters to lower-case.
+Import Microsoft Excel files.
+
+Convert upper-case English characters to lower-case.
 }

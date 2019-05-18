@@ -2,19 +2,21 @@
 % Please edit documentation in R/export_excel.R
 \name{export_excel}
 \alias{export_excel}
-\title{Export to xlsx}
+\title{Export data-frames as Microsoft Excel files.}
 \usage{
 export_excel(x, dirname, rpath)
 }
 \arguments{
-\item{x}{data-frame, or named list of data-frames that are sheets in the future xlsx file.}
+\item{x}{a data-frame, or named list of data-frames that will be sheets in the Excel file.}
 
-\item{dirname}{a directory above both 1) the future xlsx file and 2) the R file.}
+\item{dirname}{a directory above 1) the Excel file and 2) the R file.}
 
-\item{rpath}{relative to \code{dirname}, the path to the future xlsx file.}
+\item{rpath}{relative to \code{dirname}, path to the Excel file.}
 }
 \description{
-Write a data-frame to an xlsx file. Support strings, numbers, booleans, and dates.
+Export data-frames as Microsoft Excel files.
+
+To name sheets, set \code{x} to a named list of data-frames.
 }
 \seealso{
 \code{\link{import_excel}}

@@ -1,7 +1,7 @@
-#' Character case
+#' Convert upper-case English characters to lower-case.
 #'
 #' @description
-#' Translate characters from upper to lower case. Leave non-alphabetic characters un-changed.
+#' Convert upper-case English characters to lower-case.
 #'
 #' @usage
 #' zhaoy_lc_df(x)
