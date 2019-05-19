@@ -11,9 +11,9 @@ i_excel(folder, path, sheet = NULL, range = NULL)
 
 \item{path}{relative to \code{folder}, path to the Excel file.}
 
-\item{sheet}{(optional) a sheet to import.}
+\item{sheet}{optional: a sheet to import.}
 
-\item{range}{(optional) a cell range to import.}
+\item{range}{optional: a cell range to import.}
 }
 \value{
 A data-frame.

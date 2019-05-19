@@ -10,8 +10,8 @@
 #'
 #' @param folder a folder above 1) the Excel file and 2) the R file.
 #' @param path relative to \code{folder}, path to the Excel file.
-#' @param sheet (optional) a sheet to import.
-#' @param range (optional) a cell range to import.
+#' @param sheet optional: a sheet to import.
+#' @param range optional: a cell range to import.
 #'
 #' @return
 #' A data-frame.

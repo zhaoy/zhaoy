@@ -1,4 +1,4 @@
-#' Convert upper-case English characters to lower-case.
+#' Convert upper-case English characters to lower-case
 #'
 #' @description
 #' Convert upper-case English characters to lower-case.

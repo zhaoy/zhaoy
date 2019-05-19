@@ -1,7 +1,7 @@
-#' Build absolute paths to files or folders
+#' Convert relative file-paths to absolute
 #'
 #' @description
-#' Build absolute paths to files or folders.
+#' Convert relative file-paths to absolute.
 #'
 #' @usage
 #' file_path(dirname, rpath)

@@ -2,7 +2,7 @@
 % Please edit documentation in R/file_path.R
 \name{file_path}
 \alias{file_path}
-\title{Build absolute paths to files or folders}
+\title{Convert relative file-paths to absolute}
 \usage{
 file_path(dirname, rpath)
 }
@@ -15,5 +15,5 @@ file_path(dirname, rpath)
 A character vector.
 }
 \description{
-Build absolute paths to files or folders.
+Convert relative file-paths to absolute.
 }

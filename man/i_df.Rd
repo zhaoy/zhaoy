@@ -2,7 +2,7 @@
 % Please edit documentation in R/i_df.R
 \name{i_df}
 \alias{i_df}
-\title{Convert upper-case English characters to lower-case.}
+\title{Convert upper-case English characters to lower-case}
 \usage{
 i_df(x)
 }
