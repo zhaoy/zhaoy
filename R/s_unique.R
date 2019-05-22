@@ -13,7 +13,7 @@
 #'
 #' @seealso \code{\link{s_mode} \link{s_s}}
 #'
-#' @importFrom janitor tabyl
+#' @importFrom janitor adorn_pct_formatting adorn_totals tabyl
 #' @importFrom tibble tibble
 #'
 #' @export
