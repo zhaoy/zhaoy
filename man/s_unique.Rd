@@ -2,7 +2,7 @@
 % Please edit documentation in R/s_unique.R
 \name{s_unique}
 \alias{s_unique}
-\title{Unique Values}
+\title{Frequency of unique values}
 \usage{
 s_unique(x)
 }
@@ -10,7 +10,7 @@ s_unique(x)
 \item{x}{a vector.}
 }
 \value{
-A tibble.
+A data-frame.
 }
 \description{
 Tabulate counts and percents of unique values, including missing-data.

@@ -1,4 +1,4 @@
-#' Unique Values
+#' Frequency of unique values
 #'
 #' @description
 #' Tabulate counts and percents of unique values, including missing-data.
@@ -9,11 +9,11 @@
 #' @param x a vector.
 #'
 #' @return
-#' A tibble.
+#' A data-frame.
 #'
 #' @seealso \code{\link{s_mode} \link{s_s}}
 #'
-#' @importFrom dplyr arrange
+#' @importFrom janitor tabyl
 #' @importFrom tibble tibble
 #'
 #' @export
@@ -23,58 +23,27 @@
 
 s_unique <- function(x) {
 
-  options(tibble.print_max = Inf,
-          tibble.width = Inf)
+  dat <- tibble::tibble(value = x,
+                        .name_repair = "universal")
 
-  stopifnot(inherits(x = x,
-                     what = c("character",
-                              "integer",
-                              "logical",
-                              "numeric",
-                              "factor",
-                              "Date",
-                              "difftime",
-                              "POSIXct",
-                              "POSIXlt"),
-                     which = FALSE) == TRUE,
-            is.list(x = x) == FALSE)
+  dat <- janitor::tabyl(dat = dat,
+                        var1 = value,
+                        show_na = TRUE,
+                        show_missing_levels = TRUE)
 
-  ciln <- inherits(x = x,
-                   what = c("character",
-                            "integer",
-                            "logical",
-                            "numeric"),
-                   which = FALSE)
+  dat <- janitor::adorn_totals(dat = dat,
+                               where = "row",
+                               fill = NA,
+                               na.rm = FALSE,
+                               name = "total")
 
-  count <- table(x,
-                 useNA = "ifany")
+  dat <- janitor::adorn_pct_formatting(dat = dat,
+                                       digits = 1,
+                                       rounding = "half to even",
+                                       affix_sign = FALSE)
 
-  value <- names(x = count)
+  dat$percent <- as.numeric(x = dat$percent)
 
-  if (ciln == TRUE) {
-
-    class(x = value) <- class(x = x)
-
-    mode(x = value) <- mode(x = x)
-
-  }
-
-  pct <- prop.table(x = count) * 100
-
-  pct <- round(x = pct,
-               digits = 1)
-
-  s_unique <- tibble::tibble(value,
-                             count,
-                             pct,
-                             .rows = NULL,
-                             .name_repair = "universal")
-
-  s_unique$count <- as.integer(x = s_unique$count)
-
-  s_unique$pct <- as.numeric(x = s_unique$pct)
-
-  dplyr::arrange(.data = s_unique,
-                 value)
+  return(value = dat)
 
 }

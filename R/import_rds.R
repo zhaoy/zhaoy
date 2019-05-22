@@ -17,15 +17,17 @@
 #' @seealso
 #' \code{\link{export_rds}}
 #'
+#' @importFrom readr read_rds
+#'
 #' @export
 
 import_rds <- function(dirname,
                        rpath) {
 
-  file <- zhaoy::file_path(dirname = dirname,
+  path <- zhaoy::file_path(dirname = dirname,
                            rpath = rpath)
 
-  x <- readRDS(file = file)
+  x <- readr::read_rds(path = path)
 
   zhaoy::lc_df(x = x)
 

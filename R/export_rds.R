@@ -13,16 +13,18 @@
 #' @seealso
 #' \code{\link{import_rds}}
 #'
+#' @importFrom readr write_rds
+#'
 #' @export
 
 export_rds <- function(x,
                        dirname,
                        rpath) {
 
-  file <- zhaoy::file_path(dirname = dirname,
+  path <- zhaoy::file_path(dirname = dirname,
                            rpath = rpath)
 
-  saveRDS(object = x,
-          file = file)
+  readr::write_rds(x = x,
+                   path = path)
 
 }
