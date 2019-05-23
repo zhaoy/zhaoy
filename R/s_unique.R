@@ -11,8 +11,6 @@
 #' @return
 #' A data-frame.
 #'
-#' @seealso \code{\link{s_cross_n} \link{s_mode} \link{s_s}}
-#'
 #' @importFrom janitor adorn_pct_formatting adorn_totals tabyl
 #' @importFrom tibble tibble
 #'

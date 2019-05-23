@@ -18,6 +18,3 @@ Tabulate counts and percents of unique values, including missing-data, in vector
 \examples{
 zhaoy::s_unique(x = attenu$station)
 }
-\seealso{
-\code{\link{s_cross_n} \link{s_mode} \link{s_s}}
-}
