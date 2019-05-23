@@ -1,7 +1,7 @@
 #' Frequency of unique values
 #'
 #' @description
-#' Tabulate counts and percents of unique values, including missing-data.
+#' Tabulate counts and percents of unique values, including missing-data, in vectors.
 #'
 #' @usage
 #' s_unique(x)
@@ -11,7 +11,7 @@
 #' @return
 #' A data-frame.
 #'
-#' @seealso \code{\link{s_mode} \link{s_s}}
+#' @seealso \code{\link{s_cross_n} \link{s_mode} \link{s_s}}
 #'
 #' @importFrom janitor adorn_pct_formatting adorn_totals tabyl
 #' @importFrom tibble tibble

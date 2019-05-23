@@ -32,7 +32,7 @@ R-specific binary files: `import_rds` and `export_rds`
 
 # summarize
 
-`s_cross`
+`s_cross_n`, `s_cross_p`, `s_cross_np`
 
 `s_mode`
 
