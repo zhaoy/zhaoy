@@ -8,7 +8,7 @@
 #'
 #' @param x a data-frame.
 #' @param ... 2 or 3 variables.
-#' @param direction direction in which to calculate percents.
+#' @param direction direction in which to calculate percents: "row", "col", or "all".
 #'
 #' @return
 #' A data-frame.

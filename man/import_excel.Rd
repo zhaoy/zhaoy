@@ -11,9 +11,9 @@ import_excel(dirname, rpath, sheet = NULL, range = NULL)
 
 \item{rpath}{relative to \code{dirname}, path to the Excel file.}
 
-\item{sheet}{(optional) a sheet to import.}
+\item{sheet}{optional: a sheet to import.}
 
-\item{range}{(optional) a cell range to import.}
+\item{range}{optional: a cell range to import.}
 }
 \value{
 A tibble.

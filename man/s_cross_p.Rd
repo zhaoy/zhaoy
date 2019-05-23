@@ -11,7 +11,7 @@ s_cross_p(x, ..., direction)
 
 \item{...}{2 or 3 variables.}
 
-\item{direction}{direction in which to calculate percents.}
+\item{direction}{direction in which to calculate percents: "row", "col", or "all".}
 }
 \value{
 A data-frame.

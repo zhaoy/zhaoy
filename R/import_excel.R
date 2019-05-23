@@ -10,8 +10,8 @@
 #'
 #' @param dirname a directory above 1) the Excel file and 2) the R file.
 #' @param rpath relative to \code{dirname}, path to the Excel file.
-#' @param sheet (optional) a sheet to import.
-#' @param range (optional) a cell range to import.
+#' @param sheet optional: a sheet to import.
+#' @param range optional: a cell range to import.
 #'
 #' @return
 #' A tibble.
