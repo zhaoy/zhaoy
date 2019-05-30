@@ -2,20 +2,20 @@
 % Please edit documentation in R/zhaoy_s_mode.R
 \name{zhaoy_s_mode}
 \alias{zhaoy_s_mode}
-\title{Statistical Mode}
+\title{Statistical mode}
 \usage{
 zhaoy_s_mode(x)
 }
 \arguments{
-\item{x}{an R object.}
+\item{x}{a vector.}
 }
 \value{
 A length-one vector.
 
-If the mode is missing-data, the result is \code{NA}.
+If the mode is missing-data: \code{NA}.
 
-If multiple modes exist, the result is "s_mode()".
+If multiple modes exist: "s_mode()".
 }
 \description{
-Compute the statistical mode.
+Calculate the statistical mode.
 }

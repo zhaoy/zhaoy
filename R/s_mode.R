@@ -1,20 +1,17 @@
-#' Statistical Mode
+#' Statistical mode
 #'
 #' @description
-#' Compute the statistical mode.
+#' Calculate the statistical mode.
 #'
 #' @usage
 #' s_mode(x)
 #'
-#' @param x an R object.
+#' @param x a vector.
 #'
 #' @return
 #' A vector.
 #'
-#' If the mode is missing-data, the result is \code{NA}.
-#'
-#' @seealso
-#' \code{\link{s_s} \link{s_unique}}
+#' If the mode is missing-data: \code{NA}.
 #'
 #' @export
 #'
@@ -23,50 +20,31 @@
 
 s_mode <- function(x) {
 
-  stopifnot(inherits(x = x,
-                     what = c("character",
-                              "integer",
-                              "logical",
-                              "numeric",
-                              "factor",
-                              "Date",
-                              "difftime",
-                              "POSIXct",
-                              "POSIXlt"),
-                     which = FALSE) == TRUE,
-            is.list(x = x) == FALSE)
+  what <- c("character",
+            "integer",
+            "logical",
+            "numeric")
 
-  ciln <- inherits(x = x,
-                   what = c("character",
-                            "integer",
-                            "logical",
-                            "numeric"),
-                   which = FALSE)
+  class_mode <- inherits(x = x,
+                         what = what,
+                         which = FALSE)
 
-  s_unique <- unique(x = x,
-                     incomparables = FALSE)
+  data <- zhaoy::s_unique(x = x)
 
-  s_table <- table(x,
-                   useNA = "ifany")
+  data <- dplyr::filter(.data = data,
+                        value != "total")
 
-  s_max <- max(s_table,
-               na.rm = FALSE)
+  data <- dplyr::filter(.data = data,
+                         n == max(n,
+                                  na.rm = FALSE))
 
-  if (length(x = s_table) == 1) {
+  s_mode <- data$value
 
-    s_mode <- s_unique
-
-  } else if (length(x = s_table) > 1) {
-
-    s_mode <- names(x = s_table)[s_table == s_max]
-
-    if (ciln == TRUE) {
+  if (class_mode == TRUE) {
 
     class(x = s_mode) <- class(x = x)
 
     mode(x = s_mode) <- mode(x = x)
-
-    }
 
   }
 

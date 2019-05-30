@@ -7,7 +7,7 @@
 #' s_cross_n(x, ...)
 #'
 #' @param x a data-frame.
-#' @param ... 2 or 3 variables. 
+#' @param ... 2 or 3 variables.
 #'
 #' @return
 #' A data-frame.
@@ -23,20 +23,20 @@
 
 s_cross_n <- function(x,
                       ...) {
-  
+
   dat <- janitor::tabyl(dat = x,
-                        ...,
                         show_na = TRUE,
-                        show_missing_levels = TRUE)
-  
+                        show_missing_levels = TRUE,
+                        ...)
+
   dat <- janitor::adorn_totals(dat = dat,
                                where = c("row",
                                          "col"),
                                fill = NA,
                                na.rm = FALSE,
                                name = "total")
-  
+
   janitor::adorn_title(dat = dat,
                        placement = "combined")
-  
+
 }

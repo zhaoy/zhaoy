@@ -27,9 +27,9 @@ s_cross_np <- function(x,
                        direction) {
 
   dat <- janitor::tabyl(dat = x,
-                        ...,
                         show_na = TRUE,
-                        show_missing_levels = TRUE)
+                        show_missing_levels = TRUE,
+                        ...)
 
   dat <- janitor::adorn_totals(dat = dat,
                                where = c("row",

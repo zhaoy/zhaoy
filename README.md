@@ -2,7 +2,7 @@ zhaoy provides functions for 5 data tasks: transfer, tidy, transform, summarize,
 
 Some advantages of zhaoy functions:
 
-- Data-transfer functions convert relative file-paths to absolute file-paths, so there's no need to 1) hard-code file-paths or 2) set working directories.
+- Data-transfer functions convert relative file-paths to absolute file-paths, so there's no need to set working directories.
 
 - First arguments are data, so functions are compatible with the [tidyverse](https://www.tidyverse.org) pipe.
 

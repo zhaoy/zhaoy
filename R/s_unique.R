@@ -42,6 +42,6 @@ s_unique <- function(x) {
 
   dat$percent <- as.numeric(x = dat$percent)
 
-  return(value = dat)
+  dat
 
 }

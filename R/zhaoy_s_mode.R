@@ -1,59 +1,44 @@
-#' Statistical Mode
+#' Statistical mode
 #'
 #' @description
-#' Compute the statistical mode.
+#' Calculate the statistical mode.
 #'
 #' @usage
 #' zhaoy_s_mode(x)
 #'
-#' @param x an R object.
+#' @param x a vector.
 #'
 #' @return
 #' A length-one vector.
 #'
-#' If the mode is missing-data, the result is \code{NA}.
+#' If the mode is missing-data: \code{NA}.
 #'
-#' If multiple modes exist, the result is "s_mode()".
+#' If multiple modes exist: "s_mode()".
+#'
+#' @importFrom dplyr filter
 
 zhaoy_s_mode <- function(x) {
 
-  stopifnot(inherits(x = x,
-                     what = c("character",
-                              "integer",
-                              "logical",
-                              "numeric",
-                              "factor",
-                              "Date",
-                              "difftime",
-                              "POSIXct",
-                              "POSIXlt"),
-                     which = FALSE) == TRUE,
-            is.list(x = x) == FALSE)
+  data <- zhaoy::s_unique(x = x)
 
-  s_unique <- unique(x = x,
-                     incomparables = FALSE)
+  data <- dplyr::filter(.data = data,
+                        value != "total")
 
-  s_table <- table(x,
-                   useNA = "ifany")
+  data <- dplyr::filter(.data = data,
+                         n == max(n,
+                                  na.rm = FALSE))
 
-  s_max <- max(s_table,
-               na.rm = FALSE)
+  x <- data$value
 
-  if (length(x = s_table) == 1) {
+  if (length(x = x) == 1) {
 
-    s_mode <- s_unique
+    s_mode <- x
 
-  } else if (length(x = s_table) > 1) {
+  } else if (length(x = x) > 1) {
 
-    s_mode <- names(x = s_table)[s_table == s_max]
-
-    if (length(x = s_mode) > 1) {
-
-      s_mode <- "s_mode()"
+    s_mode <- "s_mode()"
 
     }
-
-  }
 
   s_mode
 

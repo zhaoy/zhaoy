@@ -2,24 +2,21 @@
 % Please edit documentation in R/s_mode.R
 \name{s_mode}
 \alias{s_mode}
-\title{Statistical Mode}
+\title{Statistical mode}
 \usage{
 s_mode(x)
 }
 \arguments{
-\item{x}{an R object.}
+\item{x}{a vector.}
 }
 \value{
 A vector.
 
-If the mode is missing-data, the result is \code{NA}.
+If the mode is missing-data: \code{NA}.
 }
 \description{
-Compute the statistical mode.
+Calculate the statistical mode.
 }
 \examples{
 zhaoy::s_mode(x = attenu$dist)
-}
-\seealso{
-\code{\link{s_s} \link{s_unique}}
 }
