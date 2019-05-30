@@ -36,6 +36,8 @@ R-specific binary files: `import_rds` and `export_rds`
 
 `s_mode`
 
+`s_pub`
+
 `s_s`
 
 `s_unique`

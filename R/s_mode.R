@@ -12,6 +12,8 @@
 #' A vector.
 #'
 #' If the mode is missing-data: \code{NA}.
+#' 
+#' @importFrom dplyr filter
 #'
 #' @export
 #'
@@ -32,11 +34,12 @@ s_mode <- function(x) {
   data <- zhaoy::s_unique(x = x)
 
   data <- dplyr::filter(.data = data,
+                        is.na(x = value) == TRUE |
                         value != "total")
 
   data <- dplyr::filter(.data = data,
-                         n == max(n,
-                                  na.rm = FALSE))
+                        n == max(n,
+                                 na.rm = FALSE))
 
   s_mode <- data$value
 
