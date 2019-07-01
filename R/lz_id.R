@@ -1,4 +1,4 @@
-#' Leading Zeros in Medical Record Numbers (MRNs)
+#' @title Leading Zeros in Medical Record Numbers (MRNs)
 #'
 #' @description
 #' Include or exclude leading zeros in MRNs.
@@ -8,8 +8,8 @@
 #' @usage
 #' lz_id(x, lz)
 #'
-#' @param x a vector.
-#' @param lz logical: TRUE includes, and FALSE excludes, leading zeros.
+#' @param x A vector.
+#' @param lz Logical: TRUE includes, and FALSE excludes, leading zeros.
 #'
 #' @return
 #' A character vector.
@@ -36,13 +36,13 @@ lz_id <- function(x,
   if (lz == TRUE) {
 
     purrr::map_chr(.x = x,
-                   .f = zhaoy_lz_id,
+                   .f = internal_lz_id,
                    lz = TRUE)
 
   } else if (lz == FALSE) {
 
     purrr::map_chr(.x = x,
-                   .f = zhaoy_lz_id,
+                   .f = internal_lz_id,
                    lz = FALSE)
 
   }

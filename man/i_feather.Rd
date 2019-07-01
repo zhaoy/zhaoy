@@ -7,9 +7,9 @@
 i_feather(folder, path)
 }
 \arguments{
-\item{folder}{a folder above 1) the Feather file and 2) the R file.}
+\item{folder}{A folder above 1) the Feather file and 2) the R file.}
 
-\item{path}{relative to \code{folder}, path to the Feather file.}
+\item{path}{Relative to \code{folder}, path to the Feather file.}
 }
 \value{
 A data-frame.

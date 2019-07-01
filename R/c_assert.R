@@ -1,4 +1,4 @@
-#' Check assertions about data.
+#' @title Check assertions about data
 #'
 #' @description
 #' Check assertions about data.

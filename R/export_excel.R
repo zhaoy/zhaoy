@@ -1,4 +1,4 @@
-#' Export data-frames as Microsoft Excel files.
+#' @title Export data-frames as Microsoft Excel files
 #'
 #' @description
 #' Export data-frames as Microsoft Excel files.
@@ -8,9 +8,9 @@
 #' @usage
 #' export_excel(x, dirname, rpath)
 #'
-#' @param x a data-frame, or named list of data-frames that will be sheets in the Excel file.
-#' @param dirname a directory above 1) the Excel file and 2) the R file.
-#' @param rpath relative to \code{dirname}, path to the Excel file.
+#' @param x A data-frame, or named list of data-frames that will be sheets in the Excel file.
+#' @param dirname A directory above 1) the Excel file and 2) the R file.
+#' @param rpath Relative to \code{dirname}, path to the Excel file.
 #'
 #' @seealso
 #' \code{\link{import_excel}}
@@ -23,8 +23,8 @@ export_excel <- function(x,
                          dirname,
                          rpath) {
 
-  path <- zhaoy::file_path(dirname = dirname,
-                           rpath = rpath)
+  path <- zhaoy::path(dirname = dirname,
+                      rpath = rpath)
 
   writexl::write_xlsx(x = x,
                       path = path,

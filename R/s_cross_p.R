@@ -1,4 +1,4 @@
-#' 2- or 3-way frequency tables of percents
+#' @title 2- or 3-way frequency tables of percents
 #'
 #' @description
 #' Cross-tabulate percents of unique values, including missing-data, in 2 or 3 variables.
@@ -6,9 +6,9 @@
 #' @usage
 #' s_cross_p(x, ..., direction)
 #'
-#' @param x a data-frame.
+#' @param x A data-frame.
 #' @param ... 2 or 3 variables.
-#' @param direction direction in which to calculate percents: "row", "col", or "all".
+#' @param direction Direction in which to calculate percents: "row", "col", or "all".
 #'
 #' @return
 #' A data-frame.

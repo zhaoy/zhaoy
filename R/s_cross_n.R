@@ -1,4 +1,4 @@
-#' 2- or 3-way frequency tables of counts
+#' @title 2- or 3-way frequency tables of counts
 #'
 #' @description
 #' Cross-tabulate counts of unique values, including missing-data, in 2 or 3 variables.
@@ -6,7 +6,7 @@
 #' @usage
 #' s_cross_n(x, ...)
 #'
-#' @param x a data-frame.
+#' @param x A data-frame.
 #' @param ... 2 or 3 variables.
 #'
 #' @return

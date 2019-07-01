@@ -1,4 +1,4 @@
-#' Frequency of unique values
+#' @title Frequency of unique values
 #'
 #' @description
 #' Tabulate counts and percents of unique values, including missing-data, in vectors.
@@ -6,7 +6,7 @@
 #' @usage
 #' s_unique(x)
 #'
-#' @param x a vector.
+#' @param x A vector.
 #'
 #' @return
 #' A data-frame.

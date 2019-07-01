@@ -7,9 +7,9 @@
 lz_id(x, lz)
 }
 \arguments{
-\item{x}{a vector.}
+\item{x}{A vector.}
 
-\item{lz}{logical: TRUE includes, and FALSE excludes, leading zeros.}
+\item{lz}{Logical: TRUE includes, and FALSE excludes, leading zeros.}
 }
 \value{
 A character vector.

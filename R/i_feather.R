@@ -1,4 +1,4 @@
-#' Import Feather files
+#' @title Import Feather files
 #'
 #' @description
 #' Import Feather files.
@@ -8,8 +8,8 @@
 #' @usage
 #' i_feather(folder, path)
 #'
-#' @param folder a folder above 1) the Feather file and 2) the R file.
-#' @param path relative to \code{folder}, path to the Feather file.
+#' @param folder A folder above 1) the Feather file and 2) the R file.
+#' @param path Relative to \code{folder}, path to the Feather file.
 #'
 #' @return
 #' A data-frame.
@@ -21,8 +21,8 @@
 i_feather <- function(folder,
                       path) {
 
-  path <- zhaoy::file_path(dirname = folder,
-                           rpath = path)
+  path <- zhaoy::path(dirname = folder,
+                      rpath = path)
 
   x <- feather::read_feather(path = path)
 

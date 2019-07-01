@@ -7,13 +7,13 @@
 i_excel(folder, path, sheet = NULL, range = NULL)
 }
 \arguments{
-\item{folder}{a folder above 1) the Excel file and 2) the R file.}
+\item{folder}{A folder above 1) the Excel file and 2) the R file.}
 
-\item{path}{relative to \code{folder}, path to the Excel file.}
+\item{path}{Relative to \code{folder}, path to the Excel file.}
 
-\item{sheet}{optional: a sheet to import.}
+\item{sheet}{Optional: a sheet to import.}
 
-\item{range}{optional: a cell range to import.}
+\item{range}{Optional: a cell range to import.}
 }
 \value{
 A data-frame.

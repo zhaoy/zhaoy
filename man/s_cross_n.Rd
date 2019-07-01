@@ -7,7 +7,7 @@
 s_cross_n(x, ...)
 }
 \arguments{
-\item{x}{a data-frame.}
+\item{x}{A data-frame.}
 
 \item{...}{2 or 3 variables.}
 }

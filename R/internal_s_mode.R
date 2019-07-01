@@ -4,9 +4,9 @@
 #' Calculate the statistical mode.
 #'
 #' @usage
-#' zhaoy_s_mode(x)
+#' internal_s_mode(x)
 #'
-#' @param x a vector.
+#' @param x A vector.
 #'
 #' @return
 #' A length-one vector.
@@ -16,8 +16,10 @@
 #' If multiple modes exist: "s_mode()".
 #'
 #' @importFrom dplyr filter
+#' 
+#' @noRd
 
-zhaoy_s_mode <- function(x) {
+internal_s_mode <- function(x) {
 
   data <- zhaoy::s_unique(x = x)
 

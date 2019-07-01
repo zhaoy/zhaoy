@@ -1,4 +1,4 @@
-#' Import Microsoft Excel files
+#' @title Import Microsoft Excel files
 #'
 #' @description
 #' Import Microsoft Excel files.
@@ -8,10 +8,10 @@
 #' @usage
 #' import_excel(dirname, rpath, sheet = NULL, range = NULL)
 #'
-#' @param dirname a directory above 1) the Excel file and 2) the R file.
-#' @param rpath relative to \code{dirname}, path to the Excel file.
-#' @param sheet optional: a sheet to import.
-#' @param range optional: a cell range to import.
+#' @param dirname A directory above 1) the Excel file and 2) the R file.
+#' @param rpath Relative to \code{dirname}, path to the Excel file.
+#' @param sheet Optional: a sheet to import.
+#' @param range Optional: a cell range to import.
 #'
 #' @return
 #' A tibble.
@@ -28,8 +28,8 @@ import_excel <- function(dirname,
                          sheet = NULL,
                          range = NULL) {
 
-  path <- zhaoy::file_path(dirname = dirname,
-                           rpath = rpath)
+  path <- zhaoy::path(dirname = dirname,
+                      rpath = rpath)
 
   x <- readxl::read_excel(path = path,
                           sheet = sheet,

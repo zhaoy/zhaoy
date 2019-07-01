@@ -1,4 +1,4 @@
-#' Summary Statistics
+#' @title Summary Statistics
 #'
 #' @description
 #' Tabulate summary statistics.
@@ -6,7 +6,7 @@
 #' @usage
 #' s_s(x)
 #'
-#' @param x an R object.
+#' @param x An R object.
 #'
 #' @return
 #' A tibble.
@@ -76,31 +76,31 @@ s_s <- function(x) {
   pct_unique <- n_unique / nrow(x = x) * 100
 
   min <- purrr::map(.x = x,
-                    .f = zhaoy_s_s,
+                    .f = internal_s_s,
                     s = "min")
 
   min <- purrr::map_chr(.x = min,
                         .f = as.character)
 
   max <- purrr::map(.x = x,
-                    .f = zhaoy_s_s,
+                    .f = internal_s_s,
                     s = "max")
 
   max <- purrr::map_chr(.x = max,
                         .f = as.character)
 
   median <- purrr::map_dbl(.x = x,
-                           .f = zhaoy_s_s,
+                           .f = internal_s_s,
                            s = "median")
 
   mode <- purrr::map(.x = x,
-                     .f = zhaoy_s_mode)
+                     .f = internal_s_mode)
 
   mode <- purrr::map_chr(.x = mode,
                          .f = as.character)
 
   mean <- purrr::map_dbl(.x = x,
-                         .f = zhaoy_s_s,
+                         .f = internal_s_s,
                          s = "mean")
 
   s_s <- tibble::tibble(var,

@@ -2,7 +2,7 @@
 % Please edit documentation in R/c_assert.R
 \name{c_assert}
 \alias{c_assert}
-\title{Check assertions about data.}
+\title{Check assertions about data}
 \usage{
 c_assert(data, predicate, source, ...)
 }

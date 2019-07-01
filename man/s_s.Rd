@@ -7,7 +7,7 @@
 s_s(x)
 }
 \arguments{
-\item{x}{an R object.}
+\item{x}{An R object.}
 }
 \value{
 A tibble.

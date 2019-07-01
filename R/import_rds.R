@@ -1,4 +1,4 @@
-#' Import rds files
+#' @title Import rds files
 #'
 #' @description
 #' Import rds files.
@@ -8,8 +8,8 @@
 #' @usage
 #' import_rds(dirname, rpath)
 #'
-#' @param dirname a directory above 1) the rds file and 2) the R file.
-#' @param rpath relative to \code{dirname}, path to the rds file.
+#' @param dirname A directory above 1) the rds file and 2) the R file.
+#' @param rpath Relative to \code{dirname}, path to the rds file.
 #'
 #' @return
 #' A tibble.
@@ -24,8 +24,8 @@
 import_rds <- function(dirname,
                        rpath) {
 
-  path <- zhaoy::file_path(dirname = dirname,
-                           rpath = rpath)
+  path <- zhaoy::path(dirname = dirname,
+                      rpath = rpath)
 
   x <- readr::read_rds(path = path)
 

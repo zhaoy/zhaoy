@@ -7,9 +7,9 @@
 import_feather(dirname, rpath)
 }
 \arguments{
-\item{dirname}{a directory above 1) the Feather file and 2) the R file.}
+\item{dirname}{A directory above 1) the Feather file and 2) the R file.}
 
-\item{rpath}{relative to \code{dirname}, path to the Feather file.}
+\item{rpath}{Relative to \code{dirname}, path to the Feather file.}
 }
 \value{
 A tibble.

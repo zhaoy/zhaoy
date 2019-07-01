@@ -1,4 +1,4 @@
-#' Convert upper-case English characters to lower-case
+#' @title Convert upper-case English characters to lower-case
 #'
 #' @description
 #' Convert upper-case English characters to lower-case.
@@ -6,7 +6,7 @@
 #' @usage
 #' lc_df(x)
 #'
-#' @param x a data-frame.
+#' @param x A data-frame.
 #'
 #' @return
 #' A tibble.
@@ -27,6 +27,6 @@ lc_df <- function(x) {
   names(x = x) <- tolower(x = names(x = x))
 
   purrr::map_dfc(.x = x,
-                 .f = zhaoy_lc_df)
+                 .f = internal_lc_df)
 
 }

@@ -7,11 +7,11 @@
 s_cross_np(x, ..., direction)
 }
 \arguments{
-\item{x}{a data-frame.}
+\item{x}{A data-frame.}
 
 \item{...}{2 or 3 variables.}
 
-\item{direction}{direction in which to calculate percents: "row", "col", or "all".}
+\item{direction}{Direction in which to calculate percents: "row", "col", or "all".}
 }
 \value{
 A data-frame.

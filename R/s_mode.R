@@ -1,4 +1,4 @@
-#' Statistical mode
+#' @title Statistical mode
 #'
 #' @description
 #' Calculate the statistical mode.
@@ -6,7 +6,7 @@
 #' @usage
 #' s_mode(x)
 #'
-#' @param x a vector.
+#' @param x A vector.
 #'
 #' @return
 #' A vector.

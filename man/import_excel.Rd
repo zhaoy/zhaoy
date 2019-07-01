@@ -7,13 +7,13 @@
 import_excel(dirname, rpath, sheet = NULL, range = NULL)
 }
 \arguments{
-\item{dirname}{a directory above 1) the Excel file and 2) the R file.}
+\item{dirname}{A directory above 1) the Excel file and 2) the R file.}
 
-\item{rpath}{relative to \code{dirname}, path to the Excel file.}
+\item{rpath}{Relative to \code{dirname}, path to the Excel file.}
 
-\item{sheet}{optional: a sheet to import.}
+\item{sheet}{Optional: a sheet to import.}
 
-\item{range}{optional: a cell range to import.}
+\item{range}{Optional: a cell range to import.}
 }
 \value{
 A tibble.

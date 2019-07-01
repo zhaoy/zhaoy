@@ -2,16 +2,16 @@
 % Please edit documentation in R/export_rds.R
 \name{export_rds}
 \alias{export_rds}
-\title{Export data-frames as rds files.}
+\title{Export data-frames as rds files}
 \usage{
 export_rds(x, dirname, rpath)
 }
 \arguments{
-\item{x}{a data-frame.}
+\item{x}{A data-frame.}
 
-\item{dirname}{a directory above 1) the rds file and 2) the R file.}
+\item{dirname}{A directory above 1) the rds file and 2) the R file.}
 
-\item{rpath}{relative to \code{dirname}, path to the rds file.}
+\item{rpath}{Relative to \code{dirname}, path to the rds file.}
 }
 \description{
 Export data-frames as rds files.

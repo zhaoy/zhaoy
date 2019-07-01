@@ -7,7 +7,7 @@
 lc_df(x)
 }
 \arguments{
-\item{x}{a data-frame.}
+\item{x}{A data-frame.}
 }
 \value{
 A tibble.

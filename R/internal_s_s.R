@@ -4,10 +4,10 @@
 #' Compute the minimum, maximum, median, or mean.
 #'
 #' @usage
-#' zhaoy_s_s(x, s)
+#' internal_s_s(x, s)
 #'
-#' @param x an R object.
-#' @param s a statistic.
+#' @param x An R object.
+#' @param s A statistic.
 #'
 #' @return
 #' A length-one vector.
@@ -22,9 +22,11 @@
 #' not a numeric or date / date-time object.
 #'
 #' @importFrom stats median
+#' 
+#' @noRd
 
-zhaoy_s_s <- function(x,
-                      s) {
+internal_s_s <- function(x,
+                         s) {
 
   stopifnot(inherits(x = x,
                      what = c("character",

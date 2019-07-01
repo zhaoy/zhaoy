@@ -2,16 +2,16 @@
 % Please edit documentation in R/export_feather.R
 \name{export_feather}
 \alias{export_feather}
-\title{Export data-frames as Feather files.}
+\title{Export data-frames as Feather files}
 \usage{
 export_feather(x, dirname, rpath)
 }
 \arguments{
-\item{x}{a data-frame.}
+\item{x}{A data-frame.}
 
-\item{dirname}{a directory above 1) the Feather file and 2) the R file.}
+\item{dirname}{A directory above 1) the Feather file and 2) the R file.}
 
-\item{rpath}{relative to \code{dirname}, path to the Feather file.}
+\item{rpath}{Relative to \code{dirname}, path to the Feather file.}
 }
 \description{
 Export data-frames as Feather files.

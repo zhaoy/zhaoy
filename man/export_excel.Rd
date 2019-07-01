@@ -2,16 +2,16 @@
 % Please edit documentation in R/export_excel.R
 \name{export_excel}
 \alias{export_excel}
-\title{Export data-frames as Microsoft Excel files.}
+\title{Export data-frames as Microsoft Excel files}
 \usage{
 export_excel(x, dirname, rpath)
 }
 \arguments{
-\item{x}{a data-frame, or named list of data-frames that will be sheets in the Excel file.}
+\item{x}{A data-frame, or named list of data-frames that will be sheets in the Excel file.}
 
-\item{dirname}{a directory above 1) the Excel file and 2) the R file.}
+\item{dirname}{A directory above 1) the Excel file and 2) the R file.}
 
-\item{rpath}{relative to \code{dirname}, path to the Excel file.}
+\item{rpath}{Relative to \code{dirname}, path to the Excel file.}
 }
 \description{
 Export data-frames as Microsoft Excel files.

@@ -7,7 +7,7 @@
 tidy_lab_pe(x)
 }
 \arguments{
-\item{x}{a data-frame.}
+\item{x}{A data-frame.}
 }
 \value{
 A tibble.

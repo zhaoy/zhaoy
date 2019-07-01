@@ -7,7 +7,7 @@
 s_unique(x)
 }
 \arguments{
-\item{x}{a vector.}
+\item{x}{A vector.}
 }
 \value{
 A data-frame.

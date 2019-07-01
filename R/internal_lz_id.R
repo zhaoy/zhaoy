@@ -6,16 +6,18 @@
 #' MRNs have 0-8 leading zeros and 1-8 positive integers.
 #'
 #' @usage
-#' zhaoy_lz_id(x, lz)
+#' internal_lz_id(x, lz)
 #'
-#' @param x a length-one vector.
-#' @param lz logical: TRUE includes, and FALSE excludes, leading zeros.
+#' @param x A length-one vector.
+#' @param lz Logical: TRUE includes, and FALSE excludes, leading zeros.
 #'
 #' @return
 #' A length-one character vector.
+#' 
+#' @noRd
 
-zhaoy_lz_id <- function(x,
-                        lz) {
+internal_lz_id <- function(x,
+                           lz) {
 
   stopifnot(inherits(x = x,
                      what = c("character",

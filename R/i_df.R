@@ -1,4 +1,4 @@
-#' Convert upper-case English characters to lower-case
+#' @title Convert upper-case English characters to lower-case
 #'
 #' @description
 #' Convert upper-case English characters to lower-case.
@@ -6,7 +6,7 @@
 #' @usage
 #' i_df(x)
 #'
-#' @param x a data-frame.
+#' @param x A data-frame.
 #'
 #' @return
 #' A data-frame.
@@ -24,7 +24,7 @@ i_df <- function(x) {
   names(x = x) <- tolower(x = names(x = x))
 
   x <- purrr::map(.x = x,
-                  .f = zhaoy_lc_df)
+                  .f = internal_lc_df)
 
   data.frame(x,
              row.names = NULL,

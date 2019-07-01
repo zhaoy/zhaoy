@@ -7,7 +7,7 @@
 s_mode(x)
 }
 \arguments{
-\item{x}{a vector.}
+\item{x}{A vector.}
 }
 \value{
 A vector.

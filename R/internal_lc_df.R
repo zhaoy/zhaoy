@@ -4,14 +4,16 @@
 #' Convert upper-case English characters to lower-case.
 #'
 #' @usage
-#' zhaoy_lc_df(x)
+#' internal_lc_df(x)
 #'
-#' @param x a vector.
+#' @param x A vector.
 #'
 #' @return
 #' A vector of the same length as \code{x}.
+#' 
+#' @noRd
 
-zhaoy_lc_df <- function(x) {
+internal_lc_df <- function(x) {
 
   if (is.character(x = x) == TRUE) {
 

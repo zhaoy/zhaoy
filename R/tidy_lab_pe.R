@@ -6,7 +6,7 @@
 #' @usage
 #' tidy_lab_pe(x)
 #'
-#' @param x a data-frame.
+#' @param x A data-frame.
 #'
 #' @return
 #' A tibble.
