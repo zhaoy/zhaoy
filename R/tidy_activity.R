@@ -43,10 +43,10 @@ tidy_activity <- function(x) {
                             x_3,
                             x_5)
   
-  # activity_provider
+  # activity_personnel
   
   activity <- dplyr::mutate(.data = activity,
-                            activity_provider = dplyr::case_when(grepl(pattern = "provider:",
+                            activity_personnel = dplyr::case_when(grepl(pattern = "provider:",
                                                                        x = activity$x_1,
                                                                        ignore.case = TRUE,
                                                                        fixed = FALSE) == TRUE ~
@@ -57,26 +57,26 @@ tidy_activity <- function(x) {
                                                                        fixed = FALSE) == FALSE ~
                                                                  NA_character_))
   
-  activity$activity_provider[is.na(x = activity$activity_provider) == FALSE] <- activity$activity_provider %>%
-    subset(subset = is.na(x = activity$activity_provider) == FALSE) %>%
+  activity$activity_personnel[is.na(x = activity$activity_personnel) == FALSE] <- activity$activity_personnel %>%
+    subset(subset = is.na(x = activity$activity_personnel) == FALSE) %>%
     strsplit(split = ":\\s{2}",
              fixed = FALSE) %>%
     purrr::map_chr(.f = 2)
   
-  activity$activity_provider <- gsub(pattern = "\\s{2,}",
-                                     replacement = " ",
-                                     x = activity$activity_provider,
-                                     ignore.case = TRUE,
-                                     fixed = FALSE)
+  activity$activity_personnel <- gsub(pattern = "\\s{2,}",
+                                      replacement = " ",
+                                      x = activity$activity_personnel,
+                                      ignore.case = TRUE,
+                                      fixed = FALSE)
   
-  activity$activity_provider <- gsub(pattern = "/musc/scgov",
-                                     replacement = "",
-                                     x = activity$activity_provider,
-                                     ignore.case = TRUE,
-                                     fixed = FALSE)
+  activity$activity_personnel <- gsub(pattern = "/musc/scgov",
+                                      replacement = "",
+                                      x = activity$activity_personnel,
+                                      ignore.case = TRUE,
+                                      fixed = FALSE)
   
   activity <- tidyr::fill(data = activity,
-                          activity_provider,
+                          activity_personnel,
                           .direction = "down")
   
   activity <- dplyr::filter(.data = activity,
@@ -99,26 +99,14 @@ tidy_activity <- function(x) {
   activity$mrn <- zhaoy::lz_id(x = activity$mrn,
                                lz = TRUE)
   
-  # pp_ship
-  
-  activity$pp_ship <- dplyr::case_when(activity$x_2 == "client id:" ~
-                                       activity$x_5,
-                                       activity$x_2 != "client id:" ~
-                                       NA_character_)
-  
-  activity <- tidyr::fill(data = activity,
-                          pp_ship,
-                          .direction = "down")
-  
   activity <- dplyr::filter(.data = activity,
                             x_2 != "client id:")
   
   activity <- dplyr::select(.data = activity,
                             x_1,
                             x_2,
-                            activity_provider,
-                            mrn,
-                            pp_ship)
+                            activity_personnel,
+                            mrn)
   
   # activity_type
   
@@ -150,8 +138,7 @@ tidy_activity <- function(x) {
   
   dplyr::select(.data = activity,
                 mrn,
-                activity_provider,
-                pp_ship,
+                activity_personnel,
                 activity_date = x_2,
                 activity_type,
                 activity_descr = x_1)

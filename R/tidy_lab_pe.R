@@ -69,7 +69,7 @@ tidy_lab_pe <- function(x) {
 
 # name
 
-  names(x = lab_pe)[names(x = lab_pe) == "x_1"] <- "name"
+  names(x = lab_pe)[names(x = lab_pe) == "x_1"] <- "lab_descr"
 
 # result_date
 
@@ -92,7 +92,7 @@ tidy_lab_pe <- function(x) {
 
   dplyr::select(.data = lab_pe,
                 mrn,
-                name,
+                lab_descr,
                 result_date,
                 result_modifier,
                 result_value)
