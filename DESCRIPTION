@@ -1,7 +1,7 @@
 Package: zhaoy
 Title: Miscellaneous Functions
 Description: Transfer, tidy, transform, summarize, and check data.
-Date: 2019-5-14
+Date: 2020-1-12
 Version: 1.0.0
 Depends: R (>= 3.6.0)
 Imports: assertr, compareGroups, dplyr, feather, fs, janitor, lubridate, purrr, readr, readxl, rprojroot, stats, tibble, tidyr, writexl
