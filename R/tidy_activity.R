@@ -1,7 +1,7 @@
 #' Tidy Provide Enterprise activity data.
 #'
 #' @description
-#' Tidy the Provide Enterprise "Activity Summary by Provider by Client by Date" report.
+#' Tidy the Provide Enterprise "Activity Summary By Provider by Client by Date" report.
 #'
 #' @usage
 #' tidy_activity(x)
@@ -141,6 +141,6 @@ tidy_activity <- function(x) {
                 activity_personnel,
                 activity_date = x_2,
                 activity_type,
-                activity_descr = x_1)
+                activity_description = x_1)
 
 }

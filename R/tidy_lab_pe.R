@@ -1,7 +1,7 @@
 #' Tidy Provide Enterprise laboratory data.
 #'
 #' @description
-#' Tidy the Provide Enterprise "Test Results by Client with ID" report.
+#' Tidy the Provide Enterprise "Test Results by Client With ID" report.
 #'
 #' @usage
 #' tidy_lab_pe(x)
@@ -34,7 +34,7 @@ tidy_lab_pe <- function(x) {
                                 x = lab_pe$x_1,
                                 fixed = TRUE) == FALSE)
 
-# mrn
+  # mrn
 
   lab_pe$mrn <- dplyr::case_when(grepl(pattern = "client id:",
                                        x = lab_pe$x_2,
@@ -67,11 +67,11 @@ tidy_lab_pe <- function(x) {
                                 x = lab_pe$x_2,
                                 fixed = TRUE) == FALSE)
 
-# name
+  # name
 
-  names(x = lab_pe)[names(x = lab_pe) == "x_1"] <- "lab_descr"
+  names(x = lab_pe)[names(x = lab_pe) == "x_1"] <- "lab_description"
 
-# result_date
+  # result_date
 
   lab_pe$x_2 <- as.numeric(x = lab_pe$x_2)
 
@@ -82,17 +82,17 @@ tidy_lab_pe <- function(x) {
 
   names(x = lab_pe)[names(x = lab_pe) == "x_2"] <- "result_date"
 
-# result_modifier
+  # result_modifier
 
   names(x = lab_pe)[names(x = lab_pe) == "x_3"] <- "result_modifier"
 
-# result_value
+  # result_value
 
   names(x = lab_pe)[names(x = lab_pe) == "x_4"] <- "result_value"
 
   dplyr::select(.data = lab_pe,
                 mrn,
-                lab_descr,
+                lab_description,
                 result_date,
                 result_modifier,
                 result_value)

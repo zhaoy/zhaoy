@@ -20,9 +20,13 @@ R-specific binary files: `import_rds` and `export_rds`
 
 # tidy
 
-`tidy_activity`: tidy the Provide Enterprise "Activity Summary by Provider by Client by Date" report
+`tidy_activity`: Provide Enterprise (PE) "Activity Summary By Provider by Client by Date" report
 
-`tidy_lab_pe`: tidy the Provide Enterprise "Test Results by Client with ID" report
+`tidy_adap`: Provide Enterprise (PE) "Clients - View ADAP Clients by Recertification Date" report
+
+`tidy_lab_pe`: Provide Enterprise (PE) "Test Results by Client With ID" report
+
+`tidy_provider_relationship`: Provide Enterprise (PE) "Test Results by Client With ID" report
 
 # transform
 
