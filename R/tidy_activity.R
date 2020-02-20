@@ -138,8 +138,8 @@ tidy_activity <- function(x) {
   
   dplyr::select(.data = activity,
                 mrn,
-                activity_personnel,
                 activity_date = x_2,
+                activity_personnel,
                 activity_type,
                 activity_description = x_1)
 

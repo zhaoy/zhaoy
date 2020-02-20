@@ -92,8 +92,8 @@ tidy_lab_pe <- function(x) {
 
   dplyr::select(.data = lab_pe,
                 mrn,
-                lab_description,
                 result_date,
+                lab_description,
                 result_modifier,
                 result_value)
 
