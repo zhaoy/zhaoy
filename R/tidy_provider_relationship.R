@@ -52,26 +52,26 @@ tidy_provider_relationship <- function(x) {
                  fixed = FALSE) == TRUE) %>%
     zhaoy::lz_id(lz = TRUE)
   
-  # Create the "primary_provider_name" variable.
+  # Create the "provider_name" variable.
   
   x <- dplyr::mutate(.data = x,
-                     primary_provider_name = NA)
+                     provider_name = NA)
   
-  x$primary_provider_name[is.na(x = x$mrn) == FALSE &
-                          grepl(pattern = "[a-z]+",
-                                x = x$mrn,
-                                ignore.case = TRUE,
-                                fixed = FALSE) == TRUE] <- x$mrn %>%
+  x$provider_name[is.na(x = x$mrn) == FALSE &
+                  grepl(pattern = "[a-z]+",
+                        x = x$mrn,
+                        ignore.case = TRUE,
+                        fixed = FALSE) == TRUE] <- x$mrn %>%
     subset(subset = is.na(x = x$mrn) == FALSE &
            grepl(pattern = "[a-z]+",
                  x = x$mrn,
                  ignore.case = TRUE,
                  fixed = FALSE) == TRUE)
   
-  # In the "primary_provider_name" variable, fill in missing data.
+  # In the "provider_name" variable, fill in missing data.
   
   x <- tidyr::fill(data = x,
-                   primary_provider_name,
+                   provider_name,
                    .direction = "down")
   
   # In the "admin" variable, include only "open" data.
@@ -83,6 +83,6 @@ tidy_provider_relationship <- function(x) {
   
   dplyr::select(.data = x,
                 mrn,
-                primary_provider_name)
+                provider_name)
   
 }

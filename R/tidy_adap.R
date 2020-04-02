@@ -85,7 +85,7 @@ tidy_adap <- function(x) {
   
   dplyr::select(.data = x,
                 adap_id,
-                recert_date,
+                adap_recert_date = recert_date,
                 adap_type)
 
 }
