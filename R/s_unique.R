@@ -29,9 +29,11 @@ s_unique <- function(x) {
                         show_na = TRUE,
                         show_missing_levels = TRUE)
 
+  dat$value <- as.character(x = dat$value)
+  
   dat <- janitor::adorn_totals(dat = dat,
                                where = "row",
-                               fill = NA,
+                               fill = NA_character_,
                                na.rm = FALSE,
                                name = "total")
 

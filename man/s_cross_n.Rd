@@ -17,9 +17,6 @@ A data-frame.
 \description{
 Cross-tabulate counts of unique values, including missing-data, in 2 or 3 variables.
 }
-\examples{
-zhaoy::s_cross_n(x = attenu, event, mag)
-}
 \seealso{
 \code{\link{s_cross_p} \link{s_cross_np}}
 }

@@ -19,9 +19,6 @@ A data-frame.
 \description{
 Cross-tabulate percents of unique values, including missing-data, in 2 or 3 variables.
 }
-\examples{
-zhaoy::s_cross_p(x = attenu, event, mag, direction = "col")
-}
 \seealso{
 \code{\link{s_cross_n} \link{s_cross_np}}
 }

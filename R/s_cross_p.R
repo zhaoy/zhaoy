@@ -20,7 +20,6 @@
 #' @export
 #'
 #' @examples
-#' zhaoy::s_cross_p(x = attenu, event, mag, direction = "col")
 
 s_cross_p <- function(x,
                       ...,

@@ -19,7 +19,6 @@
 #' @export
 #'
 #' @examples
-#' zhaoy::s_cross_n(x = attenu, event, mag)
 
 s_cross_n <- function(x,
                       ...) {
