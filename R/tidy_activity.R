@@ -43,40 +43,40 @@ tidy_activity <- function(x) {
                             x_3,
                             x_5)
   
-  # activity_personnel
+  # activity_person
   
   activity <- dplyr::mutate(.data = activity,
-                            activity_personnel = dplyr::case_when(grepl(pattern = "provider:",
-                                                                       x = activity$x_1,
-                                                                       ignore.case = TRUE,
-                                                                       fixed = FALSE) == TRUE ~
-                                                                 activity$x_1,
-                                                                 grepl(pattern = "provider:",
-                                                                       x = activity$x_1,
-                                                                       ignore.case = TRUE,
-                                                                       fixed = FALSE) == FALSE ~
-                                                                 NA_character_))
+                            activity_person = dplyr::case_when(grepl(pattern = "provider:",
+                                                                     x = activity$x_1,
+                                                                     ignore.case = TRUE,
+                                                                     fixed = FALSE) == TRUE ~
+                                                               activity$x_1,
+                                                               grepl(pattern = "provider:",
+                                                                     x = activity$x_1,
+                                                                     ignore.case = TRUE,
+                                                                     fixed = FALSE) == FALSE ~
+                                                               NA_character_))
   
-  activity$activity_personnel[is.na(x = activity$activity_personnel) == FALSE] <- activity$activity_personnel %>%
-    subset(subset = is.na(x = activity$activity_personnel) == FALSE) %>%
+  activity$activity_person[is.na(x = activity$activity_person) == FALSE] <- activity$activity_person %>%
+    subset(subset = is.na(x = activity$activity_person) == FALSE) %>%
     strsplit(split = ":\\s{2}",
              fixed = FALSE) %>%
     purrr::map_chr(.f = 2)
   
-  activity$activity_personnel <- gsub(pattern = "\\s{2,}",
-                                      replacement = " ",
-                                      x = activity$activity_personnel,
-                                      ignore.case = TRUE,
-                                      fixed = FALSE)
+  activity$activity_person <- gsub(pattern = "\\s{2,}",
+                                   replacement = " ",
+                                   x = activity$activity_person,
+                                   ignore.case = TRUE,
+                                   fixed = FALSE)
   
-  activity$activity_personnel <- gsub(pattern = "/musc/scgov",
-                                      replacement = "",
-                                      x = activity$activity_personnel,
-                                      ignore.case = TRUE,
-                                      fixed = FALSE)
+  activity$activity_person <- gsub(pattern = "/musc/scgov",
+                                   replacement = "",
+                                   x = activity$activity_person,
+                                   ignore.case = TRUE,
+                                   fixed = FALSE)
   
   activity <- tidyr::fill(data = activity,
-                          activity_personnel,
+                          activity_person,
                           .direction = "down")
   
   activity <- dplyr::filter(.data = activity,
@@ -105,7 +105,7 @@ tidy_activity <- function(x) {
   activity <- dplyr::select(.data = activity,
                             x_1,
                             x_2,
-                            activity_personnel,
+                            activity_person,
                             mrn)
   
   # activity_type
@@ -139,7 +139,7 @@ tidy_activity <- function(x) {
   dplyr::select(.data = activity,
                 mrn,
                 activity_date = x_2,
-                activity_personnel,
+                activity_person,
                 activity_type,
                 activity_description = x_1)
 

@@ -25,7 +25,7 @@ export_rds <- function(x,
                       rpath = rpath)
 
   readr::write_rds(x = x,
-                   path = path,
+                   file = path,
                    compress = "gz")
 
 }

@@ -10,4 +10,4 @@ LazyData: true
 License: GPL-3
 Author: zhaoy <zhaoy@users.noreply.github.com>
 Maintainer: zhaoy <zhaoy@users.noreply.github.com>
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
