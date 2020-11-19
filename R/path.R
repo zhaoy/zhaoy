@@ -13,14 +13,14 @@
 #' A character vector.
 #'
 #' @importFrom fs path
-#' @importFrom rprojroot find_root has_dirname
+#' @importFrom rprojroot find_root has_basename
 #'
 #' @export
 
 path <- function(dirname,
                  rpath) {
 
-  criterion <- rprojroot::has_dirname(dirname = dirname)
+  criterion <- rprojroot::has_basename(basename = dirname)
 
   root <- rprojroot::find_root(criterion = criterion,
                                path = ".")
