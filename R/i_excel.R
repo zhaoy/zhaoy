@@ -25,7 +25,7 @@ i_excel <- function(folder,
                     sheet = NULL,
                     range = NULL) {
 
-  path <- zhaoy::path(dirname = folder,
+  path <- zhaoy::path(basename = folder,
                       rpath = path)
 
   x <- readxl::read_excel(path = path,

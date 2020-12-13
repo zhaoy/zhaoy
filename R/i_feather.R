@@ -21,7 +21,7 @@
 i_feather <- function(folder,
                       path) {
 
-  path <- zhaoy::path(dirname = folder,
+  path <- zhaoy::path(basename = folder,
                       rpath = path)
 
   x <- feather::read_feather(path = path)

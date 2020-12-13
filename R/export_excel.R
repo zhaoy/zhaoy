@@ -23,7 +23,7 @@ export_excel <- function(x,
                          dirname,
                          rpath) {
 
-  path <- zhaoy::path(dirname = dirname,
+  path <- zhaoy::path(basename = dirname,
                       rpath = rpath)
 
   writexl::write_xlsx(x = x,

@@ -24,7 +24,7 @@
 import_feather <- function(dirname,
                            rpath) {
 
-  path <- zhaoy::path(dirname = dirname,
+  path <- zhaoy::path(basename = dirname,
                       rpath = rpath)
 
   x <- feather::read_feather(path = path)
