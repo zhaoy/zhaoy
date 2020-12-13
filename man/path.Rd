@@ -2,18 +2,18 @@
 % Please edit documentation in R/path.R
 \name{path}
 \alias{path}
-\title{Convert relative file-paths to absolute}
+\title{Convert relative file-paths to absolute file-paths}
 \usage{
-path(dirname, rpath)
+path(basename, rpath)
 }
 \arguments{
-\item{dirname}{A directory above 1) the file / folder and 2) the R file.}
+\item{basename}{A folder above the 1) target file / folder and 2) R-code file.}
 
-\item{rpath}{Relative to \code{dirname}, path to the file / folder.}
+\item{rpath}{Relative to \code{basename}, path to the target file / folder. If all files / folders below \code{basename} are unique, name of the target file / folder is sufficient.}
 }
 \value{
 A character vector.
 }
 \description{
-Convert relative file-paths to absolute.
+Convert relative file-paths to absolute file-paths.
 }
