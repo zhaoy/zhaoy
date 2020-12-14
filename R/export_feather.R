@@ -22,7 +22,7 @@ export_feather <- function(x,
                            rpath) {
 
   path <- zhaoy::path(basename = dirname,
-                      rpath = rpath)
+                      rpath)
 
   feather::write_feather(x = x,
                          path = path)

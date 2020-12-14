@@ -25,7 +25,7 @@ import_rds <- function(dirname,
                        rpath) {
 
   path <- zhaoy::path(basename = dirname,
-                      rpath = rpath)
+                      rpath)
 
   x <- readr::read_rds(file = path)
 

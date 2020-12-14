@@ -29,7 +29,7 @@ import_excel <- function(dirname,
                          range = NULL) {
 
   path <- zhaoy::path(basename = dirname,
-                      rpath = rpath)
+                      rpath)
 
   x <- readxl::read_excel(path = path,
                           sheet = sheet,

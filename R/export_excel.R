@@ -24,7 +24,7 @@ export_excel <- function(x,
                          rpath) {
 
   path <- zhaoy::path(basename = dirname,
-                      rpath = rpath)
+                      rpath)
 
   writexl::write_xlsx(x = x,
                       path = path,

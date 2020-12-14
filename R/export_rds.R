@@ -22,7 +22,7 @@ export_rds <- function(x,
                        rpath) {
 
   path <- zhaoy::path(basename = dirname,
-                      rpath = rpath)
+                      rpath)
 
   readr::write_rds(x = x,
                    file = path,

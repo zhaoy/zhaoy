@@ -22,7 +22,7 @@ i_feather <- function(folder,
                       path) {
 
   path <- zhaoy::path(basename = folder,
-                      rpath = path)
+                      path)
 
   x <- feather::read_feather(path = path)
 
