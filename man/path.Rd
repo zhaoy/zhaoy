@@ -9,7 +9,7 @@ path(basename, rpath)
 \arguments{
 \item{basename}{A folder above the 1) target file / folder and 2) R-code file.}
 
-\item{rpath}{Relative to \code{basename}, path to the target file / folder. If all files / folders below \code{basename} are unique, name of the target file / folder is sufficient.}
+\item{rpath}{Relative to \code{basename}, path to the target file / folder.}
 }
 \value{
 A character vector.
