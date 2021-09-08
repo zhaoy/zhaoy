@@ -29,6 +29,8 @@ import_rds <- function(dirname,
 
   x <- readr::read_rds(file = path)
 
-  zhaoy::lc_df(x = x)
+  x <- zhaoy::lc_df(x = x)
+
+  zhaoy::squish_df(x = x)
 
 }

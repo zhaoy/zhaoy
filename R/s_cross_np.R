@@ -18,8 +18,6 @@
 #' @importFrom janitor adorn_ns adorn_pct_formatting adorn_percentages adorn_title adorn_totals tabyl
 #'
 #' @export
-#'
-#' @examples
 
 s_cross_np <- function(x,
                        ...,

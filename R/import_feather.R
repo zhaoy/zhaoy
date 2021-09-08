@@ -29,6 +29,8 @@ import_feather <- function(dirname,
 
   x <- feather::read_feather(path = path)
 
-  zhaoy::lc_df(x = x)
+  x <- zhaoy::lc_df(x = x)
+
+  zhaoy::squish_df(x = x)
 
 }

@@ -44,6 +44,8 @@ import_excel <- function(dirname,
                           progress = FALSE,
                           .name_repair = "universal")
 
-  zhaoy::lc_df(x = x)
+  x <- zhaoy::lc_df(x = x)
+
+  zhaoy::squish_df(x = x)
 
 }

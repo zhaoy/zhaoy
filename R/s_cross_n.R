@@ -17,8 +17,6 @@
 #' @importFrom janitor adorn_title adorn_totals tabyl
 #'
 #' @export
-#'
-#' @examples
 
 s_cross_n <- function(x,
                       ...) {
