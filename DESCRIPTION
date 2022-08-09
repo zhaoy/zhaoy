@@ -1,13 +1,13 @@
 Package: zhaoy
 Title: Miscellaneous Functions
 Description: Transfer, tidy, transform, summarize, and check data.
-Date: 2020-1-12
+Date: 2022-8-9
 Version: 1.0.0
-Depends: R (>= 3.6.0)
-Imports: assertr, compareGroups, dplyr, feather, fs, janitor, lubridate, purrr, readr, readxl, rprojroot, stats, stringr, tibble, tidyr, writexl
+Depends: R (>= 4.2.0)
+Imports: assertr, dplyr, feather, janitor, lubridate, purrr, readr, readxl, rprojroot, stats, stringr, tibble, tidyr, vctrs, writexl
 Encoding: UTF-8
 LazyData: true
 License: GPL-3
 Author: zhaoy <zhaoy@users.noreply.github.com>
 Maintainer: zhaoy <zhaoy@users.noreply.github.com>
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.1

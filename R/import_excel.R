@@ -20,6 +20,7 @@
 #' \code{\link{export_excel}}
 #'
 #' @importFrom readxl read_excel
+#' @importFrom vctrs vec_as_names
 #'
 #' @export
 
@@ -35,14 +36,18 @@ import_excel <- function(dirname,
                           sheet = sheet,
                           range = range,
                           col_names = TRUE,
-                          col_types = NULL,
+                          col_types = "text",
                           na = "",
                           trim_ws = TRUE,
                           skip = 0,
                           n_max = Inf,
-                          guess_max = 10000,
+                          guess_max = 1000,
                           progress = FALSE,
-                          .name_repair = "universal")
+                          .name_repair = "minimal")
+
+  names(x = x) <- vctrs::vec_as_names(names = names(x = x),
+                                      repair = "universal",
+                                      quiet = TRUE)
 
   x <- zhaoy::lc_df(x = x)
 
