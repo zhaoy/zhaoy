@@ -44,7 +44,7 @@ date_time <- function(x,
   lubridate::parse_date_time(x = x,
                              orders = orders,
                              truncated = 0,
-                             quiet = TRUE,
+                             quiet = FALSE,
                              exact = FALSE,
                              train = TRUE,
                              drop = FALSE)
