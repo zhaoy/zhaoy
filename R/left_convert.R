@@ -15,7 +15,7 @@
 #' @return
 #' A tibble.
 #'
-#' @importFrom dplyr filter join_by left_join select
+#' @importFrom dplyr join_by left_join select
 #'
 #' @export
 
@@ -25,8 +25,8 @@ left_convert <- function(category,
                          y_df,
                          y_var) {
 
-  y_df <- filter(.data = y_df,
-                 category == {{ category }})
+  y_df <- y_df[! is.na(x = y_df$category) &
+               y_df$category == category, ]
 
   x_df <- dplyr::left_join(x = x_df,
                            y = y_df,
@@ -36,17 +36,13 @@ left_convert <- function(category,
                            unmatched = "drop",
                            relationship = "many-to-one")
 
-  x_var_position <- which(x = names(x = x_df) == x_var)
+  x_df[[x_var]][! is.na(x = x_df$analyzable)] <- x_df$analyzable[! is.na(x = x_df$analyzable)]
 
-  x_df[! is.na(x = x_df$analyzable),
-       x_var_position] <- x_df$analyzable[! is.na(x = x_df$analyzable)]
+  x_df[[x_var]][! is.na(x = x_df$analyzable) &
+                x_df$analyzable == "convert to missing"] <- NA
 
-  x_df[! is.na(x = x_df$analyzable) &
-       x_df$analyzable == "convert to missing",
-       x_var_position] <- NA
-
-  select(.data = x_df,
-         ! c(category,
-             analyzable))
+  dplyr::select(.data = x_df,
+                ! c(category,
+                    analyzable))
 
 }
