@@ -13,7 +13,7 @@
 #' @param category Right-hand-side data-frame's category.
 #'
 #' @return
-#' A tibble.
+#' A vector.
 #'
 #' @importFrom dplyr filter join_by left_join pull rename select
 
