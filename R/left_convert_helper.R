@@ -5,12 +5,12 @@
 #' Convert data by left-joining data-frames and look-up tables.
 #'
 #' @usage
-#' left_convert_helper(x_df, x_var, y_df, y_var)
+#' left_convert_helper(x_df, x_var, y_df, category)
 #'
 #' @param x_df Left-hand-side data-frame.
 #' @param x_var Left-hand-side variable.
 #' @param y_df Right-hand-side data-frame.
-#' @param y_var Right-hand-side variable.
+#' @param category Right-hand-side data-frame's category.
 #'
 #' @return
 #' A tibble.
@@ -20,10 +20,10 @@
 left_convert_helper <- function(x_df,
                                 x_var,
                                 y_df,
-                                y_var) {
+                                category) {
   
   y_df <- dplyr::filter(.data = y_df,
-                        y_df[, 1] == y_var)
+                        category == category)
   
   x_df <- dplyr::select(.data = x_df,
                         {{ x_var }})
