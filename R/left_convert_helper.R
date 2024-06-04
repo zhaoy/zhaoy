@@ -23,7 +23,7 @@ left_convert_helper <- function(x_df,
                                 category) {
   
   y_df <- dplyr::filter(.data = y_df,
-                        category == category)
+                        category == {{ category }})
   
   x_df <- dplyr::select(.data = x_df,
                         {{ x_var }})
