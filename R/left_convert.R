@@ -1,48 +1,37 @@
-#' @title Convert data via left join
+#' @title 
+#' Convert data by left-joining data-frames and look-up tables
 #'
 #' @description
-#' Convert data via left join.
+#' Convert data by left-joining data-frames and look-up tables.
 #'
 #' @usage
-#' left_convert(category, x_df, x_var, y_df, y_var)
+#' left_convert(x_df, x_var, y_df, category)
 #'
-#' @param category Category.
 #' @param x_df Left-hand-side data-frame.
-#' @param x_var Left-hand-side variable.
-#' @param y_df Left-hand-side data-frame.
-#' @param y_var Left-hand-side variable.
+#' @param x_var Left-hand-side variable(s).
+#' @param y_df Right-hand-side data-frame.
+#' @param category Right-hand-side data-frame's category.
 #'
 #' @return
-#' A tibble.
+#' A data-frame.
 #'
-#' @importFrom dplyr join_by left_join select
-#'
+#' @importFrom dplyr across mutate
+#' 
 #' @export
 
-left_convert <- function(category,
-                         x_df,
+left_convert <- function(x_df,
                          x_var,
                          y_df,
-                         y_var) {
-
-  y_df <- y_df[! is.na(x = y_df$category) &
-               y_df$category == category, ]
-
-  x_df <- dplyr::left_join(x = x_df,
-                           y = y_df,
-                           by = dplyr::join_by({{ x_var }} == {{ y_var }}),
-                           keep = NULL,
-                           multiple = "all",
-                           unmatched = "drop",
-                           relationship = "many-to-one")
-
-  x_df[[x_var]][! is.na(x = x_df$analyzable)] <- x_df$analyzable[! is.na(x = x_df$analyzable)]
-
-  x_df[[x_var]][! is.na(x = x_df$analyzable) &
-                x_df$analyzable == "convert to missing"] <- NA
-
-  dplyr::select(.data = x_df,
-                ! c(category,
-                    analyzable))
-
+                         category) {
+  
+  dplyr::mutate(.data = x_df,
+                dplyr::across(.cols = {{ x_var }},
+                              .fns = function(x)
+                              left_convert_helper(x_df = {{ x_df }},
+                                                  x_var = x,
+                                                  y_df = {{ y_df }},
+                                                  category = {{ category }}),
+                              .names = "{.col}"),
+                .keep = "all")
+  
 }

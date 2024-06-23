@@ -1,5 +1,5 @@
 #' @title 
-#' Convert data by left-joining data-frames and look-up tables.
+#' Convert data by left-joining data-frames and look-up tables
 #'
 #' @description
 #' Convert data by left-joining data-frames and look-up tables.
