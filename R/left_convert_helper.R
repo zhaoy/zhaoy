@@ -35,8 +35,9 @@ left_convert_helper <- function(x_df,
   
   x_df <- dplyr::left_join(x = x_df,
                            y = y_df,
-                           by = dplyr::join_by("raw"),
+                           by = dplyr::join_by(raw == raw),
                            keep = NULL,
+                           na_matches = "na",
                            multiple = "all",
                            unmatched = "drop",
                            relationship = "many-to-one")

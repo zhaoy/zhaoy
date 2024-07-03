@@ -2,7 +2,7 @@
 #' Convert relative paths to absolute paths
 #'
 #' @description
-#' If the working directory is the root directory or below the root directory, convert a relative path to an absolute path.
+#' If the working directory is below the root directory, convert a relative path to an absolute path.
 #'
 #' @usage
 #' path(basename, ...)
@@ -25,7 +25,5 @@ path <- function(basename,
   path <- rprojroot::find_root_file(...,
                                     criterion = criterion,
                                     path = ".")
-  
-  as.character(x = path)
   
 }
