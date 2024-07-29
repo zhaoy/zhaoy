@@ -8,7 +8,7 @@
 #' left_convert(x_df, x_var, y_df, category)
 #'
 #' @param x_df Left-side data-frame.
-#' @param x_var Left-side variable(s).
+#' @param x_var Left-side variable(s), must be character vector(s) while using this function.
 #' @param y_df Right-side data-frame.
 #' @param category Right-side data-frame's category.
 #'
