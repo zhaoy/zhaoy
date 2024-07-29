@@ -1,21 +1,21 @@
 #' @title 
-#' Summarize data in uni-variate or stratified tables
+#' Summarize data in uni-variate or bivariate tables
 #'
 #' @description
-#' Summarize data in uni-variate or stratified tables.
+#' Summarize data in uni-variate or bivariate tables.
 #'
 #' @usage
-#' s_stratify(data, formula = NULL, strata_2 = NULL, min_dis, level, ...)
+#' s_stratify(data, formula = NULL, strata_2 = NULL, min_dis, max_level, ...)
 #'
 #' @param data Data-frame.
-#' @param formula For uni-variate tables: one variable. For stratified tables: use "~" to separate dependent and independent variable(s), use "+" to separate independent variables.
-#' @param strata_2 Applies only to stratified tables. Beyond the dependent variable in \code{formula}, additional variable to stratify on.
+#' @param formula For uni-variate tables: one variable followed by "~ .". For bivariate tables: use "~" to separate dependent and independent variable(s), use "+" to separate independent variables.
+#' @param strata_2 Applies only to bivariate tables. Beyond the dependent variable in \code{formula}, additional variable to stratify on. Must be character while using this function.
 #' @param min_dis If a non-factor dependent variable has less than \code{min.dis} distinct data-points, then this function treats the variable as categorical.
-#' @param level Maximum number of distinct data-points of dependent variable, categorical independent variables, and \code{strata_2}.
+#' @param max_level Maximum number of distinct data-points of dependent variable, categorical independent variables, and \code{strata_2}.
 #' @param ... Additional arguments.
 #'
 #' @return
-#' A uni-variate or stratified table.
+#' A uni-variate or bivariate table.
 #'
 #' @importFrom compareGroups descrTable strataTable
 #' 
@@ -25,7 +25,7 @@ s_stratify <- function(data,
                        formula = NULL,
                        strata_2 = NULL,
                        min_dis,
-                       level,
+                       max_level,
                        ...) {
   
   args <- list(...)
@@ -36,9 +36,9 @@ s_stratify <- function(data,
   
   args$min.dis <- min_dis
   
-  args$max.xlev <- level
+  args$max.xlev <- max_level
   
-  args$max.ylev <- level
+  args$max.ylev <- max_level
   
   args$include.label <- FALSE
   
@@ -72,7 +72,7 @@ s_stratify <- function(data,
     compareGroups::strataTable(x = table,
                                strata = strata_2,
                                strata.names = NULL,
-                               max.nlevels = level)
+                               max.nlevels = max_level)
     
   }
 
