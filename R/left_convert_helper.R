@@ -1,56 +1,56 @@
 #' @title 
-#' Convert data by left-joining data-frames and look-up tables
+#' Convert raw data to analyzable data via left joins
 #'
 #' @description
-#' Convert data by left-joining a data-frame and a look-up table.
+#' Left-join a raw data-frame and a look-up data-frame.
 #'
 #' @usage
-#' left_convert_helper(x_df, x_var, y_df, category)
+#' left_convert_helper(raw_df, raw_var, lu_df, lu_category)
 #'
-#' @param x_df Left-side data-frame.
-#' @param x_var Left-side variable, must be character vector while using this function.
-#' @param y_df Right-side data-frame.
-#' @param category Right-side data-frame's category.
+#' @param raw_df Raw data-frame.
+#' @param raw_var Raw data-frame's variable to convert, must be character vector while using this function.
+#' @param lu_df Look-up data-frame.
+#' @param lu_category Look-up data-frame's category.
 #'
 #' @return
 #' A character vector.
 #'
 #' @importFrom dplyr filter join_by left_join pull rename select
 
-left_convert_helper <- function(x_df,
-                                x_var,
-                                y_df,
-                                category) {
+left_convert_helper <- function(raw_df,
+                                raw_var,
+                                lu_df,
+                                lu_category) {
   
-  y_df <- dplyr::filter(.data = y_df,
-                        category == {{ category }})
+  lu_df <- dplyr::filter(.data = lu_df,
+                         lu_category == {{ lu_category }})
   
-  x_df <- dplyr::select(.data = x_df,
-                        {{ x_var }})
+  raw_df <- dplyr::select(.data = raw_df,
+                          {{ raw_var }})
   
-  var_name <- names(x = x_df)
+  var_name <- names(x = raw_df)
   
-  x_df <- dplyr::rename(.data = x_df,
-                        raw = {{ x_var }})
+  raw_df <- dplyr::rename(.data = raw_df,
+                          raw = {{ raw_var }})
   
-  x_df <- dplyr::left_join(x = x_df,
-                           y = y_df,
-                           by = dplyr::join_by(raw == raw),
-                           keep = NULL,
-                           na_matches = "na",
-                           multiple = "all",
-                           unmatched = "drop",
-                           relationship = "many-to-one")
+  raw_df <- dplyr::left_join(x = raw_df,
+                             y = lu_df,
+                             by = dplyr::join_by(raw == raw),
+                             keep = NULL,
+                             na_matches = "never",
+                             multiple = "all",
+                             unmatched = "drop",
+                             relationship = "many-to-one")
   
-  x_df$raw[! is.na(x = x_df$analyzable)] <- x_df$analyzable[! is.na(x = x_df$analyzable)]
+  raw_df$raw[! is.na(x = raw_df$analyzable)] <- raw_df$analyzable[! is.na(x = raw_df$analyzable)]
   
-  x_df$raw[! is.na(x = x_df$analyzable) &
-           x_df$analyzable == "convert to missing"] <- NA
+  raw_df$raw[! is.na(x = raw_df$analyzable) &
+             raw_df$analyzable == "convert to missing"] <- NA
   
-  names(x = x_df)[! is.na(x = names(x = x_df)) &
-                  names(x = x_df) == "raw"] <- var_name
+  names(x = raw_df)[! is.na(x = names(x = raw_df)) &
+                    names(x = raw_df) == "raw"] <- var_name
   
-  dplyr::pull(.data = x_df,
-              var = {{ x_var }})
+  dplyr::pull(.data = raw_df,
+              var = {{ raw_var }})
   
 }
