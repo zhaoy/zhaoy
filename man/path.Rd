@@ -7,13 +7,13 @@
 path(basename, ...)
 }
 \arguments{
-\item{basename}{The target folder.}
+\item{basename}{Root directory.}
 
-\item{...}{Relative to \code{basename}, path to the target file.}
+\item{...}{Relative to \code{basename}, path to the file or folder.}
 }
 \value{
-A character vector.
+A vector.
 }
 \description{
-If the working directory is the target folder or below, convert relative paths to absolute paths.
+If the working directory is below the root directory, convert a relative path to an absolute path.
 }
