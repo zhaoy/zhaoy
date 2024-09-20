@@ -2,22 +2,22 @@
 % Please edit documentation in R/left_convert.R
 \name{left_convert}
 \alias{left_convert}
-\title{Convert data by left-joining data-frames and look-up tables}
+\title{Convert raw data to analyzable data via left joins}
 \usage{
-left_convert(x_df, x_var, y_df, category)
+left_convert(raw_df, raw_var, lu_df, lu_category)
 }
 \arguments{
-\item{x_df}{Left-side data-frame.}
+\item{raw_df}{Raw data-frame.}
 
-\item{x_var}{Left-side variable(s), must be character vector(s) while using this function.}
+\item{raw_var}{Raw data-frame's variable(s) to convert, must be character vector(s) while using this function.}
 
-\item{y_df}{Right-side data-frame.}
+\item{lu_df}{Look-up data-frame.}
 
-\item{category}{Right-side data-frame's category.}
+\item{lu_category}{Look-up data-frame's lu_category.}
 }
 \value{
 A data-frame.
 }
 \description{
-Convert data by left-joining a data-frame and a look-up table.
+Left-join a raw data-frame and a look-up data-frame.
 }
