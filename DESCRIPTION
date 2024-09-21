@@ -3,10 +3,10 @@ Title: Miscellaneous Functions
 Version: 0.0.0.9000
 Authors@R:
 	utils::person(given = "zhaoy",
-                  family = "zhaoy",
-                  email = "zhaoy@users.noreply.github.com",
-                  role = c("aut",
-                           "cre"))
+				  family = "zhaoy",
+				  email = "zhaoy@users.noreply.github.com",
+				  role = c("aut",
+						   "cre"))
 Description: Transfer, tidy, transform, summarize, and check data.
 License: MIT + file LICENSE
 Encoding: UTF-8
