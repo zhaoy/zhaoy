@@ -8,9 +8,9 @@
 #' left_convert(raw_df, raw_var, lu_df, lu_category)
 #'
 #' @param raw_df Raw data-frame.
-#' @param raw_var Raw data-frame's variable(s) to convert, must be character vector(s) while using this function.
+#' @param raw_var Raw data-frame's variable(s) to convert, data in the variable(s) must be character vector(s) while using this function.
 #' @param lu_df Look-up data-frame.
-#' @param lu_category Look-up data-frame's lu_category.
+#' @param lu_category Look-up data-frame's category.
 #'
 #' @return
 #' A data-frame.
