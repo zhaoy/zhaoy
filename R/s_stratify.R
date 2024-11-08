@@ -8,10 +8,17 @@
 #' s_stratify(data, formula = NULL, strata_2 = NULL, min_dis, max_level, ...)
 #'
 #' @param data Data-frame.
-#' @param formula For uni-variate tables: one variable followed by "~ .". For bivariate tables: use "~" to separate dependent and independent variable(s), use "+" to separate independent variables.
-#' @param strata_2 Applies only to bivariate tables. Beyond the dependent variable in \code{formula}, additional variable to stratify on. Must be character while using this function.
-#' @param min_dis If a non-factor dependent variable has less than \code{min.dis} distinct data-points, then this function treats the variable as categorical.
-#' @param max_level Maximum number of distinct data-points of dependent variable, categorical independent variables, and \code{strata_2}.
+#' @param formula For uni-variate tables: one variable followed by "~ .".
+#'   For bivariate tables: use "~" to separate dependent and independent variable(s),
+#'   use "+" to separate independent variables.
+#' @param strata_2 Applies only to bivariate tables. 
+#'   Beyond the dependent variable in \code{formula}, 
+#'   additional variable to stratify on.
+#'   Must be character while using this function.
+#' @param min_dis If a non-factor dependent variable has less than \code{min.dis} distinct data-points, 
+#'   then this function treats the variable as categorical.
+#' @param max_level Maximum number of distinct data-points of dependent variable,
+#'   categorical independent variables, and \code{strata_2}.
 #' @param ... Additional arguments.
 #'
 #' @return
