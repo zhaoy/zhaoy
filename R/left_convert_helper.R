@@ -1,23 +1,19 @@
-#' @title 
-#' Convert raw data to analyzable data via left joins
+#' @title Convert raw data to analyzable data via left joins
 #'
-#' @description
-#' Left-join a raw data-frame and a look-up data-frame.
+#' @description Left-join a raw data-frame and a look-up data-frame.
 #'
-#' @usage
-#' left_convert_helper(raw_df, raw_var, lu_df, lu_category)
+#' @usage left_convert_helper(raw_df, raw_var, lu_df, lu_category)
 #'
 #' @param raw_df Raw data-frame.
-#' @param raw_var Raw data-frame's variable(s) to convert,
-#'   data in the variable(s) must be character vector(s) while using this function.
+#' @param raw_var Raw data-frame's variable(s) to convert, data in the
+#'   variable(s) must be character vector(s) while using this function.
 #' @param lu_df Look-up data-frame.
 #' @param lu_category Look-up data-frame's category.
 #'
-#' @return
-#' A character vector.
+#' @return A character vector.
 #'
 #' @importFrom dplyr filter join_by left_join pull rename select
-#' 
+#'
 #' @noRd
 
 left_convert_helper <- function(raw_df,
