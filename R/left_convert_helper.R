@@ -13,8 +13,6 @@
 #' @return A character vector.
 #'
 #' @importFrom dplyr filter join_by left_join pull rename select
-#'
-#' @noRd
 
 left_convert_helper <- function(raw_df,
                                 raw_var,

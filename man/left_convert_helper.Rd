@@ -9,7 +9,8 @@ left_convert_helper(raw_df, raw_var, lu_df, lu_category)
 \arguments{
 \item{raw_df}{Raw data-frame.}
 
-\item{raw_var}{Raw data-frame's variable to convert, must be character vector while using this function.}
+\item{raw_var}{Raw data-frame's variable(s) to convert, data in the
+variable(s) must be character vector(s) while using this function.}
 
 \item{lu_df}{Look-up data-frame.}
 
