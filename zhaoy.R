@@ -1,8 +1,8 @@
+# RStudio: Code -> Reflow Comment
+
 library(package = devtools)
 library(package = usethis)
 library(package = zhaoy)
-
-basename <- "gwep"
 
 # usethis::create_package(path = "gwep/code/gwep",
 #                         rstudio = FALSE,
@@ -10,27 +10,21 @@ basename <- "gwep"
 #                         check_name = TRUE,
 #                         open = FALSE)
 
+# usethis::use_mit_license()
+
+# DESCRIPTION file's roxygen2 version must match local version.
+
+# @inheritParams another_package::function.
+# To use @inheritParams, the parent function's .R file must exclude @noRd.
+
+# usethis::rename_files()
+
+basename <- "gwep"
+
 dir <- zhaoy::path(basename = basename,
                    "code/zhaoy")
 
 setwd(dir = dir)
-
-# Local roxygen2 version must match DESCRIPTION file's version.
-
-# RStudio: Code -> Reflow Comment
-
-# @inheritParams another_package::function
-
-# usethis::rename_files()
-
-# usethis::use_mit_license()
-
-# usethis::use_data(look_up,
-#                   internal = FALSE,
-#                   overwrite = TRUE,
-#                   compress = "bzip2",
-#                   version = 3,
-#                   ascii = FALSE)
 
 devtools::check()
 
