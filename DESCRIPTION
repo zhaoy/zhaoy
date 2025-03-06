@@ -7,22 +7,24 @@ Authors@R:
 				  email = "zhaoy@users.noreply.github.com",
 				  role = c("aut",
 						   "cre"))
-Description: Transfer, tidy, transform, summarize, and check data.
+Description: Miscellaneous functions.
+URL: https://github.com/zhaoy/zhaoy
+BugReports: https://github.com/zhaoy/zhaoy/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Imports:
 	assertr,
-	compareGroups,
-	dplyr,
+	compareGroups (>= 4.9.1),
+	dplyr (>= 1.1.4),
 	feather,
 	janitor,
 	lubridate,
 	purrr,
 	readr,
 	readxl,
-	rprojroot,
+	rprojroot (>= 2.0.4),
 	stats,
 	stringr,
 	tibble,
