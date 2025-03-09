@@ -10,9 +10,11 @@
 #' @param lu_df Look-up data-frame.
 #' @param lu_category Look-up data-frame's category.
 #'
-#' @return A character vector.
+#' @returns A character vector.
 #'
 #' @importFrom dplyr filter join_by left_join pull rename select
+#' 
+#' @noRd
 
 left_convert_helper <- function(raw_df,
                                 raw_var,
