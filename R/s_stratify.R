@@ -1,6 +1,6 @@
-#' @title Summarize data in uni-variate or bivariate tables
+#' @title Summarize data-points in uni-variate or bivariate tables
 #'
-#' @description Summarize data in uni-variate or bivariate tables.
+#' @description Summarize data-points in uni-variate or bivariate tables.
 #'
 #' @usage s_stratify(data, formula = NULL, strata_2 = NULL, min_dis, max_level,
 #' ...)
@@ -10,12 +10,12 @@
 #'   bivariate tables: use "~" to separate dependent and independent
 #'   variable(s), use "+" to separate independent variables.
 #' @param strata_2 Applies only to bivariate tables. Beyond the dependent
-#'   variable in \code{formula}, additional variable to stratify on. While using this function, data in the additional variable must be a 
+#'   variable in \code{formula}, additional variable to stratify on. While using this function, data-points in the additional variable must be a 
 #'   character vector.
 #' @param min_dis If a non-factor dependent variable has less than
 #'   \code{min.dis} distinct data-points, then this function treats the variable
 #'   as categorical.
-#' @param max_level Maximum number of distinct data-points of dependent
+#' @param max_level Maximum number of distinct data-points in dependent
 #'   variable, categorical independent variables, and \code{strata_2}.
 #' @param ... Additional arguments.
 #'
@@ -67,11 +67,17 @@ s_stratify <- function(data,
   table <- do.call(what = compareGroups::descrTable,
                    args = args)
 
-  table <- compareGroups::strataTable(x = table,
-                                      strata = strata_2,
-                                      strata.names = NULL,
-                                      max.nlevels = max_level)
+  if (is.null(x = strata_2)) {
+    
+    table
+    
+  } else if (! is.null(x = strata_2)) {
+    
+    compareGroups::strataTable(x = table,
+                               strata = strata_2,
+                               strata.names = NULL,
+                               max.nlevels = max_level)
   
-  table
+  }
     
 }
