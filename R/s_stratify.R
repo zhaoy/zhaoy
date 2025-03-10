@@ -10,8 +10,8 @@
 #'   bivariate tables: use "~" to separate dependent and independent
 #'   variable(s), use "+" to separate independent variables.
 #' @param strata_2 Applies only to bivariate tables. Beyond the dependent
-#'   variable in \code{formula}, additional variable to stratify on. Must be a 
-#'   character vector while using this function.
+#'   variable in \code{formula}, additional variable to stratify on. While using this function, data in the additional variable must be a 
+#'   character vector.
 #' @param min_dis If a non-factor dependent variable has less than
 #'   \code{min.dis} distinct data-points, then this function treats the variable
 #'   as categorical.
