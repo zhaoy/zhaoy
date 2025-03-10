@@ -6,10 +6,10 @@
 #' ...)
 #'
 #' @param data Data-frame.
-#' @param formula For uni-variate tables: one variable followed by "~ .". For
+#' @param formula Optional: For uni-variate tables: one variable followed by "~ .". For
 #'   bivariate tables: use "~" to separate dependent and independent
 #'   variable(s), use "+" to separate independent variables.
-#' @param strata_2 Applies only to bivariate tables. Beyond the dependent
+#' @param strata_2 Optional: Applies only to bivariate tables. Beyond the dependent
 #'   variable in \code{formula}, additional variable to stratify on. While using this function, data-points in the additional variable must be a 
 #'   character vector.
 #' @param min_dis If a non-factor dependent variable has less than
