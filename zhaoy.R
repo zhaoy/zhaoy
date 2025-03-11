@@ -1,8 +1,8 @@
 # RStudio: Code -> Reflow Comment
 
 library(package = devtools)
+library(package = rprojroot)
 library(package = usethis)
-library(package = zhaoy)
 
 # usethis::create_package(path = "gwep/code/gwep",
 #                         rstudio = FALSE,
@@ -21,10 +21,34 @@ library(package = zhaoy)
 
 basename <- "gwep"
 
-dir <- zhaoy::path(basename = basename,
-                   "code/zhaoy")
+# rpath <- "data/reference/look_up.xlsx"
+# 
+# look_up <- zhaoy::import_excel(dirname = basename,
+#                                rpath = rpath,
+#                                sheet = "Sheet1")
+
+path_function <- function(basename,
+                          ...) {
+  
+  criterion <- rprojroot::has_basename(basename = basename)
+  
+  rprojroot::find_root_file(...,
+                            criterion = criterion,
+                            path = ".")
+  
+}
+
+dir <- path_function(basename = basename,
+                     "code/zhaoy")
 
 setwd(dir = dir)
+
+# usethis::use_data(look_up,
+#                   internal = FALSE,
+#                   overwrite = TRUE,
+#                   compress = "bzip2",
+#                   version = 3,
+#                   ascii = FALSE)
 
 devtools::check()
 
