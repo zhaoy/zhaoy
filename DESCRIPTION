@@ -22,8 +22,8 @@ Imports:
 	janitor (>= 2.2.1),
 	lubridate,
 	purrr,
-	readr,
-	readxl,
+	readr (>= 2.1.5),
+	readxl (>= 1.4.5),
 	rprojroot (>= 2.0.4),
 	stats,
 	stringr (>= 1.5.1),
@@ -31,7 +31,7 @@ Imports:
 	tidyr,
 	tidyselect (>= 1.2.1),
 	vctrs,
-	writexl
+	writexl (>= 1.5.1)
 Depends:
 	R (>= 4.4.0)
 LazyData: true
