@@ -1,4 +1,4 @@
-#' @title Clean some parts of data-frames.
+#' @title Clean some parts of data-frames
 #'
 #' @description Clean variable-names and data-point white-space.
 #'
