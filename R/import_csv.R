@@ -1,11 +1,11 @@
-#' @title Import csv files
+#' @title Import .csv files
 #'
-#' @description Import csv files.
+#' @description Import .csv files.
 #'
 #' @usage import_csv(dirname, rpath, quote, id)
 #'
-#' @param dirname A directory above both the csv file and R file.
-#' @param rpath Relative to \code{dirname}, path to the csv file.
+#' @param dirname A directory above both the .csv file and .R file.
+#' @param rpath Relative to \code{dirname}, path to the .csv file.
 #' @param quote Single character used to quote strings.
 #' @param id Optional: The name of a column in which to store the file path.
 #'
