@@ -1,4 +1,4 @@
-#' @title Import rds files
+#' @title Import .rds files
 #'
 #' @description Import .rds files.
 #'
