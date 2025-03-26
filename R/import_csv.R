@@ -2,11 +2,10 @@
 #'
 #' @description Import .csv files.
 #'
-#' @usage import_csv(dirname, rpath, quote, id)
+#' @usage import_csv(dirname, rpath, id)
 #'
 #' @param dirname A directory above both the .csv file and .R file.
 #' @param rpath Relative to \code{dirname}, path to the .csv file.
-#' @param quote Single character used to quote strings.
 #' @param id Optional: The name of a column in which to store the file path.
 #'
 #' @returns A data-frame.
@@ -17,7 +16,6 @@
 
 import_csv <- function(dirname,
                        rpath,
-                       quote,
                        id = NULL) {
   
   file <- gwep::path(basename = dirname,
@@ -30,7 +28,7 @@ import_csv <- function(dirname,
                   id = id,
                   locale = readr::default_locale(),
                   na = "",
-                  quote = quote,
+                  quote = "\"",
                   comment = "",
                   trim_ws = TRUE,
                   skip = 0,
@@ -39,7 +37,7 @@ import_csv <- function(dirname,
                   name_repair = "minimal",
                   num_threads = readr::readr_threads(),
                   progress = FALSE,
-                  show_col_types = TRUE,
+                  show_col_types = FALSE,
                   skip_empty_rows = FALSE,
                   lazy = FALSE)
 
