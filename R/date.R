@@ -6,7 +6,8 @@
 #'
 #' @param data Data-frame.
 #' @param var Variable(s) in which to convert data-points to yyyy-mm-dd.
-#' @param format Date format(s) from which to convert to yyyy-mm-dd.
+#' @param format Date format(s) from which to convert to yyyy-mm-dd. Identify
+#'   date format(s) via \code{lubridate::guess_formats()}.
 #'
 #' @returns A data-frame.
 #'
